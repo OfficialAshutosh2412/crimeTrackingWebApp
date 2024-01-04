@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CTSModelStoreContainer" CdmEntityContainer="CTSEntities">
+    <EntitySetMapping Name="Signup">
+      <EntityTypeMapping TypeName="CTSModel.Signup">
+        <MappingFragment StoreEntitySet="Signup">
+          <ScalarProperty Name="RegId" ColumnName="RegId" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Mstatus" ColumnName="Mstatus" />
+          <ScalarProperty Name="Lstatus" ColumnName="Lstatus" />
+          <ScalarProperty Name="Adhaar" ColumnName="Adhaar" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

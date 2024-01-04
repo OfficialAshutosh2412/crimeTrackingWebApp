@@ -1,0 +1,114 @@
+﻿@model CrimeTrackingSystem_CTS_.Models.Signup
+@{
+    ViewBag.Title = "Signup";
+}
+<div class="signup shadow-lg p-5 bg-white round">
+    <h1 class="p-2 ">Signup</h1>
+    @*first row*@
+    <div class="deflex">
+        <div class="w-100 p-2">
+            <span>
+                <i class="fa-solid fa-user"></i> 
+                @Html.LabelFor(model => model.Username, new { @class = "form-label fw-bolder" })
+            </span>
+            @Html.TextBoxFor(model=>model.Username, new {@class="cc-box"})
+            <input type="text" class="cc-box" />
+        </div>
+        <div class="w-100 p-2">
+            <i class="fa-solid fa-key"></i><label class="form-label fw-bolder">
+                Password
+            </label>
+            <input type="text" class="cc-box"/>
+        </div>
+        <div class="w-100 p-2">
+            <i class="fa-solid fa-key"></i><label class="form-label fw-bolder">
+                Confirm Password                
+            </label>
+            <input type="text" class="cc-box"/>
+        </div>
+    </div>
+    @*second row*@
+    <div class="deflex">
+        <div class="w-100 p-2">
+            <i class="fa-solid fa-envelope"></i><label class="form-label fw-bolder">
+                Email
+            </label>
+            <input type="text" class="cc-box"/>
+        </div>
+        <div class="w-100 p-2">
+            <i class="fa-solid fa-hashtag"></i><label class="form-label fw-bolder">
+                Pincode
+            </label>
+            <input type="text" class="cc-box"/>
+        </div>
+        <div class="w-100 p-2">
+            <i class="fa-solid fa-venus-mars"></i><label class="form-label fw-bolder">Gender</label>
+            <select class="cc-box">
+                <option selected>--select--</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Transgender</option>
+            </select>
+        </div>
+    </div>
+    @*third row*@
+    <div class="w-100 p-2">
+        <i class="fa-solid fa-location-dot"></i><label class="form-label fw-bolder">
+            Address
+        </label>
+        <input type="text" class="cc-box"/>
+    </div>
+    @*fourth row*@
+    <div class="deflex">
+        <div class="w-100 p-2">
+            <i class="fa-solid fa-heart"></i><label class="form-label fw-bolder">Marital Status</label>
+            <select class="cc-box">
+                <option selected>--select--</option>
+                <option>Married</option>
+                <option>Unmarried</option>
+                <option>Widow</option>
+                <option>Widower</option>
+                <option>Divorced</option>
+            </select>
+        </div>
+        <div class="w-100 p-2">
+            <i class="fa-solid fa-building-wheat"></i><label class="form-label fw-bolder">Living Status</label>
+            <select class="cc-box">
+                <option selected>--select--</option>
+                <option>High Class</option>
+                <option>Middle Class</option>
+                <option>Lower Class</option>
+            </select>
+        </div>
+        <div class="w-100 p-2">
+            <i class="fa-solid fa-id-card"></i> <label class="form-label fw-bolder">
+                Adhaar Number
+            </label>
+            <input type="text" class="cc-box"/>
+        </div>
+    </div>
+    @*fifth row*@
+    <div class="deflex">
+        <div class="w-100 p-2">
+            <i class="fa-solid fa-phone"></i><label class="form-label fw-bolder">
+                Contact Number
+            </label>
+            <input type="text" class="cc-box"/>
+        </div>
+        <div class="w-100 p-2">
+            <i class="fa-solid fa-image"></i><label class="form-label fw-bolder">Profile</label>
+            <input type="file" class="cc-box" />
+        </div>
+    </div>
+    @*sixth row*@
+    <div class="deflex">
+        <div class="w-100 p-2">
+            <i class="fa-brands fa-dev"></i><label class="form-label fw-bolder">Enter Token Number</label>
+            <input type="text" class="cc-box" placeholder="only for admin, other user leave it, if other user type any thing it does not matters"/>
+        </div>
+    </div>
+    @*buttons row*@
+    <button class="send">signup now</button>
+    <button class="clear">signup as admin</button>
+    <a href="#" class="text-secondary ">click here to login...</a>
+</div>

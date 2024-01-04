@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UserModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CrimeComplain">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PoliceStation" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CrimeType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="InvolvedPersons" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Proofs" Type="varchar(max)" Nullable="false" />
+    <Property Name="CrimeStation" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CurrentDateTime" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GeneralComplain">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PoliceStation" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Subject" Type="varchar(max)" Nullable="false" />
+    <Property Name="Details" Type="varchar(max)" Nullable="false" />
+    <Property Name="InvolvedPersons" Type="varchar(max)" Nullable="false" />
+    <Property Name="CurrentDateTime" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MissingPerson">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PoliceStation" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Person" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PersonPhone" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="LastLocation" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PersonEmail" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Ransom" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Details" Type="varchar(max)" Nullable="false" />
+    <Property Name="PersonImage" Type="varchar(max)" Nullable="false" />
+    <Property Name="CurrentDateTime" Type="varchar(max)" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MissingValuable">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PoliceStation" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ValuableType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ValuableCost" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Suspect" Type="varchar(max)" Nullable="false" />
+    <Property Name="ReciptImage" Type="varchar(max)" Nullable="false" />
+    <Property Name="Details" Type="varchar(max)" Nullable="false" />
+    <Property Name="CurrentDateTime" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="UserModelStoreContainer">
+    <EntitySet Name="CrimeComplain" EntityType="Self.CrimeComplain" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GeneralComplain" EntityType="Self.GeneralComplain" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MissingPerson" EntityType="Self.MissingPerson" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MissingValuable" EntityType="Self.MissingValuable" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

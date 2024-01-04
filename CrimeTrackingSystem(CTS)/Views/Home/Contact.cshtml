@@ -1,0 +1,75 @@
+﻿@model CrimeTrackingSystem_CTS_.Models.Contact
+
+@{
+    ViewBag.Title = "Contact";
+}
+
+@if (ViewBag.result == true) { 
+<div class="m-2 alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Success : </strong>thank you for contacting us.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+}
+
+@*contact us*@
+@using (Html.BeginForm("Contact", "Home", FormMethod.Post))
+{
+<div class=" min-width contact-us-container">
+    <div class="p-3 contact-us-container-form rounded-3" id="contact">
+        <h1 class="section-title fs-4"><span class="title-vip p-2" id="title-vip4"><i class="fa-solid fa-message"></i>Give us</span> a message</h1>
+        <div class=" d-flex">
+            <div class="mb-1 w-100 p-2">
+                <span class="form-label">
+                    <i class="fa-solid fa-pencil"></i>
+                    @Html.LabelFor(model => model.Fullname)
+                </span><br />
+                <small class="text-danger fw-bold">
+                    @Html.ValidationMessageFor(model=>model.Fullname)
+                </small>
+                @Html.TextBoxFor(model => model.Fullname, new { @class = "cc-box" })
+            </div>
+            <div class="mb-1 w-100 p-2">
+                <span class="form-label">
+                    <i class="fa-solid fa-envelope"></i>
+                    @Html.LabelFor(model => model.Email)
+                </span><br />
+                <small class="text-danger fw-bold">
+                    @Html.ValidationMessageFor(model => model.Email)
+                </small>
+                @Html.TextBoxFor(model => model.Email, new { @class = "cc-box" })
+            </div>
+            <div class="mb-1 w-100 p-2">
+                <span class="form-label">
+                    <i class="fa-solid fa-phone"></i>
+                    @Html.LabelFor(model => model.Phone)
+                </span><br />
+                <small class="text-danger fw-bold">
+                    @Html.ValidationMessageFor(model => model.Phone)
+                </small>
+                @Html.TextBoxFor(model => model.Phone, new { @class = "cc-box" })
+            </div>
+        </div>
+        <div class="mb-1 w-100 p-2">
+            <span class="form-label">
+                <i class="fa-solid fa-question"></i>
+                @Html.LabelFor(model => model.Purpose)
+            </span><br />
+            <small class="text-danger fw-bold">
+                @Html.ValidationMessageFor(model => model.Purpose)
+            </small>
+            @Html.TextBoxFor(model => model.Purpose, new { @class = "cc-box" })
+        </div>
+        <div class="mb-1 p-2">
+            <span class="form-label">
+                <i class="fa-solid fa-pen-nib"></i>
+                @Html.LabelFor(model => model.Details)
+            </span><br />
+            <small class="text-danger fw-bold">
+                @Html.ValidationMessageFor(model => model.Details)
+            </small>
+            @Html.TextBoxFor(model => model.Details, new { @class = "cc-box" })
+        </div>
+        <button class="send" value="send">send now !</button>
+    </div>
+</div>
+}

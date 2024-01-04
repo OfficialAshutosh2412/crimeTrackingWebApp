@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CTSVisitorModelStoreContainer" CdmEntityContainer="VisitorEntities">
+    <EntitySetMapping Name="Contact">
+      <EntityTypeMapping TypeName="CTSVisitorModel.Contact">
+        <MappingFragment StoreEntitySet="Contact">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Fullname" ColumnName="Fullname" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Purpose" ColumnName="Purpose" />
+          <ScalarProperty Name="Details" ColumnName="Details" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CriminalGallery">
+      <EntityTypeMapping TypeName="CTSVisitorModel.CriminalGallery">
+        <MappingFragment StoreEntitySet="CriminalGallery">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="AffectedOrganisation" ColumnName="AffectedOrganisation" />
+          <ScalarProperty Name="Reward" ColumnName="Reward" />
+          <ScalarProperty Name="CriminalImage" ColumnName="CriminalImage" />
+          <ScalarProperty Name="Details" ColumnName="Details" />
+          <ScalarProperty Name="CurrentDateTime" ColumnName="CurrentDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Events">
+      <EntityTypeMapping TypeName="CTSVisitorModel.Events">
+        <MappingFragment StoreEntitySet="Events">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="EventTitle" ColumnName="EventTitle" />
+          <ScalarProperty Name="EventDateTime" ColumnName="EventDateTime" />
+          <ScalarProperty Name="CurrentDateTime" ColumnName="CurrentDateTime" />
+          <ScalarProperty Name="EventImage" ColumnName="EventImage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FAQ">
+      <EntityTypeMapping TypeName="CTSVisitorModel.FAQ">
+        <MappingFragment StoreEntitySet="FAQ">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Questions" ColumnName="Questions" />
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Login">
+      <EntityTypeMapping TypeName="CTSVisitorModel.Login">
+        <MappingFragment StoreEntitySet="Login">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PoliceStation">
+      <EntityTypeMapping TypeName="CTSVisitorModel.PoliceStation">
+        <MappingFragment StoreEntitySet="PoliceStation">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ChowkiIncharge" ColumnName="ChowkiIncharge" />
+          <ScalarProperty Name="PoliceStation1" ColumnName="PoliceStation" />
+          <ScalarProperty Name="CUGNumberOne" ColumnName="CUGNumberOne" />
+          <ScalarProperty Name="CUGNumberSecond" ColumnName="CUGNumberSecond" />
+          <ScalarProperty Name="Agent" ColumnName="Agent" />
+          <ScalarProperty Name="AgentPhone" ColumnName="AgentPhone" />
+          <ScalarProperty Name="PoliceStationImage" ColumnName="PoliceStationImage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Signup">
+      <EntityTypeMapping TypeName="CTSVisitorModel.Signup">
+        <MappingFragment StoreEntitySet="Signup">
+          <ScalarProperty Name="RegId" ColumnName="RegId" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Mstatus" ColumnName="Mstatus" />
+          <ScalarProperty Name="Lstatus" ColumnName="Lstatus" />
+          <ScalarProperty Name="Adhaar" ColumnName="Adhaar" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
