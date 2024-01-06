@@ -31,6 +31,7 @@ namespace CrimeTrackingSystem_CTS_.Models
         public string Password { get; set; }
 
         [Required]
+        [DataType(DataType.Password)]
         [Compare("Password",ErrorMessage ="password doesn't match")]
         public string ConfirmPassword { get; set; }
 

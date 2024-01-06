@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTS | User | @ViewBag.UserTitle</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/style.css" rel="stylesheet" />
+    @RenderSection("head", required: false)
+</head>
+<body>
+    @*header*@
+    <nav class="navbar navbar-expand-lg bg-body-tertiary p-0" id="nav">
+        <div class="container-fluid justify-content-between ">
+            <a href="@Url.Action("Index", "User")" class="navbar-brand"><img src="~/Images/cts_logo.png" alt="cts.png" /></a>
+            <button class="navbar-toggler border-0 bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon fw-bolder"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav ">
+                    <li class="nav-item">
+                        <a href="@Url.Action("Index", "User")" class="nav-link text-light" aria-current="page"><i class="fa-solid fa-house"></i>Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link text-light"><i class="fa-solid fa-handcuffs"></i>Crime Complain</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link text-light"><i class="fa-solid fa-file-signature"></i>General Complain</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link text-light"><i class="fa-solid fa-person"></i>Missing Person</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link text-light"><i class="fa-regular fa-gem"></i>Missing Valuable</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link text-light"><i class="fa-solid fa-handshake-angle"></i>Help</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link text-light fw-bolder" type="submit" value="logout"><i class="fa-solid fa-right-from-bracket"></i>Logout</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    @RenderBody()
+    @*footer*@
+    <footer class="footer">
+        <div class="footer-brand">
+            <img src="~/Images/cts_logo.png" alt="cts.png">
+        </div>
+        <div>
+            <h6>follow us</h6>
+            <div class="footer-follow">
+                <a href="https://www.facebook.com/ashutosh.prasad.754365/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/official.ashu.2000/" target="_blank"><i class="fa-brands fa-square-instagram"></i></a>
+                <a href="https://twitter.com/Ashutos96662173" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://wa.me/6386239194" target="_blank"><i class="fa-brands fa-square-whatsapp"></i></a>
+            </div>
+        </div>
+        <div class="rights">
+            <p>All rights are reserved &copy;Criminal tracking System @DateTime.Now.Year .inc</p>
+        </div>
+    </footer>
+
+    <script src="~/Scripts/custom.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

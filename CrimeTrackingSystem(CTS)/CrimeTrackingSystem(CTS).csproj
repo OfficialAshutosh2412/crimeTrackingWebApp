@@ -134,7 +134,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -172,9 +174,7 @@
       <DependentUpon>CTSModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ISignup.cs" />
-    <Compile Include="Models\Login.cs">
-      <DependentUpon>CTSModel.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\Login.cs" />
     <Compile Include="Models\MissingPerson.cs">
       <DependentUpon>CTSModel.tt</DependentUpon>
     </Compile>
@@ -318,6 +318,10 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Signup.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Shared\_LayoutUser.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UserProfilePicture\" />

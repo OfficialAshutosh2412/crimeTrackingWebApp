@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTS | Admin | @ViewBag.AdminTitle</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/style.css" rel="stylesheet" />
+    @RenderSection("head", required: false)
+</head>
+<body style="background:#343434;color:#ededed">
+    <nav class="admin-nav">
+        <div class="admin-title">
+            <h3 class="p-2 d-flex align-items-center w-100">
+                <a href="@Url.Action("Index","Admin")"><img src="~/Images/cts_logo.png" alt="cts.png" /></a>
+                &nbsp;|&nbsp;Admin Dashboard
+            </h3>
+        </div>
+        <div class="admin-items">
+            <div>
+                <a href="@Url.Action("Index","Admin")" title="Dashboard"><i class="fa-solid fa-house text-light"></i></a>
+            </div>
+            <div>
+                <a href="#" title="Records"><i class="fa-solid fa-file-signature text-light"></i></a>
+            </div>
+            <div>
+                <a href="#" title="Gallery"><i class="fa-solid fa-images text-light"></i></a>
+            </div>
+            <div>
+                <a href="#" title="Police Station"><i class="fa-solid fa-building-shield text-light"></i></a>
+            </div>
+            <div>
+                <a href="#" title="Contact Us requests"><i class="fa-solid fa-message text-light"></i></a>
+            </div>
+            <div>
+                <a href="#" title="FAQ"><i class="fa-solid fa-circle-question text-light"></i></a>
+            </div>
+            <div>
+                <a href="#" title="News"><i class="fa-solid fa-newspaper text-light"></i></a>
+            </div>
+            <div>
+                <a href="#" title="case status"><i class="fa-solid fa-calendar-check text-light"></i></a>
+            </div>
+            <div>
+                <button class="nav-link fw-bolder" title="logout"><i class="fa-solid fa-right-from-bracket"></i></button>
+            </div>
+        </div>
+    </nav>
+    @RenderBody()
+    <footer class="admin-foot">
+        <p>All Rights are Reserved &copy;CTS @DateTime.Now.Year</p>
+    </footer>
+
+    <script src="~/Scripts/custom.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

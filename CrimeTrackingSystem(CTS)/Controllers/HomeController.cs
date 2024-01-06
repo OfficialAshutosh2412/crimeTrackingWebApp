@@ -103,5 +103,31 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         {
             return View();
         }
+        //POST: Login
+        [HttpPost]
+        public ActionResult Login(Login loginFormData)
+        {
+            //checking the input of login creds with the signup cred fields...
+            var creds = _context.Signup.Where(model => model.Email == loginFormData.Email && model.Password == loginFormData.Password).FirstOrDefault();
+            if (creds == null)
+            {
+                ViewBag.CredError = true;
+            }
+            else
+            {
+                if (creds.Role == "user")
+                {
+                    Session["usermail"] = loginFormData.Email;
+                    return RedirectToAction("Index", "User");
+                }
+                else if (creds.Role == "admin")
+                {
+                    Session["adminmail"] = loginFormData.Email;
+                    return RedirectToAction("Index", "Admin");
+                }
+                
+            }
+            return View();
+        }
     }
 }
