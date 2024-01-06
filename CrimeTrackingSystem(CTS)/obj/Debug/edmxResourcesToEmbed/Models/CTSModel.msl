@@ -136,6 +136,7 @@
     <EntitySetMapping Name="Signup">
       <EntityTypeMapping TypeName="CTSModels.Signup">
         <MappingFragment StoreEntitySet="Signup">
+          <ScalarProperty Name="Role" ColumnName="Role" />
           <ScalarProperty Name="RegId" ColumnName="RegId" />
           <ScalarProperty Name="Username" ColumnName="Username" />
           <ScalarProperty Name="Password" ColumnName="Password" />

@@ -171,6 +171,7 @@
     <Compile Include="Models\GeneralComplain.cs">
       <DependentUpon>CTSModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ISignup.cs" />
     <Compile Include="Models\Login.cs">
       <DependentUpon>CTSModel.tt</DependentUpon>
     </Compile>
@@ -318,7 +319,9 @@
     <Content Include="Views\Home\Signup.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="UserProfilePicture\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />

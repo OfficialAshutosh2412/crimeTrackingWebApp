@@ -138,6 +138,7 @@
     <Property Name="Adhaar" Type="numeric" Precision="18" Scale="0" Nullable="false" />
     <Property Name="Phone" Type="numeric" Precision="18" Scale="0" Nullable="false" />
     <Property Name="Photo" Type="varchar(max)" Nullable="false" />
+    <Property Name="Role" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityContainer Name="CTSModelsStoreContainer">
     <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />

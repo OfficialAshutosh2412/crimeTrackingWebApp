@@ -138,6 +138,7 @@
     <Property Name="Adhaar" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
     <Property Name="Phone" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
     <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Role" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityContainer Name="CTSEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Contact" EntityType="Self.Contact" />
