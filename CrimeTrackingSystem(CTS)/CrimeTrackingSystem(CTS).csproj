@@ -236,10 +236,12 @@
     <Content Include="Images\icons8-whatsapp.gif" />
     <Content Include="Images\india-gov.png" />
     <Content Include="Images\letter.png" />
+    <Content Include="Images\loader\Ripple-2.1s-204px.gif" />
     <Content Include="Images\logo-nic-blue.png" />
     <Content Include="Images\mentor 1.jpg" />
     <Content Include="Images\mr.jpg" />
     <Content Include="Images\mygov.png" />
+    <Content Include="Images\Ripple-2.1s-204px.gif" />
     <Content Include="Images\trial.png" />
     <Content Include="Images\up-police-3-1200x700.jpg" />
     <Content Include="Images\user.png" />

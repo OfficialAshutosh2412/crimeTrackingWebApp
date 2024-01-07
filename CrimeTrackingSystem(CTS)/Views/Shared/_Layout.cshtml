@@ -10,7 +10,49 @@
     @*@Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")*@
 </head>
-<body>
+<body onload="myfunction()" class="body" vlink="coral" style="background: #eefff9; background-size: cover;">
+    @*preloader*@
+    <div class="preloader" id="preloader">
+        <img src="~/Images/loader/Ripple-2.1s-204px.gif" />
+    </div>
+    @*fixed menu*@
+    <div class=" whap-link" style="bottom: 20px; right: 10px; cursor: pointer; z-index: 8889998" id="settings"><i class="fa-solid fa-gear fa-spin" id="setting" onclick="showSetting()"></i></div>
+    <div class=" whap-link themeSwitch" id="themeSwitch"><i class="fa-solid fa-brush" id="theme" onclick="showTheme()"></i></div>
+    <div class=" whap-link translator" id="translator"><i class="fa-solid fa-language" id="tool-toggler"></i></div>
+    <div class=" whap-link feedbackBtn" id="feedbackBtn"><a><i class="fa-solid fa-comments" onclick="showFeed()"></i></a></div>
+    <div class=" whap-link whats" id="whats">
+        <a href="https://wa.me/6386239194" class="text-light"><i class="fa-brands fa-whatsapp"></i></a>
+    </div>
+    @*theme*@
+    <div class="themes theme-hide">
+        <ul>
+            <li id="crimson" onclick="crimson()"></li>
+            <li id="blue" onclick="themeBlue()"></li>
+            <li id="slate" onclick="slate()"></li>
+            <li id="green" onclick="green()"></li>
+            <li id="kesar" onclick="kesar()"></li>
+        </ul>
+        <div class="content"></div>
+    </div>
+    @*translator bar*@
+<div class="top-bar hide-top">
+    <div><label>Translater</label></div>
+    <div class="footer-follow">
+        <a href="http://" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="http://" target="_blank"><i class="fa-brands fa-square-instagram"></i></a>
+        <a href="http://" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+        <a href="http://" target="_blank"><i class="fa-brands fa-square-threads"></i></a>
+    </div>
+    <div class="d-flex">
+        <div id="google_translate_element"></div>
+        <script type="text/javascript">
+            function googleTranslateElementInit() {
+                new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+            }
+        </script>
+        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    </div>
+</div>
     @*header*@
     <nav class="navbar dark-mode navbar-expand-lg bg-body-tertiary p-0" id="nav">
         <div class="container-fluid justify-content-between " id="navigator">
@@ -26,10 +68,10 @@
                         <a href="@Url.Action("Index", "Home")" class="nav-link text-light " aria-current="page"><i class="fa-solid fa-house"></i> Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="#"><i class="fa-solid fa-circle-info"></i> About</a>
+                        <a class="nav-link text-light" href="~/#about"><i class="fa-solid fa-circle-info"></i> About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="#"><i class="fa-solid fa-cubes"></i> Services</a>
+                        <a class="nav-link text-light" href="~/#services"><i class="fa-solid fa-cubes"></i> Services</a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link text-light"><i class="fa-solid fa-images"></i> Gallery</a>
@@ -70,8 +112,132 @@
         </div>
     </footer>
 
-    <script src="~/Scripts/custom.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/custom.js"></script>
+    <script>
+        //def green
+        function applyGreen() {
+            let crim = document.querySelectorAll('#settings,#navigator, #rights, #themeSwitch, #feedbackBtn, #whats, #translator');
+            for (var i = 0; i < crim.length; i++) {
+                crim[i].style.backgroundColor = '#1e9b56'
+            }
+            document.querySelector('#footer').style.backgroundColor = '#178a4f';
+            document.body.style.cssText = 'background:#e8fff3;color:black;';
+            let hero = document.querySelectorAll('#title-vip1,#title-vip2,#title-vip3,#title-vip4,#title-vip5');
+            for (var j = 0; j < hero.length; j++) {
+                hero[j].style.cssText = "background:#1e9b56;color:white";
+            }
+        };
+        //def red
+        function applyRed() {
+            let crim = document.querySelectorAll('#settings,#navigator, #rights, #themeSwitch, #feedbackBtn, #whats, #translator');
+            for (var i = 0; i < crim.length; i++) {
+                crim[i].style.backgroundColor = 'crimson'
+            }
+            document.querySelector('#footer').style.backgroundColor = '#c21135';
+            document.body.style.cssText = 'background:#fcf2f4;color:black;';
+            let hero = document.querySelectorAll('#title-vip1,#title-vip2,#title-vip3,#title-vip4,#title-vip5');
+            for (var j = 0; j < hero.length; j++) {
+                hero[j].style.cssText = "background:crimson;color:white";
+            }
+        };
+        //def blue
+        function applyBlue() {
+            let bl = document.querySelectorAll('#settings,#navigator, #rights, #themeSwitch, #feedbackBtn, #whats, #translator');
+            for (var i = 0; i < bl.length; i++) {
+                bl[i].style.backgroundColor = '#1b2987'
+            }
+            document.querySelector('#footer').style.backgroundColor = '#3952cc';
+            document.body.style.cssText = 'background:#f0f2ff;color:black;';
+            let hero = document.querySelectorAll('#title-vip1,#title-vip2,#title-vip3,#title-vip4,#title-vip5');
+            for (var j = 0; j < hero.length; j++) {
+                hero[j].style.cssText = "background:#1b2987;color:white";
+            }
+        };
+        //def slate
+        function applySlate() {
+            let sl = document.querySelectorAll('#settings,#navigator, #rights, #themeSwitch, #feedbackBtn, #whats, #translator');
+            for (var i = 0; i < sl.length; i++) {
+                sl[i].style.backgroundColor = '#007e8a'
+            }
+            document.querySelector('#footer').style.backgroundColor = '#03a0ab';
+            document.body.style.cssText = 'background:#edfbfc;color:black;';
+            let hero = document.querySelectorAll('#title-vip1,#title-vip2,#title-vip3,#title-vip4,#title-vip5');
+            for (var j = 0; j < hero.length; j++) {
+                hero[j].style.cssText = "background:#007e8a;color:white";
+            }
+        }
+        //def kesar
+        function applyKesar() {
+            let sl = document.querySelectorAll('#settings,#navigator, #rights, #themeSwitch, #feedbackBtn, #whats, #translator');
+            for (var i = 0; i < sl.length; i++) {
+                sl[i].style.backgroundColor = '#e88b27'
+            }
+            document.querySelector('#footer').style.backgroundColor = '#eb9942';
+            document.body.style.cssText = 'background:#faf4ed;color:black;';
+            let hero = document.querySelectorAll('#title-vip1,#title-vip2,#title-vip3,#title-vip4,#title-vip5');
+            for (var j = 0; j < hero.length; j++) {
+                hero[j].style.cssText = "background:#e88b27;color:white";
+            }
+        }
+        //theme red button
+        function crimson() {
+            localStorage.clear();
+            applyRed();
+            localStorage.setItem('crimson', this);
+        }
+        //theme blue button
+        function themeBlue() {
+            localStorage.clear();
+            applyBlue();
+            localStorage.setItem('blue', this);
+        }
+        //theme slate button
+        function slate() {
+            localStorage.clear();
+            applySlate();
+            localStorage.setItem('slate', this);
+        }
+        //theme dark button
+        function dark() {
+            localStorage.clear();
+            applyDark();
+            localStorage.setItem('dark', this);
+        }
+        //theme green
+        function green() {
+            localStorage.clear();
+            applyGreen();
+            localStorage.setItem('green', this);
+        }
+        //theme kesar
+        function kesar() {
+            localStorage.clear();
+            applyKesar();
+            localStorage.setItem('kesar', this);
+        }
+        //keep red
+        if (localStorage.getItem('crimson')) {
+            applyRed();
+        }
+        //keep blue
+        if (localStorage.getItem('blue')) {
+            applyBlue();
+        }
+        //keep slate
+        if (localStorage.getItem('slate')) {
+            applySlate();
+        }
+        //keep green
+        if (localStorage.getItem('green')) {
+            applyGreen();
+        }
+        //keep kesar
+        if (localStorage.getItem('kesar')) {
+            applyKesar();
+        }
+    </script>
+
     @*@Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")
         @RenderSection("scripts", required: false)*@

@@ -11,7 +11,18 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         // GET: User
         public ActionResult Index()
         {
+            if (Session["usermail"] == null)
+            {
+                return RedirectToAction("Index", "user");
+            }
             return View();
+        }
+        public ActionResult Logout()
+        {
+            Session.Abandon();
+            Session.Clear();
+            Session["usermail"] = null;
+            return RedirectToAction("Login", "Home");
         }
     }
 }

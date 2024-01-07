@@ -7,9 +7,9 @@ document.querySelector('#tool-toggler').addEventListener("click", () => {
     document.querySelector('.top-bar').classList.toggle('hide-top');
 });
 //preloader
-var load=document.getElementById("preloader");
 function myfunction() {
-    load.style.display="none"
+    var load = document.getElementById("preloader");
+    load.style.display = "none"
 };
 //gallery revealer
 document.querySelector('#hide').addEventListener("click", () => {
@@ -35,9 +35,6 @@ function showFeed() {
 function showTheme() {
     document.querySelector('.themes').classList.toggle('theme-hide');
     //auto hide theme panel
-   setTimeout(() => {
-       document.querySelector('.themes').classList.toggle('theme-hide');
-    }, 2500);
 }
 //show setting
 function showSetting() {
