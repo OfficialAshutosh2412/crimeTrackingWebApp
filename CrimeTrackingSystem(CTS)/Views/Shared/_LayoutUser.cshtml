@@ -19,11 +19,11 @@
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav ">
-                    <li class="nav-item">
+                    <li class="nav-item" id="home">
                         <a href="@Url.Action("Index", "User")" class="nav-link text-light" aria-current="page"><i class="fa-solid fa-house"></i> Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link text-light"><i class="fa-solid fa-handcuffs"></i> Crime Complain</a>
+                    <li class="nav-item" id="crime">
+                        <a href="@Url.Action("CrimeComplain", "User")" class="nav-link text-light"><i class="fa-solid fa-handcuffs"></i> Crime Complain</a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link text-light"><i class="fa-solid fa-file-signature"></i> General Complain</a>
@@ -64,7 +64,19 @@
         </div>
     </footer>
 
+    <script>
+        //navbar active link
+        const pathName = window.location.pathname;
+        const pageName = pathName.split("/").pop();
+        if (pageName === "user" || pageName === "User") {
+            document.querySelector('#home').classList.add("activeLink");
+        }
+        if (pageName === "crimecomplain" || pageName === "CrimeComplain") {
+            document.querySelector('#crime').classList.add("activeLink");
+        }
+    </script>
     <script src="~/Scripts/custom.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+    
 </body>
 </html>

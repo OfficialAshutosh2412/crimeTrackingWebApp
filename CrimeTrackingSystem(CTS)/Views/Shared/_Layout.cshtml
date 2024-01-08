@@ -35,24 +35,36 @@
         <div class="content"></div>
     </div>
     @*translator bar*@
-<div class="top-bar hide-top">
-    <div><label>Translater</label></div>
-    <div class="footer-follow">
-        <a href="http://" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
-        <a href="http://" target="_blank"><i class="fa-brands fa-square-instagram"></i></a>
-        <a href="http://" target="_blank"><i class="fa-brands fa-twitter"></i></a>
-        <a href="http://" target="_blank"><i class="fa-brands fa-square-threads"></i></a>
+    <div class="top-bar hide-top">
+        <div><label>Translater</label></div>
+        <div class="footer-follow">
+            <a href="http://" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="http://" target="_blank"><i class="fa-brands fa-square-instagram"></i></a>
+            <a href="http://" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+            <a href="http://" target="_blank"><i class="fa-brands fa-square-threads"></i></a>
+        </div>
+        <div class="d-flex">
+            <div id="google_translate_element"></div>
+            <script type="text/javascript">
+                function googleTranslateElementInit() {
+                    new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+                }
+            </script>
+            <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+        </div>
     </div>
-    <div class="d-flex">
-        <div id="google_translate_element"></div>
-        <script type="text/javascript">
-            function googleTranslateElementInit() {
-                new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
-            }
-        </script>
-        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    @*feedback*@
+    <div class="feedback show-feeds">
+        <div>
+            <h1><i class="fa-solid fa-hand-holding-heart"></i></h1>
+            <h1>HELP US IN MAKING IT BETTER</h1>
+            <p>
+                We welcome your participation in enhancing the portal further
+                and also invite your comments and suggestions for improvement
+            </p>
+            <a href="@Url.Action("Feedback", "Home")" class="send">give us your feedback...</a>
+        </div>
     </div>
-</div>
     @*header*@
     <nav class="navbar dark-mode navbar-expand-lg bg-body-tertiary p-0" id="nav">
         <div class="container-fluid justify-content-between " id="navigator">
@@ -64,7 +76,7 @@
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav ">
-                    <li class="nav-item">
+                    <li class="nav-item" id="home">
                         <a href="@Url.Action("Index", "Home")" class="nav-link text-light " aria-current="page"><i class="fa-solid fa-house"></i> Home</a>
                     </li>
                     <li class="nav-item">
@@ -73,16 +85,16 @@
                     <li class="nav-item">
                         <a class="nav-link text-light" href="~/#services"><i class="fa-solid fa-cubes"></i> Services</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" id="gallery">
                         <a href="#" class="nav-link text-light"><i class="fa-solid fa-images"></i> Gallery</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" id="contact">
                         <a href="@Url.Action("Contact", "Home")" class="nav-link text-light"><i class="fa-solid fa-message"></i> Contact us</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" id="faq">
                         <a class="nav-link text-light" href="#"><i class="fa-solid fa-file-circle-question"></i> FAQ</a>
                     </li>
-                    <li class="nav-item nav-link">
+                    <li class="nav-item nav-link" id="news">
                         <a href="#" class="text-light"><i class="fa-solid fa-newspaper"></i> News</a>
                     </li>
                     <li class="nav-item nav-link" id="login-tog">
@@ -235,6 +247,18 @@
         //keep kesar
         if (localStorage.getItem('kesar')) {
             applyKesar();
+        }
+        //navbar active link
+        const pathName = window.location.pathname;
+        const pageName = pathName.split("/").pop();
+        if (pageName === "home" || pageName === "Home" || pageName === "/" || pageName === "") {
+            document.querySelector('#home').classList.add("useractivelink");
+        }
+        if (pageName === "contact" || pageName === "Contact") {
+            document.querySelector('#contact').classList.add("useractivelink");
+        }
+        if (pageName === "login" || pageName === "Login") {
+            document.querySelector('#login-tog').classList.add("useractivelink");
         }
     </script>
 

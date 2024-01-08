@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="CTSModels.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="CTSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Contact">
           <Key>
             <PropertyRef Name="Email" />
@@ -60,6 +60,15 @@
           <Property Name="Questions" Type="varchar(max)" Nullable="false" />
           <Property Name="Answer" Type="varchar(max)" Nullable="false" />
         </EntityType>
+        <EntityType Name="Feedback">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Yourname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="E-mail" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Words" Type="varchar(max)" Nullable="false" />
+        </EntityType>
         <EntityType Name="GeneralComplain">
           <Key>
             <PropertyRef Name="Id" />
@@ -72,15 +81,6 @@
           <Property Name="InvolvedPersons" Type="varchar(max)" Nullable="false" />
           <Property Name="CurrentDateTime" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Login">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Role" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="MissingPerson">
           <Key>
@@ -145,23 +145,24 @@
           <Property Name="Photo" Type="varchar(max)" Nullable="false" />
           <Property Name="Role" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="CTSModelsStoreContainer">
+        <EntityContainer Name="CTSModelStoreContainer">
           <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CrimeComplain" EntityType="Self.CrimeComplain" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CriminalGallery" EntityType="Self.CriminalGallery" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Events" EntityType="Self.Events" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FAQ" EntityType="Self.FAQ" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Feedback" EntityType="Self.Feedback" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GeneralComplain" EntityType="Self.GeneralComplain" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MissingPerson" EntityType="Self.MissingPerson" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MissingValuable" EntityType="Self.MissingValuable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PoliceStation" EntityType="Self.PoliceStation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Signup" EntityType="Self.Signup" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="CTSModels" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="CTSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Contact">
           <Key>
             <PropertyRef Name="Email" />
@@ -199,7 +200,7 @@
           <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CurrentDateTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
-        <EntityType Name="Events">
+        <EntityType Name="Event">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -217,6 +218,15 @@
           <Property Name="Questions" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
+        <EntityType Name="Feedback">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Yourname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="E_mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Words" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
         <EntityType Name="GeneralComplain">
           <Key>
             <PropertyRef Name="Id" />
@@ -229,15 +239,6 @@
           <Property Name="InvolvedPersons" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CurrentDateTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Login">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="MissingPerson">
           <Key>
@@ -300,29 +301,29 @@
           <Property Name="Adhaar" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="Phone" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Role" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="CTSEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Contact" EntityType="Self.Contact" />
-          <EntitySet Name="CrimeComplain" EntityType="Self.CrimeComplain" />
-          <EntitySet Name="CriminalGallery" EntityType="Self.CriminalGallery" />
-          <EntitySet Name="Events" EntityType="Self.Events" />
-          <EntitySet Name="FAQ" EntityType="Self.FAQ" />
-          <EntitySet Name="GeneralComplain" EntityType="Self.GeneralComplain" />
-          <EntitySet Name="Login" EntityType="Self.Login" />
-          <EntitySet Name="MissingPerson" EntityType="Self.MissingPerson" />
-          <EntitySet Name="MissingValuable" EntityType="Self.MissingValuable" />
-          <EntitySet Name="PoliceStation" EntityType="Self.PoliceStation" />
-          <EntitySet Name="Signup" EntityType="Self.Signup" />
+        <EntityContainer Name="CTSstring" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Contacts" EntityType="Self.Contact" />
+          <EntitySet Name="CrimeComplains" EntityType="Self.CrimeComplain" />
+          <EntitySet Name="CriminalGalleries" EntityType="Self.CriminalGallery" />
+          <EntitySet Name="Events" EntityType="Self.Event" />
+          <EntitySet Name="FAQs" EntityType="Self.FAQ" />
+          <EntitySet Name="Feedbacks" EntityType="Self.Feedback" />
+          <EntitySet Name="GeneralComplains" EntityType="Self.GeneralComplain" />
+          <EntitySet Name="MissingPersons" EntityType="Self.MissingPerson" />
+          <EntitySet Name="MissingValuables" EntityType="Self.MissingValuable" />
+          <EntitySet Name="PoliceStations" EntityType="Self.PoliceStation" />
+          <EntitySet Name="Signups" EntityType="Self.Signup" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="CTSModelsStoreContainer" CdmEntityContainer="CTSEntities">
-          <EntitySetMapping Name="Contact">
-            <EntityTypeMapping TypeName="CTSModels.Contact">
+        <EntityContainerMapping StorageEntityContainer="CTSModelStoreContainer" CdmEntityContainer="CTSstring">
+          <EntitySetMapping Name="Contacts">
+            <EntityTypeMapping TypeName="CTSModel.Contact">
               <MappingFragment StoreEntitySet="Contact">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Fullname" ColumnName="Fullname" />
@@ -333,8 +334,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="CrimeComplain">
-            <EntityTypeMapping TypeName="CTSModels.CrimeComplain">
+          <EntitySetMapping Name="CrimeComplains">
+            <EntityTypeMapping TypeName="CTSModel.CrimeComplain">
               <MappingFragment StoreEntitySet="CrimeComplain">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
@@ -348,8 +349,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="CriminalGallery">
-            <EntityTypeMapping TypeName="CTSModels.CriminalGallery">
+          <EntitySetMapping Name="CriminalGalleries">
+            <EntityTypeMapping TypeName="CTSModel.CriminalGallery">
               <MappingFragment StoreEntitySet="CriminalGallery">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -362,7 +363,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Events">
-            <EntityTypeMapping TypeName="CTSModels.Events">
+            <EntityTypeMapping TypeName="CTSModel.Event">
               <MappingFragment StoreEntitySet="Events">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="EventTitle" ColumnName="EventTitle" />
@@ -372,8 +373,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="FAQ">
-            <EntityTypeMapping TypeName="CTSModels.FAQ">
+          <EntitySetMapping Name="FAQs">
+            <EntityTypeMapping TypeName="CTSModel.FAQ">
               <MappingFragment StoreEntitySet="FAQ">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Questions" ColumnName="Questions" />
@@ -381,8 +382,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="GeneralComplain">
-            <EntityTypeMapping TypeName="CTSModels.GeneralComplain">
+          <EntitySetMapping Name="Feedbacks">
+            <EntityTypeMapping TypeName="CTSModel.Feedback">
+              <MappingFragment StoreEntitySet="Feedback">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Yourname" ColumnName="Yourname" />
+                <ScalarProperty Name="E_mail" ColumnName="E-mail" />
+                <ScalarProperty Name="Words" ColumnName="Words" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GeneralComplains">
+            <EntityTypeMapping TypeName="CTSModel.GeneralComplain">
               <MappingFragment StoreEntitySet="GeneralComplain">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
@@ -395,18 +406,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Login">
-            <EntityTypeMapping TypeName="CTSModels.Login">
-              <MappingFragment StoreEntitySet="Login">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Username" ColumnName="Username" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Role" ColumnName="Role" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MissingPerson">
-            <EntityTypeMapping TypeName="CTSModels.MissingPerson">
+          <EntitySetMapping Name="MissingPersons">
+            <EntityTypeMapping TypeName="CTSModel.MissingPerson">
               <MappingFragment StoreEntitySet="MissingPerson">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
@@ -423,8 +424,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="MissingValuable">
-            <EntityTypeMapping TypeName="CTSModels.MissingValuable">
+          <EntitySetMapping Name="MissingValuables">
+            <EntityTypeMapping TypeName="CTSModel.MissingValuable">
               <MappingFragment StoreEntitySet="MissingValuable">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
@@ -439,8 +440,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PoliceStation">
-            <EntityTypeMapping TypeName="CTSModels.PoliceStation">
+          <EntitySetMapping Name="PoliceStations">
+            <EntityTypeMapping TypeName="CTSModel.PoliceStation">
               <MappingFragment StoreEntitySet="PoliceStation">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ChowkiIncharge" ColumnName="ChowkiIncharge" />
@@ -453,10 +454,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Signup">
-            <EntityTypeMapping TypeName="CTSModels.Signup">
+          <EntitySetMapping Name="Signups">
+            <EntityTypeMapping TypeName="CTSModel.Signup">
               <MappingFragment StoreEntitySet="Signup">
-                <ScalarProperty Name="Role" ColumnName="Role" />
                 <ScalarProperty Name="RegId" ColumnName="RegId" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
@@ -469,6 +469,7 @@
                 <ScalarProperty Name="Adhaar" ColumnName="Adhaar" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -486,7 +487,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

@@ -5,7 +5,7 @@
 }
 
 @if (ViewBag.result == true) { 
-<div class="m-2 alert alert-success alert-dismissible fade show" role="alert">
+<div class="w-50 m-auto m-2 alert alert-success alert-dismissible fade show" role="alert">
     <strong>Success : </strong>thank you for contacting us.
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
@@ -21,7 +21,7 @@
             <div class="mb-1 w-100 p-2">
                 <span class="form-label">
                     <i class="fa-solid fa-pencil"></i>
-                    @Html.LabelFor(model => model.Fullname)
+                    @Html.LabelFor(model => model.Fullname,new { @class= "form-label fw-bolder" })
                 </span><br />
                 <small class="text-danger fw-bold">
                     @Html.ValidationMessageFor(model=>model.Fullname)
@@ -31,7 +31,7 @@
             <div class="mb-1 w-100 p-2">
                 <span class="form-label">
                     <i class="fa-solid fa-envelope"></i>
-                    @Html.LabelFor(model => model.Email)
+                    @Html.LabelFor(model => model.Email, new { @class = "form-label fw-bolder" })
                 </span><br />
                 <small class="text-danger fw-bold">
                     @Html.ValidationMessageFor(model => model.Email)
@@ -41,7 +41,7 @@
             <div class="mb-1 w-100 p-2">
                 <span class="form-label">
                     <i class="fa-solid fa-phone"></i>
-                    @Html.LabelFor(model => model.Phone)
+                    @Html.LabelFor(model => model.Phone, new { @class = "form-label fw-bolder" })
                 </span><br />
                 <small class="text-danger fw-bold">
                     @Html.ValidationMessageFor(model => model.Phone)
@@ -52,7 +52,7 @@
         <div class="mb-1 w-100 p-2">
             <span class="form-label">
                 <i class="fa-solid fa-question"></i>
-                @Html.LabelFor(model => model.Purpose)
+                @Html.LabelFor(model => model.Purpose, new { @class = "form-label fw-bolder" })
             </span><br />
             <small class="text-danger fw-bold">
                 @Html.ValidationMessageFor(model => model.Purpose)
@@ -62,7 +62,7 @@
         <div class="mb-1 p-2">
             <span class="form-label">
                 <i class="fa-solid fa-pen-nib"></i>
-                @Html.LabelFor(model => model.Details)
+                @Html.LabelFor(model => model.Details, new { @class = "form-label fw-bolder" })
             </span><br />
             <small class="text-danger fw-bold">
                 @Html.ValidationMessageFor(model => model.Details)

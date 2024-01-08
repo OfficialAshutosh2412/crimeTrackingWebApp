@@ -4,18 +4,18 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="096aa2723a5b4e64ab1bd34d85c56f8a" Name="Diagram1">
-        <EntityTypeShape EntityType="CTSModels.Contact" Width="1.5" PointX="0.5" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CTSModels.CrimeComplain" Width="1.5" PointX="2.125" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CTSModels.CriminalGallery" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CTSModels.Events" Width="1.5" PointX="8.625" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CTSModels.FAQ" Width="1.5" PointX="10.25" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CTSModels.GeneralComplain" Width="1.5" PointX="3.75" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="CTSModels.Login" Width="1.5" PointX="5.375" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CTSModels.MissingPerson" Width="1.5" PointX="5.375" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="CTSModels.MissingValuable" Width="1.5" PointX="0.5" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="CTSModels.PoliceStation" Width="1.5" PointX="7" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CTSModels.Signup" Width="1.5" PointX="2.125" PointY="4.125" IsExpanded="true" />
+      <Diagram DiagramId="aa9384ec73254356a6f54e7664d1e9fe" Name="Diagram1">
+        <EntityTypeShape EntityType="CTSModel.Contact" Width="1.5" PointX="0.5" PointY="0.625" IsExpanded="false" />
+        <EntityTypeShape EntityType="CTSModel.CrimeComplain" Width="1.5" PointX="2.125" PointY="0.625" IsExpanded="false" />
+        <EntityTypeShape EntityType="CTSModel.CriminalGallery" Width="1.5" PointX="3.75" PointY="0.625" IsExpanded="false" />
+        <EntityTypeShape EntityType="CTSModel.Event" Width="1.5" PointX="10.25" PointY="0.625" IsExpanded="false" />
+        <EntityTypeShape EntityType="CTSModel.FAQ" Width="1.5" PointX="0.5" PointY="3.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="CTSModel.Feedback" Width="1.5" PointX="2.125" PointY="3.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="CTSModel.GeneralComplain" Width="1.5" PointX="5.375" PointY="0.625" IsExpanded="false" />
+        <EntityTypeShape EntityType="CTSModel.MissingPerson" Width="1.5" PointX="8.625" PointY="0.625" IsExpanded="false" />
+        <EntityTypeShape EntityType="CTSModel.MissingValuable" Width="1.5" PointX="3.75" PointY="3.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="CTSModel.PoliceStation" Width="1.5" PointX="5.375" PointY="3.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="CTSModel.Signup" Width="1.5" PointX="7" PointY="0.625" IsExpanded="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

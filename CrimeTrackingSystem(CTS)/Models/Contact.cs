@@ -13,6 +13,7 @@ namespace CrimeTrackingSystem_CTS_.Models
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
+
     public partial class Contact
     {
         public int Id { get; set; }
@@ -33,7 +34,7 @@ namespace CrimeTrackingSystem_CTS_.Models
         public string Purpose { get; set; }
 
         [Required]
-        [StringLength(250,ErrorMessage ="not more than 250 words")]
+        [StringLength(250, ErrorMessage = "not more than 250 words")]
         public string Details { get; set; }
     }
 }

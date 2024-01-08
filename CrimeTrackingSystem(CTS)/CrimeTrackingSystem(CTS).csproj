@@ -150,30 +150,32 @@
       <DependentUpon>CTSModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CTSModel.Context.cs">
-      <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
       <DependentUpon>CTSModel.Context.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CTSModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>CTSModel.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Models\CTSModel.Designer.cs">
-      <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
       <DependentUpon>CTSModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\Events.cs">
+    <Compile Include="Models\Event.cs">
       <DependentUpon>CTSModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\FAQ.cs">
       <DependentUpon>CTSModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Feedback.cs">
+      <DependentUpon>CTSModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\GeneralComplain.cs">
       <DependentUpon>CTSModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ISignup.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\MissingPerson.cs">
       <DependentUpon>CTSModel.tt</DependentUpon>
@@ -253,10 +255,13 @@
       <DependentUpon>CTSModel.edmx</DependentUpon>
       <LastGenOutput>CTSModel.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\CTSModel.edmx.diagram">
+      <DependentUpon>CTSModel.edmx</DependentUpon>
+    </Content>
     <Content Include="Models\CTSModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CTSModel.edmx</DependentUpon>
       <LastGenOutput>CTSModel.cs</LastGenOutput>
+      <DependentUpon>CTSModel.edmx</DependentUpon>
     </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -290,9 +295,6 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>CTSModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\CTSModel.edmx.diagram">
-      <DependentUpon>CTSModel.edmx</DependentUpon>
-    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\custom.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -324,6 +326,8 @@
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\User\CrimeComplain.cshtml" />
+    <Content Include="Views\Home\Feedback.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UserProfilePicture\" />

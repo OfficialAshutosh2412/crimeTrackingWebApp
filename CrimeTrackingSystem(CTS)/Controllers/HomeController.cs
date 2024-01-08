@@ -10,7 +10,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
 {
     public class HomeController : Controller
     {
-        readonly CTSEntities _context = new CTSEntities();
+        readonly CTSstring _context = new CTSstring();
         //GET: Index
         public ActionResult Index()
         {
@@ -28,10 +28,15 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Contact.Add(contactFormData);
-                _context.SaveChanges();
-                ModelState.Clear();
-                ViewBag.result = true;
+                if (ModelState.IsValid == true)
+                {
+                    _context.Contacts.Add(contactFormData);
+                    _context.SaveChanges();
+                    ModelState.Clear();
+                    ViewBag.result = true;
+                    return View();
+                }
+                return View();
             }
             return View();
         }
@@ -73,13 +78,13 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                         if (formDataOfSignup.Role == "98u9d8uwr3(9ih(8H8&67^g&UyGIuh(7t6G^F4d4@A#24545fGbuyb*Y(8jIj(87Re54#qW")
                         {
                             formDataOfSignup.Role = "admin";    
-                            _context.Signup.Add(formDataOfSignup);
+                            _context.Signups.Add(formDataOfSignup);
                             _context.SaveChanges();
                         }
                         else if (formDataOfSignup.Role != "98u9d8uwr3(9ih(8H8&67^g&UyGIuh(7t6G^F4d4@A#24545fGbuyb*Y(8jIj(87Re54#qW")
                         {
                             formDataOfSignup.Role = "user";
-                            _context.Signup.Add(formDataOfSignup);
+                            _context.Signups.Add(formDataOfSignup);
                             _context.SaveChanges();
                         }
 
@@ -108,7 +113,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         public ActionResult Login(Login loginFormData)
         {
             //checking the input of login creds with the signup cred fields...
-            var creds = _context.Signup.Where(model => model.Email == loginFormData.Email && model.Password == loginFormData.Password).FirstOrDefault();
+            var creds = _context.Signups.Where(model => model.Email == loginFormData.Email && model.Password == loginFormData.Password).FirstOrDefault();
             if (creds == null)
             {
                 ViewBag.CredError = true;
@@ -126,6 +131,25 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                     return RedirectToAction("Index", "Admin");
                 }
                 
+            }
+            return View();
+        }
+        //GET: Feedback
+        public ActionResult Feedback()
+        {
+            return View();
+        }
+        //POST: Feedback
+        [HttpPost]
+        public ActionResult Feedback(Feedback feedbackData)
+        {
+            if (ModelState.IsValid == true)
+            {
+                _context.Feedbacks.Add(feedbackData);
+                _context.SaveChanges();
+                ViewBag.feed = true;
+                ModelState.Clear();
+                return View();
             }
             return View();
         }

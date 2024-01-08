@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="CTSModelsStoreContainer" CdmEntityContainer="CTSEntities">
-    <EntitySetMapping Name="Contact">
-      <EntityTypeMapping TypeName="CTSModels.Contact">
+  <EntityContainerMapping StorageEntityContainer="CTSModelStoreContainer" CdmEntityContainer="CTSstring">
+    <EntitySetMapping Name="Contacts">
+      <EntityTypeMapping TypeName="CTSModel.Contact">
         <MappingFragment StoreEntitySet="Contact">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Fullname" ColumnName="Fullname" />
@@ -13,8 +13,8 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="CrimeComplain">
-      <EntityTypeMapping TypeName="CTSModels.CrimeComplain">
+    <EntitySetMapping Name="CrimeComplains">
+      <EntityTypeMapping TypeName="CTSModel.CrimeComplain">
         <MappingFragment StoreEntitySet="CrimeComplain">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Username" ColumnName="Username" />
@@ -28,8 +28,8 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="CriminalGallery">
-      <EntityTypeMapping TypeName="CTSModels.CriminalGallery">
+    <EntitySetMapping Name="CriminalGalleries">
+      <EntityTypeMapping TypeName="CTSModel.CriminalGallery">
         <MappingFragment StoreEntitySet="CriminalGallery">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -42,7 +42,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Events">
-      <EntityTypeMapping TypeName="CTSModels.Events">
+      <EntityTypeMapping TypeName="CTSModel.Event">
         <MappingFragment StoreEntitySet="Events">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="EventTitle" ColumnName="EventTitle" />
@@ -52,8 +52,8 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="FAQ">
-      <EntityTypeMapping TypeName="CTSModels.FAQ">
+    <EntitySetMapping Name="FAQs">
+      <EntityTypeMapping TypeName="CTSModel.FAQ">
         <MappingFragment StoreEntitySet="FAQ">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Questions" ColumnName="Questions" />
@@ -61,8 +61,18 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="GeneralComplain">
-      <EntityTypeMapping TypeName="CTSModels.GeneralComplain">
+    <EntitySetMapping Name="Feedbacks">
+      <EntityTypeMapping TypeName="CTSModel.Feedback">
+        <MappingFragment StoreEntitySet="Feedback">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Yourname" ColumnName="Yourname" />
+          <ScalarProperty Name="E_mail" ColumnName="E-mail" />
+          <ScalarProperty Name="Words" ColumnName="Words" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GeneralComplains">
+      <EntityTypeMapping TypeName="CTSModel.GeneralComplain">
         <MappingFragment StoreEntitySet="GeneralComplain">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Username" ColumnName="Username" />
@@ -75,18 +85,8 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Login">
-      <EntityTypeMapping TypeName="CTSModels.Login">
-        <MappingFragment StoreEntitySet="Login">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Username" ColumnName="Username" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="Role" ColumnName="Role" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="MissingPerson">
-      <EntityTypeMapping TypeName="CTSModels.MissingPerson">
+    <EntitySetMapping Name="MissingPersons">
+      <EntityTypeMapping TypeName="CTSModel.MissingPerson">
         <MappingFragment StoreEntitySet="MissingPerson">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Username" ColumnName="Username" />
@@ -103,8 +103,8 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="MissingValuable">
-      <EntityTypeMapping TypeName="CTSModels.MissingValuable">
+    <EntitySetMapping Name="MissingValuables">
+      <EntityTypeMapping TypeName="CTSModel.MissingValuable">
         <MappingFragment StoreEntitySet="MissingValuable">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Username" ColumnName="Username" />
@@ -119,8 +119,8 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="PoliceStation">
-      <EntityTypeMapping TypeName="CTSModels.PoliceStation">
+    <EntitySetMapping Name="PoliceStations">
+      <EntityTypeMapping TypeName="CTSModel.PoliceStation">
         <MappingFragment StoreEntitySet="PoliceStation">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="ChowkiIncharge" ColumnName="ChowkiIncharge" />
@@ -133,10 +133,9 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Signup">
-      <EntityTypeMapping TypeName="CTSModels.Signup">
+    <EntitySetMapping Name="Signups">
+      <EntityTypeMapping TypeName="CTSModel.Signup">
         <MappingFragment StoreEntitySet="Signup">
-          <ScalarProperty Name="Role" ColumnName="Role" />
           <ScalarProperty Name="RegId" ColumnName="RegId" />
           <ScalarProperty Name="Username" ColumnName="Username" />
           <ScalarProperty Name="Password" ColumnName="Password" />
@@ -149,6 +148,7 @@
           <ScalarProperty Name="Adhaar" ColumnName="Adhaar" />
           <ScalarProperty Name="Phone" ColumnName="Phone" />
           <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -17,12 +17,18 @@ namespace CrimeTrackingSystem_CTS_.Controllers
             }
             return View();
         }
+        //GET: Logout
         public ActionResult Logout()
         {
             Session.Abandon();
             Session.Clear();
             Session["usermail"] = null;
             return RedirectToAction("Login", "Home");
+        }
+        //GET: Crime Complain
+        public ActionResult CrimeComplain()
+        {
+            return View();
         }
     }
 }

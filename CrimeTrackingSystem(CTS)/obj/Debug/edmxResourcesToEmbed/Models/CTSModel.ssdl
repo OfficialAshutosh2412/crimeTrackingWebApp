@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="CTSModels.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="CTSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Contact">
     <Key>
       <PropertyRef Name="Email" />
@@ -55,6 +55,15 @@
     <Property Name="Questions" Type="varchar(max)" Nullable="false" />
     <Property Name="Answer" Type="varchar(max)" Nullable="false" />
   </EntityType>
+  <EntityType Name="Feedback">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Yourname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="E-mail" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Words" Type="varchar(max)" Nullable="false" />
+  </EntityType>
   <EntityType Name="GeneralComplain">
     <Key>
       <PropertyRef Name="Id" />
@@ -67,15 +76,6 @@
     <Property Name="InvolvedPersons" Type="varchar(max)" Nullable="false" />
     <Property Name="CurrentDateTime" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Login">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="Role" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="MissingPerson">
     <Key>
@@ -140,14 +140,14 @@
     <Property Name="Photo" Type="varchar(max)" Nullable="false" />
     <Property Name="Role" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
-  <EntityContainer Name="CTSModelsStoreContainer">
+  <EntityContainer Name="CTSModelStoreContainer">
     <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CrimeComplain" EntityType="Self.CrimeComplain" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CriminalGallery" EntityType="Self.CriminalGallery" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Events" EntityType="Self.Events" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="FAQ" EntityType="Self.FAQ" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Feedback" EntityType="Self.Feedback" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="GeneralComplain" EntityType="Self.GeneralComplain" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MissingPerson" EntityType="Self.MissingPerson" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MissingValuable" EntityType="Self.MissingValuable" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PoliceStation" EntityType="Self.PoliceStation" Schema="dbo" store:Type="Tables" />

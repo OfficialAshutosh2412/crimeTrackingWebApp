@@ -13,10 +13,10 @@ namespace CrimeTrackingSystem_CTS_.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class CTSEntities : DbContext
+    public partial class CTSstring : DbContext
     {
-        public CTSEntities()
-            : base("name=CTSEntities")
+        public CTSstring()
+            : base("name=CTSstring")
         {
         }
     
@@ -25,16 +25,16 @@ namespace CrimeTrackingSystem_CTS_.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Contact> Contact { get; set; }
-        public virtual DbSet<CrimeComplain> CrimeComplain { get; set; }
-        public virtual DbSet<CriminalGallery> CriminalGallery { get; set; }
-        public virtual DbSet<Events> Events { get; set; }
-        public virtual DbSet<FAQ> FAQ { get; set; }
-        public virtual DbSet<GeneralComplain> GeneralComplain { get; set; }
-        public virtual DbSet<Login> Login { get; set; }
-        public virtual DbSet<MissingPerson> MissingPerson { get; set; }
-        public virtual DbSet<MissingValuable> MissingValuable { get; set; }
-        public virtual DbSet<PoliceStation> PoliceStation { get; set; }
-        public virtual DbSet<Signup> Signup { get; set; }
+        public virtual DbSet<Contact> Contacts { get; set; }
+        public virtual DbSet<CrimeComplain> CrimeComplains { get; set; }
+        public virtual DbSet<CriminalGallery> CriminalGalleries { get; set; }
+        public virtual DbSet<Event> Events { get; set; }
+        public virtual DbSet<FAQ> FAQs { get; set; }
+        public virtual DbSet<Feedback> Feedbacks { get; set; }
+        public virtual DbSet<GeneralComplain> GeneralComplains { get; set; }
+        public virtual DbSet<MissingPerson> MissingPersons { get; set; }
+        public virtual DbSet<MissingValuable> MissingValuables { get; set; }
+        public virtual DbSet<PoliceStation> PoliceStations { get; set; }
+        public virtual DbSet<Signup> Signups { get; set; }
     }
 }
