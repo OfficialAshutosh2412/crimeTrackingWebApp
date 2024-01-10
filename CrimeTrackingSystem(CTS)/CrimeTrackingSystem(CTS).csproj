@@ -141,53 +141,53 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Contact.cs">
-      <DependentUpon>CTSModel.tt</DependentUpon>
+      <DependentUpon>CTSDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CrimeComplain.cs">
-      <DependentUpon>CTSModel.tt</DependentUpon>
+      <DependentUpon>CTSDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CriminalGallery.cs">
-      <DependentUpon>CTSModel.tt</DependentUpon>
+      <DependentUpon>CTSDbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CTSModel.Context.cs">
-      <DesignTime>True</DesignTime>
+    <Compile Include="Models\CTSDbModel.Context.cs">
       <AutoGen>True</AutoGen>
-      <DependentUpon>CTSModel.Context.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CTSDbModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CTSModel.cs">
-      <DependentUpon>CTSModel.tt</DependentUpon>
-      <DesignTime>True</DesignTime>
+    <Compile Include="Models\CTSDbModel.cs">
       <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CTSDbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CTSModel.Designer.cs">
-      <DesignTime>True</DesignTime>
+    <Compile Include="Models\CTSDbModel.Designer.cs">
       <AutoGen>True</AutoGen>
-      <DependentUpon>CTSModel.edmx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CTSDbModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Event.cs">
-      <DependentUpon>CTSModel.tt</DependentUpon>
+      <DependentUpon>CTSDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\FAQ.cs">
-      <DependentUpon>CTSModel.tt</DependentUpon>
+      <DependentUpon>CTSDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Feedback.cs">
-      <DependentUpon>CTSModel.tt</DependentUpon>
+      <DependentUpon>CTSDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GeneralComplain.cs">
-      <DependentUpon>CTSModel.tt</DependentUpon>
+      <DependentUpon>CTSDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\MissingPerson.cs">
-      <DependentUpon>CTSModel.tt</DependentUpon>
+      <DependentUpon>CTSDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MissingValuable.cs">
-      <DependentUpon>CTSModel.tt</DependentUpon>
+      <DependentUpon>CTSDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PoliceStation.cs">
-      <DependentUpon>CTSModel.tt</DependentUpon>
+      <DependentUpon>CTSDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Signup.cs">
-      <DependentUpon>CTSModel.tt</DependentUpon>
+      <DependentUpon>CTSDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -250,18 +250,15 @@
     <Content Include="Images\v904-nunny-012.jpg" />
     <Content Include="Images\v904-nunny-017-d.jpg" />
     <Content Include="Images\mv.webp" />
-    <Content Include="Models\CTSModel.Context.tt">
+    <Content Include="Models\CTSDbModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CTSModel.edmx</DependentUpon>
-      <LastGenOutput>CTSModel.Context.cs</LastGenOutput>
+      <DependentUpon>CTSDbModel.edmx</DependentUpon>
+      <LastGenOutput>CTSDbModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\CTSModel.edmx.diagram">
-      <DependentUpon>CTSModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\CTSModel.tt">
+    <Content Include="Models\CTSDbModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>CTSModel.cs</LastGenOutput>
-      <DependentUpon>CTSModel.edmx</DependentUpon>
+      <DependentUpon>CTSDbModel.edmx</DependentUpon>
+      <LastGenOutput>CTSDbModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -291,10 +288,13 @@
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
-    <EntityDeploy Include="Models\CTSModel.edmx">
+    <EntityDeploy Include="Models\CTSDbModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>CTSModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>CTSDbModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <Content Include="Models\CTSDbModel.edmx.diagram">
+      <DependentUpon>CTSDbModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\custom.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -326,10 +326,11 @@
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
-    <Content Include="Views\User\CrimeComplain.cshtml" />
     <Content Include="Views\Home\Feedback.cshtml" />
+    <Content Include="Views\User\Crime.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="ProofData\" />
     <Folder Include="UserProfilePicture\" />
   </ItemGroup>
   <ItemGroup>

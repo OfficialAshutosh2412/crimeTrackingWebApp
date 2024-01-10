@@ -1151,9 +1151,10 @@
             margin:1%;
         }
         .complain-form-structure, .crime-complain, .missing-form, .valuable-container {
-            display: flex;
-            flex-direction: row-reverse;
-            height: 90vh
+            width:50%;
+            margin: 0 auto;
+            box-shadow:1px 1px 10px 1px gray;
+            padding:2%;
         }
 
 .crime-complain-form, .missing-sub-form, .valuable-form, .complain-form {
@@ -1161,7 +1162,6 @@
     background-image: url('../img/v904-nunny-017-d.jpg') !important;
     background-size: cover;
     background-position: center;
-    overflow: scroll
 }
 
     .crime-complain-form div, .missing-sub-form div, .valuable-form div {

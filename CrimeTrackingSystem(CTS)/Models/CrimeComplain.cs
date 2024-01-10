@@ -11,15 +11,33 @@ namespace CrimeTrackingSystem_CTS_.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+    using System.Web;
     
     public partial class CrimeComplain
     {
         public int Id { get; set; }
         public string Username { get; set; }
-        public string PoliceStation { get; set; }
+
+        [DisplayName("Police Station")]
+        [Required]
+        public string PoliceStationName { get; set; }
+
+        [DisplayName("Category of crime")]
+        [Required]
         public string CrimeType { get; set; }
+
+        [DisplayName("Involved Person")]
+        [Required]
         public string InvolvedPersons { get; set; }
+
+        [DisplayName("Upload proofs")]
         public string Proofs { get; set; }
+        public HttpPostedFileBase UploadImage { get; set; }
+
+        [DisplayName("Crime police Station")]
+        [Required]
         public string CrimeStation { get; set; }
         public string CurrentDateTime { get; set; }
         public string Status { get; set; }

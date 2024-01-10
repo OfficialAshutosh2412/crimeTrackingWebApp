@@ -115,7 +115,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ChowkiIncharge" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="PoliceStation" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PoliceStationName" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="CUGNumberOne" Type="numeric" Precision="18" Scale="0" Nullable="false" />
     <Property Name="CUGNumberSecond" Type="numeric" Precision="18" Scale="0" Nullable="false" />
     <Property Name="Agent" Type="varchar" MaxLength="50" Nullable="false" />

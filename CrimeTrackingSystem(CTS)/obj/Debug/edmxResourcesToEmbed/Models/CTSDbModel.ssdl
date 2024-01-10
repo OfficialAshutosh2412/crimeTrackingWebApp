@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CTSEntityDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Contact">
+    <Key>
+      <PropertyRef Name="Email" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fullname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Purpose" Type="varchar(max)" />
+    <Property Name="Details" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CrimeComplain">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PoliceStationName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CrimeType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="InvolvedPersons" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Proofs" Type="varchar(max)" Nullable="false" />
+    <Property Name="CrimeStation" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CurrentDateTime" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CriminalGallery">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="AffectedOrganisation" Type="varchar(max)" Nullable="false" />
+    <Property Name="Reward" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CriminalImage" Type="varchar(max)" Nullable="false" />
+    <Property Name="Details" Type="varchar(max)" Nullable="false" />
+    <Property Name="CurrentDateTime" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Events">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EventTitle" Type="varchar(max)" Nullable="false" />
+    <Property Name="EventDateTime" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CurrentDateTime" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="EventImage" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FAQ">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Questions" Type="varchar(max)" Nullable="false" />
+    <Property Name="Answer" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Feedback">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Yourname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="E-mail" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Words" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GeneralComplain">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PoliceStationName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Subject" Type="varchar(max)" Nullable="false" />
+    <Property Name="Details" Type="varchar(max)" Nullable="false" />
+    <Property Name="InvolvedPersons" Type="varchar(max)" Nullable="false" />
+    <Property Name="CurrentDateTime" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MissingPerson">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PoliceStationName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Person" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PersonPhone" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="LastLocation" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PersonEmail" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Ransom" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Details" Type="varchar(max)" Nullable="false" />
+    <Property Name="PersonImage" Type="varchar(max)" Nullable="false" />
+    <Property Name="CurrentDateTime" Type="varchar(max)" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MissingValuable">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PoliceStationName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ValuableType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ValuableCost" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Suspect" Type="varchar(max)" Nullable="false" />
+    <Property Name="ReciptImage" Type="varchar(max)" Nullable="false" />
+    <Property Name="Details" Type="varchar(max)" Nullable="false" />
+    <Property Name="CurrentDateTime" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PoliceStation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ChowkiIncharge" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PoliceStationName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CUGNumberOne" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="CUGNumberSecond" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Agent" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="AgentPhone" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="PoliceStationImage" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Signup">
+    <Key>
+      <PropertyRef Name="Email" />
+    </Key>
+    <Property Name="RegId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Gender" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Pincode" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Address" Type="varchar(max)" Nullable="false" />
+    <Property Name="Mstatus" Type="varchar" MaxLength="50" />
+    <Property Name="Lstatus" Type="varchar" MaxLength="50" />
+    <Property Name="Adhaar" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Phone" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Photo" Type="varchar(max)" Nullable="false" />
+    <Property Name="Role" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="CTSEntityDataModelStoreContainer">
+    <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CrimeComplain" EntityType="Self.CrimeComplain" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CriminalGallery" EntityType="Self.CriminalGallery" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Events" EntityType="Self.Events" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FAQ" EntityType="Self.FAQ" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Feedback" EntityType="Self.Feedback" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GeneralComplain" EntityType="Self.GeneralComplain" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MissingPerson" EntityType="Self.MissingPerson" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MissingValuable" EntityType="Self.MissingValuable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PoliceStation" EntityType="Self.PoliceStation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Signup" EntityType="Self.Signup" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

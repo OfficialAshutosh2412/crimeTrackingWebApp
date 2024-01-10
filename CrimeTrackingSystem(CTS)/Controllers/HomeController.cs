@@ -10,7 +10,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
 {
     public class HomeController : Controller
     {
-        readonly CTSstring _context = new CTSstring();
+        readonly CTSEntities _context = new CTSEntities();
         //GET: Index
         public ActionResult Index()
         {
@@ -26,8 +26,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         [HttpPost]
         public ActionResult Contact(Contact contactFormData)
         {
-            if (ModelState.IsValid)
-            {
+            
                 if (ModelState.IsValid == true)
                 {
                     _context.Contacts.Add(contactFormData);
@@ -35,9 +34,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                     ModelState.Clear();
                     ViewBag.result = true;
                     return View();
-                }
-                return View();
-            }
+                }   
             return View();
         }
 

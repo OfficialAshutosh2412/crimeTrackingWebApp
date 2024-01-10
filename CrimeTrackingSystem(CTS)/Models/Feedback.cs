@@ -22,14 +22,15 @@ namespace CrimeTrackingSystem_CTS_.Models
         [Required]
         public string Yourname { get; set; }
 
-        [DisplayName("E-mail")]
+        [DisplayName("Crime police Station")]
         [Required]
+        [DataType(DataType.EmailAddress)]
         [RegularExpression(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$", ErrorMessage = "invalid e-mail id")]
         public string E_mail { get; set; }
 
-        [DisplayName("Your thoughts")]
         [Required]
-        [StringLength(150, ErrorMessage = "not more than 150 words")]
+        [DataType(DataType.MultilineText)]
+        [StringLength(200,ErrorMessage ="not more than 200 words")]
         public string Words { get; set; }
     }
 }

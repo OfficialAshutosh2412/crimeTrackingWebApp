@@ -16,7 +16,7 @@ namespace CrimeTrackingSystem_CTS_.Models
     {
         public int Id { get; set; }
         public string ChowkiIncharge { get; set; }
-        public string PoliceStation1 { get; set; }
+        public string PoliceStationName { get; set; }
         public decimal CUGNumberOne { get; set; }
         public decimal CUGNumberSecond { get; set; }
         public string Agent { get; set; }

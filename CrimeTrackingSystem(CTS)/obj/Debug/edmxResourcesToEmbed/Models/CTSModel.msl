@@ -122,9 +122,9 @@
     <EntitySetMapping Name="PoliceStations">
       <EntityTypeMapping TypeName="CTSModel.PoliceStation">
         <MappingFragment StoreEntitySet="PoliceStation">
+          <ScalarProperty Name="PoliceStationName" ColumnName="PoliceStationName" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="ChowkiIncharge" ColumnName="ChowkiIncharge" />
-          <ScalarProperty Name="PoliceStation1" ColumnName="PoliceStation" />
           <ScalarProperty Name="CUGNumberOne" ColumnName="CUGNumberOne" />
           <ScalarProperty Name="CUGNumberSecond" ColumnName="CUGNumberSecond" />
           <ScalarProperty Name="Agent" ColumnName="Agent" />

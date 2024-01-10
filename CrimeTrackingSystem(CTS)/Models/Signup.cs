@@ -14,8 +14,7 @@ namespace CrimeTrackingSystem_CTS_.Models
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.Web;
-
-
+    
     public partial class Signup
     {
         public int RegId { get; set; }
@@ -54,9 +53,11 @@ namespace CrimeTrackingSystem_CTS_.Models
         public string Address { get; set; }
 
         [Required]
+        [DisplayName("Marital Status")]
         public string Mstatus { get; set; }
 
         [Required]
+        [DisplayName("Living Status")]
         public string Lstatus { get; set; }
 
         [Required]
