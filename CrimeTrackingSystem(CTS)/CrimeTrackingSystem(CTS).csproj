@@ -328,6 +328,7 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Home\Feedback.cshtml" />
     <Content Include="Views\User\Crime.cshtml" />
+    <Content Include="Views\User\General.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ProofData\" />

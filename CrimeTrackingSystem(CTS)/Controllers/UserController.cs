@@ -107,5 +107,44 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                 ViewBag.OptionList = options;
             return View();
         }
+        //GET:General Complain
+        public ActionResult General()
+        {
+            List<SelectListItem> options = _context.PoliceStations.Select(
+                x => new SelectListItem
+                {
+                    Value = x.PoliceStationName.ToString(),
+                    Text = x.PoliceStationName
+                }).ToList();
+
+            ViewBag.OptionList = options;
+            return View();
+        }
+        //POST:General
+        [HttpPost]
+        public ActionResult General(GeneralComplain generalFormData)
+        {
+            if (ModelState.IsValid) {
+                //adding data in db
+                generalFormData.Username = (string)Session["usermail"];
+                generalFormData.CurrentDateTime = DateTime.Now.ToString();
+                generalFormData.Status = "Pending";
+                _context.GeneralComplains.Add(generalFormData);
+                _context.SaveChanges();
+                // Clearing ModelState to avoid displaying previous validation errors
+                ModelState.Clear();
+                TempData["result"] = "true";
+                return RedirectToAction("General", "User");
+            }
+            List<SelectListItem> options = _context.PoliceStations.Select(
+                x => new SelectListItem
+                {
+                    Value = x.PoliceStationName.ToString(),
+                    Text = x.PoliceStationName
+                }).ToList();
+
+            ViewBag.OptionList = options;
+            return View();
+        }
     }
 }
