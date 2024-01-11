@@ -122,6 +122,13 @@
     bottom: 80px;
     transform: scale(1);
 }
+.success-msg {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
 .about h1 *, .top-bar a, a {
     text-decoration: none;
 }
@@ -1150,50 +1157,7 @@
             width:100%;
             margin:1%;
         }
-        .complain-form-structure, .crime-complain, .missing-form, .valuable-container {
-            width:50%;
-            margin: 0 auto;
-            box-shadow:1px 1px 10px 1px gray;
-            padding:2%;
-        }
 
-.crime-complain-form, .missing-sub-form, .valuable-form, .complain-form {
-    padding: 1%;
-    background-image: url('../img/v904-nunny-017-d.jpg') !important;
-    background-size: cover;
-    background-position: center;
-}
-
-    .crime-complain-form div, .missing-sub-form div, .valuable-form div {
-        margin-bottom: 10px
-    }
-
-.complain-form-structure .complain-grid-view, .crime-complain-grid-view, .missing-form .missing-grid {
-    width: 80%;
-    height: 90vh;
-    overflow: scroll;
-    padding: 2%
-}
-
-    .crime-complain-grid-view img {
-        width: 100px
-    }
-
-.complain-form {
-    padding: 1%;
-    background: #fdc38d
-}
-
-    .complain-form div {
-        margin-bottom: 5px
-    }
-
-.valuable-grid {
-    width: 96%;
-    height: 90vh;
-    overflow: scroll;
-    padding: 2%
-}
 .register-welcome {
     width: 100%;
     margin: 0 auto;
@@ -1231,13 +1195,60 @@
         background-size: cover;
         background-position: center;
     }
-
-    .admin-nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background: #00a9c7
+ /*crime complain*/
+.crime {
+    width: 80%;
+    margin: 0 auto;
+    box-shadow: 0px 0px 10px 0px gray;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:3px;
+}
+.crime .crime-instruction, .crime-form{
+    width:100%;
+    height:100%;
+}
+    .crime .crime-instruction{
+        padding:2%;
+        display:flex;
+        height:100%;
+        flex-direction:column;
+        justify-content:space-evenly;
+        font-size:11pt;
     }
+        .crime .crime-form {
+            background:#ededed;
+            padding: 2%;
+        }
+        .crime .crime-form .cc-box{
+            margin-bottom:15px
+        }
+        .crime .crime-form label{
+            font-size:10pt;
+            margin-bottom:0px;
+        }
+            .crime .crime-form .send, .clear {
+                width: 100px;
+            }
+        .crime .crime-form .crime-form-item{
+            width:100%;
+            display:flex
+        }
+            .crime .crime-form .crime-form-item div {
+                width:100%;
+                margin:2px;
+            }
+
+                .admin-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #00a9c7
+        }
+
 
 .admin-items {
     display: flex;
@@ -1505,6 +1516,14 @@
         .profile-edit .edit-item div {
             padding:1%;
         }
+
+    /*crime*/
+    .crime{
+        width:90%;
+    }
+    .crime .crime-instruction li{
+        font-size:10pt;
+    }
     /*help*/
     .help {
         width: 100%;
@@ -1635,28 +1654,35 @@
     }
 
     .complain-form-structure, .crime-complain, .missing-form, .valuable-container {
-        display: flex;
-        flex-direction: column-reverse;
-        height: auto
+        
     }
 
     .complain-form, .crime-complain-form {
         padding: 2%;
-        overflow: visible
+        overflow: visible;
     }
-
-    .complain-form-structure .complain-grid-view, .crime-complain-grid-view, .missing-form .missing-grid, .valuable-grid {
-        width: 100%;
-        height: 90vh;
-        overflow: scroll;
-        padding: 2%
+    /*crime*/
+    .crime{
+        width:100%;
+        flex-direction:column;
+        box-shadow:none;
     }
-
-    .missing-sub-form, .valuable-form {
-        padding: 1%;
-        background: #fdc38d;
-        overflow: visible
+    .crime .crime-instruction{
+        background:#e5e5e5;
+        width:90%;
+        margin:0 auto;
+        margin-bottom:10px;
+        border-radius:5px;
     }
+        .crime .crime-form{
+            width:90%;
+            margin:0 auto;
+        }
+        .missing-sub-form, .valuable-form {
+            padding: 1%;
+            background: #fdc38d;
+            overflow: visible
+        }
 
         .missing-sub-form div {
             margin-bottom: 10px
@@ -1784,5 +1810,9 @@
 
     .pad-5 {
         padding: 0
+    }
+    /*crime*/
+    .crime .crime-form .crime-form-item{
+        flex-direction:column;
     }
 }
