@@ -25,11 +25,11 @@
                     <li class="nav-item" id="crime">
                         <a href="@Url.Action("Crime", "User")" class="nav-link text-light"><i class="fa-solid fa-handcuffs"></i> Crime Complain</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" id="general">
                         <a href="@Url.Action("General", "User")" class="nav-link text-light"><i class="fa-solid fa-file-signature"></i> General Complain</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link text-light"><i class="fa-solid fa-person"></i> Missing Person</a>
+                    <li class="nav-item" id="person">
+                        <a href="@Url.Action("Person", "User")" class="nav-link text-light"><i class="fa-solid fa-person"></i> Missing Person</a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link text-light"><i class="fa-regular fa-gem"></i> Missing Valuable</a>
@@ -73,6 +73,12 @@
         }
         if (pageName === "crime" || pageName === "Crime") {
             document.querySelector('#crime').classList.add("activeLink");
+        }
+        if (pageName === "general" || pageName === "General") {
+            document.querySelector('#general').classList.add("activeLink");
+        }
+        if (pageName === "person" || pageName === "Person") {
+            document.querySelector('#person').classList.add("activeLink");
         }
     </script>
     <script src="~/Scripts/custom.js"></script>

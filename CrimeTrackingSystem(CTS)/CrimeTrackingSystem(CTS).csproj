@@ -329,8 +329,10 @@
     <Content Include="Views\Home\Feedback.cshtml" />
     <Content Include="Views\User\Crime.cshtml" />
     <Content Include="Views\User\General.cshtml" />
+    <Content Include="Views\User\Person.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Missing\" />
     <Folder Include="ProofData\" />
     <Folder Include="UserProfilePicture\" />
   </ItemGroup>
