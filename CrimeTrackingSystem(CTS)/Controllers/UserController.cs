@@ -239,6 +239,61 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         [HttpPost]
         public ActionResult Valuable(MissingValuable valueFormData)
         {
+            //if form fields are validated
+            if (ModelState.IsValid)
+            {
+                //getting only name of file
+                string filenameWithoutExtension = Path.GetFileNameWithoutExtension(valueFormData.ValuableImageFile.FileName);
+
+                //getting file extension
+                string fileExtension = Path.GetExtension(valueFormData.ValuableImageFile.FileName);
+
+                //getting posted image file
+                HttpPostedFileBase postedFile = valueFormData.ValuableImageFile;
+
+                //getting length of posted file
+                int lengthOfFile = postedFile.ContentLength;
+
+                //validating the file
+                if (fileExtension.ToLower() == ".jpg" || fileExtension.ToLower() == ".jpeg" || fileExtension.ToLower() == ".JPEG" || fileExtension.ToLower() == ".png")
+                {
+                    //check if length is not more than 1MB
+                    if (lengthOfFile <= 1000000)
+                    {
+                        //setting actuall file with extension into filename without extension
+                        string actualFilename = filenameWithoutExtension + fileExtension;
+
+                        //passing path of image with folder into database
+                        valueFormData.ReciptImage = "~/Valuables/" + actualFilename;
+
+                        //mapping server image folder
+                        actualFilename = Path.Combine(Server.MapPath("~/Valuables/"), actualFilename);
+
+                        //saving the file into folder
+                        valueFormData.ValuableImageFile.SaveAs(actualFilename);
+
+                        //adding data in db
+                        valueFormData.Username = (string)Session["usermail"];
+                        valueFormData.CurrentDateTime = DateTime.Now.ToString();
+                        valueFormData.Status = "Pending";
+                        _context.MissingValuables.Add(valueFormData);
+                        _context.SaveChanges();
+
+                        // Clearing ModelState to avoid displaying previous validation errors
+                        ModelState.Clear();
+                        TempData["result"] = "true";
+                        return RedirectToAction("Valuable", "User");
+                    }
+                    else
+                    {
+                        TempData["SizeError"] = "<script>alert('Error : file is larger than 1MB')</script>";
+                    }
+                }
+                else
+                {
+                    TempData["ExtensionError"] = "<script>alert('Error : file not supported')</script>";
+                }
+            }
             List<SelectListItem> options = _context.PoliceStations
                   .Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.PoliceStationName })
                   .ToList();

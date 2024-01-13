@@ -336,6 +336,7 @@
     <Folder Include="Missing\" />
     <Folder Include="ProofData\" />
     <Folder Include="UserProfilePicture\" />
+    <Folder Include="Valuables\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

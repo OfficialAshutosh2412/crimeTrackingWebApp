@@ -4,8 +4,6 @@
     Layout = "~/Views/Shared/_LayoutUser.cshtml";
 }
 
-
-
 @Html.Raw(TempData["SizeError"])
 @Html.Raw(TempData["ExtensionError"])
 @if ((string)TempData["result"] == "true")
@@ -15,7 +13,6 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 }
-
 @*heading*@
 <h1 class="container text-center p-3"><i class="fa-regular fa-gem"></i> Missing Valuable Report</h1>
 @*content*@
