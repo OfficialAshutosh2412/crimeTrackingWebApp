@@ -1,0 +1,132 @@
+﻿@model CrimeTrackingSystem_CTS_.Models.MissingValuable
+@{
+    ViewBag.Title = "Valuable";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+
+
+@Html.Raw(TempData["SizeError"])
+@Html.Raw(TempData["ExtensionError"])
+@if ((string)TempData["result"] == "true")
+{
+    <div class="w-50 m-auto m-3 alert alert-success alert-dismissible fade show success-msg" role="alert">
+        <strong>Success : </strong> Data recoreded successfully !
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+@*heading*@
+<h1 class="container text-center p-3"><i class="fa-regular fa-gem"></i> Missing Valuable Report</h1>
+@*content*@
+@*instruction*@
+<div class="instructionForPerson" id="guide-panel">
+    <div class="pt-5">
+        <h3><i class="fa-solid fa-person-chalkboard"></i> Report Instructions</h3>
+        <h6 class="text-danger fw-bolder">फॉर्म भरने के लिए निर्देश |</h6>
+    </div>
+    <div>
+        <ul class="list-unstyled">
+            <li><i class="fa-regular fa-hand-point-right"></i> <strong>Police Station : </strong><span class="fw-medium">choose your district police(अपने जिला पुलिस को चुने |)</span> </li>
+            <li><i class="fa-regular fa-hand-point-right"></i> <strong>Cost : </strong><span class="fw-medium">valuable cost(बहुमूल्य चीज की कीमत |)</span> </li>
+            <li><i class="fa-regular fa-hand-point-right"></i> <strong>Suspect : </strong><span class="fw-medium">name suspects(संदिघ्द व्यक्ति का नाम लिखें |)</span> </li>
+            <li><i class="fa-regular fa-hand-point-right"></i> <strong>Photo : </strong><span class="fw-medium">image of missing person(बहुमूल्य चीज के रसीद या बहुमूल्य की तस्वीर दें |)</span> </li>
+        </ul>
+    </div>
+    <div class="d-flex justify-content-end">
+        <label id="guideClose" class="btn btn-danger" onclick="guideclose()"> close </label>
+    </div>
+</div>
+<div class="crime">
+    @*form*@
+    <div class="crime-form">
+        @using (Html.BeginForm("Valuable", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="pb-4">
+                <label class="btn btn-sm btn-warning fw-semibold" id="guideOpen" onclick="guide()">open form guide</label>
+            </div>
+            @*first row*@
+            <div class="crime-form-item">
+                <div>
+                    <span>
+                        <i class="fa-solid fa-building-shield"></i>
+                        @Html.LabelFor(model => model.PoliceStationName, new { @class = "form-label fw-bolder" })
+                        <br />
+                        <small>@Html.ValidationMessageFor(model => model.PoliceStationName, "", new { @class = "text-danger fw-bolder" })</small>
+                    </span>
+                    @Html.DropDownListFor(model => model.PoliceStationName, (IEnumerable<SelectListItem>)ViewBag.OptionList, "--select--", new { @class = "cc-box" })
+                </div>
+                <div>
+                    <span>
+                        <i class="fa-solid fa-gem"></i> 
+                        @Html.LabelFor(model => model.ValuableType, new { @class = "form-label fw-bolder" })
+                        <br />
+                        <small>@Html.ValidationMessageFor(model => model.ValuableType, "", new { @class = "text-danger fw-bolder" })</small>
+                    </span>
+                    @Html.DropDownListFor(model => model.ValuableType,
+                        new SelectList(new[] {
+                           "Fine Art",
+                           "Rare Coins",
+                           "Jewelry and Gems",
+                           "Stamps",
+                           "Classic and Exotic Cars",
+                           "Fine Wines",
+                           "Chinese Porcelain",
+                           "Timepieces/Watches",
+                           "Exotic Bikes",
+                           "Laptop",
+                           "Other"
+                        }),
+                        "--select--", new { @class="cc-box"})
+                </div>
+                <div>
+                    <span>
+                        <i class="fa-solid fa-indian-rupee-sign"></i> 
+                        @Html.LabelFor(model => model.ValuableCost, new { @class = "form-label fw-bolder" })
+                        <br />
+                        <small>@Html.ValidationMessageFor(model => model.ValuableCost, "", new { @class = "text-danger fw-bolder" })</small>
+                    </span>
+                    @Html.EditorFor(model => model.ValuableCost, new { htmlAttributes = new { @class = "cc-box"} })
+                </div>
+            </div>
+            
+                <div>
+                    <span>
+                        <i class="fa-solid fa-user-secret"></i> 
+                        @Html.LabelFor(model => model.Suspect, new { @class = "form-label fw-bolder" })
+                        <br />
+                        <small>@Html.ValidationMessageFor(model => model.Suspect, "", new { @class = "text-danger fw-bolder" })</small>
+                    </span>
+                    @Html.EditorFor(model => model.Suspect, new { htmlAttributes = new { @class = "cc-box"} })
+                </div>
+                @*third row*@
+                <div>
+                    <div>
+                        <span>
+                            <i class="fa-solid fa-file-invoice-dollar"></i> 
+                            @Html.LabelFor(model => model.ReciptImage, new { @class = "form-label fw-bolder" })
+                        </span>
+                        <input type="file" name="ValuableImageFile" class="cc-box" required />
+                    </div>
+                </div>
+            <div>
+                <div>
+                    <span>
+                        <i class="fa-solid fa-file-pen"></i> 
+                        @Html.LabelFor(model => model.Details, new { @class = "form-label fw-bolder" })
+                        <br />
+                        <small>@Html.ValidationMessageFor(model => model.Details, "", new { @class = "text-danger fw-bolder" })</small>
+                    </span>
+                    @Html.TextAreaFor(model => model.Details, new { @class = "cc-box", rows = "4" })
+                </div>
+            </div>
+            <div>
+                <button class="send p-1">submit</button>
+                <input type="reset" value="clear" class="clear p-1" />
+            </div>
+            <div>
+                <a href="#" class="p-2 text-primary fw-bolder" style="font-size:10pt"><i class="fa-regular fa-hand-point-right"></i> click here to show reports you filled...</a>
+            </div>
+        }
+    </div>
+</div>

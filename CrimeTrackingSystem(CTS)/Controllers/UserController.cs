@@ -225,5 +225,26 @@ namespace CrimeTrackingSystem_CTS_.Controllers
             ViewBag.OptionList = options;
             return View();
         }
+        //GET:Valuable
+        public ActionResult Valuable()
+        {
+            List<SelectListItem> options = _context.PoliceStations
+                  .Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.PoliceStationName })
+                  .ToList();
+
+            ViewBag.OptionList = options;
+            return View();
+        }
+        //POST: Valuable
+        [HttpPost]
+        public ActionResult Valuable(MissingValuable valueFormData)
+        {
+            List<SelectListItem> options = _context.PoliceStations
+                  .Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.PoliceStationName })
+                  .ToList();
+
+            ViewBag.OptionList = options;
+            return View();
+        }
     }
 }

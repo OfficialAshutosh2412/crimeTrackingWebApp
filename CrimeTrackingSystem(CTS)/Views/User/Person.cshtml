@@ -27,12 +27,12 @@
     <div>
         <ul class="list-unstyled">
             <li><i class="fa-regular fa-hand-point-right"></i> <strong>Police Station : </strong><span class="fw-medium">choose your district police(अपने जिला पुलिस को चुने |)</span> </li>
-            <li><i class="fa-regular fa-hand-point-right"></i> <strong>Person : </strong><span class="fw-medium">write name of missing person(गुमशुदा व्यक्ति का नाम लिखें |) </span> </li>
+            <li><i class="fa-regular fa-hand-point-right"></i> <strong>Name : </strong><span class="fw-medium">write name of missing person(गुमशुदा व्यक्ति का नाम लिखें |) </span> </li>
             <li><i class="fa-regular fa-hand-point-right"></i> <strong>Person Phone no. : </strong><span class="fw-medium">name phone number of missing person(गुमशुदा व्यक्ति का फ़ोन नंबर लिखें |)</span> </li>
             <li><i class="fa-regular fa-hand-point-right"></i> <strong>Last Location : </strong><span class="fw-medium">location of person last time(व्यक्ति आखिरी बार जहाँ देखा गया |)</span> </li>
-            <li><i class="fa-regular fa-hand-point-right"></i> <strong>Person Email : </strong><span class="fw-medium">email of person(व्यक्ति का ईमेल आईडी दें |)</span> </li>
-            <li><i class="fa-regular fa-hand-point-right"></i> <strong>Ransom : </strong><span class="fw-medium">reward on person(ईनाम व्यक्ति को दिया जाने वाला |)</span> </li>
-            <li><i class="fa-regular fa-hand-point-right"></i> <strong>Picture of person : </strong><span class="fw-medium">image of missing person(गुमशुदा व्यक्ति की तस्वीर |)</span> </li>
+            <li><i class="fa-regular fa-hand-point-right"></i> <strong>Email : </strong><span class="fw-medium">email of person(व्यक्ति का ईमेल आईडी दें |)</span> </li>
+            <li><i class="fa-regular fa-hand-point-right"></i> <strong>Reward : </strong><span class="fw-medium">reward on person(ईनाम व्यक्ति को दिया जाने वाला |)</span> </li>
+            <li><i class="fa-regular fa-hand-point-right"></i> <strong>Picture Image : </strong><span class="fw-medium">image of missing person(गुमशुदा व्यक्ति की तस्वीर |)</span> </li>
         </ul>
     </div>
     <div class="d-flex justify-content-end">
@@ -65,7 +65,7 @@
                         <br />
                         <small>@Html.ValidationMessageFor(model => model.Person, "", new { @class = "text-danger fw-bolder" })</small>
                     </span>
-                    @Html.EditorFor(model => model.Person, new { htmlAttributes = new { @class = "cc-box", placeholder = "persons who are involved" } })
+                    @Html.EditorFor(model => model.Person, new { htmlAttributes = new { @class = "cc-box" } })
                 </div>
                 <div>
                     <span>
@@ -74,7 +74,7 @@
                         <br />
                         <small>@Html.ValidationMessageFor(model => model.PersonPhone, "", new { @class = "text-danger fw-bolder" })</small>
                     </span>
-                    @Html.EditorFor(model => model.PersonPhone, new { htmlAttributes = new { @class = "cc-box", placeholder = "persons who are involved" } })
+                    @Html.EditorFor(model => model.PersonPhone, new { htmlAttributes = new { @class = "cc-box" } })
                 </div>
             </div>
             @*second row*@
@@ -86,7 +86,7 @@
                         <br />
                         <small>@Html.ValidationMessageFor(model => model.LastLocation, "", new { @class = "text-danger fw-bolder" })</small>
                     </span>
-                    @Html.EditorFor(model => model.LastLocation, new { htmlAttributes = new { @class = "cc-box", placeholder = "persons who are involved" } })
+                    @Html.EditorFor(model => model.LastLocation, new { htmlAttributes = new { @class = "cc-box"} })
                 </div>
                 <div>
                     <span>
@@ -95,7 +95,7 @@
                         <br />
                         <small>@Html.ValidationMessageFor(model => model.PersonEmail, "", new { @class = "text-danger fw-bolder" })</small>
                     </span>
-                    @Html.EditorFor(model => model.PersonEmail, new { htmlAttributes = new { @class = "cc-box", placeholder = "persons who are involved" } })
+                    @Html.EditorFor(model => model.PersonEmail, new { htmlAttributes = new { @class = "cc-box" } })
                 </div>
                 <div>
                     <span>
@@ -104,7 +104,7 @@
                         <br />
                         <small>@Html.ValidationMessageFor(model => model.Ransom, "", new { @class = "text-danger fw-bolder" })</small>
                     </span>
-                    @Html.EditorFor(model => model.Ransom, new { htmlAttributes = new { @class = "cc-box", placeholder = "persons who are involved" } })
+                    @Html.EditorFor(model => model.Ransom, new { htmlAttributes = new { @class = "cc-box" } })
                 </div>
             </div>
             <div>

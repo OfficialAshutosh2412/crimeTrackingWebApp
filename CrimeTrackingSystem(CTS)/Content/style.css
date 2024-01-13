@@ -1244,7 +1244,8 @@
 /*instructor*/
 .instructionForPerson {
     position: fixed;
-    background: #ffe6a1;
+    background: #00085e;
+    color:white;
     left: 25%;
     right:0%;
     top: 20%;
