@@ -301,5 +301,12 @@ namespace CrimeTrackingSystem_CTS_.Controllers
             ViewBag.OptionList = options;
             return View();
         }
+        //show crime complain data
+        public ActionResult CrimeComplainData()
+        {
+            var userId = (string)Session["usermail"];
+            var userData = _context.CrimeComplains.Where(model=> model.Username == userId).ToList();
+            return View(userData);
+        }
     }
 }

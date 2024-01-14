@@ -177,7 +177,15 @@
         background: #ea2d2d;
         color: #fff
     }
-
+/*fetched image css*/
+.fetchImage{
+    width:80px;
+    height:80px;
+    object-fit:cover;
+    cursor:pointer;
+    border-radius:3px;
+    border:1px solid gray;
+}
 .menu-heads {
     background: #0060bb;
     width: fit-content;
