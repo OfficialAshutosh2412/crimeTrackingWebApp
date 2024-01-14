@@ -333,6 +333,7 @@
     <Content Include="Views\User\Valuable.cshtml" />
     <Content Include="Views\User\CrimeComplainData.cshtml" />
     <Content Include="Views\User\GeneralComplainData.cshtml" />
+    <Content Include="Views\User\MissingPersonData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Missing\" />

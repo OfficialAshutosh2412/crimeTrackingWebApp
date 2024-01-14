@@ -315,5 +315,12 @@ namespace CrimeTrackingSystem_CTS_.Controllers
             var userData = _context.GeneralComplains.Where(model => model.Username == userId).ToList();
             return View(userData);
         }
+        //show missing person complain data
+        public ActionResult MissingPersonData()
+        {
+            var userId = (string)Session["usermail"];
+            var userData = _context.MissingPersons.Where(model => model.Username == userId).ToList();
+            return View(userData);
+        }
     }
 }
