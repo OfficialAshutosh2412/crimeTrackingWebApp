@@ -100,11 +100,14 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                 }
             }
             // If ModelState is not valid
-              List<SelectListItem> options = _context.PoliceStations
-                    .Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.PoliceStationName })
-                    .ToList();
+            List<SelectListItem> options = _context.PoliceStations.Select(
+               x => new SelectListItem
+               {
+                   Value = x.PoliceStationName.ToString(),
+                   Text = x.PoliceStationName
+               }).ToList();
 
-                ViewBag.OptionList = options;
+            ViewBag.OptionList = options;
             return View();
         }
         //GET:General Complain
@@ -218,9 +221,12 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                 }
             }
             // If ModelState is not valid
-            List<SelectListItem> options = _context.PoliceStations
-                  .Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.PoliceStationName })
-                  .ToList();
+            List<SelectListItem> options = _context.PoliceStations.Select(
+                 x => new SelectListItem
+                 {
+                     Value = x.PoliceStationName.ToString(),
+                     Text = x.PoliceStationName
+                 }).ToList();
 
             ViewBag.OptionList = options;
             return View();
@@ -228,9 +234,12 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         //GET:Valuable
         public ActionResult Valuable()
         {
-            List<SelectListItem> options = _context.PoliceStations
-                  .Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.PoliceStationName })
-                  .ToList();
+            List<SelectListItem> options = _context.PoliceStations.Select(
+                 x => new SelectListItem
+                 {
+                     Value = x.PoliceStationName.ToString(),
+                     Text = x.PoliceStationName
+                 }).ToList();
 
             ViewBag.OptionList = options;
             return View();
@@ -294,9 +303,12 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                     TempData["ExtensionError"] = "<script>alert('Error : file not supported')</script>";
                 }
             }
-            List<SelectListItem> options = _context.PoliceStations
-                  .Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.PoliceStationName })
-                  .ToList();
+            List<SelectListItem> options = _context.PoliceStations.Select(
+                x => new SelectListItem
+                {
+                    Value = x.PoliceStationName.ToString(),
+                    Text = x.PoliceStationName
+                }).ToList();
 
             ViewBag.OptionList = options;
             return View();
@@ -320,6 +332,13 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         {
             var userId = (string)Session["usermail"];
             var userData = _context.MissingPersons.Where(model => model.Username == userId).ToList();
+            return View(userData);
+        }
+        //show missing valuable complain data
+        public ActionResult MissingValuableData()
+        {
+            var userId = (string)Session["usermail"];
+            var userData = _context.MissingValuables.Where(model => model.Username == userId).ToList();
             return View(userData);
         }
     }
