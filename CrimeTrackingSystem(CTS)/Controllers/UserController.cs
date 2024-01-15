@@ -58,6 +58,24 @@ namespace CrimeTrackingSystem_CTS_.Controllers
             Session["usermail"] = null;
             return RedirectToAction("Login", "Home");
         }
+        //GET:Profile
+        public ActionResult MyProfile()
+        {
+            if (Session["usermail"] == null)
+            {
+                return RedirectToAction("Index", "user");
+            }
+            var session = (string)Session["usermail"];
+            var profiledata = _context.Signups.FirstOrDefault(model=>model.Email==session);
+
+            if (profiledata == null)
+            {
+                // Handle the case where no profile data is found for the user
+                return RedirectToAction("Index", "user");
+            }
+            ViewBag.profile = profiledata;
+            return View();
+        }
         //GET: Crime Complain
         public ActionResult Crime()
         {
