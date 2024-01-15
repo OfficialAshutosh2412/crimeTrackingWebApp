@@ -59,14 +59,18 @@
         <section class="d-flex" style="font-size:1.5rem">
             <section class="w-100 m-2">
                 <i class="fa-solid fa-circle-check" style="color: #07b03a;" title="solved cases"></i>
-                <label title="solved cases" />
+                <label title="solved cases">
+                    @ViewBag.solvedperson
+                </label>
             </section>
             <section class="w-100 m-2">
                 <i class="fa-solid fa-hand" style="color: #e13d3d;" title="pending cases"></i>
-                <label title="pending cases" />
+                <label title="pending cases">
+                    @ViewBag.pendingperson
+                </label>
             </section>
         </section>
-        <a class="cc-btn fs-6 p-2">go now !</a>
+        <a href="@Url.Action("MissingPersonData", "User")" class="cc-btn fs-6 p-2">check now !</a>
     </div>
     <div>
         <i style="font-size:3rem;color:#01308f" class="fa-regular fa-gem"></i>
@@ -75,13 +79,15 @@
         <section class="d-flex" style="font-size:1.5rem">
             <section class="w-100 m-2">
                 <i class="fa-solid fa-circle-check" style="color: #07b03a;" title="solved cases"></i>
-                <label title="solved cases" />
+                <label title="solved cases">@ViewBag.solvedvalue</label>
             </section>
             <section class="w-100 m-2">
                 <i class="fa-solid fa-hand" style="color: #e13d3d;" title="pending cases"></i>
-                <label title="pending cases" />
+                <label title="pending cases">
+                    @ViewBag.pendingvalue
+                </label>
             </section>
         </section>
-        <a class="cc-btn fs-6 p-2">go now !</a>
+        <a href="@Url.Action("MissingValuableData", "User")" class="cc-btn fs-6 p-2">check now !</a>
     </div>
 </div>

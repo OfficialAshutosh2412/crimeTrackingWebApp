@@ -34,6 +34,20 @@ namespace CrimeTrackingSystem_CTS_.Controllers
             var pendgeneralcount = pendgenerallist.Count();
             ViewBag.solvedgeneral = solvedgeneralcount;
             ViewBag.pendinggeneral = pendgeneralcount;
+            //person
+            var solvedpersonlist = _context.MissingPersons.Where(model => model.Username == sessiondata && model.Status == "Solved").ToList();
+            var pendpersonlist = _context.MissingPersons.Where(model => model.Username == sessiondata && model.Status == "Pending").ToList();
+            var solvedpersoncount = solvedpersonlist.Count();
+            var pendpersoncount = pendpersonlist.Count();
+            ViewBag.solvedperson = solvedpersoncount;
+            ViewBag.pendingperson = pendpersoncount;
+            //valuable
+            var solvedvaluelist = _context.MissingValuables.Where(model => model.Username == sessiondata && model.Status == "Solved").ToList();
+            var pendvaluelist = _context.MissingValuables.Where(model => model.Username == sessiondata && model.Status == "Pending").ToList();
+            var solvedvaluecount = solvedvaluelist.Count();
+            var pendvaluecount = pendvaluelist.Count();
+            ViewBag.solvedvalue = solvedvaluecount;
+            ViewBag.pendingvalue = pendvaluecount;
             return View();
         }
         //GET: Logout
