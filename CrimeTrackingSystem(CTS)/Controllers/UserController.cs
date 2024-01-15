@@ -18,6 +18,22 @@ namespace CrimeTrackingSystem_CTS_.Controllers
             {
                 return RedirectToAction("Index", "user");
             }
+            
+            var sessiondata = (string)Session["usermail"];
+            //crime
+            var solvedcrimelist = _context.CrimeComplains.Where(model => model.Username == sessiondata && model.Status=="Solved").ToList();
+            var pendcrimelist = _context.CrimeComplains.Where(model => model.Username == sessiondata && model.Status=="Pending").ToList();
+            var solvedcount = solvedcrimelist.Count();
+            var pendcount = pendcrimelist.Count();
+            ViewBag.solved = solvedcount;
+            ViewBag.pending = pendcount;
+            //general
+            var solvedgenerallist = _context.GeneralComplains.Where(model => model.Username == sessiondata && model.Status == "Solved").ToList();
+            var pendgenerallist = _context.GeneralComplains.Where(model => model.Username == sessiondata && model.Status == "Pending").ToList();
+            var solvedgeneralcount = solvedgenerallist.Count();
+            var pendgeneralcount = pendgenerallist.Count();
+            ViewBag.solvedgeneral = solvedgeneralcount;
+            ViewBag.pendinggeneral = pendgeneralcount;
             return View();
         }
         //GET: Logout
@@ -31,6 +47,10 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         //GET: Crime Complain
         public ActionResult Crime()
         {
+            if (Session["usermail"] == null)
+            {
+                return RedirectToAction("Index", "user");
+            }
             List<SelectListItem> options = _context.PoliceStations.Select(
                 x => new SelectListItem {
                     Value = x.PoliceStationName.ToString(),
@@ -113,6 +133,10 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         //GET:General Complain
         public ActionResult General()
         {
+            if (Session["usermail"] == null)
+            {
+                return RedirectToAction("Index", "user");
+            }
             List<SelectListItem> options = _context.PoliceStations.Select(
                 x => new SelectListItem
                 {
@@ -151,6 +175,10 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         }
         //GET: Person
         public ActionResult Person() {
+            if (Session["usermail"] == null)
+            {
+                return RedirectToAction("Index", "user");
+            }
             List<SelectListItem> options = _context.PoliceStations.Select(
                 x => new SelectListItem
                 {
@@ -234,6 +262,10 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         //GET:Valuable
         public ActionResult Valuable()
         {
+            if (Session["usermail"] == null)
+            {
+                return RedirectToAction("Index", "user");
+            }
             List<SelectListItem> options = _context.PoliceStations.Select(
                  x => new SelectListItem
                  {
@@ -316,6 +348,10 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         //show crime complain data
         public ActionResult CrimeComplainData()
         {
+            if (Session["usermail"] == null)
+            {
+                return RedirectToAction("Index", "user");
+            }
             var userId = (string)Session["usermail"];
             var userData = _context.CrimeComplains.Where(model=> model.Username == userId).ToList();
             return View(userData);
@@ -323,6 +359,10 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         //show general complain data
         public ActionResult GeneralComplainData()
         {
+            if (Session["usermail"] == null)
+            {
+                return RedirectToAction("Index", "user");
+            }
             var userId = (string)Session["usermail"];
             var userData = _context.GeneralComplains.Where(model => model.Username == userId).ToList();
             return View(userData);
@@ -330,6 +370,10 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         //show missing person complain data
         public ActionResult MissingPersonData()
         {
+            if (Session["usermail"] == null)
+            {
+                return RedirectToAction("Index", "user");
+            }
             var userId = (string)Session["usermail"];
             var userData = _context.MissingPersons.Where(model => model.Username == userId).ToList();
             return View(userData);
@@ -337,6 +381,10 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         //show missing valuable complain data
         public ActionResult MissingValuableData()
         {
+            if (Session["usermail"] == null)
+            {
+                return RedirectToAction("Index", "user");
+            }
             var userId = (string)Session["usermail"];
             var userData = _context.MissingValuables.Where(model => model.Username == userId).ToList();
             return View(userData);
