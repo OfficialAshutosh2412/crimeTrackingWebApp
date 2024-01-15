@@ -4,11 +4,17 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@if(ViewBag.feed == true) { 
-<div class="w-50 m-auto m-2 alert alert-success alert-dismissible fade show" role="alert">
-    <strong>Success : </strong>thank you, your words means alot for us.
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
+@if (ViewBag.message != null)
+{
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Swal.fire({
+                icon: 'success',
+                title: 'Thank you !',
+                text: '@ViewBag.message'
+            });
+        });
+    </script>
 }
 
 @using (Html.BeginForm("Feedback", "Home", FormMethod.Post))

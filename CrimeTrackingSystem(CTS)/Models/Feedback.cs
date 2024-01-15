@@ -22,7 +22,7 @@ namespace CrimeTrackingSystem_CTS_.Models
         [Required]
         public string Yourname { get; set; }
 
-        [DisplayName("Crime police Station")]
+        [DisplayName("E-mail")]
         [Required]
         [DataType(DataType.EmailAddress)]
         [RegularExpression(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$", ErrorMessage = "invalid e-mail id")]

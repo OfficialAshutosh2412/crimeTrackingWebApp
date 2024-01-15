@@ -3,13 +3,19 @@
     ViewBag.Title = "Login";
 }
 
-@if (ViewBag.CredError == true)
+@if (ViewBag.CredError != null)
 {
-    <div class="w-50 m-auto m-2 alert alert-danger alert-dismissible fade show success-msg" role="alert">
-        <strong>Error : </strong>invalid email or password.
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: '@ViewBag.CredError'
+            });
+        });
+    </script>
 }
+
 @using (Html.BeginForm("Login", "Home", FormMethod.Post))
 {
 
@@ -35,9 +41,11 @@
             @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "cc-box" } })
         </div>
         <div class="d-flex justify-content-start align-items-center">
-            <button class="send p-2">login now !</button>
+            <button class="send p-2" id="myButton">login now !</button>
         </div>
         <a href="@Url.Action("Signup", "Home")" class="text-dark fw-bolder">click here to create account...</a>
     </div>
 }
+
+
 

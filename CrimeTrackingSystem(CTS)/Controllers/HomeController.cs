@@ -32,8 +32,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                     _context.Contacts.Add(contactFormData);
                     _context.SaveChanges();
                     ModelState.Clear();
-                    ViewBag.result = true;
-                    return View();
+                    ViewBag.message = "Information Recorded.";
                 }   
             return View();
         }
@@ -113,7 +112,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
             var creds = _context.Signups.Where(model => model.Email == loginFormData.Email && model.Password == loginFormData.Password).FirstOrDefault();
             if (creds == null)
             {
-                ViewBag.CredError = true;
+                ViewBag.CredError = "check your username and password";
             }
             else
             {
@@ -144,9 +143,8 @@ namespace CrimeTrackingSystem_CTS_.Controllers
             {
                 _context.Feedbacks.Add(feedbackData);
                 _context.SaveChanges();
-                ViewBag.feed = true;
                 ModelState.Clear();
-                return View();
+                ViewBag.message = "We will contact you soon.";
             }
             return View();
         }
