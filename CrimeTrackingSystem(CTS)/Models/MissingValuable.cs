@@ -14,7 +14,7 @@ namespace CrimeTrackingSystem_CTS_.Models
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.Web;
-    
+
     public partial class MissingValuable
     {
         public int Id { get; set; }
@@ -42,7 +42,7 @@ namespace CrimeTrackingSystem_CTS_.Models
 
         [DisplayName("Details")]
         [Required]
-        [StringLength(200, ErrorMessage ="not more than 200 words")]
+        [StringLength(200, ErrorMessage = "not more than 200 words")]
         public string Details { get; set; }
         public string CurrentDateTime { get; set; }
         public string Status { get; set; }

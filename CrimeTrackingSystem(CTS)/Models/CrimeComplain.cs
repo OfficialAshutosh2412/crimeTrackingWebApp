@@ -14,22 +14,22 @@ namespace CrimeTrackingSystem_CTS_.Models
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.Web;
-    
+
     public partial class CrimeComplain
     {
         public int Id { get; set; }
         public string Username { get; set; }
 
         [DisplayName("Police Station")]
-        [Required]
+        [Required(ErrorMessage = "required")]
         public string PoliceStationName { get; set; }
 
         [DisplayName("Category of crime")]
-        [Required]
+        [Required(ErrorMessage = "required")]
         public string CrimeType { get; set; }
 
         [DisplayName("Involved Person")]
-        [Required]
+        [Required(ErrorMessage = "required")]
         public string InvolvedPersons { get; set; }
 
         [DisplayName("Upload proofs")]
@@ -37,7 +37,7 @@ namespace CrimeTrackingSystem_CTS_.Models
         public HttpPostedFileBase UploadImage { get; set; }
 
         [DisplayName("Crime police Station")]
-        [Required]
+        [Required(ErrorMessage = "required")]
         public string CrimeStation { get; set; }
         public string CurrentDateTime { get; set; }
         public string Status { get; set; }

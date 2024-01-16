@@ -10,7 +10,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
 {
     public class UserController : Controller
     {
-        CTSEntities _context = new CTSEntities();
+        CTSEntitiesClass _context = new CTSEntitiesClass();
         // GET: User
         public ActionResult Index()
         {
@@ -71,11 +71,26 @@ namespace CrimeTrackingSystem_CTS_.Controllers
             if (profiledata == null)
             {
                 // Handle the case where no profile data is found for the user
-                return RedirectToAction("Index", "user");
+                return RedirectToAction("Index", "User");
             }
             ViewBag.profile = profiledata;
             return View();
         }
+        //GET:EditProfile
+        public ActionResult EditProfile()
+        {
+            var session = (string)Session["usermail"];
+            var profiledata = _context.Signups.FirstOrDefault(model => model.Email == session);
+            return View(profiledata);
+        }
+        //POST:EditProfile
+        [HttpPost]
+        public ActionResult EditProfile(Signup editFormData)
+        {
+            
+            return View();
+        }
+
         //GET: Crime Complain
         public ActionResult Crime()
         {

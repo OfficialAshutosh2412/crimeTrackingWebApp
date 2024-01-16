@@ -14,7 +14,7 @@ namespace CrimeTrackingSystem_CTS_.Models
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.Web;
-    
+
     public partial class Signup
     {
         public int RegId { get; set; }
@@ -47,7 +47,7 @@ namespace CrimeTrackingSystem_CTS_.Models
 
         [Required]
         [RegularExpression(@"^(\d{6})$", ErrorMessage = "invalid pincode")]
-        public decimal Pincode { get; set; }
+        public string Pincode { get; set; }
 
         [Required]
         public string Address { get; set; }
@@ -63,11 +63,11 @@ namespace CrimeTrackingSystem_CTS_.Models
         [Required]
         [DisplayName("Adhaar No.")]
         [RegularExpression(@"^(\d{12})$", ErrorMessage = "invalid adhaar number")]
-        public decimal Adhaar { get; set; }
+        public string Adhaar { get; set; }
 
         [Required]
         [RegularExpression(@"^(\d{10}|\d{12})$", ErrorMessage = "invalid phone number")]
-        public decimal Phone { get; set; }
+        public string Phone { get; set; }
         public string Photo { get; set; }
         public HttpPostedFileBase ImageFile { get; set; }
 

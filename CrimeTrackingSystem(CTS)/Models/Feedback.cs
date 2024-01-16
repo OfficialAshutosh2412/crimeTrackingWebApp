@@ -13,24 +13,24 @@ namespace CrimeTrackingSystem_CTS_.Models
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
-    
+
     public partial class Feedback
     {
         public int Id { get; set; }
 
         [DisplayName("Your name")]
-        [Required]
+        [Required(ErrorMessage ="required")]
         public string Yourname { get; set; }
 
         [DisplayName("E-mail")]
-        [Required]
+        [Required(ErrorMessage = "required")]
         [DataType(DataType.EmailAddress)]
         [RegularExpression(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$", ErrorMessage = "invalid e-mail id")]
         public string E_mail { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "required")]
         [DataType(DataType.MultilineText)]
-        [StringLength(200,ErrorMessage ="not more than 200 words")]
+        [StringLength(200, ErrorMessage = "not more than 200 words")]
         public string Words { get; set; }
     }
 }
