@@ -8,10 +8,15 @@
 @Html.Raw(TempData["ExtensionError"])
 @if ((string)TempData["result"] == "true")
 {
-    <div class="w-50 m-auto m-3 alert alert-success alert-dismissible fade show success-msg" role="alert">
-        <strong>Success : </strong> Data recoreded successfully !
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: 'information recorded'
+            });
+        });
+    </script>
 }
 @*heading*@
 <h1 class="container text-center p-3"><i class="fa-regular fa-gem"></i> Missing Valuable Report</h1>
@@ -55,7 +60,7 @@
                 </div>
                 <div>
                     <span>
-                        <i class="fa-solid fa-gem"></i> 
+                        <i class="fa-solid fa-gem"></i>
                         @Html.LabelFor(model => model.ValuableType, new { @class = "form-label fw-bolder" })
                         <br />
                         <small>@Html.ValidationMessageFor(model => model.ValuableType, "", new { @class = "text-danger fw-bolder" })</small>
@@ -74,42 +79,42 @@
                            "Laptop",
                            "Other"
                         }),
-                        "--select--", new { @class="cc-box"})
+                        "--select--", new { @class = "cc-box" })
                 </div>
                 <div>
                     <span>
-                        <i class="fa-solid fa-indian-rupee-sign"></i> 
+                        <i class="fa-solid fa-indian-rupee-sign"></i>
                         @Html.LabelFor(model => model.ValuableCost, new { @class = "form-label fw-bolder" })
                         <br />
                         <small>@Html.ValidationMessageFor(model => model.ValuableCost, "", new { @class = "text-danger fw-bolder" })</small>
                     </span>
-                    @Html.EditorFor(model => model.ValuableCost, new { htmlAttributes = new { @class = "cc-box"} })
+                    @Html.EditorFor(model => model.ValuableCost, new { htmlAttributes = new { @class = "cc-box" } })
                 </div>
             </div>
-            
-                <div>
-                    <span>
-                        <i class="fa-solid fa-user-secret"></i> 
-                        @Html.LabelFor(model => model.Suspect, new { @class = "form-label fw-bolder" })
-                        <br />
-                        <small>@Html.ValidationMessageFor(model => model.Suspect, "", new { @class = "text-danger fw-bolder" })</small>
-                    </span>
-                    @Html.EditorFor(model => model.Suspect, new { htmlAttributes = new { @class = "cc-box"} })
-                </div>
-                @*third row*@
-                <div>
-                    <div>
-                        <span>
-                            <i class="fa-solid fa-file-invoice-dollar"></i> 
-                            @Html.LabelFor(model => model.ReciptImage, new { @class = "form-label fw-bolder" })
-                        </span>
-                        <input type="file" name="ValuableImageFile" class="cc-box" required />
-                    </div>
-                </div>
+
+            <div>
+                <span>
+                    <i class="fa-solid fa-user-secret"></i>
+                    @Html.LabelFor(model => model.Suspect, new { @class = "form-label fw-bolder" })
+                    <br />
+                    <small>@Html.ValidationMessageFor(model => model.Suspect, "", new { @class = "text-danger fw-bolder" })</small>
+                </span>
+                @Html.EditorFor(model => model.Suspect, new { htmlAttributes = new { @class = "cc-box" } })
+            </div>
+            @*third row*@
             <div>
                 <div>
                     <span>
-                        <i class="fa-solid fa-file-pen"></i> 
+                        <i class="fa-solid fa-file-invoice-dollar"></i>
+                        @Html.LabelFor(model => model.ReciptImage, new { @class = "form-label fw-bolder" })
+                    </span>
+                    <input type="file" name="ValuableImageFile" class="cc-box" required />
+                </div>
+            </div>
+            <div>
+                <div>
+                    <span>
+                        <i class="fa-solid fa-file-pen"></i>
                         @Html.LabelFor(model => model.Details, new { @class = "form-label fw-bolder" })
                         <br />
                         <small>@Html.ValidationMessageFor(model => model.Details, "", new { @class = "text-danger fw-bolder" })</small>

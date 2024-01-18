@@ -6,10 +6,15 @@
 
 @if ((string)TempData["result"] == "true")
 {
-    <div class="w-50 m-auto m-3 alert alert-success alert-dismissible fade show success-msg" role="alert">
-        <strong>Success : </strong> Data recoreded successfully !
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: 'information recorded'
+            });
+        });
+    </script>
 }
 
 @*heading*@

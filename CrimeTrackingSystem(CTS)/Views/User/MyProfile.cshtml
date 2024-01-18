@@ -5,79 +5,91 @@
 
 }
 
+@if ((string)TempData["update"] =="true")
+{
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: 'profile updated '
+            });
+        });
+    </script>
+}
 
-    @if (ViewBag.profile != null)
-    {
-        <div class="profile">
-            <div class="profile-box">
-                <a href="@Url.Action("EditProfile", "User")" class="text-black" title="edit profile data"><i class="fa-solid fa-pen-to-square"></i></a>
-                <div class="profile-img">
-                    <img src="@Url.Content(ViewBag.profile.Photo)" alt="profile picture" />
+@if (ViewBag.profile != null)
+{
+    <div class="profile">
+        <div class="profile-box">
+            <a href="@Url.Action("EditProfile", "User")" class="text-black" title="edit profile data"><i class="fa-solid fa-pen-to-square"></i></a>
+            <div class="profile-img">
+                <img src="@Url.Content(ViewBag.profile.Photo)" alt="profile picture" />
+            </div>
+            <div class="profile-name">
+                <label>@ViewBag.profile.Username</label>
+            </div>
+            <div class="profile-data">
+                <div>
+                    <p>
+                        <i class="fa-solid fa-id-card-clip"></i>
+                        <label>Your Portal ID</label>
+                    </p>
+                    <label>@ViewBag.profile.RegId</label>
                 </div>
-                <div class="profile-name">
-                    <label>@ViewBag.profile.Username</label>
+                <div>
+                    <p>
+                        <i class="fa-solid fa-hashtag"></i>
+                        <label>Your Pincode</label>
+                    </p>
+                    <label>@ViewBag.profile.Pincode</label>
                 </div>
-                <div class="profile-data">
-                    <div>
-                        <p>
-                            <i class="fa-solid fa-id-card-clip"></i>
-                            <label>Your Portal ID</label>
-                        </p>
-                        <label>@ViewBag.profile.RegId</label>
-                    </div>
-                    <div>
-                        <p>
-                            <i class="fa-solid fa-hashtag"></i>
-                            <label>Your Pincode</label>
-                        </p>
-                        <label>@ViewBag.profile.Pincode</label>
-                    </div>
-                    <div>
-                        <p>
-                            <i class="fa-solid fa-venus-mars"></i>
-                            <label>Your Gender</label>>
-                        </p>
-                        <label>@ViewBag.profile.Gender</label>
-                    </div>
-                    <div>
-                        <p>
-                            <i class="fa-solid fa-heart"></i>
-                            <label>Marital Status</label>
-                        </p>
-                        <label>@ViewBag.profile.Mstatus</label>
-                    </div>
-                    <div>
-                        <p>
-                            <i class="fa-solid fa-building-wheat"></i>
-                            <label>Living Status</label>
-                        </p>
-                        <label>@ViewBag.profile.Lstatus</label>
-                    </div>
-                    <div>
-                        <p>
-                            <i class="fa-solid fa-id-card"></i>
-                            <label>Your Adhaar Number</label>
-                        </p>
-                        <label>@ViewBag.profile.Adhaar</label>
-                    </div>
+                <div>
+                    <p>
+                        <i class="fa-solid fa-venus-mars"></i>
+                        <label>Your Gender</label>
+                    </p>
+                    <label>@ViewBag.profile.Gender</label>
                 </div>
-                <div class="profile-foot">
-                    <div>
-                        <i class="fa-solid fa-envelope"></i>
-                        <label>@ViewBag.profile.Email</label>
-                    </div>
-                    <div>
-                        <i class="fa-solid fa-location-dot"></i>
-                        <label>@ViewBag.profile.Address</label>
-                    </div>
-                    <div>
-                        <i class="fa-solid fa-phone"></i>
-                        <label>@ViewBag.profile.Phone</label>
-                    </div>
+                <div>
+                    <p>
+                        <i class="fa-solid fa-heart"></i>
+                        <label>Marital Status</label>
+                    </p>
+                    <label>@ViewBag.profile.Mstatus</label>
+                </div>
+                <div>
+                    <p>
+                        <i class="fa-solid fa-building-wheat"></i>
+                        <label>Living Status</label>
+                    </p>
+                    <label>@ViewBag.profile.Lstatus</label>
+                </div>
+                <div>
+                    <p>
+                        <i class="fa-solid fa-id-card"></i>
+                        <label>Your Adhaar Number</label>
+                    </p>
+                    <label>@ViewBag.profile.Adhaar</label>
+                </div>
+            </div>
+            <div class="profile-foot">
+                <div>
+                    <i class="fa-solid fa-envelope"></i>
+                    <label>@ViewBag.profile.Email</label>
+                </div>
+                <div>
+                    <i class="fa-solid fa-location-dot"></i>
+                    <label>@ViewBag.profile.Address</label>
+                </div>
+                <div>
+                    <i class="fa-solid fa-phone"></i>
+                    <label>@ViewBag.profile.Phone</label>
                 </div>
             </div>
         </div>
-    }
+    </div>
+}
 
 
 

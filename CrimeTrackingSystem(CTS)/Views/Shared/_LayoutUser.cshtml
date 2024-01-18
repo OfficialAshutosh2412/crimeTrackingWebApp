@@ -7,9 +7,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/style.css" rel="stylesheet" />
+    <!-- Include SweetAlert CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11">
     @RenderSection("head", required: false)
 </head>
-<body>
+<body onload="myfunction()" class="body" vlink="coral" style="background: #e9e9e9; background-size: cover;">
+    @*preloader*@
+    <div class="preloader" id="preloader">
+        <img src="~/Images/loader/Ripple-2.1s-204px.gif" />
+    </div>
     @*header*@
     <nav class="navbar navbar-expand-lg bg-body-tertiary p-0" id="nav">
         <div class="container-fluid justify-content-between ">
@@ -64,6 +70,10 @@
         </div>
     </footer>
 
+
+    @*<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>*@
+    <!-- Include SweetAlert JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         //navbar active link
         const pathName = window.location.pathname;
@@ -86,6 +96,6 @@
     </script>
     <script src="~/Scripts/custom.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
-    
+
 </body>
 </html>

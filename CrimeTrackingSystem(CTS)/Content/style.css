@@ -11,6 +11,12 @@
     z-index:6669999;
     transition:0.5s all ease-in-out;
 }
+/*hidden field*/
+.visually-hidden {
+   
+   
+    display:none;
+}
 .activeLink {
     background: #014a17 !important;
     color: white !important;
@@ -876,6 +882,10 @@
     box-shadow:0px 0px 15px 0px #c8c8c8;
 }
 
+.border-cc .cc-box{
+    border:3px solid #dbdbdb !important;
+}
+
 .member {
     width: 100%;
     display: flex;
@@ -1096,9 +1106,7 @@
     padding: 2%;
     border-radius: 10px;
     box-shadow: 0px 0px 15px 0px #d0d0d0;
-    background-image: url('../img/v904-nunny-017-d.jpg');
-    background-size: cover;
-    background-position: right;
+    background:white;
 }
 
 .profile .profile-img {
@@ -1170,8 +1178,6 @@
     width: 100%;
     margin: 0 auto;
     margin-bottom: 10px;
-    box-shadow: 0px 0px 20px #d9d9d9;
-    background: #cfd8ff;
     padding:1%
 }
 .register-card {
@@ -1191,8 +1197,9 @@
         align-items: center;
         margin: 2%;
         padding: 3%;
-        box-shadow: 0px 0px 20px  #d9d9d9;
-        flex: auto
+        box-shadow: 0px 0px 20px #d9d9d9;
+        flex: auto; background:white;
+        border-radius:5px ;
     }
 
         .register-card div img {

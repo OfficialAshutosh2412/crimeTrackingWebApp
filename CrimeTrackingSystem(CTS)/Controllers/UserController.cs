@@ -5,12 +5,13 @@ using System.Web;
 using System.Web.Mvc;
 using CrimeTrackingSystem_CTS_.Models;
 using System.IO;
+using System.Data.Entity;
 
 namespace CrimeTrackingSystem_CTS_.Controllers
 {
     public class UserController : Controller
     {
-        CTSEntitiesClass _context = new CTSEntitiesClass();
+        readonly CTSEntitiesClass _context = new CTSEntitiesClass();
         // GET: User
         public ActionResult Index()
         {
@@ -18,11 +19,11 @@ namespace CrimeTrackingSystem_CTS_.Controllers
             {
                 return RedirectToAction("Index", "user");
             }
-            
+
             var sessiondata = (string)Session["usermail"];
             //crime
-            var solvedcrimelist = _context.CrimeComplains.Where(model => model.Username == sessiondata && model.Status=="Solved").ToList();
-            var pendcrimelist = _context.CrimeComplains.Where(model => model.Username == sessiondata && model.Status=="Pending").ToList();
+            var solvedcrimelist = _context.CrimeComplains.Where(model => model.Username == sessiondata && model.Status == "Solved").ToList();
+            var pendcrimelist = _context.CrimeComplains.Where(model => model.Username == sessiondata && model.Status == "Pending").ToList();
             var solvedcount = solvedcrimelist.Count();
             var pendcount = pendcrimelist.Count();
             ViewBag.solved = solvedcount;
@@ -66,7 +67,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                 return RedirectToAction("Index", "user");
             }
             var session = (string)Session["usermail"];
-            var profiledata = _context.Signups.FirstOrDefault(model=>model.Email==session);
+            var profiledata = _context.Signups.FirstOrDefault(model => model.Email == session);
 
             if (profiledata == null)
             {
@@ -80,14 +81,110 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         public ActionResult EditProfile()
         {
             var session = (string)Session["usermail"];
-            var profiledata = _context.Signups.FirstOrDefault(model => model.Email == session);
+            var profiledata = _context.Signups.Where(model => model.Email == session).FirstOrDefault();
+            Session["image"] = profiledata.Photo.ToString();
             return View(profiledata);
         }
         //POST:EditProfile
         [HttpPost]
         public ActionResult EditProfile(Signup editFormData)
         {
-            
+            if (ModelState.IsValid == true)
+            {
+                if (editFormData.ImageFile != null)
+                {
+                    HttpPostedFileBase postedFile = editFormData.ImageFile;
+                    string filenameWithoutExtension = Path.GetFileNameWithoutExtension(postedFile.FileName);
+                    string fileExtension = Path.GetExtension(postedFile.FileName);
+                    int lengthOfFile = postedFile.ContentLength;
+                    if (fileExtension.ToLower() == ".jpg" || fileExtension.ToLower() == ".jpeg" || fileExtension.ToLower() == ".JPEG" || fileExtension.ToLower() == ".png")
+                    {
+                        if (lengthOfFile <= 1000000)
+                        {
+                            string actualFilename = filenameWithoutExtension + fileExtension;
+                            editFormData.Photo = "~/UserProfilePicture/" + actualFilename;
+                            actualFilename = Path.Combine(Server.MapPath("~/UserProfilePicture/"), actualFilename);
+                            postedFile.SaveAs(actualFilename);
+                            _context.Entry(editFormData).State = EntityState.Modified;
+                            int a = _context.SaveChanges();
+                            if (a > 0)
+                            {
+                                TempData["update"] = "true";
+                            }
+                            return RedirectToAction("MyProfile", "User");
+                        }
+                        else
+                        {
+                            TempData["SizeError"] = "<script>alert('Error : file is larger than 1MB')</script>";
+                     
+                        }
+                    }
+                    else
+                    {
+                        TempData["ExtensionError"] = "<script>alert('Error : file not supported')</script>";
+                       
+                    }
+                }
+                else
+                {
+                    editFormData.Photo = Session["image"].ToString();
+                    _context.Entry(editFormData).State = EntityState.Modified;
+                    int a = _context.SaveChanges();
+                    if (a > 0)
+                    {
+                        TempData["update"] = "true";
+                    }
+                    return RedirectToAction("MyProfile", "User");
+                }
+            }
+            //if (ModelState.IsValid==true)
+            //{
+            //    var session = (string)Session["usermail"];
+            //    var oldData = _context.Signups.FirstOrDefault(model => model.Email == session);
+            //    if (oldData != null)
+            //    {
+            //        // Update user data
+            //        oldData.Pincode = editFormData.Pincode;
+            //        oldData.Gender = editFormData.Gender;
+            //        oldData.Mstatus = editFormData.Mstatus;
+            //        oldData.Lstatus = editFormData.Lstatus;
+            //        oldData.Adhaar = editFormData.Adhaar;
+            //        oldData.Username = editFormData.Username;
+            //        oldData.Address = editFormData.Address;
+            //        oldData.Phone = editFormData.Phone;
+            //        HttpPostedFileBase postedFile = editFormData.ImageFile;
+            //        if (postedFile != null)
+            //        {
+            //            string filenameWithoutExtension = Path.GetFileNameWithoutExtension(postedFile.FileName);
+            //            string fileExtension = Path.GetExtension(postedFile.FileName);
+            //            int lengthOfFile = postedFile.ContentLength;
+            //            if (fileExtension.ToLower() == ".jpg" || fileExtension.ToLower() == ".jpeg" || fileExtension.ToLower() == ".JPEG" || fileExtension.ToLower() == ".png")
+            //            {
+            //                if (lengthOfFile <= 1000000)
+            //                {
+            //                    string actualFilename = filenameWithoutExtension + fileExtension;
+            //                    oldData.Photo = "~/UserProfilePicture/" + actualFilename;
+            //                    actualFilename = Path.Combine(Server.MapPath("~/UserProfilePicture/"), actualFilename);
+            //                    postedFile.SaveAs(actualFilename);
+            //                }
+            //                else
+            //                {
+            //                    TempData["SizeError"] = "<script>alert('Error : file is larger than 1MB')</script>";
+            //                    return View(oldData);
+            //                }
+            //            }
+            //            else
+            //            {
+            //                TempData["ExtensionError"] = "<script>alert('Error : file not supported')</script>";
+            //                return View(oldData);
+            //            }
+            //        }
+            //        _context.Entry(oldData).State = EntityState.Modified;
+            //        _context.SaveChanges();
+            //        ViewBag.update = "Profile updated...";
+            //        return RedirectToAction("MyProfile", "User");
+            //    }
+            //}
             return View();
         }
 
@@ -99,9 +196,10 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                 return RedirectToAction("Index", "user");
             }
             List<SelectListItem> options = _context.PoliceStations.Select(
-                x => new SelectListItem {
+                x => new SelectListItem
+                {
                     Value = x.PoliceStationName.ToString(),
-                    Text = x.PoliceStationName 
+                    Text = x.PoliceStationName
                 }).ToList();
 
             ViewBag.OptionList = options;
@@ -198,7 +296,8 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         [HttpPost]
         public ActionResult General(GeneralComplain generalFormData)
         {
-            if (ModelState.IsValid) {
+            if (ModelState.IsValid)
+            {
                 //adding data in db
                 generalFormData.Username = (string)Session["usermail"];
                 generalFormData.CurrentDateTime = DateTime.Now.ToString();
@@ -221,7 +320,8 @@ namespace CrimeTrackingSystem_CTS_.Controllers
             return View();
         }
         //GET: Person
-        public ActionResult Person() {
+        public ActionResult Person()
+        {
             if (Session["usermail"] == null)
             {
                 return RedirectToAction("Index", "user");
@@ -400,7 +500,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                 return RedirectToAction("Index", "user");
             }
             var userId = (string)Session["usermail"];
-            var userData = _context.CrimeComplains.Where(model=> model.Username == userId).ToList();
+            var userData = _context.CrimeComplains.Where(model => model.Username == userId).ToList();
             return View(userData);
         }
         //show general complain data
