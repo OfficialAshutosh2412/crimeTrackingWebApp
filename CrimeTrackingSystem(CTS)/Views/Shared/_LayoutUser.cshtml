@@ -9,7 +9,7 @@
     <link href="~/Content/style.css" rel="stylesheet" />
     <!-- Include SweetAlert CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11">
-    @RenderSection("head", required: false)
+    @*@RenderSection("head", required: false)*@
 </head>
 <body onload="myfunction()" class="body" vlink="coral" style="background: #e9e9e9; background-size: cover;">
     @*preloader*@
@@ -37,8 +37,8 @@
                     <li class="nav-item" id="person">
                         <a href="@Url.Action("Person", "User")" class="nav-link text-light"><i class="fa-solid fa-person"></i> Missing Person</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="@Url.Action("Valuable", "User")" class="nav-link text-light" id="valuable"><i class="fa-regular fa-gem"></i> Missing Valuable</a>
+                    <li class="nav-item" id="valuable">
+                        <a href="@Url.Action("Valuable", "User")" class="nav-link text-light" ><i class="fa-regular fa-gem"></i> Missing Valuable</a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link text-light"><i class="fa-solid fa-handshake-angle"></i> Help</a>
@@ -94,8 +94,7 @@
             document.querySelector('#valuable').classList.add("activeLink");
         }
     </script>
-    <script src="~/Scripts/custom.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
-
+    <script src="~/Scripts/custom.js"></script>
 </body>
 </html>

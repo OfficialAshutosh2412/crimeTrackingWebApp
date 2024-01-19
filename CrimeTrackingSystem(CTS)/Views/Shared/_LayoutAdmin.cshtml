@@ -14,7 +14,7 @@
         <div class="admin-title">
             <h3 class="p-2 d-flex align-items-center w-100">
                 <a href="@Url.Action("Index","Admin")"><img src="~/Images/cts_logo.png" alt="cts.png" /></a>
-                &nbsp;|&nbsp;Admin Dashboard
+                &nbsp;|&nbsp;@ViewBag.PageTitle
             </h3>
         </div>
         <div class="admin-items">
@@ -22,7 +22,7 @@
                 <a href="@Url.Action("Index","Admin")" title="Dashboard"><i class="fa-solid fa-house text-light"></i></a>
             </div>
             <div>
-                <a href="#" title="Records"><i class="fa-solid fa-file-signature text-light"></i></a>
+                <a href="@Url.Action("RecordRoom","Admin")" title="Records"><i class="fa-solid fa-file-signature text-light"></i></a>
             </div>
             <div>
                 <a href="#" title="Gallery"><i class="fa-solid fa-images text-light"></i></a>
@@ -49,10 +49,12 @@
     </nav>
     @RenderBody()
     <footer class="admin-foot">
-        <p>All Rights are Reserved &copy;CTS @DateTime.Now.Year</p>
+        <p class="">All Rights are Reserved &copy;CTS @DateTime.Now.Year</p>
     </footer>
 
-    <script src="~/Scripts/custom.js"></script>
+
+
     <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/adminscript.js"></script>
 </body>
 </html>

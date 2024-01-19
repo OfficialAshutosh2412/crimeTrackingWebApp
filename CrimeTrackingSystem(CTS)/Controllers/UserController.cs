@@ -17,7 +17,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         {
             if (Session["usermail"] == null)
             {
-                return RedirectToAction("Index", "user");
+                return RedirectToAction("Login", "Home");
             }
 
             var sessiondata = (string)Session["usermail"];
@@ -64,7 +64,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         {
             if (Session["usermail"] == null)
             {
-                return RedirectToAction("Index", "user");
+                return RedirectToAction("Login", "Home");
             }
             var session = (string)Session["usermail"];
             var profiledata = _context.Signups.FirstOrDefault(model => model.Email == session);
@@ -137,54 +137,6 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                     return RedirectToAction("MyProfile", "User");
                 }
             }
-            //if (ModelState.IsValid==true)
-            //{
-            //    var session = (string)Session["usermail"];
-            //    var oldData = _context.Signups.FirstOrDefault(model => model.Email == session);
-            //    if (oldData != null)
-            //    {
-            //        // Update user data
-            //        oldData.Pincode = editFormData.Pincode;
-            //        oldData.Gender = editFormData.Gender;
-            //        oldData.Mstatus = editFormData.Mstatus;
-            //        oldData.Lstatus = editFormData.Lstatus;
-            //        oldData.Adhaar = editFormData.Adhaar;
-            //        oldData.Username = editFormData.Username;
-            //        oldData.Address = editFormData.Address;
-            //        oldData.Phone = editFormData.Phone;
-            //        HttpPostedFileBase postedFile = editFormData.ImageFile;
-            //        if (postedFile != null)
-            //        {
-            //            string filenameWithoutExtension = Path.GetFileNameWithoutExtension(postedFile.FileName);
-            //            string fileExtension = Path.GetExtension(postedFile.FileName);
-            //            int lengthOfFile = postedFile.ContentLength;
-            //            if (fileExtension.ToLower() == ".jpg" || fileExtension.ToLower() == ".jpeg" || fileExtension.ToLower() == ".JPEG" || fileExtension.ToLower() == ".png")
-            //            {
-            //                if (lengthOfFile <= 1000000)
-            //                {
-            //                    string actualFilename = filenameWithoutExtension + fileExtension;
-            //                    oldData.Photo = "~/UserProfilePicture/" + actualFilename;
-            //                    actualFilename = Path.Combine(Server.MapPath("~/UserProfilePicture/"), actualFilename);
-            //                    postedFile.SaveAs(actualFilename);
-            //                }
-            //                else
-            //                {
-            //                    TempData["SizeError"] = "<script>alert('Error : file is larger than 1MB')</script>";
-            //                    return View(oldData);
-            //                }
-            //            }
-            //            else
-            //            {
-            //                TempData["ExtensionError"] = "<script>alert('Error : file not supported')</script>";
-            //                return View(oldData);
-            //            }
-            //        }
-            //        _context.Entry(oldData).State = EntityState.Modified;
-            //        _context.SaveChanges();
-            //        ViewBag.update = "Profile updated...";
-            //        return RedirectToAction("MyProfile", "User");
-            //    }
-            //}
             return View();
         }
 
@@ -193,7 +145,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         {
             if (Session["usermail"] == null)
             {
-                return RedirectToAction("Index", "user");
+                return RedirectToAction("Login", "Home");
             }
             List<SelectListItem> options = _context.PoliceStations.Select(
                 x => new SelectListItem
@@ -280,7 +232,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         {
             if (Session["usermail"] == null)
             {
-                return RedirectToAction("Index", "user");
+                return RedirectToAction("Login", "Home");
             }
             List<SelectListItem> options = _context.PoliceStations.Select(
                 x => new SelectListItem
@@ -324,7 +276,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         {
             if (Session["usermail"] == null)
             {
-                return RedirectToAction("Index", "user");
+                return RedirectToAction("Login", "Home");
             }
             List<SelectListItem> options = _context.PoliceStations.Select(
                 x => new SelectListItem
@@ -411,7 +363,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         {
             if (Session["usermail"] == null)
             {
-                return RedirectToAction("Index", "user");
+                return RedirectToAction("Login", "Home");
             }
             List<SelectListItem> options = _context.PoliceStations.Select(
                  x => new SelectListItem
@@ -497,7 +449,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         {
             if (Session["usermail"] == null)
             {
-                return RedirectToAction("Index", "user");
+                return RedirectToAction("Login", "Home");
             }
             var userId = (string)Session["usermail"];
             var userData = _context.CrimeComplains.Where(model => model.Username == userId).ToList();
@@ -508,7 +460,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         {
             if (Session["usermail"] == null)
             {
-                return RedirectToAction("Index", "user");
+                return RedirectToAction("Login", "Home");
             }
             var userId = (string)Session["usermail"];
             var userData = _context.GeneralComplains.Where(model => model.Username == userId).ToList();
@@ -519,7 +471,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         {
             if (Session["usermail"] == null)
             {
-                return RedirectToAction("Index", "user");
+                return RedirectToAction("Login", "Home");
             }
             var userId = (string)Session["usermail"];
             var userData = _context.MissingPersons.Where(model => model.Username == userId).ToList();
@@ -530,7 +482,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         {
             if (Session["usermail"] == null)
             {
-                return RedirectToAction("Index", "user");
+                return RedirectToAction("Login", "Home");
             }
             var userId = (string)Session["usermail"];
             var userData = _context.MissingValuables.Where(model => model.Username == userId).ToList();

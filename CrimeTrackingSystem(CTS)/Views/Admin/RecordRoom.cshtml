@@ -1,0 +1,172 @@
+﻿@using CrimeTrackingSystem_CTS_.Models
+@model RecordViewModel
+@{
+    ViewBag.AdminTitle = "Record Room";
+    ViewBag.PageTitle = "Record Room";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="p-2">
+    <button class="btn btn-outline-warning" onclick="activeCrime" id="crimeBtn">Crime Complains</button>
+    <button class="btn btn-outline-warning" onclick="activeGeneral" id="generalBtn">General Complains</button>
+    <button class="btn btn-outline-warning" onclick="activePerson" id="personBtn">Missing Persons</button>
+    <button class="btn btn-outline-warning" onclick="activeValue" id="valueBtn">Missing Valuables</button>
+</div>
+
+@*for crime*@
+<div class="tableForView" id="crimeComplain">
+    <div>
+        <table class="table table-dark">
+            <thead >
+                <tr id="table-head">
+                    <th>ID</th>
+                    <th>Proof</th>
+                    <th>Username</th>
+                    <th>Police Station Name</th>
+                    <th>CrimeType</th>
+                    <th>Involved Person</th>
+                    <th>Local Police Station</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                </trid="table-head">
+            </thead>
+            <tbody>
+                @foreach (var item in Model.CrimeView)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>
+                            <a href="@Url.Content(item.Proofs)" target="_blank"><img src="@Url.Content(item.Proofs)" class="viewImage" alt="proofs" /></a>
+                        </td>
+                        <td>@item.Username</td>
+                        <td>@item.PoliceStationName</td>
+                        <td>@item.CrimeType</td>
+                        <td>@item.InvolvedPersons</td>
+                        <td>@item.CrimeStation</td>
+                        <td>@item.CurrentDateTime</td>
+                        <td>@item.Status</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@*for general*@
+<div class="tableForView hidden-table" id="generalComplain">
+    <div>
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Police Station Name</th>
+                    <th>Subject</th>
+                    <th>Involved Person</th>
+                    <th>Details</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.GeneralView)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Username</td>
+                        <td>@item.PoliceStationName</td>
+                        <td>@item.Subject</td>
+                        <td>@item.InvolvedPersons</td>
+                        <td>@item.Details</td>
+                        <td>@item.CurrentDateTime</td>
+                        <td>@item.Status</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@*for persons*@
+<div class="tableForView hidden-table" id="missingPerson">
+    <div>
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Person Image</th>
+                    <th>Username</th>
+                    <th>Police Station Name</th>
+                    <th>Person Name</th>
+                    <th>Person Phone</th>
+                    <th>Last Location</th>
+                    <th>Person Email</th>
+                    <th>Person Details</th>
+                    <th>Ransom</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.PersonView)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>
+                            <a href="@Url.Content(item.PersonImage)" target="_blank"><img src="@Url.Content(@item.PersonImage)" class="viewImage" alt="proofs" /></a>
+                        </td>
+                        <td>@item.Username</td>
+                        <td>@item.PoliceStationName</td>
+                        <td>@item.Person</td>
+                        <td>@item.PersonPhone</td>
+                        <td>@item.LastLocation</td>
+                        <td>@item.PersonEmail</td>
+                        <td>@item.Details</td>
+                        <td>@item.Ransom</td>
+                        <td>@item.CurrentDateTime</td>
+                        <td>@item.Status</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@*for valuables*@
+<div class="tableForView hidden-table" id="missingValue">
+    <div>
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Valuable Image</th>
+                    <th>Username</th>
+                    <th>Police Station Name</th>
+                    <th>Valuable Type</th>
+                    <th>Valuable Cost</th>
+                    <th>Suspects</th>
+                    <th>Details</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ValueView)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>
+                            <a href="@Url.Content(item.ReciptImage)" target="_blank"><img src="@Url.Content(item.ReciptImage)" class="viewImage" alt="proofs" /></a>
+                        </td>
+                        <td>@item.Username</td>
+                        <td>@item.PoliceStationName</td>
+                        <td>@item.ValuableType</td>
+                        <td>@item.ValuableCost</td>
+                        <td>@item.Suspect</td>
+                        <td>@item.Details</td>
+                        <td>@item.CurrentDateTime</td>
+                        <td>@item.Status</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

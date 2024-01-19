@@ -186,6 +186,7 @@
     <Compile Include="Models\PoliceStation.cs">
       <DependentUpon>CTSModels.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\RecordViewModel.cs" />
     <Compile Include="Models\Signup.cs">
       <DependentUpon>CTSModels.tt</DependentUpon>
     </Compile>
@@ -260,6 +261,7 @@
       <DependentUpon>CTSModels.edmx</DependentUpon>
       <LastGenOutput>CTSModels.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\adminscript.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -337,6 +339,7 @@
     <Content Include="Views\User\MissingValuableData.cshtml" />
     <Content Include="Views\User\MyProfile.cshtml" />
     <Content Include="Views\User\EditProfile.cshtml" />
+    <Content Include="Views\Admin\RecordRoom.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Missing\" />

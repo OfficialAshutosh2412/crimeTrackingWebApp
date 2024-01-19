@@ -13,25 +13,43 @@
 }
 /*hidden field*/
 .visually-hidden {
-   
-   
     display:none;
 }
+.hidden-table{
+    display:none;
+}
+/*table overflow*/
+.tableForView {
+    width:95%;
+    margin:1% auto;
+    height:100vh;
+    overflow: scroll;
+    margin:0 auto;
+}
+    .tableForView .viewImage{
+        height:70px;
+        width:70px;
+        object-fit:cover;
+        object-position:top;
+        border-radius:4px;
+    }
+/*.tableForView > thead {
+    background: #ffc107;
+}*/
 .activeLink {
-    background: #014a17 !important;
-    color: white !important;
+    background: White !important;
+    color: black !important;
     height: 100%;
-    border-radius: 5px
+    border-radius: 5px;
+    transition: 0.5s all ease-in-out;
 }
-.useractivelink {
-    background:     #000 !important;
-    color: white !important;
-    height: 100%;
-    border-radius: 5px
-}
-.theme-hide{
-    transform:translateX(-100%);
-}
+    .activeLink a{
+        color:black !important;
+        font-weight:bolder;
+    }
+    .theme-hide {
+        transform: translateX(-100%);
+    }
 .themes ul {
     width: fit-content;
     padding-right:30px;
@@ -1298,16 +1316,19 @@
 
 .admin-foot {
     text-align: center;
-    padding: 2px;
-    color: #fff
+    color: #fff;
+    background:#000000;
 }
+    .admin-foot p{
+        padding:5px;
+    }
 
-.admin-content-height .faq-form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1%;
-}
+    .admin-content-height .faq-form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1%;
+    }
 
     .admin-content-height .faq-form .cc-box {
         height: 40px;
@@ -1474,6 +1495,10 @@
         margin-left: 20px
     }
 @media screen and (max-width:880px) {
+    .navbar-nav li{
+        padding-left:2%;
+    }
+
     .faq-form, .hero, .signup {
         width: 100%
     }
@@ -1691,10 +1716,6 @@
 
     .register-card div {
         width: 200px
-    }
-
-    .complain-form-structure, .crime-complain, .missing-form, .valuable-container {
-        
     }
 
     .complain-form, .crime-complain-form {

@@ -1,7 +1,7 @@
-﻿//navbar toggler
-document.querySelector('#login-tog').addEventListener("click", () => {
-    document.querySelector('.signin').classList.toggle('show-login');
-});
+﻿////navbar toggler
+//document.querySelector('#login-tog').addEventListener("click", () => {
+//    document.querySelector('.signin').classList.toggle('show-login');
+//});
 //tools toggler
 document.querySelector('#tool-toggler').addEventListener("click", () => {
     document.querySelector('.top-bar').classList.toggle('hide-top');
@@ -44,29 +44,13 @@ function showSetting() {
     document.querySelector('.whats').classList.toggle('showwhats');
 }
 //instruction
-
-
 function guide() {
     let panel = document.querySelector('#guide-panel');
-    //if (panel.style.visibility == "hidden") {
-    //    panel.style.visibility = "visible";
-    //    panel.style.opacity = "1";
-    //}
-    //else {
-    //    panel.style.visibility = "hidden";
-    //    panel.style.opacity = "0";
-    //}
     panel.style.cssText = "opacity:1;visibility:visible;transform:scale(1);";
 }
 function guideclose() {
     let panel = document.querySelector('#guide-panel');
-    //if (panel.style.visibility == "visible") {
-    //    panel.style.visibility = "hidden";
-    //    panel.style.opacity = "0";
-    //}
-    //else {
-    //    panel.style.visibility = "visible";
-    //    panel.style.opacity = "1";
-    //}
     panel.style.cssText = "opacity:0;transform:scale(0.5);visibility:hidden;";
 }
+
+
