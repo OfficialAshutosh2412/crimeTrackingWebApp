@@ -6,18 +6,23 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 <div class="p-2">
-    <button class="btn btn-outline-warning" onclick="activeCrime" id="crimeBtn">Crime Complains</button>
-    <button class="btn btn-outline-warning" onclick="activeGeneral" id="generalBtn">General Complains</button>
-    <button class="btn btn-outline-warning" onclick="activePerson" id="personBtn">Missing Persons</button>
-    <button class="btn btn-outline-warning" onclick="activeValue" id="valueBtn">Missing Valuables</button>
+    <button class="btn btn-sm btn-outline-warning" id="crimeBtn">Crime Complains</button>
+    <button class="btn btn-sm btn-outline-warning" id="generalBtn">General Complains</button>
+    <button class="btn btn-sm btn-outline-warning" id="personBtn">Missing Persons</button>
+    <button class="btn btn-sm btn-outline-warning" id="valueBtn">Missing Valuables</button>
+    <button class="btn btn-sm btn-secondary border border-light" id="crimeprint">print data</button>
+    <button class="btn btn-sm btn-secondary border border-light" id="generalprint">print data</button>
+    <button class="btn btn-sm btn-secondary border border-light" id="personprint">print data</button>
+    <button class="btn btn-sm btn-secondary border border-light" id="valueprint">print data</button>
 </div>
 
 @*for crime*@
-<div class="tableForView" id="crimeComplain">
+
+<div class="tableForView border border-warning rounded-2" id="crimeComplain">
     <div>
-        <table class="table table-dark">
-            <thead >
-                <tr id="table-head">
+        <table class="table">
+            <thead class="table-secondary">
+                <tr>
                     <th>ID</th>
                     <th>Proof</th>
                     <th>Username</th>
@@ -27,9 +32,9 @@
                     <th>Local Police Station</th>
                     <th>Date</th>
                     <th>Status</th>
-                </trid="table-head">
+                </tr>
             </thead>
-            <tbody>
+            <tbody class="table-dark">
                 @foreach (var item in Model.CrimeView)
                 {
                     <tr>
@@ -51,10 +56,10 @@
     </div>
 </div>
 @*for general*@
-<div class="tableForView hidden-table" id="generalComplain">
+<div class="tableForView border border-warning hidden-table rounded-2" id="generalComplain">
     <div>
-        <table class="table table-dark">
-            <thead>
+        <table class="table">
+            <thead class="table-secondary">
                 <tr>
                     <th>ID</th>
                     <th>Username</th>
@@ -66,7 +71,7 @@
                     <th>Status</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="table-dark">
                 @foreach (var item in Model.GeneralView)
                 {
                     <tr>
@@ -85,10 +90,10 @@
     </div>
 </div>
 @*for persons*@
-<div class="tableForView hidden-table" id="missingPerson">
+<div class="tableForView border border-warning hidden-table rounded-2" id="missingPerson">
     <div>
-        <table class="table table-dark">
-            <thead>
+        <table class="table">
+            <thead class="table-secondary">
                 <tr>
                     <th>ID</th>
                     <th>Person Image</th>
@@ -104,7 +109,7 @@
                     <th>Status</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="table-dark">
                 @foreach (var item in Model.PersonView)
                 {
                     <tr>
@@ -129,10 +134,10 @@
     </div>
 </div>
 @*for valuables*@
-<div class="tableForView hidden-table" id="missingValue">
+<div class="tableForView border border-warning hidden-table rounded-2" id="missingValue">
     <div>
-        <table class="table table-dark">
-            <thead>
+        <table class="table">
+            <thead class="table-secondary">
                 <tr>
                     <th>ID</th>
                     <th>Valuable Image</th>
@@ -146,7 +151,7 @@
                     <th>Status</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="table-dark">
                 @foreach (var item in Model.ValueView)
                 {
                     <tr>
