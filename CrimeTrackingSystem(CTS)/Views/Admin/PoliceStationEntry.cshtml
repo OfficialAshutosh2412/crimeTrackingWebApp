@@ -1,0 +1,50 @@
+﻿@model IEnumerable<CrimeTrackingSystem_CTS_.Models.PoliceStation>
+@{
+    ViewBag.AdminTitle = "PoliceStationEntry";
+    ViewBag.PageTitle = "Police Stations Records";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="p-2">
+    <a class="btn btn-sm btn-outline-warning" href="@Url.Action("PoliceStationEntryInsertion","Admin")">create new entry</a>
+    <button class="btn btn-sm btn-secondary border border-light" onclick="stationListPrint()">print data</button>
+</div>
+<div class="tableForView border border-warning rounded-2" id="policestationdata">
+    <div>
+        <table class="table">
+            <thead class="table-secondary">
+                <tr>
+                    <th>ID</th>
+                    <th>Police Station Photo</th>
+                    <th>Police Station</th>
+                    <th>Chowki Incharge</th>
+                    <th>CUG no(first)</th>
+                    <th>CUG no(second)</th>
+                    <th>Agent</th>
+                    <th>Agent phone no.</th>
+                </tr>
+            </thead>
+            <tbody class="table-dark">
+                @if (Model != null)
+                {
+                    foreach (var listdata in Model)
+                    {
+                        <tr>
+                            <td>@listdata.Id</td>
+                            <td>
+                                <a href="@Url.Content(listdata.PoliceStationImage)" target="_blank"><img src="@Url.Content(listdata.PoliceStationImage)" class="viewImage" alt="police station image" /></a>
+                            </td>
+                            <td>@listdata.PoliceStationName</td>
+                            <td>@listdata.ChowkiIncharge</td>
+                            <td>@listdata.CUGNumberOne</td>
+                            <td>@listdata.CUGNumberSecond</td>
+                            <td>@listdata.Agent</td>
+                            <td>@listdata.AgentPhone</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

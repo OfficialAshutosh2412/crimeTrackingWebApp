@@ -66,9 +66,9 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                         //setting actuall file with extension into filename without extension
                         string actualFilename = filenameWithoutExtension + fileExtension;
                         //passing path of image with folder into database
-                        formDataOfSignup.Photo = "~/UserProfilePicture/" + actualFilename;
+                        formDataOfSignup.Photo = "~/Uploads/UserProfileImages/" + actualFilename;
                         //mapping server image folder
-                        actualFilename = Path.Combine(Server.MapPath("~/UserProfilePicture/"), actualFilename);
+                        actualFilename = Path.Combine(Server.MapPath("~/Uploads/UserProfileImages/"), actualFilename);
                         //saving the file into folder
                         formDataOfSignup.ImageFile.SaveAs(actualFilename);
                         if (formDataOfSignup.Role == "98u9d8uwr3(9ih(8H8&67^g&UyGIuh(7t6G^F4d4@A#24545fGbuyb*Y(8jIj(87Re54#qW")

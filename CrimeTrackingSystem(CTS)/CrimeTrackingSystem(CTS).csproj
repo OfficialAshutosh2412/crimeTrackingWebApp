@@ -340,12 +340,15 @@
     <Content Include="Views\User\MyProfile.cshtml" />
     <Content Include="Views\User\EditProfile.cshtml" />
     <Content Include="Views\Admin\RecordRoom.cshtml" />
+    <Content Include="Views\Admin\PoliceStationEntry.cshtml" />
+    <Content Include="Views\Admin\PoliceStationEntryInsertion.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Missing\" />
-    <Folder Include="ProofData\" />
-    <Folder Include="UserProfilePicture\" />
-    <Folder Include="Valuables\" />
+    <Folder Include="Uploads\CrimeComplainProofs\" />
+    <Folder Include="Uploads\MissingPersonImages\" />
+    <Folder Include="Uploads\MissingValuableImages\" />
+    <Folder Include="Uploads\PoliceStationImages\" />
+    <Folder Include="Uploads\UserProfileImages\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

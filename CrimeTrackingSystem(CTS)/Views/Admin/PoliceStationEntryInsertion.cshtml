@@ -1,0 +1,103 @@
+﻿@model CrimeTrackingSystem_CTS_.Models.PoliceStation
+@{
+    ViewBag.AdminTitle = "Police Station Insertion";
+    ViewBag.PageTitle = "Police Stations Insertion";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@Html.Raw(TempData["SizeError"])
+@Html.Raw(TempData["ExtensionError"])
+@if ((string)TempData["result"] == "true")
+{
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: 'data recorded successfully !'
+            });
+        });
+    </script>
+}
+
+@*form*@
+<div class="center-div" id="createForm">
+    @using (Html.BeginForm("PoliceStationEntryInsertion", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="policeContainer">
+            <div class="fixedFormHead">
+                <h5>create new entry</h5>
+                <a href="@Url.Action("PoliceStationEntry", "Admin")" class="btn btn-sm btn-danger" aria-label="Close" onclick="hidePoliceStationForm()">
+                    <span aria-hidden="true">&times;</span>
+                </a>
+            </div>
+            <div class="policeItem">
+                <div>
+                    <span>
+                        <i class="fa-solid fa-star"></i>
+                        @Html.LabelFor(model => model.ChowkiIncharge)
+                        <small>@Html.ValidationMessageFor(model => model.ChowkiIncharge, "", new { @class = "text-danger fw-bolder" })</small>
+                    </span>
+                    @Html.EditorFor(model => model.ChowkiIncharge, new { htmlAttributes = new { @class = "cc-box" } })
+                </div>
+                <div>
+                    <span>
+                        <i class="fa-solid fa-pen-nib"></i>
+                        @Html.LabelFor(model => model.PoliceStationName)
+                        <small>@Html.ValidationMessageFor(model => model.PoliceStationName, "", new { @class = "text-danger fw-bolder" })</small>
+                    </span>
+                    @Html.EditorFor(model => model.PoliceStationName, new { htmlAttributes = new { @class = "cc-box" } })
+                </div>
+                <div>
+                    <div>
+                        <span>
+                            <i class="fa-solid fa-pen-nib"></i>
+                            @Html.LabelFor(model => model.Agent)
+                            <small>@Html.ValidationMessageFor(model => model.Agent, "", new { @class = "text-danger fw-bolder" })</small>
+                        </span>
+                        @Html.EditorFor(model => model.Agent, new { htmlAttributes = new { @class = "cc-box" } })
+                    </div>
+                </div>
+            </div>
+            <div class="policeItem">
+                <div>
+                    <span>
+                        <i class="fa-solid fa-tty"></i>
+                        @Html.LabelFor(model => model.CUGNumberOne)
+                        <small>@Html.ValidationMessageFor(model => model.CUGNumberOne, "", new { @class = "text-danger fw-bolder" })</small>
+                    </span>
+                    @Html.EditorFor(model => model.CUGNumberOne, new { htmlAttributes = new { @class = "cc-box" } })
+                </div>
+                <div>
+                    <span>
+                        <i class="fa-solid fa-tty"></i>
+                        @Html.LabelFor(model => model.CUGNumberSecond)
+                        <small>@Html.ValidationMessageFor(model => model.CUGNumberSecond, "", new { @class = "text-danger fw-bolder" })</small>
+                    </span>
+                    @Html.EditorFor(model => model.CUGNumberSecond, new { htmlAttributes = new { @class = "cc-box" } })
+                </div>
+            </div>
+            <div class="policeItem">
+                <div>
+                    <span>
+                        <i class="fa-solid fa-mobile"></i>
+                        @Html.LabelFor(model => model.AgentPhone)
+                        <small>@Html.ValidationMessageFor(model => model.AgentPhone, "", new { @class = "text-danger fw-bolder" })</small>
+                    </span>
+                    @Html.EditorFor(model => model.AgentPhone, new { htmlAttributes = new { @class = "cc-box" } })
+                </div>
+                <div>
+                    <span>
+                        <i class="fa-solid fa-mobile"></i>
+                        @Html.LabelFor(model => model.PoliceStationImage)
+                        <small>@Html.ValidationMessageFor(model => model.ImageFile, "", new { @class = "text-danger fw-bolder" })</small>
+                    </span>
+                    <input type="file" name="ImageFile" class="cc-box" />
+                </div>
+            </div>
+            <div class="policeItem">
+                <div><button class="btn btn-primary">Insert row</button></div>
+            </div>
+        </div>
+    }
+</div>

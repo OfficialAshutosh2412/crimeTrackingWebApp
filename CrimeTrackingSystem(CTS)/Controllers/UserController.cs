@@ -102,8 +102,8 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                         if (lengthOfFile <= 1000000)
                         {
                             string actualFilename = filenameWithoutExtension + fileExtension;
-                            editFormData.Photo = "~/UserProfilePicture/" + actualFilename;
-                            actualFilename = Path.Combine(Server.MapPath("~/UserProfilePicture/"), actualFilename);
+                            editFormData.Photo = "~/Uploads/UserProfileImages/" + actualFilename;
+                            actualFilename = Path.Combine(Server.MapPath("~/Uploads/UserProfileImages/"), actualFilename);
                             postedFile.SaveAs(actualFilename);
                             _context.Entry(editFormData).State = EntityState.Modified;
                             int a = _context.SaveChanges();
@@ -186,10 +186,10 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                         string actualFilename = filenameWithoutExtension + fileExtension;
 
                         //passing path of image with folder into database
-                        crimeFormData.Proofs = "~/ProofData/" + actualFilename;
+                        crimeFormData.Proofs = "~/Uploads/CrimeComplainProofs/" + actualFilename;
 
                         //mapping server image folder
-                        actualFilename = Path.Combine(Server.MapPath("~/ProofData/"), actualFilename);
+                        actualFilename = Path.Combine(Server.MapPath("~/Uploads/CrimeComplainProofs/"), actualFilename);
 
                         //saving the file into folder
                         crimeFormData.UploadImage.SaveAs(actualFilename);
@@ -317,10 +317,10 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                         string actualFilename = filenameWithoutExtension + fileExtension;
 
                         //passing path of image with folder into database
-                        personFormData.PersonImage = "~/Missing/" + actualFilename;
+                        personFormData.PersonImage = "~/Uploads/MissingPersonImages/" + actualFilename;
 
                         //mapping server image folder
-                        actualFilename = Path.Combine(Server.MapPath("~/Missing/"), actualFilename);
+                        actualFilename = Path.Combine(Server.MapPath("~/Uploads/MissingPersonImages/"), actualFilename);
 
                         //saving the file into folder
                         personFormData.MissingImageFile.SaveAs(actualFilename);
@@ -404,10 +404,10 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                         string actualFilename = filenameWithoutExtension + fileExtension;
 
                         //passing path of image with folder into database
-                        valueFormData.ReciptImage = "~/Valuables/" + actualFilename;
+                        valueFormData.ReciptImage = "~/Uploads/MissingValuableImages/" + actualFilename;
 
                         //mapping server image folder
-                        actualFilename = Path.Combine(Server.MapPath("~/Valuables/"), actualFilename);
+                        actualFilename = Path.Combine(Server.MapPath("~/Uploads/MissingValuableImages/"), actualFilename);
 
                         //saving the file into folder
                         valueFormData.ValuableImageFile.SaveAs(actualFilename);
