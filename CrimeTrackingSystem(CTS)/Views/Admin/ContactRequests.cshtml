@@ -1,0 +1,45 @@
+﻿@model IEnumerable<CrimeTrackingSystem_CTS_.Models.Contact>
+@{
+    ViewBag.AdminTitle = "Contact Requests";
+    ViewBag.PageTitle = "Contact Requests";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="p-2">
+    <a class="btn btn-sm btn-outline-warning" href="@Url.Action("ContactRequestReply","Admin")">create new entry</a>
+    <button class="btn btn-sm btn-secondary border border-light" onclick="stationListPrint()">print data</button>
+</div>
+
+<div class="tableForView border border-warning rounded-2" id="policestationdata">
+    <div>
+        <table class="table">
+            <thead class="table-secondary">
+                <tr>
+                    <th>ID</th>
+                    <th>Fullname</th>
+                    <th>E-mail</th>
+                    <th>Phone</th>
+                    <th>Purpose</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody class="table-dark table-body">
+                @if (Model != null)
+                {
+                    foreach (var listdata in Model)
+                    {
+                        <tr>
+                            <td>@listdata.Id</td>
+                            <td>@listdata.Fullname</td>
+                            <td>@listdata.Email</td>
+                            <td>@listdata.Phone</td>
+                            <td>@listdata.Purpose</td>
+                            <td>@listdata.Details</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

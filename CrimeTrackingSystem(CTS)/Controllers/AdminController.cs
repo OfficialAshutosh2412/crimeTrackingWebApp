@@ -5,6 +5,9 @@ using System.Web;
 using System.Web.Mvc;
 using CrimeTrackingSystem_CTS_.Models;
 using System.IO;
+using System.Net;
+using System.Net.Mail;
+
 
 namespace CrimeTrackingSystem_CTS_.Controllers
 {
@@ -132,7 +135,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                         // Clearing ModelState to avoid displaying previous validation errors
                         ModelState.Clear();
                         TempData["result"] = "true";
-                        return RedirectToAction("PoliceStationEntryInsertion","Admin");
+                        return RedirectToAction("PoliceStationEntryInsertion", "Admin");
                     }
                     else
                     {
@@ -145,6 +148,80 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                 }
             }
             return View();
+        }
+        //GET : Contact Requests
+        public ActionResult ContactRequests()
+        {
+            if (Session["adminmail"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
+            var contactData = _context.Contacts.ToList();
+            return View(contactData);
+        }
+        //GET : Contact Request Reply
+        public ActionResult ContactRequestReply()
+        {
+            if (Session["adminmail"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
+            List<Contact> emailList = _context.Contacts.ToList();
+            SelectList emailSelectList = new SelectList(emailList, "Email", "Email");
+            ViewBag.listOfEmail = emailSelectList;
+            var replyModel = new EmailReplyModel();
+            return View(replyModel);
+        }
+        //POST: Contact request reply
+        [HttpPost]
+        public ActionResult ContactRequestReply(EmailReplyModel replyFormData)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    Console.WriteLine("start sending");
+                    Contact selectedEmailAddress = _context.Contacts.FirstOrDefault(x => x.Email == replyFormData.OriginalEmail);
+                    if (selectedEmailAddress != null)
+                    {
+                        string smtpUserName;
+                        string smtpPassword;
+
+                        smtpUserName = System.Configuration.ConfigurationManager.AppSettings["myMailAddress"];
+                        smtpPassword = System.Configuration.ConfigurationManager.AppSettings["usernameForAspDotNetMVC"];
+                        MailMessage mail = new MailMessage();
+                        SmtpClient smtp_Client = new SmtpClient(System.Configuration.ConfigurationSettings.AppSettings["smtpClient"]);                                                
+                        smtp_Client.Port = Convert.ToInt32(System.Configuration.ConfigurationSettings.AppSettings["smtpPort"]);
+                        smtp_Client.EnableSsl = Convert.ToBoolean(System.Configuration.ConfigurationSettings.AppSettings["enableSSL"]);
+                        mail.From = new MailAddress(smtpUserName); 
+                        mail.To.Add(selectedEmailAddress.Email);
+                        mail.Subject = "Regarding your contact request to CTS Portal";
+                        mail.Body = ("Name : " + selectedEmailAddress.Fullname.ToString() + Environment.NewLine + "Message : " + replyFormData.ReplyContent.ToString());
+                        bool useDefaultCredentials = Convert.ToBoolean(System.Configuration.ConfigurationManager.AppSettings["useDefaultCredentials"]);
+                        smtp_Client.UseDefaultCredentials = useDefaultCredentials;
+                        smtp_Client.Credentials = new System.Net.NetworkCredential(smtpUserName, smtpPassword);
+                        smtp_Client.Send(mail);
+                        Response.Write("<script>alert('sent')</script>");
+                        ModelState.Clear();
+                        TempData["result"] = "true";
+                        Response.Write("<script>alert('email sent')</script>");
+                        Console.WriteLine("sent");
+                        return RedirectToAction("ContactRequestReply", "Admin");
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError(string.Empty, $"An error occured while sending email : {ex.Message}");
+                }
+            }
+
+            List<Contact> emailList = _context.Contacts.ToList();
+            SelectList emailSelectList = new SelectList(emailList, "Email", "Email");
+            ViewBag.listOfEmail = emailSelectList;
+            var replyModel = new EmailReplyModel();
+            return View(replyModel);
+
         }
     }
 }

@@ -9,9 +9,14 @@ if (pageName === "RecordRoom" || pageName === "recordroom") {
     document.querySelector('#adminrecord').classList.add("admin-nav-active");
 }
 if (pageName === "login" || pageName === "Login") {
-    document.querySelector('#loginclick').classList.add("activeLink");
+    document.querySelector('#loginclick').classList.add("admin-nav-active");
 }
-
+if (pageName === "policestationentry" || pageName === "PoliceStationEntry") {
+    document.querySelector('#PoliceStationEntry').classList.add("admin-nav-active");
+}
+if (pageName === "contactrequests" || pageName === "ContactRequests") {
+    document.querySelector('#ContactRequests').classList.add("admin-nav-active");
+}
 // initials records css
 document.querySelector('#crimeBtn').classList.add("bg-warning");
 document.querySelector('#crimeBtn').classList.add("text-dark");

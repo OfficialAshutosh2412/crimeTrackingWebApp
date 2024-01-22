@@ -1,0 +1,58 @@
+﻿@model CrimeTrackingSystem_CTS_.Models.EmailReplyModel
+@{
+    ViewBag.AdminTitle = "Contact Request Reply";
+    ViewBag.PageTitle = "Contact Request Reply";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@if ((string)TempData["result"] == "true")
+{
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: 'data recorded successfully !'
+            });
+        });
+    </script>
+}
+@*form*@
+<div class="center-div" id="createForm">
+    @using (Html.BeginForm("ContactRequestReply", "Admin", FormMethod.Post))
+    {
+        <div class="policeContainer">
+            <div class="fixedFormHead">
+                <h5>create new entry</h5>
+                <a href="@Url.Action("ContactRequests", "Admin")" class="btn btn-sm btn-danger" aria-label="Close" onclick="hidePoliceStationForm()">
+                    <span aria-hidden="true">&times;</span>
+                </a>
+            </div>
+            <div class="policeItem">
+                <div>
+                    <span>
+                        <i class="fa-solid fa-star"></i>
+                        @Html.LabelFor(model => model.OriginalEmail)
+                        <small>@Html.ValidationMessageFor(model => model.OriginalEmail, "", new { @class = "text-danger fw-bolder" })</small>
+                    </span>
+                    @Html.DropDownListFor(model => model.OriginalEmail, (SelectList)ViewBag.listOfEmail, "select an email", new { @class = "cc-box" })
+                </div>
+            </div>
+            <div class="policeItem">
+                <div>
+                    <span>
+                        <i class="fa-solid fa-star"></i>
+                        @Html.LabelFor(model => model.ReplyContent)
+                        <small>@Html.ValidationMessageFor(model => model.ReplyContent, "", new { @class = "text-danger fw-bolder" })</small>
+                    </span>
+                    @Html.TextAreaFor(model => model.ReplyContent, new { rows = 4, @class = "cc-box" })
+                </div>
+            </div>
+            <div class="policeItem">
+                <div>
+                    <button class="btn btn-primary">send</button>
+                </div>
+            </div>
+        </div>
+    }
+</div>
