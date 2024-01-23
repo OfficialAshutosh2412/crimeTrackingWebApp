@@ -221,7 +221,31 @@ namespace CrimeTrackingSystem_CTS_.Controllers
             ViewBag.listOfEmail = emailSelectList;
             var replyModel = new EmailReplyModel();
             return View(replyModel);
-
+        }
+        //GET : FAQ
+        public ActionResult FaqRecords()
+        {
+            var faqData = _context.FAQs.ToList();
+            return View(faqData);
+        }
+        //GET : FAQ Insertion
+        public ActionResult FaqRecordInsertion()
+        {
+            return View();
+        }
+        //POST : FAQ Insertion
+        [HttpPost]
+        public ActionResult FaqRecordInsertion(FAQ faqFormData)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.FAQs.Add(faqFormData);
+                _context.SaveChanges();
+                TempData["result"] = "true";
+                ModelState.Clear();
+                return RedirectToAction("FaqRecordInsertion", "Admin");
+            }
+            return View();
         }
     }
 }

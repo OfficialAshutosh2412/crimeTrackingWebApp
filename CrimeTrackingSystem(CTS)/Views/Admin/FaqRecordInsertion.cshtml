@@ -1,0 +1,60 @@
+﻿@model CrimeTrackingSystem_CTS_.Models.FAQ
+@{
+    ViewBag.AdminTitle = "FAQ New Entry";
+    ViewBag.PageTitle = "FAQ New Entry";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@if ((string)TempData["result"] == "true")
+{
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: 'data recorded successfully !'
+            });
+        });
+    </script>
+}
+@*form*@
+<div class="center-div">
+    @using (Html.BeginForm("FaqRecordInsertion", "Admin", FormMethod.Post))
+    {
+        <div class="policeContainer">
+            <div class="fixedFormHead">
+                <h5>create new entry</h5>
+                <a href="@Url.Action("FaqRecords", "Admin")" class="btn btn-sm btn-danger" aria-label="Close" onclick="hidePoliceStationForm()">
+                    <span aria-hidden="true">&times;</span>
+                </a>
+            </div>
+            <div class="policeItem">
+                <div>
+                    <span>
+                        <i class="fa-solid fa-star"></i>
+                        @Html.LabelFor(model => model.Questions)
+                        <small>@Html.ValidationMessageFor(model => model.Questions, "", new { @class = "text-danger fw-bolder" })</small>
+                    </span>
+                    @Html.EditorFor(model => model.Questions, new { htmlAttributes = new { @class = "cc-box" } })
+                </div>
+            </div>
+            <div class="policeItem">
+                <div>
+                    <span>
+                        <i class="fa-solid fa-star"></i>
+                        @Html.LabelFor(model => model.Answer)
+                        <small>@Html.ValidationMessageFor(model => model.Answer, "", new { @class = "text-danger fw-bolder" })</small>
+                    </span>
+                    @Html.TextAreaFor(model => model.Answer, new { rows = 4, @class = "cc-box" })
+                </div>
+            </div>
+            <div class="policeItem">
+                <div>
+                    <button class="btn btn-primary">Upload</button>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+

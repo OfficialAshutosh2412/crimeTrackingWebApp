@@ -17,6 +17,9 @@ if (pageName === "policestationentry" || pageName === "PoliceStationEntry") {
 if (pageName === "contactrequests" || pageName === "ContactRequests") {
     document.querySelector('#ContactRequests').classList.add("admin-nav-active");
 }
+if (pageName === "faqrecords" || pageName === "FaqRecords") {
+    document.querySelector('#FaqRecords').classList.add("admin-nav-active");
+}
 // initials records css
 document.querySelector('#crimeBtn').classList.add("bg-warning");
 document.querySelector('#crimeBtn').classList.add("text-dark");
@@ -193,6 +196,26 @@ pvalue.addEventListener('click', () => {
 //printing police station data
 function stationListPrint() {
     let policedata = document.querySelector('#policestationdata');
+    var printWindow = window.open('', '_blank');
+    var stylesheets = document.styleSheets;
+    for (var i = 0; i < stylesheets.length; i++) {
+        printWindow.document.write('<link rel="stylesheet" type="text/css" href="' + stylesheets[i].href + '">');
+    }
+    printWindow.document.write('<style type="text/css"> @page { size: landscape; } </style>');
+    let printing = policedata;
+    if (printing) {
+        printWindow.document.write(policedata.outerHTML);
+        printWindow.document.write('</body></html>');
+        printWindow.document.close();
+        printWindow.print();
+    } else {
+        console.error("content not found");
+    }
+}
+//printing Faq Records
+faqRecord
+function FaqRecordPrint() {
+    let policedata = document.querySelector('#faqRecord');
     var printWindow = window.open('', '_blank');
     var stylesheets = document.styleSheets;
     for (var i = 0; i < stylesheets.length; i++) {

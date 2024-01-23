@@ -345,6 +345,8 @@
     <Content Include="Views\Admin\PoliceStationEntryInsertion.cshtml" />
     <Content Include="Views\Admin\ContactRequests.cshtml" />
     <Content Include="Views\Admin\ContactRequestReply.cshtml" />
+    <Content Include="Views\Admin\FaqRecords.cshtml" />
+    <Content Include="Views\Admin\FaqRecordInsertion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Uploads\CrimeComplainProofs\" />
