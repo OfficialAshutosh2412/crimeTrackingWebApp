@@ -91,51 +91,51 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         {
             if (ModelState.IsValid == true)
             {
-                if (editFormData.ImageFile != null)
-                {
-                    HttpPostedFileBase postedFile = editFormData.ImageFile;
-                    string filenameWithoutExtension = Path.GetFileNameWithoutExtension(postedFile.FileName);
-                    string fileExtension = Path.GetExtension(postedFile.FileName);
-                    int lengthOfFile = postedFile.ContentLength;
-                    if (fileExtension.ToLower() == ".jpg" || fileExtension.ToLower() == ".jpeg" || fileExtension.ToLower() == ".JPEG" || fileExtension.ToLower() == ".png")
-                    {
-                        if (lengthOfFile <= 1000000)
-                        {
-                            string actualFilename = filenameWithoutExtension + fileExtension;
-                            editFormData.Photo = "~/Uploads/UserProfileImages/" + actualFilename;
-                            actualFilename = Path.Combine(Server.MapPath("~/Uploads/UserProfileImages/"), actualFilename);
-                            postedFile.SaveAs(actualFilename);
-                            _context.Entry(editFormData).State = EntityState.Modified;
-                            int a = _context.SaveChanges();
-                            if (a > 0)
-                            {
-                                TempData["update"] = "true";
-                            }
-                            return RedirectToAction("MyProfile", "User");
-                        }
-                        else
-                        {
-                            TempData["SizeError"] = "<script>alert('Error : file is larger than 1MB')</script>";
+                //if (editFormData.ImageFile != null)
+                //{
+                //    HttpPostedFileBase postedFile = editFormData.ImageFile;
+                //    string filenameWithoutExtension = Path.GetFileNameWithoutExtension(postedFile.FileName);
+                //    string fileExtension = Path.GetExtension(postedFile.FileName);
+                //    int lengthOfFile = postedFile.ContentLength;
+                //    if (fileExtension.ToLower() == ".jpg" || fileExtension.ToLower() == ".jpeg" || fileExtension.ToLower() == ".JPEG" || fileExtension.ToLower() == ".png")
+                //    {
+                //        if (lengthOfFile <= 1000000)
+                //        {
+                //            string actualFilename = filenameWithoutExtension + fileExtension;
+                //            editFormData.Photo = "~/Uploads/UserProfileImages/" + actualFilename;
+                //            actualFilename = Path.Combine(Server.MapPath("~/Uploads/UserProfileImages/"), actualFilename);
+                //            postedFile.SaveAs(actualFilename);
+                //            _context.Entry(editFormData).State = EntityState.Modified;
+                //            int a = _context.SaveChanges();
+                //            if (a > 0)
+                //            {
+                //                TempData["update"] = "true";
+                //            }
+                //            return RedirectToAction("MyProfile", "User");
+                //        }
+                //        else
+                //        {
+                //            TempData["SizeError"] = "<script>alert('Error : file is larger than 1MB')</script>";
                      
-                        }
-                    }
-                    else
-                    {
-                        TempData["ExtensionError"] = "<script>alert('Error : file not supported')</script>";
+                //        }
+                //    }
+                //    else
+                //    {
+                //        TempData["ExtensionError"] = "<script>alert('Error : file not supported')</script>";
                        
-                    }
-                }
-                else
-                {
-                    editFormData.Photo = Session["image"].ToString();
-                    _context.Entry(editFormData).State = EntityState.Modified;
-                    int a = _context.SaveChanges();
-                    if (a > 0)
-                    {
-                        TempData["update"] = "true";
-                    }
-                    return RedirectToAction("MyProfile", "User");
-                }
+                //    }
+                //}
+                //else
+                //{
+                //    editFormData.Photo = Session["image"].ToString();
+                //    _context.Entry(editFormData).State = EntityState.Modified;
+                //    int a = _context.SaveChanges();
+                //    if (a > 0)
+                //    {
+                //        TempData["update"] = "true";
+                //    }
+                //    return RedirectToAction("MyProfile", "User");
+                //}
             }
             return View();
         }

@@ -143,6 +143,7 @@
     <Compile Include="Models\Contact.cs">
       <DependentUpon>CTSModels.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ContactViewModel.cs" />
     <Compile Include="Models\CrimeComplain.cs">
       <DependentUpon>CTSModels.tt</DependentUpon>
     </Compile>
@@ -191,6 +192,7 @@
     <Compile Include="Models\Signup.cs">
       <DependentUpon>CTSModels.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SignupViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -347,6 +349,7 @@
     <Content Include="Views\Admin\ContactRequestReply.cshtml" />
     <Content Include="Views\Admin\FaqRecords.cshtml" />
     <Content Include="Views\Admin\FaqRecordInsertion.cshtml" />
+    <Content Include="Views\Admin\NewsRecord.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Uploads\CrimeComplainProofs\" />

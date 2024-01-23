@@ -213,7 +213,6 @@ function stationListPrint() {
     }
 }
 //printing Faq Records
-faqRecord
 function FaqRecordPrint() {
     let policedata = document.querySelector('#faqRecord');
     var printWindow = window.open('', '_blank');

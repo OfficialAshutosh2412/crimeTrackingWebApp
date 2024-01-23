@@ -24,12 +24,19 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         }
         //POST: Contact
         [HttpPost]
-        public ActionResult Contact(Contact contactFormData)
+        public ActionResult Contact(ContactViewModel contactFormData)
         {
             
                 if (ModelState.IsValid == true)
                 {
-                    _context.Contacts.Add(contactFormData);
+                    var contactdbmodel = new Contact { 
+                        Fullname=contactFormData.Fullname,
+                        Email=contactFormData.Email,
+                        Phone=contactFormData.Phone,
+                        Purpose=contactFormData.Purpose,
+                        Details=contactFormData.Details,
+                    };
+                    _context.Contacts.Add(contactdbmodel);
                     _context.SaveChanges();
                     ModelState.Clear();
                     ViewBag.message = "Information Recorded.";
@@ -44,7 +51,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         }
         //POST: Signup
         [HttpPost]
-        public ActionResult Signup(Signup formDataOfSignup)
+        public ActionResult Signup(SignupViewModel formDataOfSignup)
         {
             //if form fields are validated
             if (ModelState.IsValid == true)
@@ -55,6 +62,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                 string fileExtension = Path.GetExtension(formDataOfSignup.ImageFile.FileName);
                 //getting posted image file
                 HttpPostedFileBase postedFile = formDataOfSignup.ImageFile;
+
                 //getting length of posted file
                 int lengthOfFile = postedFile.ContentLength;
                 //now checking for filetype accepting only jpg, jpeg, JPEG and png files.
@@ -71,16 +79,30 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                         actualFilename = Path.Combine(Server.MapPath("~/Uploads/UserProfileImages/"), actualFilename);
                         //saving the file into folder
                         formDataOfSignup.ImageFile.SaveAs(actualFilename);
+                        var signupdbmodel = new Signup { 
+                            Username=formDataOfSignup.Username,
+                            Password=formDataOfSignup.Password,
+                            Email=formDataOfSignup.Email,
+                            Gender=formDataOfSignup.Gender,
+                            Pincode=formDataOfSignup.Pincode,
+                            Address=formDataOfSignup.Address,
+                            Mstatus=formDataOfSignup.Mstatus,
+                            Lstatus=formDataOfSignup.Lstatus,
+                            Adhaar=formDataOfSignup.Adhaar,
+                            Phone=formDataOfSignup.Phone,
+                            Photo = formDataOfSignup.Photo,
+                            Role = formDataOfSignup.Role,
+                        };
                         if (formDataOfSignup.Role == "98u9d8uwr3(9ih(8H8&67^g&UyGIuh(7t6G^F4d4@A#24545fGbuyb*Y(8jIj(87Re54#qW")
                         {
                             formDataOfSignup.Role = "admin";    
-                            _context.Signups.Add(formDataOfSignup);
+                            _context.Signups.Add(signupdbmodel);
                             _context.SaveChanges();
                         }
                         else if (formDataOfSignup.Role != "98u9d8uwr3(9ih(8H8&67^g&UyGIuh(7t6G^F4d4@A#24545fGbuyb*Y(8jIj(87Re54#qW")
                         {
                             formDataOfSignup.Role = "user";
-                            _context.Signups.Add(formDataOfSignup);
+                            _context.Signups.Add(signupdbmodel);
                             _context.SaveChanges();
                         }
 

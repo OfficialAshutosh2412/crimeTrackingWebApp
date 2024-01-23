@@ -247,5 +247,10 @@ namespace CrimeTrackingSystem_CTS_.Controllers
             }
             return View();
         }
+        //GET : News
+        public ActionResult NewsRecord()
+        {
+            return View();
+        }
     }
 }
