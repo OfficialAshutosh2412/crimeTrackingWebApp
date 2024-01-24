@@ -193,6 +193,7 @@
     <Compile Include="Models\PoliceStation.cs">
       <DependentUpon>CTSModels.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PoliceStationViewModel.cs" />
     <Compile Include="Models\RecordViewModel.cs" />
     <Compile Include="Models\Signup.cs">
       <DependentUpon>CTSModels.tt</DependentUpon>

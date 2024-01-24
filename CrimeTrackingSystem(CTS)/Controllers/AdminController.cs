@@ -18,7 +18,6 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         {
             Session.Abandon();
             Session.Clear();
-            Session["adminmail"] = null;
             return RedirectToAction("Login", "Home");
         }
         CTSEntitiesClass _context = new CTSEntitiesClass();
@@ -94,7 +93,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         }
         //POST: Police Station
         [HttpPost]
-        public ActionResult PoliceStationEntryInsertion(PoliceStation PoliceformData)
+        public ActionResult PoliceStationEntryInsertion(PoliceStationViewModel PoliceformData)
         {
             //if form fields are validated
             if (ModelState.IsValid)
@@ -130,7 +129,17 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                         PoliceformData.ImageFile.SaveAs(actualFilename);
 
                         //adding data in db
-                        _context.PoliceStations.Add(PoliceformData);
+                        var policedbmodel = new PoliceStation
+                        {
+                            ChowkiIncharge=PoliceformData.ChowkiIncharge,
+                            PoliceStationName=PoliceformData.PoliceStationName,
+                            CUGNumberOne=PoliceformData.CUGNumberOne,
+                            CUGNumberSecond=PoliceformData.CUGNumberSecond,
+                            Agent=PoliceformData.Agent,
+                            AgentPhone=PoliceformData.AgentPhone,
+                            PoliceStationImage=PoliceformData.PoliceStationImage,
+                        };
+                        _context.PoliceStations.Add(policedbmodel);
                         _context.SaveChanges();
                         // Clearing ModelState to avoid displaying previous validation errors
                         ModelState.Clear();
