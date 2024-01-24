@@ -9,8 +9,6 @@ namespace CrimeTrackingSystem_CTS_.Models
 {
     public class SignupViewModel
     {
-        public int RegId { get; set; }
-
         [DisplayName("Your fullname")]
         [Required]
         [DataType(DataType.Text)]

@@ -147,6 +147,7 @@
     <Compile Include="Models\CrimeComplain.cs">
       <DependentUpon>CTSModels.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CrimeComplainViewModel.cs" />
     <Compile Include="Models\CriminalGallery.cs">
       <DependentUpon>CTSModels.tt</DependentUpon>
     </Compile>
@@ -175,16 +176,20 @@
     <Compile Include="Models\Feedback.cs">
       <DependentUpon>CTSModels.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\FeedbackViewModel.cs" />
     <Compile Include="Models\GeneralComplain.cs">
       <DependentUpon>CTSModels.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\GeneralComplainViewModel.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\MissingPerson.cs">
       <DependentUpon>CTSModels.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\MissingPersonViewModel.cs" />
     <Compile Include="Models\MissingValuable.cs">
       <DependentUpon>CTSModels.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\MissingValuableViewModel.cs" />
     <Compile Include="Models\PoliceStation.cs">
       <DependentUpon>CTSModels.tt</DependentUpon>
     </Compile>

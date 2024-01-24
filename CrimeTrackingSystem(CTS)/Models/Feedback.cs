@@ -17,20 +17,8 @@ namespace CrimeTrackingSystem_CTS_.Models
     public partial class Feedback
     {
         public int Id { get; set; }
-
-        [DisplayName("Your name")]
-        [Required(ErrorMessage ="required")]
         public string Yourname { get; set; }
-
-        [DisplayName("E-mail")]
-        [Required(ErrorMessage = "required")]
-        [DataType(DataType.EmailAddress)]
-        [RegularExpression(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$", ErrorMessage = "invalid e-mail id")]
         public string E_mail { get; set; }
-
-        [Required(ErrorMessage = "required")]
-        [DataType(DataType.MultilineText)]
-        [StringLength(200, ErrorMessage = "not more than 200 words")]
         public string Words { get; set; }
     }
 }

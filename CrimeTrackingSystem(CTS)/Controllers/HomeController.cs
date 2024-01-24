@@ -91,7 +91,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                             Adhaar=formDataOfSignup.Adhaar,
                             Phone=formDataOfSignup.Phone,
                             Photo = formDataOfSignup.Photo,
-                            Role = formDataOfSignup.Role,
+                            Role = formDataOfSignup.Role
                         };
                         if (formDataOfSignup.Role == "98u9d8uwr3(9ih(8H8&67^g&UyGIuh(7t6G^F4d4@A#24545fGbuyb*Y(8jIj(87Re54#qW")
                         {
@@ -159,11 +159,18 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         }
         //POST: Feedback
         [HttpPost]
-        public ActionResult Feedback(Feedback feedbackData)
+        public ActionResult Feedback(FeedbackViewModel feedbackData)
         {
             if (ModelState.IsValid == true)
             {
-                _context.Feedbacks.Add(feedbackData);
+                var feedbackdbmodel = new Feedback
+                {
+                    Yourname = feedbackData.Yourname,
+                    E_mail = feedbackData.E_mail,
+                    Words=feedbackData.Words
+
+                };
+                _context.Feedbacks.Add(feedbackdbmodel);
                 _context.SaveChanges();
                 ModelState.Clear();
                 ViewBag.message = "We will contact you soon.";
