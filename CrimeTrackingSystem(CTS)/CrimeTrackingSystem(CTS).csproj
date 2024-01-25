@@ -173,6 +173,7 @@
     <Compile Include="Models\FAQ.cs">
       <DependentUpon>CTSModels.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\FaqViewModel.cs" />
     <Compile Include="Models\Feedback.cs">
       <DependentUpon>CTSModels.tt</DependentUpon>
     </Compile>

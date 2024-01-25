@@ -234,21 +234,33 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         //GET : FAQ
         public ActionResult FaqRecords()
         {
+            if (Session["adminmail"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
             var faqData = _context.FAQs.ToList();
             return View(faqData);
         }
         //GET : FAQ Insertion
         public ActionResult FaqRecordInsertion()
         {
+            if (Session["adminmail"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
             return View();
         }
         //POST : FAQ Insertion
         [HttpPost]
-        public ActionResult FaqRecordInsertion(FAQ faqFormData)
+        public ActionResult FaqRecordInsertion(FaqViewModel faqFormData)
         {
             if (ModelState.IsValid)
             {
-                _context.FAQs.Add(faqFormData);
+                var faqdbmodel =new FAQ{
+                    Questions=faqFormData.Questions,
+                    Answer=faqFormData.Answer
+                };
+                _context.FAQs.Add(faqdbmodel);
                 _context.SaveChanges();
                 TempData["result"] = "true";
                 ModelState.Clear();

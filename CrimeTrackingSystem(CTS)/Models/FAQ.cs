@@ -18,11 +18,7 @@ namespace CrimeTrackingSystem_CTS_.Models
     public partial class FAQ
     {
         public int Id { get; set; }
-
-        [Required(ErrorMessage ="required")]
         public string Questions { get; set; }
-
-        [Required(ErrorMessage = "required")]
         public string Answer { get; set; }
     }
 }
