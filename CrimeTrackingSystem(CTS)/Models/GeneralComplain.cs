@@ -11,7 +11,7 @@ namespace CrimeTrackingSystem_CTS_.Models
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class GeneralComplain
     {
         public int Id { get; set; }

@@ -36,5 +36,6 @@ namespace CrimeTrackingSystem_CTS_.Models
         public virtual DbSet<MissingValuable> MissingValuables { get; set; }
         public virtual DbSet<PoliceStation> PoliceStations { get; set; }
         public virtual DbSet<Signup> Signups { get; set; }
+        public virtual DbSet<News> News { get; set; }
     }
 }

@@ -271,7 +271,53 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         //GET : News
         public ActionResult NewsRecord()
         {
+            if (Session["adminmail"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
+            var newsdata = _context.News.ToList();
+            return View(newsdata);
+        }
+        //GET : News
+        public ActionResult NewsInsertion()
+        {
+            if (Session["adminmail"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
             return View();
+        }
+        //POST : News
+        [HttpPost]
+        public ActionResult NewsInsertion(NewsViewModel newsFormData)
+        {
+            if (ModelState.IsValid)
+            {
+                newsFormData.CurrentDateTime = DateTime.Now.ToString();
+                var newsdbmodel = new News
+                {
+                    Title=newsFormData.Title,
+                    Detail=newsFormData.Detail,
+                    CurrentDateTime=newsFormData.CurrentDateTime
+                };
+                _context.News.Add(newsdbmodel);
+                _context.SaveChanges();
+                TempData["result"] = "true";
+                ModelState.Clear();
+                return RedirectToAction("NewsInsertion", "Admin");
+            }
+            return View();
+        }
+        //GET : Status home page
+        public ActionResult Status()
+        {
+            return View();
+        }
+        //GET : crime status 
+        public ActionResult UpdateCrimeComplainStatus()
+        {
+            var data = _context.CrimeComplains.ToList();
+            return View(data);
         }
     }
 }

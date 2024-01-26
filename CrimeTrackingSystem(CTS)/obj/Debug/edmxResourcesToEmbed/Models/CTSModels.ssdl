@@ -109,6 +109,15 @@
     <Property Name="CurrentDateTime" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
+  <EntityType Name="News">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar(max)" Nullable="false" />
+    <Property Name="Detail" Type="varchar(max)" Nullable="false" />
+    <Property Name="CurrentDateTime" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
   <EntityType Name="PoliceStation">
     <Key>
       <PropertyRef Name="Id" />
@@ -150,6 +159,7 @@
     <EntitySet Name="GeneralComplain" EntityType="Self.GeneralComplain" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MissingPerson" EntityType="Self.MissingPerson" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MissingValuable" EntityType="Self.MissingValuable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PoliceStation" EntityType="Self.PoliceStation" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Signup" EntityType="Self.Signup" Schema="dbo" store:Type="Tables" />
   </EntityContainer>

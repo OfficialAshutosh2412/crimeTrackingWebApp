@@ -152,5 +152,15 @@
     <EntitySet Name="MissingValuables" EntityType="Self.MissingValuable" />
     <EntitySet Name="PoliceStations" EntityType="Self.PoliceStation" />
     <EntitySet Name="Signups" EntityType="Self.Signup" />
+    <EntitySet Name="News" EntityType="CTSModel.News" />
   </EntityContainer>
+  <EntityType Name="News">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Detail" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CurrentDateTime" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>

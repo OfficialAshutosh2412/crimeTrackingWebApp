@@ -9,7 +9,6 @@ body {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    height: 100vh;
     width:100%;
 }
 /*theme*/
@@ -24,6 +23,9 @@ body {
     position: fixed;
     z-index: 6669999;
     transition: 0.5s all ease-in-out;
+}
+.settingBtn{
+    box-shadow:1px 2px 4px 0px black;
 }
 /*hidden field*/
 .visually-hidden {
@@ -362,7 +364,7 @@ body {
     border-radius: 5px;
     border: 2px groove #ffbb7a;
     transition: .4s;
-    background: #fff
+    background: #f6f6f6;
 }
 
     .cc-box:focus {
@@ -386,7 +388,15 @@ body {
     z-index: 88;
     border-radius: 5px
 }
-
+/*table container*/
+.table-container{
+    width:95%;
+    margin:0 auto;
+}
+.table tbody {
+    overflow-y: auto !important;
+    background: black !important;
+}
 .gallery *, .member .mentor, .member .mentor .image img {
     transition: .3s ease-in-out
 }
@@ -430,7 +440,9 @@ body {
     width: 250px;
     height: 250px
 }
-
+    .services-item div:nth-child(1) {
+        background: #ffa2a2;
+    }
 
 
 .hero, .hero .left {
@@ -663,7 +675,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center
+    align-items: center;
 }
 
 .card-item {
@@ -1006,11 +1018,17 @@ body {
             width: 70%;
             height: 100%
         }
-
-    .member .member-link a {
-        font-size: 1.5em;
-        color: black;
-    }
+            .member .mentor .image-data h1{
+                font-size:3vw;
+            }
+            .member .mentor .image-data {
+                text-align:center;
+                padding:1%;
+            }
+            .member .member-link a {
+                font-size: 1.5em;
+                color: black;
+            }
 
     .member .member-link {
         animation: 2s linear infinite floating;
@@ -1099,50 +1117,51 @@ body {
 }
 
 .footer {
-    background: #1e9b56;
+    background: #ddffd3;
     text-align: center;
     text-transform: capitalize;
     bottom: 0
 }
 
 .footer-brand {
-    margin-bottom: 20px
+    margin-bottom: 20px;
+    padding:1%;
 }
 
     .footer-brand img {
-        width: 150px
+        width: 150px;
     }
 
 .footer-follow {
     justify-content: center;
-    align-items: center
+    align-items: center;
+    color:black;
 }
 
     .footer-follow a {
-        color: white;
+        color: black;
         padding-right: 1%;
         font-size: 1.4em
     }
 
 .footer h6 {
     font-weight: 600;
-    color: white;
+    color: black;
 }
 
 .rights {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #30854b;
-    font-size: .9em;
-    font-weight: 600;
-    color: white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#1e9b56;
+    color:white;
+    flex-direction:row-reverse
 }
-
-.customContainer {
-    width: 70%;
-    margin: 0 auto
-}
+    
+    .customContainer {
+        width: 70%;
+        margin: 0 auto
+    }
 
 .signup {
     width: 100%;
@@ -1643,8 +1662,34 @@ body {
         width: fit-content;
     }
 
-@media screen and (max-width:880px) {
-    .navbar-nav li {
+.AdminStatus{
+    height:93vh;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+    .AdminStatus div{
+        width:100%;
+        height:40vh;
+        background:#d3d3d3;
+        margin:1%;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        font-size:2.5vw;
+        text-align:center;
+        border-radius:3px
+    }
+        .AdminStatus div:hover{
+            background:#b2b2b2
+        }
+        .AdminStatus div a {
+            color: black;
+        }
+
+        @media screen and (max-width:880px) {
+            .navbar-nav li {
         padding-left: 2%;
     }
 
@@ -1788,6 +1833,13 @@ body {
 }
 
 @media screen and (max-width:682px) {
+    .rights{
+        justify-content:center;
+        font-size:0.8rem;
+    }
+    .rights img {
+        display: none;
+    }
     .signin {
         height: auto;
     }
@@ -1862,7 +1914,7 @@ body {
     }
 
         .member .mentor .image {
-            width: 60%;
+            width: 30%;
             border-radius: 100%
         }
 

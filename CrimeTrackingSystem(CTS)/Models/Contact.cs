@@ -11,7 +11,7 @@ namespace CrimeTrackingSystem_CTS_.Models
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class Contact
     {
         public int Id { get; set; }

@@ -18,7 +18,7 @@
         <img src="~/Images/loader/Ripple-2.1s-204px.gif" />
     </div>
     @*fixed menu*@
-    <div class=" whap-link" style="bottom: 20px; right: 10px; cursor: pointer; z-index: 8889998" id="settings"><i class="fa-solid fa-gear fa-spin" id="setting" onclick="showSetting()"></i></div>
+    <div class=" whap-link settingBtn"  style="bottom: 40px; right: 10px; cursor: pointer; z-index: 8889998" id="settings"><i class="fa-solid fa-gear fa-spin" id="setting" onclick="showSetting()"></i></div>
     <div class=" whap-link themeSwitch" id="themeSwitch"><i class="fa-solid fa-brush" id="theme" onclick="showTheme()"></i></div>
     <div class=" whap-link translator" id="translator"><i class="fa-solid fa-language" id="tool-toggler"></i></div>
     <div class=" whap-link feedbackBtn" id="feedbackBtn"><a><i class="fa-solid fa-comments" onclick="showFeed()"></i></a></div>
@@ -108,7 +108,7 @@
     </nav>
     @RenderBody()
     @*footer*@
-    <footer class="footer" id="footer">
+    <footer class="footer">
         <div class="footer-brand">
             <img src="~/Images/cts_logo.png" alt="cts.png">
         </div>
@@ -122,10 +122,18 @@
             </div>
         </div>
         <div class="rights" id="rights">
-            <p>All rights are reserved &copy;Criminal tracking system 2023 .inc</p>
+            <div>
+                <label>All rights are reserved &copy;Criminal tracking system 2023 .inc</label>
+            </div>
+            <div>
+                <a href="@Url.Action("Index", "Home")" class="navbar-brand">
+                    <img src="~/Images/cts_logo.png" />
+                </a>
+            </div>
         </div>
     </footer>
-    @*<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>*@
+    
+    
     <!-- Include SweetAlert JS -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>

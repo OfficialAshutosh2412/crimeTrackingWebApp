@@ -11,6 +11,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
     public class HomeController : Controller
     {
         readonly CTSEntitiesClass _context = new CTSEntitiesClass();
+
         //GET: Index
         public ActionResult Index()
         {

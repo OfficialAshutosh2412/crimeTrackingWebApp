@@ -1,0 +1,105 @@
+﻿@model IEnumerable<CrimeTrackingSystem_CTS_.Models.CrimeComplain>
+
+@{
+    ViewBag.AdminTitle = "Crime Complain Status";
+    ViewBag.PageTitle = "Crime Complain Status";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="p-2">
+    <a class="btn btn-sm btn-outline-warning" href="@Url.Action("Status","Admin")"><i class="fa-solid fa-arrow-left"></i></a>
+</div>
+
+
+<div class="table-container">
+    <table class="table table-light display responsive nowrap table-bordered" width="100%" id="tableJsId">
+        <thead>
+            <tr>
+                <th>
+                    <label>Action</label>
+                </th>
+                <th>
+                    <label>ID</label>
+                </th>
+                <th>
+                    <label>Status</label>
+                </th>
+                <th>
+                    <label>Username</label>
+                </th>
+                <th>
+                    <label>Police Station</label>
+                </th>
+                <th>
+                    <label>Crime</label>
+                </th>
+                <th>
+                    <label>Involved Persons</label>
+                </th>
+                <th>
+                    <label>Crime Station</label>
+                </th>
+                <th>
+                    <label>Date and Time</label>
+                </th>
+                <th>
+                    <label>Proofs</label>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                @if (item.Status == "Pending")
+                {
+                    <td >
+                        <label class="bg-warning rounded-3 p-2">@item.Status</label>
+                    </td>
+                }
+
+                @if (item.Status == "Solved")
+                {
+                    <td>
+                        <label  class="bg-success text-light rounded-3 p-2">@item.Status</label>
+                    </td>
+                }
+                <td>
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PoliceStationName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CrimeType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InvolvedPersons)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.CrimeStation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CurrentDateTime)
+                </td>
+
+
+                <td>
+                    <a href="@Url.Content(item.Proofs)">
+                        <img src="@Url.Content(item.Proofs)" width="100" alt="table image" />
+                    </a>
+                </td>
+
+            </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
