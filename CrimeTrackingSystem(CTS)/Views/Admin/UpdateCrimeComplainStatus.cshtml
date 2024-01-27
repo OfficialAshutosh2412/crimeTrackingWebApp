@@ -50,22 +50,30 @@
             {
             <tr>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                    <a href="@Url.Action("CrimeStatusEdit","Admin", new { id=item.Id})">
+                        <i class='fa-solid fa-pen-to-square'></i>
+                    </a>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Id)
                 </td>
                 @if (item.Status == "Pending")
                 {
-                    <td >
-                        <label class="bg-warning rounded-3 p-2">@item.Status</label>
+                    <td>
+                        <label><i class="fa-solid fa-clock text-warning"></i> @item.Status</label>
                     </td>
                 }
 
                 @if (item.Status == "Solved")
                 {
                     <td>
-                        <label  class="bg-success text-light rounded-3 p-2">@item.Status</label>
+                        <label><i class="fa-solid fa-circle-check text-success"></i> @item.Status</label>
+                    </td>
+                }
+                @if (item.Status == "Rejected")
+                {
+                    <td>
+                        <label><i class="fa-solid fa-circle-xmark text-danger"></i> @item.Status</label>
                     </td>
                 }
                 <td>

@@ -10,7 +10,7 @@
 </div>
 <div class="tableForView border border-warning rounded-2" id="policestationdata">
     <div>
-        <table class="table">
+        <table class="table table-bordered table-striped" width="100%" border="1" cellspacing="0">
             <thead class="table-secondary">
                 <tr>
                     <th>ID</th>
@@ -31,7 +31,7 @@
                         <tr>
                             <td>@listdata.Id</td>
                             <td>
-                                <a href="@Url.Content(listdata.PoliceStationImage)" target="_blank"><img src="@Url.Content(listdata.PoliceStationImage)" class="viewImage" alt="police station image" /></a>
+                                <a href="@Url.Content(listdata.PoliceStationImage)" target="_blank"><img src="@Url.Content(listdata.PoliceStationImage)" width="100" alt="police station image" /></a>
                             </td>
                             <td>@listdata.PoliceStationName</td>
                             <td>@listdata.ChowkiIncharge</td>

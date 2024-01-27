@@ -7,7 +7,7 @@ using CrimeTrackingSystem_CTS_.Models;
 using System.IO;
 using System.Net;
 using System.Net.Mail;
-
+using System.Data.Entity;
 
 namespace CrimeTrackingSystem_CTS_.Controllers
 {
@@ -311,13 +311,77 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         //GET : Status home page
         public ActionResult Status()
         {
+            if (Session["adminmail"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
             return View();
         }
         //GET : crime status 
         public ActionResult UpdateCrimeComplainStatus()
         {
+            if (Session["adminmail"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
             var data = _context.CrimeComplains.ToList();
             return View(data);
+        }
+        //GET : Crime Status Edit
+        public ActionResult CrimeStatusEdit(int id)
+        {
+            if (Session["adminmail"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
+            List<SelectListItem> options = _context.PoliceStations.Select(
+                x => new SelectListItem
+                {
+                    Value = x.PoliceStationName.ToString(),
+                    Text = x.PoliceStationName
+                }).ToList();
+
+            ViewBag.OptionList = options;
+            var preFetchData = _context.CrimeComplains
+                .Where(model => model.Id == id)
+                .Select(model => new CrimeComplainViewModel
+                {
+                    Username = model.Username,
+                    PoliceStationName = model.PoliceStationName,
+                    CrimeType = model.CrimeType,
+                    InvolvedPersons = model.InvolvedPersons,
+                    Proofs = model.Proofs,
+                    CrimeStation = model.CrimeStation,
+                    CurrentDateTime = model.CurrentDateTime,
+                    Status = model.Status
+                })
+                .FirstOrDefault();
+            Session["image"] = preFetchData.Proofs.ToString();
+            return View(preFetchData);
+        }
+        [HttpPost]
+        public ActionResult CrimeStatusEdit(CrimeComplainViewModel updateCrimeData)
+        {
+            if (ModelState.IsValid)
+            {
+                var existingCrimeComplain = _context.CrimeComplains.Find(updateCrimeData.Id);
+                if(existingCrimeComplain != null)
+                {
+                    existingCrimeComplain.Status = updateCrimeData.Status;
+                    _context.SaveChanges();
+                }
+                return RedirectToAction("UpdateCrimeComplainStatus", "Admin");
+            }
+
+            List<SelectListItem> options = _context.PoliceStations.Select(
+                x => new SelectListItem
+                {
+                    Value = x.PoliceStationName.ToString(),
+                    Text = x.PoliceStationName
+                }).ToList();
+
+            ViewBag.OptionList = options;
+            return View();
         }
     }
 }

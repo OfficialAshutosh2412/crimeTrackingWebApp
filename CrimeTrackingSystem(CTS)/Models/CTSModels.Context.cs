@@ -11,6 +11,7 @@ namespace CrimeTrackingSystem_CTS_.Models
 {
     using System;
     using System.Data.Entity;
+    using System.Data.Entity.Core.Objects;
     using System.Data.Entity.Infrastructure;
     
     public partial class CTSEntitiesClass : DbContext
@@ -37,5 +38,10 @@ namespace CrimeTrackingSystem_CTS_.Models
         public virtual DbSet<PoliceStation> PoliceStations { get; set; }
         public virtual DbSet<Signup> Signups { get; set; }
         public virtual DbSet<News> News { get; set; }
+
+        internal void Refresh(RefreshMode clientWins, object yourentity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

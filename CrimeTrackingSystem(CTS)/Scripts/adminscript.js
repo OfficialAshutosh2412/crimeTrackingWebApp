@@ -199,10 +199,6 @@ function stationListPrint() {
 function FaqRecordPrint() {
     let policedata = document.querySelector('#faqRecord');
     var printWindow = window.open('', '_blank');
-    var stylesheets = document.styleSheets;
-    for (var i = 0; i < stylesheets.length; i++) {
-        printWindow.document.write('<link rel="stylesheet" type="text/css" href="' + stylesheets[i].href + '">');
-    }
     printWindow.document.write('<style type="text/css"> @page { size: landscape; } </style>');
     let printing = policedata;
     if (printing) {
@@ -218,10 +214,6 @@ function FaqRecordPrint() {
 function NewsRecordPrint() {
     let policedata = document.querySelector('#newsData');
     var printWindow = window.open('', '_blank');
-    var stylesheets = document.styleSheets;
-    for (var i = 0; i < stylesheets.length; i++) {
-        printWindow.document.write('<link rel="stylesheet" type="text/css" href="' + stylesheets[i].href + '">');
-    }
     printWindow.document.write('<style type="text/css"> @page { size: landscape; } </style>');
     let printing = policedata;
     if (printing) {

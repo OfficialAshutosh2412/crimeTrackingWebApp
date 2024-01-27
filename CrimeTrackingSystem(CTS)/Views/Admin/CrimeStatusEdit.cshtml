@@ -1,0 +1,130 @@
+﻿@model CrimeTrackingSystem_CTS_.Models.CrimeComplainViewModel
+@{
+    ViewBag.AdminTitle = "Crime Status Edit";
+    ViewBag.PageTitle = "Crime Status Edit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<h1 class="container text-center p-3"><i class="fa-solid fa-handcuffs"></i> Crime Complain</h1>
+<div class="crime" style="color:black !important">
+    @*form*@
+    <div class="crime-form">
+        @using (Html.BeginForm("CrimeStatusEdit", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @*first row*@
+        <div class="crime-form-item">
+            <div>
+                <span>
+                    <i class="fa-solid fa-building-shield"></i>
+                    <label class="fw-bolder">Police Station</label>
+                    <br />
+                    <small>@Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger fw-bolder" })</small>
+                </span>
+                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "cc-box", placeholder = "name of your area police station" } })
+            </div>
+            <div>
+                <span>
+                    <i class="fa-solid fa-building-shield"></i>
+                    <label class="fw-bolder">Police Station</label>
+                    <br />
+                    <small>@Html.ValidationMessageFor(model => model.PoliceStationName, "", new { @class = "text-danger fw-bolder" })</small>
+                </span>
+                @Html.DropDownListFor(model => model.PoliceStationName, (IEnumerable<SelectListItem>)ViewBag.OptionList, "--select--", new { @class = "cc-box" })
+            </div>
+            <div>
+                <span>
+                    <i class="fa-solid fa-handcuffs"></i>
+                    <label class="fw-bolder">Crime</label>
+                    <br />
+                    <small>@Html.ValidationMessageFor(model => model.CrimeType, "", new { @class = "text-danger fw-bolder" })</small>
+                </span>
+                @Html.DropDownListFor(model => model.CrimeType,
+                new SelectList(new[] {
+                "Cyber crime",
+                "Drug Trafficking",
+                "Robbery",
+                "Violence",
+                "Burglary",
+                "Fraud",
+                "Money Laundering",
+                "Kidnapping",
+                "Assault",
+                "Theft",
+                "Human Trafficking",
+                "Terrorism",
+                "Murder",
+                "Rape",
+                "Domestic Violence"
+                }),
+                "--select--",
+               new { @class = "cc-box" })
+            </div>
+        </div>
+            @*second row*@
+            <div class="crime-form-item">
+                <div>
+                    <span>
+                        <i class="fa-solid fa-handshake"></i>
+                        <label class="fw-bolder">Involved Persons</label>
+                        <br />
+                        <small>@Html.ValidationMessageFor(model => model.InvolvedPersons, "", new { @class = "text-danger fw-bolder" })</small>
+                    </span>
+                    @Html.EditorFor(model => model.InvolvedPersons, new { htmlAttributes = new { @class = "cc-box", placeholder = "persons who are involved" } })
+                </div>
+            </div>
+            @*third row*@
+            <div>
+                <div>
+                    <span>
+                        <i class="fa-regular fa-image"></i>
+                        <label class="fw-bolder">Proofs</label>
+                    </span>
+                    <input type="file" class="cc-box" name="UploadImage" />
+                </div>
+                <div>
+                    <span>
+                        <i class="fa-solid fa-building-shield"></i>
+                        <label class="fw-bolder">Crime Station</label>
+                        <br />
+                        <small>@Html.ValidationMessageFor(model => model.CrimeStation, "", new { @class = "text-danger fw-bolder" })</small>
+                    </span>
+                    @Html.EditorFor(model => model.CrimeStation, new { htmlAttributes = new { @class = "cc-box", placeholder = "name of your area police station" } })
+                </div>
+            </div>
+            <div class="crime-form-item">
+                <div>
+                    <span>
+                        <i class="fa-solid fa-building-shield"></i>
+                        @Html.LabelFor(model => model.Status, new { @class = "form-label fw-bolder" })
+                        <br />
+                        <small>@Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger fw-bolder" })</small>
+                    </span>
+                    @Html.DropDownListFor(model => model.Status,
+                        new SelectList(new[] {
+                        "Pending",
+                        "Solved",
+                        "Rejected"
+                        }),
+                        "--select--",
+                       new { @class = "cc-box" })
+                </div>
+                <div>
+                    <span>
+                        <i class="fa-solid fa-building-shield"></i>
+                        <label class="fw-bolder">Date and Time</label>
+                        <br />
+                        <small>@Html.ValidationMessageFor(model => model.CurrentDateTime, "", new { @class = "text-danger fw-bolder" })</small>
+                    </span>
+                    @Html.EditorFor(model => model.CurrentDateTime, new { htmlAttributes = new { @class = "cc-box", placeholder = "name of your area police station" } })
+                </div>
+            </div>
+            @*fifth row*@
+            <div>
+                <button class=" send">update</button>
+            </div>
+            @*sixth row*@
+            <div>
+                <a href="@Url.Action("CrimeComplainData", "User")" class="p-2 text-primary fw-bolder" style="font-size:10pt"><i class="fa-regular fa-hand-point-right"></i> click here to show complains you filled...</a>
+            </div>
+        }
+    </div>
+</div>
