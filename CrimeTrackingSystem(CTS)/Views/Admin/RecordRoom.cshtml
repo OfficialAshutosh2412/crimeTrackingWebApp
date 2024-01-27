@@ -18,35 +18,44 @@
 @*for crime*@
 <div class="tableForView border border-warning rounded-2" id="crimeComplain">
     <div>
-        <table class="table">
-            <thead class="table-secondary">
+        <table class="table table-bordered  table-striped" width="100%" border="1" cellspacing="0">
+            <thead class="table-warning">
                 <tr>
                     <th>ID</th>
                     <th>Proof</th>
+                    <th>Status</th>
                     <th>Username</th>
                     <th>Police Station Name</th>
                     <th>CrimeType</th>
                     <th>Involved Person</th>
                     <th>Local Police Station</th>
                     <th>Date</th>
-                    <th>Status</th>
+
                 </tr>
             </thead>
-            <tbody class="table-dark">
+            <tbody class="table-light">
                 @foreach (var item in Model.CrimeView)
                 {
                     <tr>
                         <td>@item.Id</td>
                         <td>
-                            <a href="@Url.Content(item.Proofs)" target="_blank"><img src="@Url.Content(item.Proofs)" class="viewImage" alt="proofs" /></a>
+                            <a href="@Url.Content(item.Proofs)" target="_blank"><img src="@Url.Content(item.Proofs)" width="100" alt="proofs" /></a>
                         </td>
+                        @if (item.Status == "Pending")
+                        {
+                            <td><Label class="bg-warning p-2 rounded-1">@item.Status</Label></td>
+                        }
+                        @if (item.Status == "Solved")
+                        {
+                            <td><Label class="bg-success text-light p-2 rounded-1">@item.Status</Label></td>
+                        }
                         <td>@item.Username</td>
                         <td>@item.PoliceStationName</td>
                         <td>@item.CrimeType</td>
                         <td>@item.InvolvedPersons</td>
                         <td>@item.CrimeStation</td>
                         <td>@item.CurrentDateTime</td>
-                        <td>@item.Status</td>
+
                     </tr>
                 }
             </tbody>
@@ -56,31 +65,39 @@
 @*for general*@
 <div class="tableForView border border-warning hidden-table rounded-2" id="generalComplain">
     <div>
-        <table class="table">
-            <thead class="table-secondary">
+        <table class="table table-bordered  table-striped" width="100%" border="1" cellspacing="0">
+            <thead class="table-warning">
                 <tr>
                     <th>ID</th>
                     <th>Username</th>
+                    <th>Status</th>
                     <th>Police Station Name</th>
                     <th>Subject</th>
                     <th>Involved Person</th>
                     <th>Details</th>
                     <th>Date</th>
-                    <th>Status</th>
+
                 </tr>
             </thead>
-            <tbody class="table-dark">
+            <tbody class="table-light">
                 @foreach (var item in Model.GeneralView)
                 {
                     <tr>
                         <td>@item.Id</td>
                         <td>@item.Username</td>
+                        @if (item.Status == "Pending")
+                        {
+                            <td><Label class="bg-warning p-2 rounded-1">@item.Status</Label></td>
+                        }
+                        @if (item.Status == "Solved")
+                        {
+                            <td><Label class="bg-success text-light p-2 rounded-1">@item.Status</Label></td>
+                        }
                         <td>@item.PoliceStationName</td>
                         <td>@item.Subject</td>
                         <td>@item.InvolvedPersons</td>
                         <td>@item.Details</td>
                         <td>@item.CurrentDateTime</td>
-                        <td>@item.Status</td>
                     </tr>
                 }
             </tbody>
@@ -90,11 +107,12 @@
 @*for persons*@
 <div class="tableForView border border-warning hidden-table rounded-2" id="missingPerson">
     <div>
-        <table class="table">
-            <thead class="table-secondary">
+        <table class="table table-bordered  table-striped" width="100%" border="1" cellspacing="0">
+            <thead class="table-warning">
                 <tr>
                     <th>ID</th>
                     <th>Person Image</th>
+                    <th>Status</th>
                     <th>Username</th>
                     <th>Police Station Name</th>
                     <th>Person Name</th>
@@ -104,28 +122,35 @@
                     <th>Person Details</th>
                     <th>Ransom</th>
                     <th>Date</th>
-                    <th>Status</th>
+                    
                 </tr>
             </thead>
-            <tbody class="table-dark">
+            <tbody class="table-light">
                 @foreach (var item in Model.PersonView)
                 {
-                    <tr>
-                        <td>@item.Id</td>
-                        <td>
-                            <a href="@Url.Content(item.PersonImage)" target="_blank"><img src="@Url.Content(@item.PersonImage)" class="viewImage" alt="proofs" /></a>
-                        </td>
-                        <td>@item.Username</td>
-                        <td>@item.PoliceStationName</td>
-                        <td>@item.Person</td>
-                        <td>@item.PersonPhone</td>
-                        <td>@item.LastLocation</td>
-                        <td>@item.PersonEmail</td>
-                        <td>@item.Details</td>
-                        <td>@item.Ransom</td>
-                        <td>@item.CurrentDateTime</td>
-                        <td>@item.Status</td>
-                    </tr>
+                <tr>
+                    <td>@item.Id</td>
+                    <td>
+                        <a href="@Url.Content(item.PersonImage)" target="_blank"><img src="@Url.Content(@item.PersonImage)" width="100" alt="proofs" /></a>
+                    </td>
+                    @if (item.Status == "Pending")
+                    {
+                        <td><Label class="bg-warning p-2 rounded-1">@item.Status</Label></td>
+                    }
+                    @if (item.Status == "Solved")
+                    {
+                        <td><Label class="bg-success text-light p-2 rounded-1">@item.Status</Label></td>
+                    }
+                    <td>@item.Username</td>
+                    <td>@item.PoliceStationName</td>
+                    <td>@item.Person</td>
+                    <td>@item.PersonPhone</td>
+                    <td>@item.LastLocation</td>
+                    <td>@item.PersonEmail</td>
+                    <td>@item.Details</td>
+                    <td>@item.Ransom</td>
+                    <td>@item.CurrentDateTime</td>
+                </tr>
                 }
             </tbody>
         </table>
@@ -134,11 +159,12 @@
 @*for valuables*@
 <div class="tableForView border border-warning hidden-table rounded-2" id="missingValue">
     <div>
-        <table class="table">
-            <thead class="table-secondary">
+        <table class="table table-bordered  table-striped" width="100%" border="1" cellspacing="0">
+            <thead class="table-warning">
                 <tr>
                     <th>ID</th>
                     <th>Valuable Image</th>
+                    <th>Status</th>
                     <th>Username</th>
                     <th>Police Station Name</th>
                     <th>Valuable Type</th>
@@ -146,26 +172,32 @@
                     <th>Suspects</th>
                     <th>Details</th>
                     <th>Date</th>
-                    <th>Status</th>
                 </tr>
             </thead>
-            <tbody class="table-dark">
+            <tbody class="table-light">
                 @foreach (var item in Model.ValueView)
                 {
-                    <tr>
-                        <td>@item.Id</td>
-                        <td>
-                            <a href="@Url.Content(item.ReciptImage)" target="_blank"><img src="@Url.Content(item.ReciptImage)" class="viewImage" alt="proofs" /></a>
-                        </td>
-                        <td>@item.Username</td>
-                        <td>@item.PoliceStationName</td>
-                        <td>@item.ValuableType</td>
-                        <td>@item.ValuableCost</td>
-                        <td>@item.Suspect</td>
-                        <td>@item.Details</td>
-                        <td>@item.CurrentDateTime</td>
-                        <td>@item.Status</td>
-                    </tr>
+                <tr>
+                    <td>@item.Id</td>
+                    <td>
+                        <a href="@Url.Content(item.ReciptImage)" target="_blank"><img src="@Url.Content(item.ReciptImage)" width="100" alt="proofs" /></a>
+                    </td>
+                    @if (item.Status == "Pending")
+                    {
+                        <td><Label class="bg-warning p-2 rounded-1">@item.Status</Label></td>
+                    }
+                    @if (item.Status == "Solved")
+                    {
+                        <td><Label class="bg-success text-light p-2 rounded-1">@item.Status</Label></td>
+                    }
+                    <td>@item.Username</td>
+                    <td>@item.PoliceStationName</td>
+                    <td>@item.ValuableType</td>
+                    <td>@item.ValuableCost</td>
+                    <td>@item.Suspect</td>
+                    <td>@item.Details</td>
+                    <td>@item.CurrentDateTime</td>
+                </tr>
                 }
             </tbody>
         </table>

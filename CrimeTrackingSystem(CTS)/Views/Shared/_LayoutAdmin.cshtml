@@ -43,7 +43,7 @@
                 <a href="@Url.Action("NewsRecord", "Admin")" title="News"><i class="fa-solid fa-newspaper text-light"></i></a>
             </div>
             <div>
-                <a href="#" title="status"><i class="fa-solid fa-calendar-check text-light"></i></a>
+                <a href="@Url.Action("Status", "Admin")" title="status"><i class="fa-solid fa-calendar-check text-light"></i></a>
             </div>
             <div>
                 <a href="@Url.Action("Logout","Admin")" class="nav-link fw-bolder" title="logout"><i class="fa-solid fa-right-from-bracket"></i></a>
@@ -65,11 +65,8 @@
     <script>
         $(document).ready(function () {
             $("#tableJsId").dataTable();
-            $('#myTable').DataTable({
-                responsive: true
-            });
+            
         });
-
-    </script>
+            </script>
 </body>
 </html>

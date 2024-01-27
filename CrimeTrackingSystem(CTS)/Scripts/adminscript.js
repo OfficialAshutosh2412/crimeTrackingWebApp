@@ -126,10 +126,6 @@ valuable.addEventListener('click', () => {
 //printing crime data
 pcrime.addEventListener('click', () => {
     var printWindow = window.open('', '_blank');
-    var stylesheets = document.styleSheets;
-    for (var i = 0; i < stylesheets.length; i++) {
-        printWindow.document.write('<link rel="stylesheet" type="text/css" href="' + stylesheets[i].href + '">');
-    }
     let printing = crimebox;
     if (printing) {
         printWindow.document.write(crimebox.outerHTML);
@@ -137,17 +133,13 @@ pcrime.addEventListener('click', () => {
         printWindow.document.close();
         printWindow.print();
     } else {
-        console.error("conent not found");
+        console.error("content not found");
     }
 });
 
 //printing general data
 pgeneral.addEventListener('click', () => {
     var printWindow = window.open('', '_blank');
-    var stylesheets = document.styleSheets;
-    for (var i = 0; i < stylesheets.length; i++) {
-        printWindow.document.write('<link rel="stylesheet" type="text/css" href="' + stylesheets[i].href + '">');
-    }
     let printing = generalbox;
     if (printing) {
         printWindow.document.write(generalbox.outerHTML);
@@ -162,10 +154,6 @@ pgeneral.addEventListener('click', () => {
 //printing missing person data
 pperson.addEventListener('click', () => {
     var printWindow = window.open('', '_blank');
-    var stylesheets = document.styleSheets;
-    for (var i = 0; i < stylesheets.length; i++) {
-        printWindow.document.write('<link rel="stylesheet" type="text/css" href="' + stylesheets[i].href + '">');
-    }
     printWindow.document.write('<style type="text/css"> @page { size: landscape; } </style>');
     let printing = personbox;
     if (printing) {
@@ -181,10 +169,6 @@ pperson.addEventListener('click', () => {
 //printing missing valuable data
 pvalue.addEventListener('click', () => {
     var printWindow = window.open('', '_blank');
-    var stylesheets = document.styleSheets;
-    for (var i = 0; i < stylesheets.length; i++) {
-        printWindow.document.write('<link rel="stylesheet" type="text/css" href="' + stylesheets[i].href + '">');
-    }
     printWindow.document.write('<style type="text/css"> @page { size: landscape; } </style>');
     let printing = valuebox;
     if (printing) {
@@ -200,10 +184,6 @@ pvalue.addEventListener('click', () => {
 function stationListPrint() {
     let policedata = document.querySelector('#policestationdata');
     var printWindow = window.open('', '_blank');
-    var stylesheets = document.styleSheets;
-    for (var i = 0; i < stylesheets.length; i++) {
-        printWindow.document.write('<link rel="stylesheet" type="text/css" href="' + stylesheets[i].href + '">');
-    }
     printWindow.document.write('<style type="text/css"> @page { size: landscape; } </style>');
     let printing = policedata;
     if (printing) {
