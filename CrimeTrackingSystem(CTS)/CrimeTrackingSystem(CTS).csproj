@@ -376,6 +376,8 @@
     <Content Include="Views\Admin\Status.cshtml" />
     <Content Include="Views\Admin\UpdateCrimeComplainStatus.cshtml" />
     <Content Include="Views\Admin\CrimeStatusEdit.cshtml" />
+    <Content Include="Views\Admin\UpdateGeneralComplainStatus.cshtml" />
+    <Content Include="Views\Admin\GeneralStatusEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Uploads\CrimeComplainProofs\" />

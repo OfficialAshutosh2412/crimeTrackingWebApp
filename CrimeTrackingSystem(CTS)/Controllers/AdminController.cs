@@ -359,6 +359,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
             Session["image"] = preFetchData.Proofs.ToString();
             return View(preFetchData);
         }
+        //Post
         [HttpPost]
         public ActionResult CrimeStatusEdit(CrimeComplainViewModel updateCrimeData)
         {
@@ -380,6 +381,70 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                     Text = x.PoliceStationName
                 }).ToList();
 
+            ViewBag.OptionList = options;
+            return View();
+        }
+        //GET
+        public ActionResult UpdateGeneralComplainStatus()
+        {
+            if (Session["adminmail"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
+            var data = _context.GeneralComplains.ToList();
+            return View(data);
+        }
+        //GET:General Complain
+        public ActionResult GeneralStatusEdit(int id)
+        {
+            if (Session["usermail"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
+            List<SelectListItem> options = _context.PoliceStations.Select(
+                x => new SelectListItem
+                {
+                    Value = x.PoliceStationName.ToString(),
+                    Text = x.PoliceStationName
+                })
+                .ToList();
+            var preFetchData = _context.GeneralComplains
+                .Where(model => model.Id == id)
+                .Select(model => new GeneralComplainViewModel
+                {
+                    Username = model.Username,
+                    PoliceStationName = model.PoliceStationName,
+                    Subject = model.Subject,
+                    Details = model.Details,
+                    InvolvedPersons = model.InvolvedPersons,
+                    CurrentDateTime = model.CurrentDateTime,
+                    Status = model.Status
+                })
+                .FirstOrDefault();
+            ViewBag.OptionList = options;
+            return View(preFetchData);
+        }
+        //POST
+        [HttpPost]
+        public ActionResult GeneralStatusEdit(GeneralComplainViewModel generalFormData)
+        {
+            if (ModelState.IsValid)
+            {
+                var existingGeneralComplain = _context.GeneralComplains.Find(generalFormData.Id);
+                if (existingGeneralComplain != null)
+                {
+                    existingGeneralComplain.Status = generalFormData.Status;
+                    _context.SaveChanges();
+                }
+                return RedirectToAction("UpdateGeneralComplainStatus", "Admin");
+            }
+            List<SelectListItem> options = _context.PoliceStations.Select(
+                x => new SelectListItem
+                {
+                    Value = x.PoliceStationName.ToString(),
+                    Text = x.PoliceStationName
+                })
+                .ToList();
             ViewBag.OptionList = options;
             return View();
         }
