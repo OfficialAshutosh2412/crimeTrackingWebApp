@@ -9,6 +9,7 @@ namespace CrimeTrackingSystem_CTS_.Models
 {
     public class MissingValuableViewModel
     {
+        public int Id { get; set; }
         public string Username { get; set; }
 
         [DisplayName("Police Station")]

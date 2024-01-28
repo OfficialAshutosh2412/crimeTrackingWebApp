@@ -13,7 +13,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
 {
     public class AdminController : Controller
     {
-        CTSEntitiesClass _context = new CTSEntitiesClass();
+        readonly CTSEntitiesClass _context = new CTSEntitiesClass();
         //Logout:GET
         public ActionResult Logout()
         {
@@ -121,13 +121,13 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                         //adding data in db
                         var policedbmodel = new PoliceStation
                         {
-                            ChowkiIncharge=PoliceformData.ChowkiIncharge,
-                            PoliceStationName=PoliceformData.PoliceStationName,
-                            CUGNumberOne=PoliceformData.CUGNumberOne,
-                            CUGNumberSecond=PoliceformData.CUGNumberSecond,
-                            Agent=PoliceformData.Agent,
-                            AgentPhone=PoliceformData.AgentPhone,
-                            PoliceStationImage=PoliceformData.PoliceStationImage,
+                            ChowkiIncharge = PoliceformData.ChowkiIncharge,
+                            PoliceStationName = PoliceformData.PoliceStationName,
+                            CUGNumberOne = PoliceformData.CUGNumberOne,
+                            CUGNumberSecond = PoliceformData.CUGNumberSecond,
+                            Agent = PoliceformData.Agent,
+                            AgentPhone = PoliceformData.AgentPhone,
+                            PoliceStationImage = PoliceformData.PoliceStationImage,
                         };
                         _context.PoliceStations.Add(policedbmodel);
                         _context.SaveChanges();
@@ -188,10 +188,10 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                         smtpUserName = System.Configuration.ConfigurationManager.AppSettings["myMailAddress"];
                         smtpPassword = System.Configuration.ConfigurationManager.AppSettings["usernameForAspDotNetMVC"];
                         MailMessage mail = new MailMessage();
-                        SmtpClient smtp_Client = new SmtpClient(System.Configuration.ConfigurationSettings.AppSettings["smtpClient"]);                                                
+                        SmtpClient smtp_Client = new SmtpClient(System.Configuration.ConfigurationSettings.AppSettings["smtpClient"]);
                         smtp_Client.Port = Convert.ToInt32(System.Configuration.ConfigurationSettings.AppSettings["smtpPort"]);
                         smtp_Client.EnableSsl = Convert.ToBoolean(System.Configuration.ConfigurationSettings.AppSettings["enableSSL"]);
-                        mail.From = new MailAddress(smtpUserName); 
+                        mail.From = new MailAddress(smtpUserName);
                         mail.To.Add(selectedEmailAddress.Email);
                         mail.Subject = "Regarding your contact request to CTS Portal";
                         mail.Body = ("Name : " + selectedEmailAddress.Fullname.ToString() + Environment.NewLine + "Message : " + replyFormData.ReplyContent.ToString());
@@ -243,9 +243,10 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         {
             if (ModelState.IsValid)
             {
-                var faqdbmodel =new FAQ{
-                    Questions=faqFormData.Questions,
-                    Answer=faqFormData.Answer
+                var faqdbmodel = new FAQ
+                {
+                    Questions = faqFormData.Questions,
+                    Answer = faqFormData.Answer
                 };
                 _context.FAQs.Add(faqdbmodel);
                 _context.SaveChanges();
@@ -283,9 +284,9 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                 newsFormData.CurrentDateTime = DateTime.Now.ToString();
                 var newsdbmodel = new News
                 {
-                    Title=newsFormData.Title,
-                    Detail=newsFormData.Detail,
-                    CurrentDateTime=newsFormData.CurrentDateTime
+                    Title = newsFormData.Title,
+                    Detail = newsFormData.Detail,
+                    CurrentDateTime = newsFormData.CurrentDateTime
                 };
                 _context.News.Add(newsdbmodel);
                 _context.SaveChanges();
@@ -351,7 +352,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
             if (ModelState.IsValid)
             {
                 var existingCrimeComplain = _context.CrimeComplains.Find(updateCrimeData.Id);
-                if(existingCrimeComplain != null)
+                if (existingCrimeComplain != null)
                 {
                     existingCrimeComplain.Status = updateCrimeData.Status;
                     _context.SaveChanges();
@@ -380,7 +381,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         //GeneralStatusEdit:GET
         public ActionResult GeneralStatusEdit(int id)
         {
-            if (Session["usermail"] == null)
+            if (Session["adminmail"] == null)
             {
                 return RedirectToAction("Login", "Home");
             }
@@ -434,7 +435,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         //UpdateMissingPersonStatus:GET
         public ActionResult UpdateMissingPersonStatus()
         {
-            if (Session["usermail"] == null)
+            if (Session["adminmail"] == null)
             {
                 return RedirectToAction("Login", "Home");
             }
@@ -444,7 +445,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         //PersonStatusEdit:GET
         public ActionResult PersonStatusEdit(int id)
         {
-            if (Session["usermail"] == null)
+            if (Session["adminmail"] == null)
             {
                 return RedirectToAction("Login", "Home");
             }
@@ -495,6 +496,72 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                     Value = x.PoliceStationName.ToString(),
                     Text = x.PoliceStationName
                 }).ToList();
+            ViewBag.OptionList = options;
+            return View();
+        }
+        //UpdateMissingValuableStatus:GET
+        public ActionResult UpdateMissingValuableStatus()
+        {
+            if (Session["adminmail"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
+            var data = _context.MissingValuables.ToList();
+            return View(data);
+        }
+        //ValuableStatusEdit:GET
+        public ActionResult ValuableStatusEdit(int id)
+        {
+            if (Session["adminmail"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
+            var preFetchData = _context.MissingValuables
+                .Where(model => model.Id == id)
+                .Select(model => new MissingValuableViewModel
+                {
+                    Username = model.Username,
+                    PoliceStationName = model.PoliceStationName,
+                    ValuableType = model.ValuableType,
+                    ValuableCost = model.ValuableCost,
+                    Suspect = model.Suspect,
+                    ReciptImage = model.ReciptImage,
+                    Details = model.Details,
+                    CurrentDateTime = model.CurrentDateTime,
+                    Status = model.Status
+                })
+                .FirstOrDefault();
+            List<SelectListItem> options = _context.PoliceStations.Select(
+                 x => new SelectListItem
+                 {
+                     Value = x.PoliceStationName.ToString(),
+                     Text = x.PoliceStationName
+                 }).ToList();
+
+            ViewBag.OptionList = options;
+            return View(preFetchData);
+        }
+        //ValuableStatusEdit:POST
+        [HttpPost]
+        public ActionResult ValuableStatusEdit(MissingValuableViewModel valuableFormData)
+        {
+            if (ModelState.IsValid)
+            {
+                var existingValuable = _context.MissingValuables.Find(valuableFormData.Id);
+                if (existingValuable != null)
+                {
+                    existingValuable.Status = valuableFormData.Status;
+                    _context.SaveChanges();
+                }
+                return RedirectToAction("UpdateMissingValuableStatus", "Admin");
+            }
+            List<SelectListItem> options = _context.PoliceStations.Select(
+                 x => new SelectListItem
+                 {
+                     Value = x.PoliceStationName.ToString(),
+                     Text = x.PoliceStationName
+                 }).ToList();
+
             ViewBag.OptionList = options;
             return View();
         }

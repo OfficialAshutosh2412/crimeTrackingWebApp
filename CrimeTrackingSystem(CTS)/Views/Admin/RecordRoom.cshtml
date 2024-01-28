@@ -36,27 +36,37 @@
             <tbody class="table-light">
                 @foreach (var item in Model.CrimeView)
                 {
-                    <tr>
-                        <td>@item.Id</td>
+                <tr>
+                    <td>@item.Id</td>
+                    <td>
+                        <a href="@Url.Content(item.Proofs)" target="_blank"><img src="@Url.Content(item.Proofs)" width="100" alt="proofs" /></a>
+                    </td>
+                    @if (item.Status == "Pending")
+                    {
                         <td>
-                            <a href="@Url.Content(item.Proofs)" target="_blank"><img src="@Url.Content(item.Proofs)" width="100" alt="proofs" /></a>
+                            <label><i class="fa-solid fa-clock text-warning"></i> @item.Status</label>
                         </td>
-                        @if (item.Status == "Pending")
-                        {
-                            <td><Label class="bg-warning p-2 rounded-1">@item.Status</Label></td>
-                        }
-                        @if (item.Status == "Solved")
-                        {
-                            <td><Label class="bg-success text-light p-2 rounded-1">@item.Status</Label></td>
-                        }
-                        <td>@item.Username</td>
-                        <td>@item.PoliceStationName</td>
-                        <td>@item.CrimeType</td>
-                        <td>@item.InvolvedPersons</td>
-                        <td>@item.CrimeStation</td>
-                        <td>@item.CurrentDateTime</td>
+                    }
+                    @if (item.Status == "Solved")
+                    {
+                        <td>
+                            <label><i class="fa-solid fa-circle-check text-success"></i> @item.Status</label>
+                        </td>
+                    }
+                    @if (item.Status == "Rejected")
+                    {
+                        <td>
+                            <label><i class="fa-solid fa-circle-xmark text-danger"></i> @item.Status</label>
+                        </td>
+                    }
+                    <td>@item.Username</td>
+                    <td>@item.PoliceStationName</td>
+                    <td>@item.CrimeType</td>
+                    <td>@item.InvolvedPersons</td>
+                    <td>@item.CrimeStation</td>
+                    <td>@item.CurrentDateTime</td>
 
-                    </tr>
+                </tr>
                 }
             </tbody>
         </table>
@@ -82,23 +92,33 @@
             <tbody class="table-light">
                 @foreach (var item in Model.GeneralView)
                 {
-                    <tr>
-                        <td>@item.Id</td>
-                        <td>@item.Username</td>
-                        @if (item.Status == "Pending")
-                        {
-                            <td><Label class="bg-warning p-2 rounded-1">@item.Status</Label></td>
-                        }
-                        @if (item.Status == "Solved")
-                        {
-                            <td><Label class="bg-success text-light p-2 rounded-1">@item.Status</Label></td>
-                        }
-                        <td>@item.PoliceStationName</td>
-                        <td>@item.Subject</td>
-                        <td>@item.InvolvedPersons</td>
-                        <td>@item.Details</td>
-                        <td>@item.CurrentDateTime</td>
-                    </tr>
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Username</td>
+                    @if (item.Status == "Pending")
+                    {
+                        <td>
+                            <label><i class="fa-solid fa-clock text-warning"></i> @item.Status</label>
+                        </td>
+                    }
+                    @if (item.Status == "Solved")
+                    {
+                        <td>
+                            <label><i class="fa-solid fa-circle-check text-success"></i> @item.Status</label>
+                        </td>
+                    }
+                    @if (item.Status == "Rejected")
+                    {
+                        <td>
+                            <label><i class="fa-solid fa-circle-xmark text-danger"></i> @item.Status</label>
+                        </td>
+                    }
+                    <td>@item.PoliceStationName</td>
+                    <td>@item.Subject</td>
+                    <td>@item.InvolvedPersons</td>
+                    <td>@item.Details</td>
+                    <td>@item.CurrentDateTime</td>
+                </tr>
                 }
             </tbody>
         </table>
@@ -135,11 +155,21 @@
                     </td>
                     @if (item.Status == "Pending")
                     {
-                        <td><Label class="bg-warning p-2 rounded-1">@item.Status</Label></td>
+                        <td>
+                            <label><i class="fa-solid fa-clock text-warning"></i> @item.Status</label>
+                        </td>
                     }
                     @if (item.Status == "Solved")
                     {
-                        <td><Label class="bg-success text-light p-2 rounded-1">@item.Status</Label></td>
+                        <td>
+                            <label><i class="fa-solid fa-circle-check text-success"></i> @item.Status</label>
+                        </td>
+                    }
+                    @if (item.Status == "Rejected")
+                    {
+                        <td>
+                            <label><i class="fa-solid fa-circle-xmark text-danger"></i> @item.Status</label>
+                        </td>
                     }
                     <td>@item.Username</td>
                     <td>@item.PoliceStationName</td>
@@ -184,11 +214,21 @@
                     </td>
                     @if (item.Status == "Pending")
                     {
-                        <td><Label class="bg-warning p-2 rounded-1">@item.Status</Label></td>
+                        <td>
+                            <label><i class="fa-solid fa-clock text-warning"></i> @item.Status</label>
+                        </td>
                     }
                     @if (item.Status == "Solved")
                     {
-                        <td><Label class="bg-success text-light p-2 rounded-1">@item.Status</Label></td>
+                        <td>
+                            <label><i class="fa-solid fa-circle-check text-success"></i> @item.Status</label>
+                        </td>
+                    }
+                    @if (item.Status == "Rejected")
+                    {
+                        <td>
+                            <label><i class="fa-solid fa-circle-xmark text-danger"></i> @item.Status</label>
+                        </td>
                     }
                     <td>@item.Username</td>
                     <td>@item.PoliceStationName</td>

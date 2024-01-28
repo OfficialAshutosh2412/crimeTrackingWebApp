@@ -380,6 +380,8 @@
     <Content Include="Views\Admin\GeneralStatusEdit.cshtml" />
     <Content Include="Views\Admin\UpdateMissingPersonStatus.cshtml" />
     <Content Include="Views\Admin\PersonStatusEdit.cshtml" />
+    <Content Include="Views\Admin\UpdateMissingValuableStatus.cshtml" />
+    <Content Include="Views\Admin\ValuableStatusEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Uploads\CrimeComplainProofs\" />
