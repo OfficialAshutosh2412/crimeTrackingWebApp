@@ -48,62 +48,60 @@
         <tbody>
             @foreach (var item in Model)
             {
-            <tr>
-                <td>
-                    <a href="@Url.Action("CrimeStatusEdit","Admin", new { id=item.Id})">
-                        <i class='fa-solid fa-pen-to-square'></i>
-                    </a>
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Id)
-                </td>
-                @if (item.Status == "Pending")
-                {
+                <tr>
                     <td>
-                        <label><i class="fa-solid fa-clock text-warning"></i> @item.Status</label>
+                        <a href="@Url.Action("CrimeStatusEdit","Admin", new { id=item.Id})">
+                            <i class='fa-solid fa-pen-to-square'></i>
+                        </a>
                     </td>
-                }
-
-                @if (item.Status == "Solved")
-                {
                     <td>
-                        <label><i class="fa-solid fa-circle-check text-success"></i> @item.Status</label>
+                        @Html.DisplayFor(modelItem => item.Id)
                     </td>
-                }
-                @if (item.Status == "Rejected")
-                {
+                    @if (item.Status == "Pending")
+                    {
+                        <td>
+                            <label><i class="fa-solid fa-clock text-warning"></i> @item.Status</label>
+                        </td>
+                    }
+
+                    @if (item.Status == "Solved")
+                    {
+                        <td>
+                            <label><i class="fa-solid fa-circle-check text-success"></i> @item.Status</label>
+                        </td>
+                    }
+                    @if (item.Status == "Rejected")
+                    {
+                        <td>
+                            <label><i class="fa-solid fa-circle-xmark text-danger"></i> @item.Status</label>
+                        </td>
+                    }
                     <td>
-                        <label><i class="fa-solid fa-circle-xmark text-danger"></i> @item.Status</label>
+                        @Html.DisplayFor(modelItem => item.Username)
                     </td>
-                }
-                <td>
-                    @Html.DisplayFor(modelItem => item.Username)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PoliceStationName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CrimeType)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.InvolvedPersons)
-                </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PoliceStationName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CrimeType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.InvolvedPersons)
+                    </td>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.CrimeStation)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CurrentDateTime)
-                </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CrimeStation)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CurrentDateTime)
+                    </td>
+                    <td>
+                        <a href="@Url.Content(item.Proofs)" target="_blank">
+                            <img src="@Url.Content(item.Proofs)" width="100" alt="table image" />
+                        </a>
+                    </td>
 
-
-                <td>
-                    <a href="@Url.Content(item.Proofs)">
-                        <img src="@Url.Content(item.Proofs)" width="100" alt="table image" />
-                    </a>
-                </td>
-
-            </tr>
+                </tr>
             }
         </tbody>
     </table>

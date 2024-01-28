@@ -13,15 +13,15 @@ namespace CrimeTrackingSystem_CTS_.Controllers
 {
     public class AdminController : Controller
     {
-        //GET: Logout
+        CTSEntitiesClass _context = new CTSEntitiesClass();
+        //Logout:GET
         public ActionResult Logout()
         {
             Session.Abandon();
             Session.Clear();
             return RedirectToAction("Login", "Home");
         }
-        CTSEntitiesClass _context = new CTSEntitiesClass();
-        // GET: Admin
+        //Index:GET
         public ActionResult Index()
         {
             if (Session["adminmail"] == null)
@@ -30,7 +30,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
             }
             return View();
         }
-        //GET: Records
+        //RecordRoom:GET
         public ActionResult RecordRoom()
         {
             if (Session["adminmail"] == null)
@@ -48,7 +48,6 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                 PersonView = personData,
                 ValueView = valueData
             };
-
             return View(data);
         }
         //Getting crimecomplains as list.
@@ -71,8 +70,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         {
             return _context.MissingValuables.ToList();
         }
-
-        //GET: Police Station
+        //PoliceStationEntry:GET
         public ActionResult PoliceStationEntry()
         {
             if (Session["adminmail"] == null)
@@ -82,7 +80,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
             var prefectchData = _context.PoliceStations.ToList();
             return View(prefectchData);
         }
-        //GET: Police station insertion
+        //PoliceStationEntryInsertion:GET
         public ActionResult PoliceStationEntryInsertion()
         {
             if (Session["adminmail"] == null)
@@ -91,7 +89,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
             }
             return View();
         }
-        //POST: Police Station
+        //PoliceStationEntryInsertion:POST
         [HttpPost]
         public ActionResult PoliceStationEntryInsertion(PoliceStationViewModel PoliceformData)
         {
@@ -100,16 +98,12 @@ namespace CrimeTrackingSystem_CTS_.Controllers
             {
                 //getting only name of file
                 string filenameWithoutExtension = Path.GetFileNameWithoutExtension(PoliceformData.ImageFile.FileName);
-
                 //getting file extension
                 string fileExtension = Path.GetExtension(PoliceformData.ImageFile.FileName);
-
                 //getting posted image file
                 HttpPostedFileBase postedFile = PoliceformData.ImageFile;
-
                 //getting length of posted file
                 int lengthOfFile = postedFile.ContentLength;
-
                 //validating the file
                 if (fileExtension.ToLower() == ".jpg" || fileExtension.ToLower() == ".jpeg" || fileExtension.ToLower() == ".JPEG" || fileExtension.ToLower() == ".png")
                 {
@@ -118,16 +112,12 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                     {
                         //setting actuall file with extension into filename without extension
                         string actualFilename = filenameWithoutExtension + fileExtension;
-
                         //passing path of image with folder into database
                         PoliceformData.PoliceStationImage = "~/Uploads/PoliceStationImages/" + actualFilename;
-
                         //mapping server image folder
                         actualFilename = Path.Combine(Server.MapPath("~/Uploads/PoliceStationImages/"), actualFilename);
-
                         //saving the file into folder
                         PoliceformData.ImageFile.SaveAs(actualFilename);
-
                         //adding data in db
                         var policedbmodel = new PoliceStation
                         {
@@ -158,7 +148,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
             }
             return View();
         }
-        //GET : Contact Requests
+        //ContactRequests:GET
         public ActionResult ContactRequests()
         {
             if (Session["adminmail"] == null)
@@ -168,7 +158,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
             var contactData = _context.Contacts.ToList();
             return View(contactData);
         }
-        //GET : Contact Request Reply
+        //ContactRequestReply:GET
         public ActionResult ContactRequestReply()
         {
             if (Session["adminmail"] == null)
@@ -181,7 +171,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
             var replyModel = new EmailReplyModel();
             return View(replyModel);
         }
-        //POST: Contact request reply
+        //ContactRequestReply:POST
         [HttpPost]
         public ActionResult ContactRequestReply(EmailReplyModel replyFormData)
         {
@@ -195,7 +185,6 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                     {
                         string smtpUserName;
                         string smtpPassword;
-
                         smtpUserName = System.Configuration.ConfigurationManager.AppSettings["myMailAddress"];
                         smtpPassword = System.Configuration.ConfigurationManager.AppSettings["usernameForAspDotNetMVC"];
                         MailMessage mail = new MailMessage();
@@ -217,21 +206,19 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                         Console.WriteLine("sent");
                         return RedirectToAction("ContactRequestReply", "Admin");
                     }
-
                 }
                 catch (Exception ex)
                 {
                     ModelState.AddModelError(string.Empty, $"An error occured while sending email : {ex.Message}");
                 }
             }
-
             List<Contact> emailList = _context.Contacts.ToList();
             SelectList emailSelectList = new SelectList(emailList, "Email", "Email");
             ViewBag.listOfEmail = emailSelectList;
             var replyModel = new EmailReplyModel();
             return View(replyModel);
         }
-        //GET : FAQ
+        //FaqRecords:GET
         public ActionResult FaqRecords()
         {
             if (Session["adminmail"] == null)
@@ -241,7 +228,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
             var faqData = _context.FAQs.ToList();
             return View(faqData);
         }
-        //GET : FAQ Insertion
+        //FaqRecordInsertion:GET
         public ActionResult FaqRecordInsertion()
         {
             if (Session["adminmail"] == null)
@@ -250,7 +237,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
             }
             return View();
         }
-        //POST : FAQ Insertion
+        //FaqRecordInsertion:POST
         [HttpPost]
         public ActionResult FaqRecordInsertion(FaqViewModel faqFormData)
         {
@@ -268,7 +255,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
             }
             return View();
         }
-        //GET : News
+        //NewsRecord:GET
         public ActionResult NewsRecord()
         {
             if (Session["adminmail"] == null)
@@ -278,7 +265,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
             var newsdata = _context.News.ToList();
             return View(newsdata);
         }
-        //GET : News
+        //NewsInsertion:GET
         public ActionResult NewsInsertion()
         {
             if (Session["adminmail"] == null)
@@ -287,7 +274,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
             }
             return View();
         }
-        //POST : News
+        //NewsInsertion:POST
         [HttpPost]
         public ActionResult NewsInsertion(NewsViewModel newsFormData)
         {
@@ -308,7 +295,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
             }
             return View();
         }
-        //GET : Status home page
+        //Status:GET 
         public ActionResult Status()
         {
             if (Session["adminmail"] == null)
@@ -317,7 +304,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
             }
             return View();
         }
-        //GET : crime status 
+        //UpdateCrimeComplainStatus:GET
         public ActionResult UpdateCrimeComplainStatus()
         {
             if (Session["adminmail"] == null)
@@ -327,7 +314,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
             var data = _context.CrimeComplains.ToList();
             return View(data);
         }
-        //GET : Crime Status Edit
+        //CrimeStatusEdit:GET
         public ActionResult CrimeStatusEdit(int id)
         {
             if (Session["adminmail"] == null)
@@ -340,7 +327,6 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                     Value = x.PoliceStationName.ToString(),
                     Text = x.PoliceStationName
                 }).ToList();
-
             ViewBag.OptionList = options;
             var preFetchData = _context.CrimeComplains
                 .Where(model => model.Id == id)
@@ -356,10 +342,9 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                     Status = model.Status
                 })
                 .FirstOrDefault();
-            Session["image"] = preFetchData.Proofs.ToString();
             return View(preFetchData);
         }
-        //Post
+        //CrimeStatusEdit:Post
         [HttpPost]
         public ActionResult CrimeStatusEdit(CrimeComplainViewModel updateCrimeData)
         {
@@ -373,18 +358,16 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                 }
                 return RedirectToAction("UpdateCrimeComplainStatus", "Admin");
             }
-
             List<SelectListItem> options = _context.PoliceStations.Select(
                 x => new SelectListItem
                 {
                     Value = x.PoliceStationName.ToString(),
                     Text = x.PoliceStationName
                 }).ToList();
-
             ViewBag.OptionList = options;
             return View();
         }
-        //GET
+        //UpdateGeneralComplainStatus:GET
         public ActionResult UpdateGeneralComplainStatus()
         {
             if (Session["adminmail"] == null)
@@ -394,7 +377,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
             var data = _context.GeneralComplains.ToList();
             return View(data);
         }
-        //GET:General Complain
+        //GeneralStatusEdit:GET
         public ActionResult GeneralStatusEdit(int id)
         {
             if (Session["usermail"] == null)
@@ -424,7 +407,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
             ViewBag.OptionList = options;
             return View(preFetchData);
         }
-        //POST
+        //GeneralStatusEdit:POST
         [HttpPost]
         public ActionResult GeneralStatusEdit(GeneralComplainViewModel generalFormData)
         {
@@ -445,6 +428,73 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                     Text = x.PoliceStationName
                 })
                 .ToList();
+            ViewBag.OptionList = options;
+            return View();
+        }
+        //UpdateMissingPersonStatus:GET
+        public ActionResult UpdateMissingPersonStatus()
+        {
+            if (Session["usermail"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
+            var data = _context.MissingPersons.ToList();
+            return View(data);
+        }
+        //PersonStatusEdit:GET
+        public ActionResult PersonStatusEdit(int id)
+        {
+            if (Session["usermail"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
+            List<SelectListItem> options = _context.PoliceStations.Select(
+                x => new SelectListItem
+                {
+                    Value = x.PoliceStationName.ToString(),
+                    Text = x.PoliceStationName
+                }).ToList();
+
+            var preFetchData = _context.MissingPersons
+                .Where(model => model.Id == id)
+                .Select(model => new MissingPersonViewModel
+                {
+                    Username = model.Username,
+                    PoliceStationName = model.PoliceStationName,
+                    Person = model.Person,
+                    PersonPhone = model.PersonPhone,
+                    LastLocation = model.LastLocation,
+                    PersonEmail = model.PersonEmail,
+                    Ransom = model.Ransom,
+                    Details = model.Details,
+                    PersonImage = model.PersonImage,
+                    CurrentDateTime = model.CurrentDateTime,
+                    Status = model.Status
+                })
+                .FirstOrDefault();
+            ViewBag.OptionList = options;
+            return View(preFetchData);
+        }
+        //PersonStatusEdit:POST
+        [HttpPost]
+        public ActionResult PersonStatusEdit(MissingPersonViewModel personFormData)
+        {
+            if (ModelState.IsValid)
+            {
+                var existingPerson = _context.MissingPersons.Find(personFormData.Id);
+                if (existingPerson != null)
+                {
+                    existingPerson.Status = personFormData.Status;
+                    _context.SaveChanges();
+                }
+                return RedirectToAction("UpdateMissingPersonStatus", "Admin");
+            }
+            List<SelectListItem> options = _context.PoliceStations.Select(
+                x => new SelectListItem
+                {
+                    Value = x.PoliceStationName.ToString(),
+                    Text = x.PoliceStationName
+                }).ToList();
             ViewBag.OptionList = options;
             return View();
         }
