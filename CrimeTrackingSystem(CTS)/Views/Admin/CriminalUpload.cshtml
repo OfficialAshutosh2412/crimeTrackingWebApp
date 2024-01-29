@@ -1,0 +1,69 @@
+﻿@model CrimeTrackingSystem_CTS_.Models.CriminalImageViewModel
+@{
+    ViewBag.AdminTitle = "Criminal Photo Upload";
+    ViewBag.PageTitle = "Criminal Photo Upload";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@Html.Raw(TempData["message"])
+
+@using (Html.BeginForm("CriminalUpload", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class=" min-width contact-us-container" style="color:black !important">
+        <div class="p-3 contact-us-container-form rounded-3" id="contact">
+            <h1 class="section-title fs-4"><span class="title-vip p-2" id="title-vip4"><i class="fa-solid fa-message"></i>Criminal Images</span> upload</h1>
+            <div class=" d-flex">
+                <div class="mb-1 w-100 p-2">
+                    <span class="form-label">
+                        <i class="fa-solid fa-pencil"></i>
+                        @Html.LabelFor(model => model.Name, new { @class = "form-label fw-bolder" })
+                    </span><br />
+                    <small class="text-danger fw-bold">
+                        @Html.ValidationMessageFor(model => model.Name,"", new { @class="text-danger"})
+                    </small>
+                    @Html.TextBoxFor(model => model.Name, new { @class = "cc-box" })
+                </div>
+                <div class="mb-1 w-100 p-2">
+                    <span class="form-label">
+                        <i class="fa-solid fa-envelope"></i>
+                        @Html.LabelFor(model => model.AffectedOrganisation, new { @class = "form-label fw-bolder" })
+                    </span><br />
+                    <small class="text-danger fw-bold">
+                        @Html.ValidationMessageFor(model => model.AffectedOrganisation, "", new { @class = "text-danger" })
+                    </small>
+                    @Html.TextBoxFor(model => model.AffectedOrganisation, new { @class = "cc-box" })
+                </div>
+                <div class="mb-1 w-100 p-2">
+                    <span class="form-label">
+                        <i class="fa-solid fa-envelope"></i>
+                        @Html.LabelFor(model => model.Reward, new { @class = "form-label fw-bolder" })
+                    </span><br />
+                    <small class="text-danger fw-bold">
+                        @Html.ValidationMessageFor(model => model.Reward, "", new { @class = "text-danger" })
+                    </small>
+                    @Html.TextBoxFor(model => model.Reward, new { @class = "cc-box" })
+                </div>
+                <div class="mb-1 w-100 p-2">
+                    <span class="form-label">
+                        <i class="fa-solid fa-envelope"></i>
+                        @Html.LabelFor(model => model.Details, new { @class = "form-label fw-bolder" })
+                    </span><br />
+                    <small class="text-danger fw-bold">
+                        @Html.ValidationMessageFor(model => model.Details, "", new { @class = "text-danger" })
+                    </small>
+                    @Html.TextBoxFor(model => model.Details, new { @class = "cc-box" })
+                </div>
+            </div>
+            <div class="mb-1 w-100 p-2">
+                <span>
+                    @Html.LabelFor(model => model.CriminalImage, new { @class = "form-label fw-bolder" })
+                </span><br />
+                <input type="file" name="ImageFiles" class="cc-box" required />
+            </div>
+            <div class="mb-1 w-100 p-2">
+                <button class="btn btn-primary" value="upload" id="myButton">upload</button>
+            </div>
+        </div>
+    </div>
+}
+

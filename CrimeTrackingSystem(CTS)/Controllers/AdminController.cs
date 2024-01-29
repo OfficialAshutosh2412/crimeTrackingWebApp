@@ -114,7 +114,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                         string actualFilename = filenameWithoutExtension + fileExtension;
                         //passing path of image with folder into database
                         PoliceformData.PoliceStationImage = "~/Uploads/PoliceStationImages/" + actualFilename;
-                        //mapping server image folder
+                        //mapping server image folder along with filename
                         actualFilename = Path.Combine(Server.MapPath("~/Uploads/PoliceStationImages/"), actualFilename);
                         //saving the file into folder
                         PoliceformData.ImageFile.SaveAs(actualFilename);
@@ -581,22 +581,22 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         {
             if (ModelState.IsValid)
             {
-                foreach(var file in eventFormData.ImageFiles)
+                foreach (var file in eventFormData.ImageFiles)
                 {
-                    if(file != null && file.ContentLength > 0)
+                    if (file != null && file.ContentLength > 0)
                     {
                         var filename = Path.GetFileName(file.FileName);
-                        string fullnameWithFolder ="~/Uploads/EventImages/"+ Path.GetFileName(file.FileName);
-                        var pathOfImage = Path.Combine(Server.MapPath("~/Uploads/EventImages"),filename);
+                        string fullnameWithFolder = "~/Uploads/EventImages/" + Path.GetFileName(file.FileName);
+                        var pathOfImage = Path.Combine(Server.MapPath("~/Uploads/EventImages"), filename);
                         file.SaveAs(pathOfImage);
                         eventFormData.EventImage = fullnameWithFolder;
                         eventFormData.CurrentDateTime = DateTime.Now.ToString();
                         var eventdbmodel = new Event
                         {
-                            EventTitle=eventFormData.EventTitle,
-                            EventDateTime=eventFormData.EventDateTime,
-                            CurrentDateTime=eventFormData.CurrentDateTime,
-                            EventImage=eventFormData.EventImage
+                            EventTitle = eventFormData.EventTitle,
+                            EventDateTime = eventFormData.EventDateTime,
+                            CurrentDateTime = eventFormData.CurrentDateTime,
+                            EventImage = eventFormData.EventImage
                         };
                         _context.Events.Add(eventdbmodel);
                         _context.SaveChanges();
@@ -605,6 +605,42 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                 ModelState.Clear();
                 TempData["message"] = "<script>alert('upload successful')</script>";
                 return RedirectToAction("EventUpload", "Admin");
+            }
+            return View();
+        }
+        //CriminalUpload:GET
+        public ActionResult CriminalUpload()
+        {
+            return View();
+        }
+        //CriminalUpload:POST
+        [HttpPost]
+        public ActionResult CriminalUpload(CriminalImageViewModel criminalFormData)
+        {
+            if (ModelState.IsValid)
+            {
+                if (criminalFormData.ImageFiles != null && criminalFormData.ImageFiles.ContentLength > 0)
+                {
+                    string actualFilename = Path.GetFileName(criminalFormData.ImageFiles.FileName);
+                    criminalFormData.CriminalImage = "~/Uploads/CriminalImages/" + actualFilename;
+                    actualFilename = Path.Combine(Server.MapPath("~/Uploads/PoliceStationImages/"), actualFilename);
+                    criminalFormData.ImageFiles.SaveAs(actualFilename);
+                    criminalFormData.CurrentDateTime = DateTime.Now.ToString();
+                    var criminaldbmodel = new CriminalGallery
+                    {
+                        Name = criminalFormData.Name,
+                        AffectedOrganisation = criminalFormData.AffectedOrganisation,
+                        Reward = criminalFormData.Reward,
+                        CriminalImage = criminalFormData.CriminalImage,
+                        Details = criminalFormData.Details,
+                        CurrentDateTime=criminalFormData.CurrentDateTime
+                    };
+                    _context.CriminalGalleries.Add(criminaldbmodel);
+                    _context.SaveChanges();
+                    ModelState.Clear();
+                    TempData["message"] = "<script>alert('upload successful')</script>";
+                    return RedirectToAction("CriminalUpload", "Admin");
+                }
             }
             return View();
         }

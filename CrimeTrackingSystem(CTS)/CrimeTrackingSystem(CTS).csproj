@@ -151,6 +151,7 @@
     <Compile Include="Models\CriminalGallery.cs">
       <DependentUpon>CTSModels.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CriminalImageViewModel.cs" />
     <Compile Include="Models\CTSModels.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -385,6 +386,7 @@
     <Content Include="Views\Admin\ValuableStatusEdit.cshtml" />
     <Content Include="Views\Admin\GalleryImageUpload.cshtml" />
     <Content Include="Views\Admin\EventUpload.cshtml" />
+    <Content Include="Views\Admin\CriminalUpload.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Uploads\CrimeComplainProofs\" />
