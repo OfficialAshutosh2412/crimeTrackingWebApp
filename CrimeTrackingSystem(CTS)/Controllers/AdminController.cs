@@ -565,5 +565,48 @@ namespace CrimeTrackingSystem_CTS_.Controllers
             ViewBag.OptionList = options;
             return View();
         }
+        //GalleryImageUpload:GET
+        public ActionResult GalleryImageUpload()
+        {
+            return View();
+        }
+        //EventUpload:get
+        public ActionResult EventUpload()
+        {
+            return View();
+        }
+        //EventUpload:POST
+        [HttpPost]
+        public ActionResult EventUpload(EventViewModel eventFormData)
+        {
+            if (ModelState.IsValid)
+            {
+                foreach(var file in eventFormData.ImageFiles)
+                {
+                    if(file != null && file.ContentLength > 0)
+                    {
+                        var filename = Path.GetFileName(file.FileName);
+                        string fullnameWithFolder ="~/Uploads/EventImages/"+ Path.GetFileName(file.FileName);
+                        var pathOfImage = Path.Combine(Server.MapPath("~/Uploads/EventImages"),filename);
+                        file.SaveAs(pathOfImage);
+                        eventFormData.EventImage = fullnameWithFolder;
+                        eventFormData.CurrentDateTime = DateTime.Now.ToString();
+                        var eventdbmodel = new Event
+                        {
+                            EventTitle=eventFormData.EventTitle,
+                            EventDateTime=eventFormData.EventDateTime,
+                            CurrentDateTime=eventFormData.CurrentDateTime,
+                            EventImage=eventFormData.EventImage
+                        };
+                        _context.Events.Add(eventdbmodel);
+                        _context.SaveChanges();
+                    }
+                }
+                ModelState.Clear();
+                TempData["message"] = "<script>alert('upload successful')</script>";
+                return RedirectToAction("EventUpload", "Admin");
+            }
+            return View();
+        }
     }
 }

@@ -1,0 +1,48 @@
+﻿@model CrimeTrackingSystem_CTS_.Models.EventViewModel
+@{
+    ViewBag.AdminTitle = "Event Upload";
+    ViewBag.PageTitle = "Event Upload";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@Html.Raw(TempData["message"])
+
+@using (Html.BeginForm("EventUpload", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class=" min-width contact-us-container" style="color:black !important">
+        <div class="p-3 contact-us-container-form rounded-3" id="contact">
+            <h1 class="section-title fs-4"><span class="title-vip p-2" id="title-vip4"><i class="fa-solid fa-message"></i>Event Images</span> upload</h1>
+            <div class=" d-flex">
+                <div class="mb-1 w-100 p-2">
+                    <span class="form-label">
+                        <i class="fa-solid fa-pencil"></i>
+                        @Html.LabelFor(model => model.EventTitle, new { @class = "form-label fw-bolder" })
+                    </span><br />
+                    <small class="text-danger fw-bold">
+                        @Html.ValidationMessageFor(model => model.EventTitle)
+                    </small>
+                    @Html.TextBoxFor(model => model.EventTitle, new { @class = "cc-box" })
+                </div>
+                <div class="mb-1 w-100 p-2">
+                    <span class="form-label">
+                        <i class="fa-solid fa-envelope"></i>
+                        @Html.LabelFor(model => model.EventDateTime, new { @class = "form-label fw-bolder" })
+                    </span><br />
+                    <small class="text-danger fw-bold">
+                        @Html.ValidationMessageFor(model => model.EventDateTime)
+                    </small>
+                    @Html.TextBoxFor(model => model.EventDateTime, new { @class = "cc-box", type = "datetime-local" })
+                </div>
+
+            </div>
+            <div class="mb-1 w-100 p-2">
+                <span>
+                    @Html.LabelFor(model => model.EventImage, new { @class = "form-label fw-bolder" })
+                </span><br />
+                <input type="file" name="ImageFiles" class="cc-box" multiple required />
+            </div>
+            <div class="mb-1 w-100 p-2">
+                <button class="btn btn-primary" value="upload" id="myButton">upload</button>
+            </div>
+        </div>
+    </div>
+}
