@@ -237,6 +237,7 @@
     <Content Include="Images\11%282%29.png" />
     <Content Include="Images\2392490.jpg" />
     <Content Include="Images\abstract-gradient-neon-lights.jpg" />
+    <Content Include="Images\bunch-leaves-with-light-them_9493-5702.jpg" />
     <Content Include="Images\cc.jpg" />
     <Content Include="Images\chandrayaan-3-news-live-today-landing-isro-south-pole-vikram-lander-photos-pictures-1.jpg" />
     <Content Include="Images\check-mark.png" />
@@ -387,6 +388,8 @@
     <Content Include="Views\Admin\GalleryImageUpload.cshtml" />
     <Content Include="Views\Admin\EventUpload.cshtml" />
     <Content Include="Views\Admin\CriminalUpload.cshtml" />
+    <Content Include="Views\Home\Gallery.cshtml" />
+    <Content Include="Views\Home\CTS_Events.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Uploads\CrimeComplainProofs\" />

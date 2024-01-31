@@ -568,11 +568,19 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         //GalleryImageUpload:GET
         public ActionResult GalleryImageUpload()
         {
+            if (Session["adminmail"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
             return View();
         }
         //EventUpload:get
         public ActionResult EventUpload()
         {
+            if (Session["adminmail"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
             return View();
         }
         //EventUpload:POST
@@ -611,6 +619,10 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         //CriminalUpload:GET
         public ActionResult CriminalUpload()
         {
+            if (Session["adminmail"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
             return View();
         }
         //CriminalUpload:POST

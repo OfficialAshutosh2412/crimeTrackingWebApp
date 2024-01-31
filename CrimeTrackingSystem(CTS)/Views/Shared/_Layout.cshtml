@@ -18,7 +18,7 @@
         <img src="~/Images/loader/Ripple-2.1s-204px.gif" />
     </div>
     @*fixed menu*@
-    <div class=" whap-link settingBtn"  style="bottom: 40px; right: 10px; cursor: pointer; z-index: 8889998" id="settings"><i class="fa-solid fa-gear fa-spin" id="setting" onclick="showSetting()"></i></div>
+    <div class=" whap-link settingBtn" style="bottom: 40px; right: 10px; cursor: pointer; z-index: 8889998" id="settings"><i class="fa-solid fa-gear fa-spin" id="setting" onclick="showSetting()"></i></div>
     <div class=" whap-link themeSwitch" id="themeSwitch"><i class="fa-solid fa-brush" id="theme" onclick="showTheme()"></i></div>
     <div class=" whap-link translator" id="translator"><i class="fa-solid fa-language" id="tool-toggler"></i></div>
     <div class=" whap-link feedbackBtn" id="feedbackBtn"><a><i class="fa-solid fa-comments" onclick="showFeed()"></i></a></div>
@@ -67,6 +67,11 @@
             <a href="@Url.Action("Feedback", "Home")" class="send">give us your feedback...</a>
         </div>
     </div>
+    @*navlist*@
+    <div class="gallery-list" id="gallery-list">
+        <div><a href="@Url.Action("CTS_Events", "Home")">Events</a></div>
+        <div><a href="@Url.Action("CTS_Events", "Home")">Wanted Criminals</a></div>
+    </div>
     @*header*@
     <nav class="navbar dark-mode navbar-expand-lg bg-body-tertiary p-0" id="nav">
         <div class="container-fluid justify-content-between " id="navigator">
@@ -87,8 +92,8 @@
                     <li class="nav-item">
                         <a class="nav-link text-light" href="~/#services"><i class="fa-solid fa-cubes"></i> Services</a>
                     </li>
-                    <li class="nav-item" id="gallery">
-                        <a href="#" class="nav-link text-light"><i class="fa-solid fa-images"></i> Gallery</a>
+                    <li class="nav-item" id="gallery" style="cursor:pointer" onclick="showGallery()">
+                        <label class="nav-link text-light"><i class="fa-solid fa-images"></i> Gallery</label>
                     </li>
                     <li class="nav-item" id="contact">
                         <a href="@Url.Action("Contact", "Home")" class="nav-link text-light"><i class="fa-solid fa-message"></i> Contact us</a>
@@ -132,8 +137,8 @@
             </div>
         </div>
     </footer>
-    
-    
+
+
     <!-- Include SweetAlert JS -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
@@ -274,7 +279,7 @@
         if (pageName === "login" || pageName === "Login") {
             document.querySelector('#loginclick').classList.add("activeLink");
         }
-        
+
     </script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/custom.js"></script>

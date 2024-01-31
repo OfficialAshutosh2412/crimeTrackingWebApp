@@ -53,4 +53,12 @@ function guideclose() {
     panel.style.cssText = "opacity:0;transform:scale(0.5);visibility:hidden;";
 }
 
+//gallery
+function showGallery() {
+    let box = document.querySelector('#gallery-list');
+    box.classList.toggle('showGalleryList');
+}
+
+    
+
 
