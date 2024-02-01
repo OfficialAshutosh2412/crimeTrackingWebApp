@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<CrimeTrackingSystem_CTS_.Models.FAQ>
+@{
     ViewBag.Title = "Home";
 }
 @*hero*@
@@ -126,6 +127,22 @@
             </div>
         </div>
     </div>
+</div>
+@*faq*@
+<div class="cts-wrapper" id="faq">
+    <h1>Frequently Asked Questions</h1>
+    @foreach (var item in Model)
+    {
+        <div class="cts-faq">
+            <button class="cts-accordion">
+                @item.Questions
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="panel">
+                <p>@item.Answer</p>
+            </div>
+        </div>
+    }
 </div>
 @*other sites*@
 <div class="other-sites">

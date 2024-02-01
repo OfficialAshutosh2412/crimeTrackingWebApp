@@ -1,8 +1,4 @@
-﻿////navbar toggler
-//document.querySelector('#login-tog').addEventListener("click", () => {
-//    document.querySelector('.signin').classList.toggle('show-login');
-//});
-//tools toggler
+﻿//tools toggler
 document.querySelector('#tool-toggler').addEventListener("click", () => {
     document.querySelector('.top-bar').classList.toggle('hide-top');
 });
@@ -11,22 +7,22 @@ function myfunction() {
     var load = document.getElementById("preloader");
     load.style.display = "none"
 };
-//gallery revealer
-document.querySelector('#hide').addEventListener("click", () => {
-    document.querySelector('.ind-hide').classList.toggle('ind-show');
-});
-//closebtn
-document.querySelector('#close').addEventListener("click", () => {
-    document.querySelector('.ind-hide').classList.toggle('ind-show');
-});
-//chandrayan gallery revealer
-document.querySelector('#chandrahide').addEventListener("click", () => {
-    document.querySelector('.chandra-hide').classList.toggle('chandra-show');
-});
-//closebtn
-document.querySelector('#chandraclose').addEventListener("click", () => {
-    document.querySelector('.chandra-hide').classList.toggle('chandra-show');
-});
+//faq toggler
+var acc = document.getElementsByClassName("cts-accordion");
+for (var i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function () {
+        this.classList.toggle('active');
+        this.parentElement.classList.toggle('active');
+        var pannel = this.nextElementSibling;
+        if (pannel.style.display === "block") {
+            pannel.style.display = "none";
+        }
+        else {
+            pannel.style.display = "block";
+        }
+
+    });
+}
 //feedback
 function showFeed() {
     document.querySelector('.feedback').classList.toggle('show-feeds');
@@ -58,6 +54,7 @@ function showGallery() {
     let box = document.querySelector('#gallery-list');
     box.classList.toggle('showGalleryList');
 }
+
 
     
 

@@ -15,7 +15,8 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         //GET: Index
         public ActionResult Index()
         {
-            return View();
+            var faqData = _context.FAQs.ToList();
+            return View(faqData);
         }
 
         //GET: Contact
@@ -178,11 +179,13 @@ namespace CrimeTrackingSystem_CTS_.Controllers
             }
             return View();
         }
+        //event
         public ActionResult CTS_Events()
         {
             var firstEvent = _context.Events.ToList();
             return View(firstEvent);
         }
+        //wanted
         public ActionResult Wanted_Lists()
         {
             var listOfCriminals = _context.CriminalGalleries.ToList();

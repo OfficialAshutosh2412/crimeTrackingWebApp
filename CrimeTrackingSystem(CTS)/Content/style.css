@@ -996,7 +996,7 @@ body {
 
 .footer-follow, .rights {
     padding: 10px;
-    display: flex
+    display: flex;
 }
 
 .leftnews {
@@ -1035,7 +1035,7 @@ body {
 .deflex {
     display: flex
 }
-
+/*footer*/
 .footer {
     background: #ddffd3;
     text-align: center;
@@ -1057,25 +1057,20 @@ body {
     align-items: center;
     color: black;
 }
-
+    
     .footer-follow a {
-        color: black;
-        padding-right: 1%;
+        color: #ededed;
+        padding: 0 10px;
         font-size: 1.4em
     }
 
-.footer h6 {
-    font-weight: 600;
-    color: black;
-}
-
 .rights {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     background: #1e9b56;
     color: white;
-    flex-direction: row-reverse
+    flex-direction: row
 }
 
 .customContainer {
@@ -1417,13 +1412,58 @@ body {
         height: 40px;
         width: 100%;
     }
-
-.faq-grid {
-    height: 64vh;
-    width: 100%;
-    overflow: scroll;
-    border: 2px solid gray;
+/*end user faq*/
+.cts-wrapper {
+    background: white;
+    margin-bottom: -20px;
+    margin-top: 20px;
+    padding:2rem;
 }
+.cts-faq{
+    width:80%;
+    margin:0 auto;
+    box-shadow:0px 0px 5px 0px #dedede;
+    margin-bottom:20px;
+    border-radius:5px
+}
+    .cts-wrapper .cts-accordion{
+        background:white;
+        color:rgba(0,0,0,0.8);
+        cursor:pointer;
+        font-size:1.2rem;
+        width:100%;
+        padding: 1rem 2rem;
+        border:none;
+        outline:none;
+        transition:0.4s all ease;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        font-weight:bold;
+    }
+        .cts-wrapper .cts-accordion i{
+            font-size:1.6rem;
+        }
+.cts-wrapper h1{
+    text-align:center;
+    padding:2.5rem 0;
+    color:rgba(0,0,0,0.8);
+    letter-spacing:3px
+}
+.active, .cts-accordion:hover {
+    background: #f1f7f5;
+}
+        .panel{
+            padding:0 2.5rem;
+            overflow:hidden;
+            background:#ffe7e7;
+            display:none;
+        }
+        .panel p{
+            color:rgba(0,0,0,0.7);
+            font-size:1.1rem;
+            line-height:1.4rem;
+        }
 
 .session-name {
     padding: .5%;

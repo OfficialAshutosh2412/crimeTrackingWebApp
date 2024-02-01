@@ -98,8 +98,8 @@
                     <li class="nav-item" id="contact">
                         <a href="@Url.Action("Contact", "Home")" class="nav-link text-light"><i class="fa-solid fa-message"></i> Contact us</a>
                     </li>
-                    <li class="nav-item" id="faq">
-                        <a class="nav-link text-light" href="#"><i class="fa-solid fa-file-circle-question"></i> FAQ</a>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="#faq"><i class="fa-solid fa-file-circle-question"></i> FAQ</a>
                     </li>
                     <li class="nav-item nav-link" id="news">
                         <a href="#" class="text-light"><i class="fa-solid fa-newspaper"></i> News</a>
@@ -113,27 +113,16 @@
     </nav>
     @RenderBody()
     @*footer*@
-    <footer class="footer">
-        <div class="footer-brand">
-            <img src="~/Images/cts_logo.png" alt="cts.png">
-        </div>
-        <div>
-            <h6>follow us</h6>
+    <footer class="footer" id="footer">
+        <div class="rights" id="rights">
+            <div>
+                <label>All rights are reserved &copy; @DateTime.Now.Year | </label>
+            </div>
             <div class="footer-follow">
                 <a href="https://www.facebook.com/ashutosh.prasad.754365/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
                 <a href="https://www.instagram.com/official.ashu.2000/" target="_blank"><i class="fa-brands fa-square-instagram"></i></a>
                 <a href="https://twitter.com/Ashutos96662173" target="_blank"><i class="fa-brands fa-twitter"></i></a>
                 <a href="https://wa.me/6386239194" target="_blank"><i class="fa-brands fa-square-whatsapp"></i></a>
-            </div>
-        </div>
-        <div class="rights" id="rights">
-            <div>
-                <label>All rights are reserved &copy;Criminal tracking system 2023 .inc</label>
-            </div>
-            <div>
-                <a href="@Url.Action("Index", "Home")" class="navbar-brand">
-                    <img src="~/Images/cts_logo.png" />
-                </a>
             </div>
         </div>
     </footer>
@@ -142,7 +131,45 @@
     <!-- Include SweetAlert JS -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-
+        //keep red
+        if (localStorage.getItem('crimson')) {
+            applyRed();
+        }
+        //keep blue
+        if (localStorage.getItem('blue')) {
+            applyBlue();
+        }
+        //keep slate
+        if (localStorage.getItem('slate')) {
+            applySlate();
+        }
+        //keep green
+        if (localStorage.getItem('green')) {
+            applyGreen();
+        }
+        //keep kesar
+        if (localStorage.getItem('kesar')) {
+            applyKesar();
+        }
+        //navbar active link
+        //navbar active link
+        const pathName = window.location.pathname;
+        const pageName = pathName.split("/").pop();
+        if (pageName === "" || pageName === "UserHome" || pageName === "home") {
+            document.querySelector('#home').classList.add("activeLink");
+        }
+        if (pageName === "contact" || pageName === "Contact") {
+            document.querySelector('#contact').classList.add("activeLink");
+        }
+        if (pageName === "login" || pageName === "Login") {
+            document.querySelector('#loginclick').classList.add("activeLink");
+        }
+        if (pageName === "cts_events" || pageName === "CTS_Events" || pageName === "wanted_lists" || pageName === "Wanted_Lists") {
+            document.querySelector('#gallery').classList.add("activeLink");
+        }
+        if (pageName === "faq" || pageName === "Faq" || pageName === "FAQ") {
+            document.querySelector('#faq').classList.add("activeLink");
+        }
         //def green
         function applyGreen() {
             let crim = document.querySelectorAll('#settings,#navigator, #rights, #themeSwitch, #feedbackBtn, #whats, #translator');
@@ -244,44 +271,7 @@
             applyKesar();
             localStorage.setItem('kesar', this);
         }
-        //keep red
-        if (localStorage.getItem('crimson')) {
-            applyRed();
-        }
-        //keep blue
-        if (localStorage.getItem('blue')) {
-            applyBlue();
-        }
-        //keep slate
-        if (localStorage.getItem('slate')) {
-            applySlate();
-        }
-        //keep green
-        if (localStorage.getItem('green')) {
-            applyGreen();
-        }
-        //keep kesar
-        if (localStorage.getItem('kesar')) {
-            applyKesar();
-        }
-        //navbar active link
-    </script>
-    <script>
-        //navbar active link
-        const pathName = window.location.pathname;
-        const pageName = pathName.split("/").pop();
-        if (pageName === "" || pageName === "UserHome" || pageName === "home") {
-            document.querySelector('#home').classList.add("activeLink");
-        }
-        if (pageName === "contact" || pageName === "Contact") {
-            document.querySelector('#contact').classList.add("activeLink");
-        }
-        if (pageName === "login" || pageName === "Login") {
-            document.querySelector('#loginclick').classList.add("activeLink");
-        }
-        if (pageName === "cts_events" || pageName === "CTS_Events" || pageName === "wanted_lists" || pageName==="Wanted_Lists") {
-            document.querySelector('#gallery').classList.add("activeLink");
-        }
+        
     </script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/custom.js"></script>
