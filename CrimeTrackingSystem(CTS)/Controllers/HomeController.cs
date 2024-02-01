@@ -178,15 +178,15 @@ namespace CrimeTrackingSystem_CTS_.Controllers
             }
             return View();
         }
-        public ActionResult Gallery()
-        {
-            return View();
-        }
         public ActionResult CTS_Events()
         {
             var firstEvent = _context.Events.ToList();
             return View(firstEvent);
         }
-
+        public ActionResult Wanted_Lists()
+        {
+            var listOfCriminals = _context.CriminalGalleries.ToList();
+            return View(listOfCriminals);
+        }
     }
 }

@@ -263,6 +263,7 @@
     <Content Include="Images\mentor 1.jpg" />
     <Content Include="Images\mr.jpg" />
     <Content Include="Images\mygov.png" />
+    <Content Include="Images\newone.jpg" />
     <Content Include="Images\Ripple-2.1s-204px.gif" />
     <Content Include="Images\sort_asc.png" />
     <Content Include="Images\sort_asc_disabled.png" />
@@ -388,8 +389,8 @@
     <Content Include="Views\Admin\GalleryImageUpload.cshtml" />
     <Content Include="Views\Admin\EventUpload.cshtml" />
     <Content Include="Views\Admin\CriminalUpload.cshtml" />
-    <Content Include="Views\Home\Gallery.cshtml" />
     <Content Include="Views\Home\CTS_Events.cshtml" />
+    <Content Include="Views\Home\Wanted_Lists.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Uploads\CrimeComplainProofs\" />

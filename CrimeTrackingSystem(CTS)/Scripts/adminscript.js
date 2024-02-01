@@ -23,6 +23,9 @@ if (pageName === "faqrecords" || pageName === "FaqRecords") {
 if (pageName === "newsrecord" || pageName === "NewsRecord") {
     document.querySelector('#NewsRecord').classList.add("admin-nav-active");
 }
+if (pageName === "galleryimageupload" || pageName === "GalleryImageUpload") {
+    document.querySelector('#AdminGallery').classList.add("admin-nav-active");
+}
 // initials records css
 document.querySelector('#crimeBtn').classList.add("bg-warning");
 document.querySelector('#crimeBtn').classList.add("text-dark");

@@ -769,7 +769,7 @@ body {
     left: 71%;
     display: none;
     transition: 0.2s all ease-in-out;
-    z-index: 99;
+    z-index: 100009;
 }
 
 .showGalleryList {
@@ -803,7 +803,7 @@ body {
     background-image: url('../Images/bunch-leaves-with-light-them_9493-5702.jpg');
     background-position: center center;
     background-repeat: no-repeat;
-    background-size: cover
+    background-size: cover;
 }
 
     .gallery-bg h1 {
@@ -837,6 +837,7 @@ body {
 
 .gallery-item {
     padding: 5px;
+    overflow:hidden
 }
 
     .gallery-item img {
@@ -845,12 +846,16 @@ body {
         object-fit: cover;
         filter: saturate(50%);
         transition: 0.1s all ease-in;
-        opacity: 0.9;
+        opacity: 0.8;
         border-radius: 5px;
     }
 
         .gallery-item img:hover {
             filter: saturate(110%);
+            transform: scale(1.3);
+            position: sticky;
+            z-index: 1000;
+            opacity: 1;
         }
 
 /*contact us*/

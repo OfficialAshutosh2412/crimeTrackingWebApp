@@ -635,7 +635,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                 {
                     string actualFilename = Path.GetFileName(criminalFormData.ImageFiles.FileName);
                     criminalFormData.CriminalImage = "~/Uploads/CriminalImages/" + actualFilename;
-                    actualFilename = Path.Combine(Server.MapPath("~/Uploads/PoliceStationImages/"), actualFilename);
+                    actualFilename = Path.Combine(Server.MapPath("~/Uploads/CriminalImages/"), actualFilename);
                     criminalFormData.ImageFiles.SaveAs(actualFilename);
                     criminalFormData.CurrentDateTime = DateTime.Now.ToString();
                     var criminaldbmodel = new CriminalGallery

@@ -70,7 +70,7 @@
     @*navlist*@
     <div class="gallery-list" id="gallery-list">
         <div><a href="@Url.Action("CTS_Events", "Home")">Events</a></div>
-        <div><a href="@Url.Action("CTS_Events", "Home")">Wanted Criminals</a></div>
+        <div><a href="@Url.Action("Wanted_Lists", "Home")">Wanted Criminals</a></div>
     </div>
     @*header*@
     <nav class="navbar dark-mode navbar-expand-lg bg-body-tertiary p-0" id="nav">
@@ -92,8 +92,8 @@
                     <li class="nav-item">
                         <a class="nav-link text-light" href="~/#services"><i class="fa-solid fa-cubes"></i> Services</a>
                     </li>
-                    <li class="nav-item" id="gallery" style="cursor:pointer" onclick="showGallery()">
-                        <label class="nav-link text-light"><i class="fa-solid fa-images"></i> Gallery</label>
+                    <li class="nav-item" id="gallery" style="cursor:pointer !important" onclick="showGallery()">
+                        <a class="nav-link text-light" style="cursor:pointer !important"><i class="fa-solid fa-images"></i> Gallery</a>
                     </li>
                     <li class="nav-item" id="contact">
                         <a href="@Url.Action("Contact", "Home")" class="nav-link text-light"><i class="fa-solid fa-message"></i> Contact us</a>
@@ -279,7 +279,9 @@
         if (pageName === "login" || pageName === "Login") {
             document.querySelector('#loginclick').classList.add("activeLink");
         }
-
+        if (pageName === "cts_events" || pageName === "CTS_Events" || pageName === "wanted_lists" || pageName==="Wanted_Lists") {
+            document.querySelector('#gallery').classList.add("activeLink");
+        }
     </script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/custom.js"></script>
