@@ -23,9 +23,7 @@ if (pageName === "faqrecords" || pageName === "FaqRecords") {
 if (pageName === "newsrecord" || pageName === "NewsRecord") {
     document.querySelector('#NewsRecord').classList.add("admin-nav-active");
 }
-if (pageName === "galleryimageupload" || pageName === "GalleryImageUpload") {
-    document.querySelector('#AdminGallery').classList.add("admin-nav-active");
-}
+
 // initials records css
 document.querySelector('#crimeBtn').classList.add("bg-warning");
 document.querySelector('#crimeBtn').classList.add("text-dark");
@@ -228,3 +226,18 @@ function NewsRecordPrint() {
         console.error("content not found");
     }
 }
+
+//gallery
+function showGallery() {
+    let box = document.querySelector('#gallery-list');
+    box.classList.toggle('showGalleryList');
+}
+
+function showStatus() {
+    let box = document.querySelector('#status-list');
+    box.classList.toggle('showGalleryList');
+}
+
+
+
+

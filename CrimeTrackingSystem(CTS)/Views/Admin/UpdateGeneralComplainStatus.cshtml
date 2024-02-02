@@ -87,7 +87,9 @@
                     </td>
 
                     <td>
-                        @Html.DisplayFor(modelItem => item.Details)
+                        <a href="@Url.Action("GeneralDetails","Admin", new { id=item.Id})" target="_blank">
+                            see details
+                        </a>
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.CurrentDateTime)

@@ -296,15 +296,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
             }
             return View();
         }
-        //Status:GET 
-        public ActionResult Status()
-        {
-            if (Session["adminmail"] == null)
-            {
-                return RedirectToAction("Login", "Home");
-            }
-            return View();
-        }
+        
         //UpdateCrimeComplainStatus:GET
         public ActionResult UpdateCrimeComplainStatus()
         {
@@ -432,6 +424,12 @@ namespace CrimeTrackingSystem_CTS_.Controllers
             ViewBag.OptionList = options;
             return View();
         }
+        //General Details
+        public ActionResult GeneralDetails(int id)
+        {
+            ViewBag.output = _context.GeneralComplains.Where(model => model.Id == id).FirstOrDefault();
+            return View();
+        }
         //UpdateMissingPersonStatus:GET
         public ActionResult UpdateMissingPersonStatus()
         {
@@ -497,6 +495,12 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                     Text = x.PoliceStationName
                 }).ToList();
             ViewBag.OptionList = options;
+            return View();
+        }
+        //Person Details
+        public ActionResult PersonDetails(int id)
+        {
+            ViewBag.output = _context.MissingPersons.Where(model => model.Id == id).FirstOrDefault();
             return View();
         }
         //UpdateMissingValuableStatus:GET
@@ -565,13 +569,10 @@ namespace CrimeTrackingSystem_CTS_.Controllers
             ViewBag.OptionList = options;
             return View();
         }
-        //GalleryImageUpload:GET
-        public ActionResult GalleryImageUpload()
+        //Valuables Details
+        public ActionResult ValuableDetails(int id)
         {
-            if (Session["adminmail"] == null)
-            {
-                return RedirectToAction("Login", "Home");
-            }
+            ViewBag.output = _context.MissingValuables.Where(model => model.Id == id).FirstOrDefault();
             return View();
         }
         //EventUpload:get

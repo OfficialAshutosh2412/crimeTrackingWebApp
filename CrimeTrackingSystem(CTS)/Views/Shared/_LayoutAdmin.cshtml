@@ -13,6 +13,17 @@
     @RenderSection("head", required: false)
 </head>
 <body style="background:#343434;color:#ededed">
+    @*navlist*@
+    <div class="gallery-list" id="gallery-list" style="left: 65%; top: 10%; background: #1d4f75;">
+        <div><a href="@Url.Action("EventUpload", "Admin")" style="color:white">Event Uploads</a></div>
+        <div><a href="@Url.Action("CriminalUpload", "Admin")" style="color:white">Criminal Uploads</a></div>
+    </div>
+    <div class="gallery-list" id="status-list" style="left: 80%; top: 10%; background: #1d4f75;">
+        <div><a href="@Url.Action("UpdateCrimeComplainStatus","Admin")"  style="color:white">Crime Complain</a></div>
+        <div><a href="@Url.Action("UpdateGeneralComplainStatus","Admin")"  style="color:white">General Complain</a></div>
+        <div><a href="@Url.Action("UpdateMissingPersonStatus","Admin")"  style="color:white">Missing Person</a></div>
+        <div><a href="@Url.Action("UpdateMissingValuableStatus","Admin")"  style="color:white">Missing Valuable</a></div>
+    </div>
     <nav class="admin-nav">
         <div class="admin-title">
             <h3 class="d-flex align-items-center w-100">
@@ -27,23 +38,23 @@
             <div id="adminrecord">
                 <a href="@Url.Action("RecordRoom","Admin")" title="Records"><i class="fa-solid fa-file-signature text-light"></i></a>
             </div>
-            <div id="AdminGallery">
-                <a href="@Url.Action("GalleryImageUpload","Admin")" title="Gallery"><i class="fa-solid fa-images text-light"></i></a>
-            </div>
             <div id="PoliceStationEntry">
                 <a href="@Url.Action("PoliceStationEntry","Admin")" title="Police Station"><i class="fa-solid fa-building-shield text-light"></i></a>
             </div>
+            <div class="gallery-nav" id="gallery" style="cursor:pointer !important" onclick="showGallery()">
+                <label title="Gallery" style="cursor:pointer !important"><i class="fa-solid fa-images text-light"></i></label>
+            </div>
             <div id="ContactRequests">
                 <a href="@Url.Action("ContactRequests","Admin")" title="Contact Us requests"><i class="fa-solid fa-message text-light"></i></a>
-            </div>
+            </div> 
             <div id="FaqRecords">
                 <a href="@Url.Action("FaqRecords", "Admin")" title="FAQ"><i class="fa-solid fa-circle-question text-light"></i></a>
             </div>
             <div id="NewsRecord">
                 <a href="@Url.Action("NewsRecord", "Admin")" title="News"><i class="fa-solid fa-newspaper text-light"></i></a>
             </div>
-            <div>
-                <a href="@Url.Action("Status", "Admin")" title="status"><i class="fa-solid fa-calendar-check text-light"></i></a>
+            <div id="status" style="cursor:pointer !important" onclick="showStatus()">
+                <label title="status" style="cursor:pointer !important"><i class="fa-solid fa-calendar-check text-light"></i></label>
             </div>
             <div>
                 <a href="@Url.Action("Logout","Admin")" class="nav-link fw-bolder" title="logout"><i class="fa-solid fa-right-from-bracket"></i></a>
