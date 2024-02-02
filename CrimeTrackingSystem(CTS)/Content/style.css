@@ -999,25 +999,6 @@ body {
     display: flex;
 }
 
-.leftnews {
-    height: 40vh;
-    width: 100%;
-    margin-top: -8px;
-    overflow: scroll;
-}
-
-.news-h1 {
-    background: #aa3636;
-    color: white;
-    width: 100%;
-}
-
-.rightnews {
-    height: 100%;
-    width: 100%;
-    margin: 0px auto;
-    background: #ebebeb;
-}
 
 .signin {
     width: 40%;
@@ -1464,13 +1445,45 @@ body {
             font-size:1.1rem;
             line-height:1.4rem;
         }
-
-.session-name {
-    padding: .5%;
-    border-radius: 4px;
-    margin: 10px auto 0;
-    text-align: right
+/*news*/
+.newsDetails {
+    width: 90%;
+    margin: 0 auto;
+    padding: 1rem;
+    font-family: 'Yu Gothic UI'
 }
+    .newsDetails h3 {
+        background: #f2f2f2;
+        padding: 1rem;
+        background: #333333;
+        color: white
+    }
+    .newsDetails div {
+        background: #f2f2f2;
+        padding: 1rem
+    }
+        .newsDetails div h2 {
+            background: #f2f2f2;
+            padding: 1.3rem
+        }
+        .newsDetails div p {
+            background: #e0e0e0;
+            padding: 2rem
+        }
+    .newsDetails .timedate {
+        background: #f2f2f2;
+        padding: 1rem;
+        margin-top: 10px;
+        font-weight: bolder;
+        color: rgba(0,0,0,0.7)
+    }
+        /*admin home*/
+        .session-name {
+            padding: .5%;
+            border-radius: 4px;
+            margin: 10px auto 0;
+            text-align: right
+        }
 
 .admin-card-container {
     display: flex;
@@ -1953,22 +1966,7 @@ body {
         align-items: center
     }
 
-    .newspage {
-        height: 100%;
-        display: block;
-    }
-
-        .newspage .leftnews {
-            width: 100%;
-            height: 90vh
-        }
-
-        .newspage .rightnews {
-            margin-top: 20px;
-            border: none;
-        }
-
-    .event-gallery-container {
+        .event-gallery-container {
         flex-direction: column;
         margin-bottom: 50px;
         height: auto;
@@ -1982,21 +1980,7 @@ body {
             transition: 0.5s ease-in-out all;
         }
 
-    .leftnews {
-        height: 100vh;
-        width: 100%;
-    }
-
-    .rightnews {
-        height: 100%;
-        width: 100%;
-        background: #ebebeb;
-    }
-
-        .rightnews * {
-            box-shadow: none !important;
-        }
-
+   
     .policeItem {
         width: 100%;
         flex-direction: column;
@@ -2030,13 +2014,7 @@ body {
             margin-top: 10px;
         }
 
-    .news-date {
-        width: 100% !important;
-    }
-
-    .news-btn {
-        width: 100% !important;
-    }
+    
 
     .policeItem {
         margin-top: 5px !important;

@@ -191,5 +191,16 @@ namespace CrimeTrackingSystem_CTS_.Controllers
             var listOfCriminals = _context.CriminalGalleries.ToList();
             return View(listOfCriminals);
         }
+        //news
+        public ActionResult News()
+        {
+            var newsData = _context.News.ToList();
+            return View(newsData);
+        }
+        public ActionResult News_details(int id)
+        {
+            ViewBag.gettingData = _context.News.Where(model=>model.Id==id).FirstOrDefault();
+            return View();
+        }
     }
 }

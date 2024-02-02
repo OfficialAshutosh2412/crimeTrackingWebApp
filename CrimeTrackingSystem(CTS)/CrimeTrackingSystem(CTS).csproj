@@ -391,6 +391,8 @@
     <Content Include="Views\Admin\CriminalUpload.cshtml" />
     <Content Include="Views\Home\CTS_Events.cshtml" />
     <Content Include="Views\Home\Wanted_Lists.cshtml" />
+    <Content Include="Views\Home\News.cshtml" />
+    <Content Include="Views\Home\News_details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Uploads\CrimeComplainProofs\" />

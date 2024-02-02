@@ -14,7 +14,6 @@ namespace CrimeTrackingSystem_CTS_.Models
         public string Title { get; set; }
 
         [Required(ErrorMessage = "required")]
-        [StringLength(250, ErrorMessage = "not more than 250 words")]
         public string Detail { get; set; }
         public string CurrentDateTime { get; set; }
     }

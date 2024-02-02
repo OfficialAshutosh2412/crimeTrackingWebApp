@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CTS | @ViewBag.Title</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-1.13.8/r-2.5.0/rg-1.4.1/datatables.min.css" rel="stylesheet">
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/style.css" rel="stylesheet" />
     <!-- Include SweetAlert CSS -->
@@ -102,7 +103,7 @@
                         <a class="nav-link text-light" href="#faq"><i class="fa-solid fa-file-circle-question"></i> FAQ</a>
                     </li>
                     <li class="nav-item nav-link" id="news">
-                        <a href="#" class="text-light"><i class="fa-solid fa-newspaper"></i> News</a>
+                        <a href="@Url.Action("News", "Home")" class="text-light"><i class="fa-solid fa-newspaper"></i> News</a>
                     </li>
                     <li class="nav-item nav-link" id="loginclick">
                         <a href="@Url.Action("login", "Home")" class="text-light"><i class="fa-solid fa-arrow-right-to-bracket "></i> Login</a>
@@ -271,10 +272,18 @@
             applyKesar();
             localStorage.setItem('kesar', this);
         }
-        
+
     </script>
+    <script src="~/Scripts/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-1.13.8/r-2.5.0/rg-1.4.1/datatables.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/custom.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#tableJsId").dataTable();
+
+        });
+    </script>
 
 </body>
 </html>
