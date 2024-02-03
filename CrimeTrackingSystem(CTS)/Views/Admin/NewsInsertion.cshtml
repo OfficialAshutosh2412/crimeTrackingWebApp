@@ -18,41 +18,39 @@
     </script>
 }
 
-@*form*@
-<div class="center-div" id="createForm">
-    @using (Html.BeginForm("NewsInsertion", "Admin", FormMethod.Post))
-    {
-        <div class="policeContainer">
-            <div class="fixedFormHead">
-                <h5>create new entry</h5>
-                <a href="@Url.Action("NewsRecord", "Admin")" class="btn btn-sm btn-danger" aria-label="Close" onclick="hidePoliceStationForm()">
-                    <span aria-hidden="true">&times;</span>
-                </a>
-            </div>
-            <div class="policeItem">
-                <div>
-                    <span>
-                        <i class="fa-solid fa-a"></i>
-                        @Html.LabelFor(model => model.Title)
-                        <small>@Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger fw-bolder" })</small>
-                    </span>
+@using (Html.BeginForm("NewsInsertion", "Admin", FormMethod.Post))
+{
+    <div class="admin-gallery-uploader">
+        <h1><a href="@Url.Action("NewsRecord","Admin")" title="go back" class="text-decoration-none btn btn-outline-danger"><i class="fa-solid fa-arrow-left"></i></a>News Upload</h1>
+        <div class="admin-gallery-item">
+            <div>
+                <fieldset>
+                    <legend>
+                        <i class="fa-solid fa-bolt"></i>
+                        @Html.LabelFor(model => model.Title, new { @class = "form-label" })
+                    </legend>
+                    <small class="text-danger fw-bold">
+                        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger fw-bolder" })
+                    </small>
                     @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "cc-box" } })
-                </div>
+                </fieldset>
             </div>
-            <div class="policeItem">
-                <div>
-                    <span>
+            <div>
+                <fieldset>
+                    <legend>
                         <i class="fa-solid fa-pen-nib"></i>
-                        @Html.LabelFor(model => model.Detail)
-                        <small>@Html.ValidationMessageFor(model => model.Detail, "", new { @class = "text-danger fw-bolder" })</small>
-                    </span>
-                    @Html.EditorFor(model => model.Detail, new { htmlAttributes = new { @class = "cc-box" } })
-                </div>
+                        @Html.LabelFor(model => model.Detail, new { @class = "form-label" })
+                    </legend>
+                    <small class="text-danger fw-bold">
+                        @Html.ValidationMessageFor(model => model.Detail, "", new { @class = "text-danger fw-bolder" })
+                    </small>
+                    @Html.TextAreaFor(model => model.Detail, new { rows = 15, @class = "cc-box", placeholder = "write details here..." })
+                </fieldset>
             </div>
-            <div class="policeItem">
-                <div><button class="btn btn-primary">Insert row</button></div>
+            <div style="margin-left:10px;">
+                <button class="btn btn-primary" value="upload" id="myButton"> <i class="fa-solid fa-cloud-arrow-up"></i> upload</button>
             </div>
         </div>
-    }
-</div>
+    </div>
+}
 

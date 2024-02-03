@@ -17,44 +17,42 @@
         });
     </script>
 }
-@*form*@
-<div class="center-div">
-    @using (Html.BeginForm("FaqRecordInsertion", "Admin", FormMethod.Post))
-    {
-        <div class="policeContainer">
-            <div class="fixedFormHead">
-                <h5>create new entry</h5>
-                <a href="@Url.Action("FaqRecords", "Admin")" class="btn btn-sm btn-danger" aria-label="Close" onclick="hidePoliceStationForm()">
-                    <span aria-hidden="true">&times;</span>
-                </a>
-            </div>
-            <div class="policeItem">
-                <div>
-                    <span>
+
+@using (Html.BeginForm("FaqRecordInsertion", "Admin", FormMethod.Post))
+{
+    <div class="admin-gallery-uploader">
+        <h1><a href="@Url.Action("FaqRecords","Admin")" title="go back" class="text-decoration-none btn btn-outline-danger"><i class="fa-solid fa-arrow-left"></i></a>FAQ Upload</h1>
+        <div class="admin-gallery-item">
+            <div>
+                <fieldset>
+                    <legend>
                         <i class="fa-solid fa-question"></i>
-                        @Html.LabelFor(model => model.Questions)
-                        <small>@Html.ValidationMessageFor(model => model.Questions, "", new { @class = "text-danger fw-bolder" })</small>
-                    </span>
+                        @Html.LabelFor(model => model.Questions, new { @class = "form-label" })
+                    </legend>
+                    <small class="text-danger fw-bold">
+                        @Html.ValidationMessageFor(model => model.Questions, "", new { @class = "text-danger fw-bolder" })
+                    </small>
                     @Html.EditorFor(model => model.Questions, new { htmlAttributes = new { @class = "cc-box" } })
-                </div>
+                </fieldset>
             </div>
-            <div class="policeItem">
-                <div>
-                    <span>
+            <div>
+                <fieldset>
+                    <legend>
                         <i class="fa-solid fa-comments"></i>
-                        @Html.LabelFor(model => model.Answer)
-                        <small>@Html.ValidationMessageFor(model => model.Answer, "", new { @class = "text-danger fw-bolder" })</small>
-                    </span>
-                    @Html.TextAreaFor(model => model.Answer, new { rows = 4, @class = "cc-box" })
-                </div>
+                        @Html.LabelFor(model => model.Answer, new { @class = "form-label" })
+                    </legend>
+                    <small class="text-danger fw-bold">
+                        @Html.ValidationMessageFor(model => model.Answer, "", new { @class = "text-danger fw-bolder" })
+                    </small>
+                    @Html.TextAreaFor(model => model.Answer, new { rows = 15, @class = "cc-box", placeholder = "write answer here..." })
+                </fieldset>
             </div>
-            <div class="policeItem">
-                <div>
-                    <button class="btn btn-primary">Upload</button>
-                </div>
+            <div style="margin-left:10px;">
+                <button class="btn btn-primary" value="upload" id="myButton"> <i class="fa-solid fa-paper-plane"></i> send</button>
             </div>
         </div>
-    }
-</div>
+    </div>
+}
+
 
 

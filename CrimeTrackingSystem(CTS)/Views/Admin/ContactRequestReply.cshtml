@@ -18,41 +18,39 @@
     </script>
 }
 @*form*@
-<div class="center-div" id="createForm">
-    @using (Html.BeginForm("ContactRequestReply", "Admin", FormMethod.Post))
-    {
-        <div class="policeContainer">
-            <div class="fixedFormHead">
-                <h5>create new entry</h5>
-                <a href="@Url.Action("ContactRequests", "Admin")" class="btn btn-sm btn-danger" aria-label="Close" onclick="hidePoliceStationForm()">
-                    <span aria-hidden="true">&times;</span>
-                </a>
-            </div>
-            <div class="policeItem">
-                <div>
-                    <span>
+
+@using (Html.BeginForm("ContactRequestReply", "Admin", FormMethod.Post))
+{
+    <div class="admin-gallery-uploader">
+        <h1><a href="@Url.Action("ContactRequests","Admin")" title="go back" class="text-decoration-none btn btn-outline-danger"><i class="fa-solid fa-arrow-left"></i></a>Contact request reply</h1>
+        <div class="admin-gallery-item">
+            <div>
+                <fieldset>
+                    <legend>
                         <i class="fa-solid fa-envelope"></i>
-                        @Html.LabelFor(model => model.OriginalEmail)
-                        <small>@Html.ValidationMessageFor(model => model.OriginalEmail, "", new { @class = "text-danger fw-bolder" })</small>
-                    </span>
+                        @Html.LabelFor(model => model.OriginalEmail, new { @class = "form-label" })
+                    </legend>
+                    <small class="text-danger fw-bold">
+                        @Html.ValidationMessageFor(model => model.OriginalEmail, "", new { @class = "text-danger fw-bolder" })
+                    </small>
                     @Html.DropDownListFor(model => model.OriginalEmail, (SelectList)ViewBag.listOfEmail, "select an email", new { @class = "cc-box" })
-                </div>
+                </fieldset>
             </div>
-            <div class="policeItem">
-                <div>
-                    <span>
+            <div>
+                <fieldset>
+                    <legend>
                         <i class="fa-solid fa-pen-nib"></i>
-                        @Html.LabelFor(model => model.ReplyContent)
-                        <small>@Html.ValidationMessageFor(model => model.ReplyContent, "", new { @class = "text-danger fw-bolder" })</small>
-                    </span>
-                    @Html.TextAreaFor(model => model.ReplyContent, new { rows = 4, @class = "cc-box" })
-                </div>
+                        @Html.LabelFor(model => model.ReplyContent, new { @class = "form-label" })
+                    </legend>
+                    <small class="text-danger fw-bold">
+                        @Html.ValidationMessageFor(model => model.ReplyContent, "", new { @class = "text-danger fw-bolder" })
+                    </small>
+                    @Html.TextAreaFor(model => model.ReplyContent, new { rows = 10, @class = "cc-box", placeholder = "write reply details here..." })
+                </fieldset>
             </div>
-            <div class="policeItem">
-                <div>
-                    <button class="btn btn-primary">send</button>
-                </div>
+            <div style="margin-left:10px;">
+                <button class="btn btn-primary" value="upload" id="myButton"> <i class="fa-solid fa-paper-plane"></i> send</button>
             </div>
         </div>
-    }
-</div>
+    </div>
+}

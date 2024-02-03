@@ -1525,77 +1525,58 @@ body {
 }
 
 /*admin-gallery*/
-.admin-gallery {
-    width: 100%;
+fieldset {
+    border-radius: 5px;
+    padding: 10px;
+    
 }
 
-.admin-gallery-form div {
-    display: flex;
-    margin: 1%
+legend {
+    font-weight: bold;
+    color: #242424 !important;
+    font-size:1rem
 }
-
-    .admin-gallery-form div input {
-        width: 100%;
-        margin: 1%;
-        border-radius: 5px;
-        padding: 3px;
+.admin-gallery-uploader{
+    width:100%;
+    height:auto;
+    color:black !important; background:#f3f3f3;
     }
-
-    .admin-gallery-form div .send {
-        width: fit-content;
-        padding: 0 1%;
+    .admin-gallery-uploader h1 {
+        padding-top: 3rem;
+        font-weight: 400;
+        letter-spacing: 2px;
+        width: 90%;
+        margin: 0 auto;
     }
-
-.admin-radio {
-    background: #00a9c7;
-    padding: 4px;
-}
-
-
-.help {
-    width: 80%;
-    margin: 0 auto;
-}
-
-    .help h1 {
-        box-shadow: 0px 0px 20px #d9d9d9;
-        background: #cfd8ff;
-        padding: 2%;
-        margin-top: 30px;
-        font-weight: 600;
-        border-radius: 6px
+    .admin-gallery-item {
+        width: 90%;
+        margin: 0 auto;
+        padding: 1rem 1rem;
+       background:white;
+       border-radius:5px
     }
-
-.help-db {
-    width: 100%;
-    height: 50vh;
-    overflow: scroll;
-    border: 1px solid #256bae;
-    box-shadow: 0px 0px 10px 0px #dcdcdc;
+.admin-gallery-item-flex {
+    display:flex;
 }
-
-.help-data {
-    box-shadow: 0px 0px 10px 0px #dcdcdc;
-    padding: 1%;
-}
-
-.help-search {
-    display: flex;
-    width: 100%;
-}
-
-    .help-search div {
-        width: 100%;
-        margin: 1%;
+    .admin-gallery-item-flex div{
+        width:100%
     }
-/*admin police*/
-.policeContainer {
-    width: 80%;
-    margin: 0 auto;
-    background: #eeeeee;
-    color: black;
-    border-radius: 3px;
-}
+    .admin-gallery-item div {
+        margin: 10px 0px;
+    }
+        .admin-gallery-item div .cc-box{
+            border:none;
+            border-bottom:1px solid rgba(0,0,0,0.2);
+            box-shadow:0px 2px 3px 0px #e8e8e8;
+        }
+        /*admin police*/
+        .policeContainer {
+            width: 80%;
+            margin: 0 auto;
+            background: #eeeeee;
+            color: black;
+            border-radius: 3px;
+        }
 
 .center-div {
     width: 100%;

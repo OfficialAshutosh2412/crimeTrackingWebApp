@@ -8,41 +8,43 @@
 
 @using (Html.BeginForm("EventUpload", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-    <div class=" min-width contact-us-container" style="color:black !important">
-        <div class="p-3 contact-us-container-form rounded-3" id="contact">
-            <h1 class="section-title fs-4"><span class="title-vip p-2" id="title-vip4"><i class="fa-solid fa-message"></i>Event Images</span> upload</h1>
-            <div class=" d-flex">
-                <div class="mb-1 w-100 p-2">
-                    <span class="form-label">
-                        <i class="fa-solid fa-pencil"></i>
-                        @Html.LabelFor(model => model.EventTitle, new { @class = "form-label fw-bolder" })
-                    </span><br />
+    <div class="admin-gallery-uploader">
+        <h1>Event Photo Upload</h1>
+        <div class="admin-gallery-item">
+            <div>
+                <fieldset>
+                    <legend><i class="fa-solid fa-pencil"></i> @Html.LabelFor(model => model.EventTitle, new { @class = "form-label" })</legend>
                     <small class="text-danger fw-bold">
-                        @Html.ValidationMessageFor(model => model.EventTitle)
+                        @Html.ValidationMessageFor(model => model.EventTitle, "", new { @class = "text-danger" })
                     </small>
                     @Html.TextBoxFor(model => model.EventTitle, new { @class = "cc-box" })
-                </div>
-                <div class="mb-1 w-100 p-2">
-                    <span class="form-label">
-                        <i class="fa-solid fa-envelope"></i>
-                        @Html.LabelFor(model => model.EventDateTime, new { @class = "form-label fw-bolder" })
-                    </span><br />
+                </fieldset>
+            </div>
+            <div>
+                <fieldset>
+                    <legend>
+                        <i class="fa-solid fa-building"></i>
+                        @Html.LabelFor(model => model.EventDateTime, new { @class = "form-label" })
+                    </legend>
                     <small class="text-danger fw-bold">
-                        @Html.ValidationMessageFor(model => model.EventDateTime)
+                        @Html.ValidationMessageFor(model => model.EventDateTime, "", new { @class = "text-danger"})
                     </small>
                     @Html.TextBoxFor(model => model.EventDateTime, new { @class = "cc-box", type = "datetime-local" })
-                </div>
-
+                </fieldset>
             </div>
-            <div class="mb-1 w-100 p-2">
-                <span>
-                    @Html.LabelFor(model => model.EventImage, new { @class = "form-label fw-bolder" })
-                </span><br />
-                <input type="file" name="ImageFiles" class="cc-box" multiple required />
+            <div>
+                <fieldset>
+                    <legend>
+                        <i class="fa-regular fa-image"></i>
+                        @Html.LabelFor(model => model.EventImage, new { @class = "form-label fw-bolder" })
+                    </legend>
+                    <input type="file" name="ImageFiles" class="cc-box" required style="height:200px;border:1px solid #787878;cursor:pointer" />
+                </fieldset>
             </div>
-            <div class="mb-1 w-100 p-2">
-                <button class="btn btn-primary" value="upload" id="myButton">upload</button>
+            <div style="margin-left:10px;">
+                <button class="btn btn-primary" value="upload" id="myButton"> <i class="fa-solid fa-cloud-arrow-up"></i> upload</button>
             </div>
         </div>
     </div>
+
 }
