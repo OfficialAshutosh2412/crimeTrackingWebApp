@@ -4,121 +4,247 @@
     ViewBag.PageTitle = "Valuable Status Edit";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-@*heading*@
-<h1 class="container text-center p-3"><i class="fa-regular fa-gem"></i> Missing Valuable Report</h1>
-@*content*@
-<div class="crime">
-    @*form*@
-    <div class="crime-form" style="color:black !important">
-        @using (Html.BeginForm("ValuableStatusEdit", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
-        {
-            @*first row*@
-            <div class="crime-form-item">
-                <div>
-                    <span>
-                        <i class="fa-solid fa-indian-rupee-sign"></i>
-                        @Html.LabelFor(model => model.Username, new { @class = "form-label fw-bolder" })
-                        <br />
-                        <small>@Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger fw-bolder" })</small>
-                    </span>
-                    @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "cc-box" } })
-                </div>
-                <div>
-                    <span>
-                        <i class="fa-solid fa-building-shield"></i>
-                        @Html.LabelFor(model => model.PoliceStationName, new { @class = "form-label fw-bolder" })
-                        <br />
-                        <small>@Html.ValidationMessageFor(model => model.PoliceStationName, "", new { @class = "text-danger fw-bolder" })</small>
-                    </span>
-                    @Html.DropDownListFor(model => model.PoliceStationName, (IEnumerable<SelectListItem>)ViewBag.OptionList, "--select--", new { @class = "cc-box" })
-                </div>
-                <div>
-                    <span>
-                        <i class="fa-solid fa-gem"></i>
-                        @Html.LabelFor(model => model.ValuableType, new { @class = "form-label fw-bolder" })
-                        <br />
-                        <small>@Html.ValidationMessageFor(model => model.ValuableType, "", new { @class = "text-danger fw-bolder" })</small>
-                    </span>
-                    @Html.DropDownListFor(model => model.ValuableType,
-                        new SelectList(new[] {
-                           "Fine Art",
-                           "Rare Coins",
-                           "Jewelry and Gems",
-                           "Stamps",
-                           "Classic and Exotic Cars",
-                           "Fine Wines",
-                           "Chinese Porcelain",
-                           "Timepieces/Watches",
-                           "Exotic Bikes",
-                           "Laptop",
-                           "Other"
-                        }),
-                        "--select--", new { @class = "cc-box" })
-                </div>
 
+@using (Html.BeginForm("ValuableStatusEdit", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="admin-gallery-uploader">
+        <h1><a href="@Url.Action("UpdateMissingValuableStatus", "Admin")" title="go back" class="text-decoration-none btn btn-outline-danger"><i class="fa-solid fa-arrow-left"></i></a>Missing Valuable status update</h1>
+        <div class="admin-gallery-item">
+            <div class="admin-gallery-item-flex">
+                <div>
+                    <fieldset>
+                        <legend>
+                            <i class="fa-solid fa-user"></i>
+                            <label>Username</label>
+                        </legend>
+                        <small class="text-danger fw-bold">
+                            @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger fw-bolder" })
+                        </small>
+                        @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "cc-box", placeholder = "name of your area police station" } })
+                    </fieldset>
+                </div>
+                <div>
+                    <fieldset>
+                        <legend>
+                            <i class="fa-solid fa-building-shield"></i>
+                            <label>Police Station</label>
+                        </legend>
+                        <small class="text-danger fw-bold">
+                            @Html.ValidationMessageFor(model => model.PoliceStationName, "", new { @class = "text-danger fw-bolder" })
+                        </small>
+                        @Html.DropDownListFor(model => model.PoliceStationName, (IEnumerable<SelectListItem>)ViewBag.OptionList, "--select--", new { @class = "cc-box" })
+                    </fieldset>
+                </div>
+                <div>
+                    <fieldset>
+                        <legend>
+                            <i class="fa-solid fa-gem"></i>
+                            <label>Crime</label>
+                        </legend>
+                        <small class="text-danger fw-bold">
+                            @Html.ValidationMessageFor(model => model.ValuableType, "", new { @class = "text-danger fw-bolder" })
+                        </small>
+                        @Html.DropDownListFor(model => model.ValuableType,
+  new SelectList(new[] {
+                    "Fine Art",
+                    "Rare Coins",
+                    "Jewelry and Gems",
+                    "Stamps",
+                    "Classic and Exotic Cars",
+                    "Fine Wines",
+                    "Chinese Porcelain",
+                    "Timepieces/Watches",
+                    "Exotic Bikes",
+                    "Laptop",
+                    "Other"
+  }),
+  "--select--", new { @class = "cc-box" })
+                    </fieldset>
+                </div>
             </div>
-            <div class="crime-form-item">
+            <div class="admin-gallery-item-flex">
                 <div>
-                    <span>
-                        <i class="fa-solid fa-indian-rupee-sign"></i>
-                        @Html.LabelFor(model => model.ValuableCost, new { @class = "form-label fw-bolder" })
-                        <br />
-                        <small>@Html.ValidationMessageFor(model => model.ValuableCost, "", new { @class = "text-danger fw-bolder" })</small>
-                    </span>
-                    @Html.EditorFor(model => model.ValuableCost, new { htmlAttributes = new { @class = "cc-box" } })
+                    <fieldset>
+                        <legend>
+                            <i class="fa-solid fa-indian-rupee-sign"></i>
+                            <label>Valuable Cost</label>
+                        </legend>
+                        <small class="text-danger fw-bold">
+                            @Html.ValidationMessageFor(model => model.ValuableCost, "", new { @class = "text-danger fw-bolder" })
+                        </small>
+                        @Html.EditorFor(model => model.ValuableCost, new { htmlAttributes = new { @class = "cc-box" } })
+                    </fieldset>
                 </div>
                 <div>
-                    <span>
-                        <i class="fa-solid fa-user-secret"></i>
-                        @Html.LabelFor(model => model.Suspect, new { @class = "form-label fw-bolder" })
-                        <br />
-                        <small>@Html.ValidationMessageFor(model => model.Suspect, "", new { @class = "text-danger fw-bolder" })</small>
-                    </span>
-                    @Html.EditorFor(model => model.Suspect, new { htmlAttributes = new { @class = "cc-box" } })
-                </div>
-            </div>
-            <div class="crime-form-item">
-                <div>
-                    <span>
-                        <i class="fa-solid fa-gem"></i>
-                        @Html.LabelFor(model => model.Status, new { @class = "form-label fw-bolder" })
-                        <br />
-                        <small>@Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger fw-bolder" })</small>
-                    </span>
-                    @Html.DropDownListFor(model => model.Status,
-                        new SelectList(new[] {
-                           "Pending",
-                           "Solved",
-                           "Rejected"
-                        }),
-                        "--select--", new { @class = "cc-box" })
+                    <fieldset>
+                        <legend>
+                            <i class="fa-solid fa-users"></i>
+                            <label>Suspects</label>
+                        </legend>
+                        <small class="text-danger fw-bold">
+                            @Html.ValidationMessageFor(model => model.Suspect, "", new { @class = "text-danger fw-bolder" })
+                        </small>
+                        @Html.EditorFor(model => model.Suspect, new { htmlAttributes = new { @class = "cc-box" } })
+                    </fieldset>
                 </div>
                 <div>
-                    <span>
-                        <i class="fa-solid fa-user-secret"></i>
-                        @Html.LabelFor(model => model.CurrentDateTime, new { @class = "form-label fw-bolder" })
-                        <br />
-                        <small>@Html.ValidationMessageFor(model => model.CurrentDateTime, "", new { @class = "text-danger fw-bolder" })</small>
-                    </span>
-                    @Html.EditorFor(model => model.CurrentDateTime, new { htmlAttributes = new { @class = "cc-box" } })
+                    <fieldset>
+                        <legend>
+                            <i class="fa-solid fa-calendar-days"></i>
+                            <label>Date & Time</label>
+                        </legend>
+                        <small class="text-danger fw-bold">
+                            @Html.ValidationMessageFor(model => model.CurrentDateTime, "", new { @class = "text-danger fw-bolder" })
+                        </small>
+                        @Html.EditorFor(model => model.CurrentDateTime, new { htmlAttributes = new { @class = "cc-box" } })
+                    </fieldset>
                 </div>
             </div>
-
+            <div class="admin-gallery-item-flex">
+                
+                <div>
+                    <fieldset>
+                        <legend>
+                            <i class="fa-solid fa-spinner"></i>
+                            @Html.LabelFor(model => model.Status, new { @class = "form-label" })
+                        </legend>
+                        <small class="text-danger fw-bold">
+                            @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger fw-bolder" })
+                        </small>
+                        @Html.DropDownListFor(model => model.Status,
+new SelectList(new[] {
+                "Pending",
+                "Solved",
+                "Rejected"
+}),
+"--select--",
+new { @class = "cc-box" })
+                    </fieldset>
+                </div>
+            </div>
             <div>
-                <div>
-                    <span>
-                        <i class="fa-solid fa-file-pen"></i>
-                        @Html.LabelFor(model => model.Details, new { @class = "form-label fw-bolder" })
-                        <br />
-                        <small>@Html.ValidationMessageFor(model => model.Details, "", new { @class = "text-danger fw-bolder" })</small>
-                    </span>
+                <fieldset>
+                    <legend>
+                        <i class="fa-solid fa-file"></i>
+                        @Html.LabelFor(model => model.Details, new { @class = "form-label" })
+                    </legend>
+                    <small class="text-danger fw-bold">
+                        @Html.ValidationMessageFor(model => model.Details, "", new { @class = "text-danger fw-bolder" })
+                    </small>
                     @Html.TextAreaFor(model => model.Details, new { @class = "cc-box", rows = "4" })
-                </div>
+                </fieldset>
             </div>
-            <div>
-                <button class="send p-1">update</button>
+            <div style="margin-left:10px;">
+                <button class="btn btn-primary" value="upload" id="myButton"><i class="fa-solid fa-circle-notch fa-spin"></i> update status</button>
             </div>
-        }
+        </div>
     </div>
-</div>
 
+
+    @*<i class="fa-solid fa-indian-rupee-sign"></i>
+                @Html.LabelFor(model => model.Username, new { @class = "form-label fw-bolder" })
+                <br />
+                <small>@Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger fw-bolder" })</small>
+            </span>
+            @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "cc-box" } })
+        </div>
+        <div>
+            <span>
+                <i class="fa-solid fa-building-shield"></i>
+                @Html.LabelFor(model => model.PoliceStationName, new { @class = "form-label fw-bolder" })
+                <br />
+                <small>@Html.ValidationMessageFor(model => model.PoliceStationName, "", new { @class = "text-danger fw-bolder" })</small>
+            </span>
+            @Html.DropDownListFor(model => model.PoliceStationName, (IEnumerable<SelectListItem>)ViewBag.OptionList, "--select--", new { @class = "cc-box" })
+        </div>
+        <div>
+            <span>
+                <i class="fa-solid fa-gem"></i>
+                @Html.LabelFor(model => model.ValuableType, new { @class = "form-label fw-bolder" })
+                <br />
+                <small>@Html.ValidationMessageFor(model => model.ValuableType, "", new { @class = "text-danger fw-bolder" })</small>
+            </span>
+            @Html.DropDownListFor(model => model.ValuableType,
+                new SelectList(new[] {
+                   "Fine Art",
+                   "Rare Coins",
+                   "Jewelry and Gems",
+                   "Stamps",
+                   "Classic and Exotic Cars",
+                   "Fine Wines",
+                   "Chinese Porcelain",
+                   "Timepieces/Watches",
+                   "Exotic Bikes",
+                   "Laptop",
+                   "Other"
+                }),
+                "--select--", new { @class = "cc-box" })
+        </div>
+
+    </div>
+    <div class="crime-form-item">
+        <div>
+            <span>
+                <i class="fa-solid fa-indian-rupee-sign"></i>
+                @Html.LabelFor(model => model.ValuableCost, new { @class = "form-label fw-bolder" })
+                <br />
+                <small>@Html.ValidationMessageFor(model => model.ValuableCost, "", new { @class = "text-danger fw-bolder" })</small>
+            </span>
+            @Html.EditorFor(model => model.ValuableCost, new { htmlAttributes = new { @class = "cc-box" } })
+        </div>
+        <div>
+            <span>
+                <i class="fa-solid fa-user-secret"></i>
+                @Html.LabelFor(model => model.Suspect, new { @class = "form-label fw-bolder" })
+                <br />
+                <small>@Html.ValidationMessageFor(model => model.Suspect, "", new { @class = "text-danger fw-bolder" })</small>
+            </span>
+            @Html.EditorFor(model => model.Suspect, new { htmlAttributes = new { @class = "cc-box" } })
+        </div>
+    </div>
+    <div class="crime-form-item">
+        <div>
+            <span>
+                <i class="fa-solid fa-gem"></i>
+                @Html.LabelFor(model => model.Status, new { @class = "form-label fw-bolder" })
+                <br />
+                <small>@Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger fw-bolder" })</small>
+            </span>
+            @Html.DropDownListFor(model => model.Status,
+                new SelectList(new[] {
+                   "Pending",
+                   "Solved",
+                   "Rejected"
+                }),
+                "--select--", new { @class = "cc-box" })
+        </div>
+        <div>
+            <span>
+                <i class="fa-solid fa-user-secret"></i>
+                @Html.LabelFor(model => model.CurrentDateTime, new { @class = "form-label fw-bolder" })
+                <br />
+                <small>@Html.ValidationMessageFor(model => model.CurrentDateTime, "", new { @class = "text-danger fw-bolder" })</small>
+            </span>
+            @Html.EditorFor(model => model.CurrentDateTime, new { htmlAttributes = new { @class = "cc-box" } })
+        </div>
+    </div>
+
+    <div>
+        <div>
+            <span>
+                <i class="fa-solid fa-file-pen"></i>
+                @Html.LabelFor(model => model.Details, new { @class = "form-label fw-bolder" })
+                <br />
+                <small>@Html.ValidationMessageFor(model => model.Details, "", new { @class = "text-danger fw-bolder" })</small>
+            </span>
+            @Html.TextAreaFor(model => model.Details, new { @class = "cc-box", rows = "4" })
+        </div>
+    </div>
+    <div>
+        <button class="send p-1">update</button>
+    </div>
+}
+    </div>
+</div>*@
+
+}

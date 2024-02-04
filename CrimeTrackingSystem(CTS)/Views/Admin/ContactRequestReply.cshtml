@@ -28,7 +28,7 @@
                 <fieldset>
                     <legend>
                         <i class="fa-solid fa-envelope"></i>
-                        @Html.LabelFor(model => model.OriginalEmail, new { @class = "form-label" })
+                        @Html.LabelFor(model => model.OriginalEmail)
                     </legend>
                     <small class="text-danger fw-bold">
                         @Html.ValidationMessageFor(model => model.OriginalEmail, "", new { @class = "text-danger fw-bolder" })
@@ -40,7 +40,7 @@
                 <fieldset>
                     <legend>
                         <i class="fa-solid fa-pen-nib"></i>
-                        @Html.LabelFor(model => model.ReplyContent, new { @class = "form-label" })
+                        @Html.LabelFor(model => model.ReplyContent)
                     </legend>
                     <small class="text-danger fw-bold">
                         @Html.ValidationMessageFor(model => model.ReplyContent, "", new { @class = "text-danger fw-bolder" })

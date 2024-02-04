@@ -13,7 +13,7 @@
         <div class="admin-gallery-item">
             <div>
                 <fieldset>
-                    <legend><i class="fa-solid fa-pencil"></i> @Html.LabelFor(model => model.EventTitle, new { @class = "form-label" })</legend>
+                    <legend><i class="fa-solid fa-pencil"></i> @Html.LabelFor(model => model.EventTitle)</legend>
                     <small class="text-danger fw-bold">
                         @Html.ValidationMessageFor(model => model.EventTitle, "", new { @class = "text-danger" })
                     </small>
@@ -24,7 +24,7 @@
                 <fieldset>
                     <legend>
                         <i class="fa-solid fa-building"></i>
-                        @Html.LabelFor(model => model.EventDateTime, new { @class = "form-label" })
+                        @Html.LabelFor(model => model.EventDateTime)
                     </legend>
                     <small class="text-danger fw-bold">
                         @Html.ValidationMessageFor(model => model.EventDateTime, "", new { @class = "text-danger"})
@@ -36,7 +36,7 @@
                 <fieldset>
                     <legend>
                         <i class="fa-regular fa-image"></i>
-                        @Html.LabelFor(model => model.EventImage, new { @class = "form-label fw-bolder" })
+                        @Html.LabelFor(model => model.EventImage)
                     </legend>
                     <input type="file" name="ImageFiles" class="cc-box" required style="height:200px;border:1px solid #787878;cursor:pointer" />
                 </fieldset>

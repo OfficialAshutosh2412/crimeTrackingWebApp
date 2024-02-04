@@ -27,7 +27,7 @@
             <div class="admin-gallery-item-flex">
                 <div>
                     <fieldset>
-                        <legend><i class="fa-solid fa-pencil"></i> @Html.LabelFor(model => model.ChowkiIncharge, new { @class = "form-label" })</legend>
+                        <legend><i class="fa-solid fa-pencil"></i> @Html.LabelFor(model => model.ChowkiIncharge)</legend>
                         <small class="text-danger fw-bold">
                             @Html.ValidationMessageFor(model => model.ChowkiIncharge, "", new { @class = "text-danger" })
                         </small>
@@ -37,8 +37,8 @@
                 <div>
                     <fieldset>
                         <legend>
-                            <i class="fa-solid fa-indian-rupee-sign"></i>
-                            @Html.LabelFor(model => model.Agent, new { @class = "form-label" })
+                            <i class="fa-solid fa-user"></i>
+                            @Html.LabelFor(model => model.Agent)
                         </legend>
                         <small class="text-danger fw-bold">
                             @Html.ValidationMessageFor(model => model.Agent, "", new { @class = "text-danger" })
@@ -50,8 +50,8 @@
             <div>
                 <fieldset>
                     <legend>
-                        <i class="fa-solid fa-indian-rupee-sign"></i>
-                        @Html.LabelFor(model => model.PoliceStationName, new { @class = "form-label" })
+                        <i class="fa-solid fa-building-shield"></i>
+                        @Html.LabelFor(model => model.PoliceStationName)
                     </legend>
                     <small class="text-danger fw-bold">
                         @Html.ValidationMessageFor(model => model.PoliceStationName, "", new { @class = "text-danger" })
@@ -101,7 +101,7 @@
                 <fieldset>
                     <legend>
                         <i class="fa-regular fa-image"></i>
-                        @Html.LabelFor(model => model.PoliceStationImage, new { @class = "form-label fw-bolder" })
+                        @Html.LabelFor(model => model.PoliceStationImage)
                     </legend>
                     <input type="file" name="ImageFile" class="cc-box" required style="height:200px;border:1px solid #787878;cursor:pointer" />
                 </fieldset>
