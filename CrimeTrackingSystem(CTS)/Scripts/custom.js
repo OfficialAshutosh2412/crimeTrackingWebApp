@@ -20,7 +20,6 @@ for (var i = 0; i < acc.length; i++) {
         else {
             pannel.style.display = "block";
         }
-
     });
 }
 //feedback
@@ -52,10 +51,13 @@ function guideclose() {
 //gallery
 function showGallery() {
     let box = document.querySelector('#gallery-list');
-    box.classList.toggle('showGalleryList');
+    box.style.cssText = "display:block;";
+}
+function hideGallery() {
+    let box = document.querySelector('#gallery-list');
+    box.style.cssText = "display:none;";
 }
 
-
-    
+ 
 
 

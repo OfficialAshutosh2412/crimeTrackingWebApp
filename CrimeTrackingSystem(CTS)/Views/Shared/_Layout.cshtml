@@ -68,11 +68,6 @@
             <a href="@Url.Action("Feedback", "Home")" class="send">give us your feedback...</a>
         </div>
     </div>
-    @*navlist*@
-    <div class="gallery-list" id="gallery-list">
-        <div><a href="@Url.Action("CTS_Events", "Home")">Events</a></div>
-        <div><a href="@Url.Action("Wanted_Lists", "Home")">Wanted Criminals</a></div>
-    </div>
     @*header*@
     <nav class="navbar dark-mode navbar-expand-lg bg-body-tertiary p-0" id="nav">
         <div class="container-fluid justify-content-between " id="navigator">
@@ -82,8 +77,8 @@
             <button class="navbar-toggler border-0 bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon fw-bolder"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav ">
+            <div class="collapse navbar-collapse justify-content-end p-1" id="navbarNav">
+                <ul class="navbar-nav p-0">
                     <li class="nav-item" id="home">
                         <a href="@Url.Action("Index", "Home")" class="nav-link text-light " aria-current="page"><i class="fa-solid fa-house"></i> Home</a>
                     </li>
@@ -93,8 +88,12 @@
                     <li class="nav-item">
                         <a class="nav-link text-light" href="~/#services"><i class="fa-solid fa-cubes"></i> Services</a>
                     </li>
-                    <li class="nav-item" id="gallery" style="cursor:pointer !important" onclick="showGallery()">
+                    <li class="nav-item gallery-nav-link" id="gallery" style="cursor:pointer !important;" onmouseover="showGallery()" onmouseout="hideGallery()">
                         <a class="nav-link text-light" style="cursor:pointer !important"><i class="fa-solid fa-images"></i> Gallery</a>
+                        <ul id="gallery-list">
+                            <li><a href="@Url.Action("CTS_Events", "Home")">Events</a></li>
+                            <li><a href="@Url.Action("Wanted_Lists", "Home")">Wanted Criminals</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item" id="contact">
                         <a href="@Url.Action("Contact", "Home")" class="nav-link text-light"><i class="fa-solid fa-message"></i> Contact us</a>

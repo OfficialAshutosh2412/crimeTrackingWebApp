@@ -1,4 +1,22 @@
-﻿//navbar
+﻿function showAdminGallery() {
+    let box = document.querySelector('#admin-gallery-list');
+    box.style.cssText = "display:block;";
+}
+function hideAdminGallery() {
+    let box = document.querySelector('#admin-gallery-list');
+    box.style.cssText = "display:none;";
+}
+function showGallery() {
+    let box = document.querySelector('#gallery-list');
+    box.style.cssText = "display:block;";
+}
+function hideGallery() {
+    let box = document.querySelector('#gallery-list');
+    box.style.cssText = "display:none;";
+}
+
+
+//navbar
 //navbar active link
 const pathName = window.location.pathname;
 const pageName = pathName.split("/").pop();
@@ -23,6 +41,8 @@ if (pageName === "faqrecords" || pageName === "FaqRecords") {
 if (pageName === "newsrecord" || pageName === "NewsRecord") {
     document.querySelector('#NewsRecord').classList.add("admin-nav-active");
 }
+
+
 
 // initials records css
 document.querySelector('#crimeBtn').classList.add("bg-warning");
@@ -226,18 +246,3 @@ function NewsRecordPrint() {
         console.error("content not found");
     }
 }
-
-//gallery
-function showGallery() {
-    let box = document.querySelector('#gallery-list');
-    box.classList.toggle('showGalleryList');
-}
-
-function showStatus() {
-    let box = document.querySelector('#status-list');
-    box.classList.toggle('showGalleryList');
-}
-
-
-
-

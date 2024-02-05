@@ -13,59 +13,73 @@
     @RenderSection("head", required: false)
 </head>
 <body style="background:#343434;color:#ededed">
-    @*navlist*@
-    <div class="gallery-list" id="gallery-list" style="left: 65%; top: 10%; background: #1d4f75;">
-        <div><a href="@Url.Action("EventUpload", "Admin")" style="color:white">Event Uploads</a></div>
-        <div><a href="@Url.Action("CriminalUpload", "Admin")" style="color:white">Criminal Uploads</a></div>
-    </div>
-    <div class="gallery-list" id="status-list" style="left: 80%; top: 10%; background: #1d4f75;">
-        <div><a href="@Url.Action("UpdateCrimeComplainStatus","Admin")"  style="color:white">Crime Complain</a></div>
-        <div><a href="@Url.Action("UpdateGeneralComplainStatus","Admin")"  style="color:white">General Complain</a></div>
-        <div><a href="@Url.Action("UpdateMissingPersonStatus","Admin")"  style="color:white">Missing Person</a></div>
-        <div><a href="@Url.Action("UpdateMissingValuableStatus","Admin")"  style="color:white">Missing Valuable</a></div>
-    </div>
-    <nav class="admin-nav">
-        <div class="admin-title">
-            <h3 class="d-flex align-items-center w-100">
-                <a href="@Url.Action("Index","Admin")"><img src="~/Images/cts_logo.png" alt="cts.png" /></a>
-                &nbsp;|&nbsp;@ViewBag.PageTitle
-            </h3>
-        </div>
-        <div class="admin-items">
-            <div id="adminhome">
-                <a href="@Url.Action("Index","Admin")" title="Dashboard"><i class="fa-solid fa-house text-light"></i></a>
-            </div>
-            <div id="adminrecord">
-                <a href="@Url.Action("RecordRoom","Admin")" title="Records"><i class="fa-solid fa-file-signature text-light"></i></a>
-            </div>
-            <div id="PoliceStationEntry">
-                <a href="@Url.Action("PoliceStationEntry","Admin")" title="Police Station"><i class="fa-solid fa-building-shield text-light"></i></a>
-            </div>
-            <div class="gallery-nav" id="gallery" style="cursor:pointer !important" onclick="showGallery()">
-                <label title="Gallery" style="cursor:pointer !important"><i class="fa-solid fa-images text-light"></i></label>
-            </div>
-            <div id="ContactRequests">
-                <a href="@Url.Action("ContactRequests","Admin")" title="Contact Us requests"><i class="fa-solid fa-message text-light"></i></a>
-            </div> 
-            <div id="FaqRecords">
-                <a href="@Url.Action("FaqRecords", "Admin")" title="FAQ"><i class="fa-solid fa-circle-question text-light"></i></a>
-            </div>
-            <div id="NewsRecord">
-                <a href="@Url.Action("NewsRecord", "Admin")" title="News"><i class="fa-solid fa-newspaper text-light"></i></a>
-            </div>
-            <div id="status" style="cursor:pointer !important" onclick="showStatus()">
-                <label title="status" style="cursor:pointer !important"><i class="fa-solid fa-calendar-check text-light"></i></label>
-            </div>
-            <div>
-                <a href="@Url.Action("Logout","Admin")" class="nav-link fw-bolder" title="logout"><i class="fa-solid fa-right-from-bracket"></i></a>
+    @*header*@
+    <nav class="navbar dark-mode navbar-expand-lg bg-body-tertiary p-0">
+        <div class="container-fluid justify-content-between " id="navigator">
+            <a href="@Url.Action("Index", "Admin")" class="navbar-brand">
+                <img src="~/Images/cts_logo.png" />
+            </a>
+            <button class="navbar-toggler border-0 bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon fw-bolder"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end p-1" id="navbarNav">
+                <ul class="navbar-nav p-0">
+                    <li class="nav-item" id="adminhome">
+                        <a href="@Url.Action("Index", "Admin")" class="nav-link text-light " aria-current="page"><i class="fa-solid fa-house"></i> Dashboard</a>
+                    </li>
+                    <li class="nav-item" id="PoliceStationEntry">
+                        <a href="@Url.Action("PoliceStationEntry","Admin")" class="nav-link text-light"><i class="fa-solid fa-building-shield text-light"></i> Police Station</a>
+                    </li>
+                    <li class="nav-item" id="adminrecord">
+                        <a href="@Url.Action("RecordRoom","Admin")" title="Records" class="nav-link text-light"><i class="fa-solid fa-file-signature text-light"></i> Records</a>
+                    </li>
+                    <li class="nav-item gallery-nav-link" id="gallery" style="cursor:pointer !important;" onmouseover="showGallery()" onmouseout="hideGallery()">
+                        <a class="nav-link text-light" style="cursor:pointer !important"><i class="fa-solid fa-images"></i> Gallery</a>
+                        <ul id="gallery-list">
+                            <li><a href="@Url.Action("EventUpload", "Admin")">Events</a></li>
+                            <li><a href="@Url.Action("CriminalUpload", "Admin")">Wanted Criminals</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item gallery-nav-link" id="gallery" style="cursor:pointer !important;" onmouseover="showAdminGallery()" onmouseout="hideAdminGallery()">
+                        <a class="nav-link text-light" style="cursor:pointer !important"><i class="fa-solid fa-calendar-check text-light"></i> Status</a>
+                        <ul id="admin-gallery-list">
+                            <li><a href="@Url.Action("UpdateCrimeComplainStatus", "Admin")">Crime Complain Status</a></li>
+                            <li><a href="@Url.Action("UpdateGeneralComplainStatus", "Admin")">General Complain Status</a></li>
+                            <li><a href="@Url.Action("UpdateMissingPersonStatus", "Admin")">Missing Person Status</a></li>
+                            <li><a href="@Url.Action("UpdateMissingValuableStatus", "Admin")">Missing Valuable Status</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item" title="">
+                        <a href="@Url.Action("ContactRequests","Admin")" title="Records" class="nav-link text-light"><i class="fa-solid fa-message text-light"></i> Contact</a>
+                    </li>
+                    <li class="nav-item" title="">
+                        <a href="@Url.Action("FaqRecords","Admin")" title="Records" class="nav-link text-light"><i class="fa-solid fa-circle-question text-light"></i> FAQ</a>
+                    </li>
+                    <li class="nav-item" title="">
+                        <a href="@Url.Action("NewsRecord","Admin")" title="Records" class="nav-link text-light"><i class="fa-solid fa-newspaper text-light"></i> News</a>
+                    </li>
+                    <li class="nav-item " title="">
+                        <a href="@Url.Action("Logout","Admin")" title="Records" class=" btn btn-danger"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
     @RenderBody()
-    <footer class="admin-foot">
-        <p class="">All Rights are Reserved &copy;CTS @DateTime.Now.Year</p>
+    @*footer*@
+    <footer class="footer" id="footer">
+        <div class="rights" id="rights">
+            <div>
+                <label>All rights are reserved &copy; @DateTime.Now.Year | </label>
+            </div>
+            <div class="footer-follow">
+                <a href="https://www.facebook.com/ashutosh.prasad.754365/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/official.ashu.2000/" target="_blank"><i class="fa-brands fa-square-instagram"></i></a>
+                <a href="https://twitter.com/Ashutos96662173" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://wa.me/6386239194" target="_blank"><i class="fa-brands fa-square-whatsapp"></i></a>
+            </div>
+        </div>
     </footer>
-
 
     <!-- Include SweetAlert JS -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -76,7 +90,6 @@
     <script>
         $(document).ready(function () {
             $("#tableJsId").dataTable();
-
         });
     </script>
 </body>

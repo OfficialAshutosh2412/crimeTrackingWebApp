@@ -230,19 +230,59 @@ body {
     position: sticky;
     top: 0;
     width: 100%;
-    font-size: 11pt
+    font-size: 11pt;
+    padding:0 ;
 }
-
-.section-title {
-    text-align: center;
-    margin-bottom: 40px;
-    margin-top: 40px
-}
-
-    .section-title span {
-        background: #ea2d2d;
-        color: #fff
+    /*gallery nav link*/
+    .gallery-nav-link {
+        position: relative;
     }
+    .gallery-nav-link ul {
+        position: fixed;
+        z-index: 99;
+        background: white;
+        width: 200px;
+        height: auto;
+        list-style: none;
+        margin: 0;
+        padding: 5px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px 0px #adaaaa;
+        transition: 0.2s all ease-in-out;
+        display:none;
+    }
+        .gallery-nav-link ul li {
+            height: 50%;
+            background: white;
+            list-style: none;
+            padding: 5px;
+            border-bottom: 1px solid #ededed;
+            border-top: 1px solid #ededed;
+            transition: 0.3s all ease-in-out;
+        }
+            .gallery-nav-link ul li a{
+                text-decoration:none;
+                color:black
+            }
+            
+            .gallery-nav-link ul li:hover{
+                background: #396eb7;
+            }
+                .gallery-nav-link ul li:hover a{
+                    color:white !important
+                }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            margin-top: 40px
+        }
+
+
+.section-title span {
+    background: #ea2d2d;
+    color: #fff
+}
 /*fetched image css*/
 .fetchImage {
     width: 80px;
@@ -761,7 +801,7 @@ body {
     background: #ffffff;
     width: 200px;
     height: auto;
-    padding:5px;
+    padding: 5px;
     border-radius: 5px;
     box-shadow: 1px 1px 20px 0px gray;
     position: fixed;
@@ -780,15 +820,14 @@ body {
     width: 100%;
     border-bottom: 1px solid #e1e1e1 !important;
     height: 50px !important;
-    display:flex;
-    justify-content:start;
-    align-items:center;
+    display: flex;
+    justify-content: start;
+    align-items: center;
 }
 
     .gallery-list div a {
         color: black;
         text-decoration: none;
-        
     }
 
     .gallery-list div:hover {
@@ -842,7 +881,7 @@ body {
 
 .gallery-item {
     padding: 5px;
-    overflow:hidden
+    overflow: hidden
 }
 
     .gallery-item img {
@@ -1043,7 +1082,7 @@ body {
     align-items: center;
     color: black;
 }
-    
+
     .footer-follow a {
         color: #ededed;
         padding: 0 10px;
@@ -1287,85 +1326,6 @@ body {
     .instructionForPerson ul li span {
         font-size: 10pt
     }
-/*admin navbar*/
-.admin-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #00a9c7;
-    padding: 0px;
-    overflow: hidden;
-    transition: 0.3s all ease-in-out;
-}
-
-    .admin-nav img {
-        width: 35px;
-        margin: 0;
-        padding: 0;
-        margin-top: 5px;
-    }
-
-    .admin-nav .admin-title {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100%;
-    }
-
-        .admin-nav .admin-title h3 {
-            font-size: 14pt;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: start;
-        }
-
-            .admin-nav .admin-title h3 a {
-                padding: 0px;
-                margin: 0px;
-            }
-
-.admin-items {
-    width: 100%;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-    .admin-items div {
-        padding: 0;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-        .admin-items div:hover {
-            cursor: pointer;
-            border-radius: 10px 10px 0px 0px;
-            background: #343434;
-            margin-top: 15px;
-            transition: 0.1s all ease-in-out;
-        }
-
-.admin-nav-active {
-    border-radius: 10px 10px 0px 0px;
-    background: #343434;
-    margin-top: 15px;
-    transition: 0.1s all ease-in-out;
-}
-
-.admin-foot {
-    text-align: center;
-    color: #fff;
-    background: #000000;
-}
-
-    .admin-foot p {
-        padding: 5px;
-    }
-
 .admin-content-height .faq-form {
     display: flex;
     justify-content: center;
@@ -1402,53 +1362,60 @@ body {
     background: white;
     margin-bottom: -20px;
     margin-top: 20px;
-    padding:2rem;
+    padding: 2rem;
 }
-.cts-faq{
-    width:80%;
-    margin:0 auto;
-    box-shadow:0px 0px 5px 0px #dedede;
-    margin-bottom:20px;
-    border-radius:5px
+
+.cts-faq {
+    width: 80%;
+    margin: 0 auto;
+    box-shadow: 0px 0px 5px 0px #dedede;
+    margin-bottom: 20px;
+    border-radius: 5px
 }
-    .cts-wrapper .cts-accordion{
-        background:white;
-        color:rgba(0,0,0,0.8);
-        cursor:pointer;
-        font-size:1.2rem;
-        width:100%;
-        padding: 1rem 2rem;
-        border:none;
-        outline:none;
-        transition:0.4s all ease;
-        display:flex;
-        justify-content:space-between;
-        align-items:center;
-        font-weight:bold;
+
+.cts-wrapper .cts-accordion {
+    background: white;
+    color: rgba(0,0,0,0.8);
+    cursor: pointer;
+    font-size: 1.2rem;
+    width: 100%;
+    padding: 1rem 2rem;
+    border: none;
+    outline: none;
+    transition: 0.4s all ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+    .cts-wrapper .cts-accordion i {
+        font-size: 1.6rem;
     }
-        .cts-wrapper .cts-accordion i{
-            font-size:1.6rem;
-        }
-.cts-wrapper h1{
-    text-align:center;
-    padding:2.5rem 0;
-    color:rgba(0,0,0,0.8);
-    letter-spacing:3px
+
+.cts-wrapper h1 {
+    text-align: center;
+    padding: 2.5rem 0;
+    color: rgba(0,0,0,0.8);
+    letter-spacing: 3px
 }
+
 .active, .cts-accordion:hover {
     background: #f1f7f5;
 }
-        .panel{
-            padding:0 2.5rem;
-            overflow:hidden;
-            background:#ffe7e7;
-            display:none;
-        }
-        .panel p{
-            color:rgba(0,0,0,0.7);
-            font-size:1.1rem;
-            line-height:1.4rem;
-        }
+
+.panel {
+    padding: 0 2.5rem;
+    overflow: hidden;
+    background: #ffe7e7;
+    display: none;
+}
+
+    .panel p {
+        color: rgba(0,0,0,0.7);
+        font-size: 1.1rem;
+        line-height: 1.4rem;
+    }
 /*news*/
 .newsDetails {
     width: 90%;
@@ -1456,24 +1423,29 @@ body {
     padding: 1rem;
     font-family: 'Yu Gothic UI'
 }
+
     .newsDetails h3 {
         background: #f2f2f2;
         padding: 1rem;
         background: #333333;
         color: white
     }
+
     .newsDetails div {
         background: #f2f2f2;
         padding: 1rem
     }
+
         .newsDetails div h2 {
             background: #f2f2f2;
             padding: 1.3rem
         }
+
         .newsDetails div p {
             background: #e0e0e0;
             padding: 2rem
         }
+
     .newsDetails .timedate {
         background: #f2f2f2;
         padding: 1rem;
@@ -1481,14 +1453,14 @@ body {
         font-weight: bolder;
         color: rgba(0,0,0,0.7)
     }
-  
-    /*admin home*/
-    .session-name {
-        padding: .5%;
-        border-radius: 4px;
-        margin: 10px auto 0;
-        text-align: right
-    }
+
+/*admin home*/
+.session-name {
+    padding: .5%;
+    border-radius: 4px;
+    margin: 10px auto 0;
+    text-align: right
+}
 
 .admin-card-container {
     display: flex;
@@ -1497,7 +1469,7 @@ body {
 
 .admin-card {
     width: 200px;
-    height:40vh;
+    height: 40vh;
     padding: 1%;
     box-shadow: 0px 0px 15px 5px #1b1b1b;
     display: flex;
@@ -1518,27 +1490,27 @@ body {
 }
 
 .counterbtn {
-    
-    
 }
 
 /*admin-gallery*/
 fieldset {
     border-radius: 5px;
     padding: 10px;
-    
 }
 
 legend {
     font-weight: bold;
     color: #242424 !important;
-    font-size:1rem
+    font-size: 1rem
 }
-.admin-gallery-uploader{
-    width:100%;
-    height:auto;
-    color:black !important; background:#f3f3f3;
-    }
+
+.admin-gallery-uploader {
+    width: 100%;
+    height: auto;
+    color: black !important;
+    background: #f3f3f3;
+}
+
     .admin-gallery-uploader h1 {
         padding-top: 3rem;
         font-weight: 400;
@@ -1546,36 +1518,41 @@ legend {
         width: 90%;
         margin: 0 auto;
     }
-    .admin-gallery-item {
-        width: 90%;
-        margin: 0 auto;
-        padding: 1rem 1rem;
-       background:white;
-       border-radius:5px
-    }
-.admin-gallery-item-flex {
-    display:flex;
+
+.admin-gallery-item {
+    width: 90%;
+    margin: 0 auto;
+    padding: 1rem 1rem;
+    background: white;
+    border-radius: 5px
 }
-    .admin-gallery-item-flex div{
-        width:100%
+
+.admin-gallery-item-flex {
+    display: flex;
+}
+
+    .admin-gallery-item-flex div {
+        width: 100%
     }
-    .admin-gallery-item div {
-        margin: 10px 0px;
+
+.admin-gallery-item div {
+    margin: 10px 0px;
+}
+
+    .admin-gallery-item div .cc-box {
+        border: none;
+        border-bottom: 1px solid rgba(0,0,0,0.2);
+        box-shadow: 0px 2px 3px 0px #e8e8e8;
+        background: #efefef !important
     }
-        .admin-gallery-item div .cc-box{
-            border:none;
-            border-bottom:1px solid rgba(0,0,0,0.2);
-            box-shadow:0px 2px 3px 0px #e8e8e8;
-            background:#efefef !important
-        }
-        /*admin police*/
-        .policeContainer {
-            width: 80%;
-            margin: 0 auto;
-            background: #eeeeee;
-            color: black;
-            border-radius: 3px;
-        }
+/*admin police*/
+.policeContainer {
+    width: 80%;
+    margin: 0 auto;
+    background: #eeeeee;
+    color: black;
+    border-radius: 3px;
+}
 
 .center-div {
     width: 100%;
@@ -1656,367 +1633,421 @@ legend {
             color: black;
         }
 
-@media screen and (max-width:880px) {
-    .navbar-nav li {
-        padding-left: 2%;
-    }
+@media screen and (max-width:991px) {
 
-    .faq-form, .hero, .signup {
-        width: 100%
+    .gallery-nav-link ul {
+       z-index:99;
     }
+}
 
-    .card-item {
-        margin: 10px
-    }
+    @media screen and (max-width:880px) {
+        .instructionForPerson{
+            width:100%;
+            left:0;
+            top:5%;
+        }
+        .navbar-nav li {
+            padding-left: 2%;
+        }
 
-    .deflex {
-        display: block
-    }
+        .faq-form, .hero, .signup {
+            width: 100%
+        }
 
-    .signin {
-        width: 80%;
-        height: 70vh;
-        margin: 5% auto
-    }
+        .card-item {
+            margin: 10px
+        }
 
-    .cc-container {
-        width: 100%;
-        margin: 0 auto;
-        padding: 3%;
-        box-shadow: 2px 2px 5px 0 #000
-    }
+        .deflex {
+            display: block
+        }
 
-    .contact-us-container-fom {
-        width: 90%
-    }
+        .signin {
+            width: 80%;
+            height: 70vh;
+            margin: 5% auto
+        }
 
-    .faq-form .cc-box {
-        width: 100%;
-        height: 40px
-    }
+        .cc-container {
+            width: 100%;
+            margin: 0 auto;
+            padding: 3%;
+            box-shadow: 2px 2px 5px 0 #000
+        }
 
-    .profile {
-        height: auto;
-        display: block;
-        flex-direction: unset;
-        justify-content: unset;
-        align-items: unset;
-    }
+        .contact-us-container-fom {
+            width: 90%
+        }
 
-    .profile-box {
-        width: 100%;
-        margin: 0;
-        margin-top: 20px;
-        padding: 2%;
-        border-radius: 0px;
-        box-shadow: none;
-    }
+        .faq-form .cc-box {
+            width: 100%;
+            height: 40px
+        }
 
-    .profile .profile-data {
-        width: 100%;
-        margin: 0;
-        padding: 1%;
-    }
+        .profile {
+            height: auto;
+            display: block;
+            flex-direction: unset;
+            justify-content: unset;
+            align-items: unset;
+        }
 
-    .profile-foot {
-        flex-direction: column;
-    }
+        .profile-box {
+            width: 100%;
+            margin: 0;
+            margin-top: 20px;
+            padding: 2%;
+            border-radius: 0px;
+            box-shadow: none;
+        }
 
-    .profile-edit {
-        margin: 0;
-        height: auto;
-        display: block;
-        flex-direction: unset;
-        justify-content: unset;
-        align-items: unset;
-        width: 100%;
-    }
-
-    .edit-box {
-        border-radius: 0px;
-        box-shadow: 0px 0px 15px 0px #d0d0d0;
-    }
-
-    .profile-edit .edit-item {
-        flex-direction: column;
-    }
-
-        .profile-edit .edit-item div {
+        .profile .profile-data {
+            width: 100%;
+            margin: 0;
             padding: 1%;
         }
 
-    /*crime*/
-    .crime {
-        width: 90%;
-    }
-
-        .crime .crime-instruction li {
-            font-size: 10pt;
+        .profile-foot {
+            flex-direction: column;
         }
-    /*help*/
-    .help {
-        width: 100%;
-        margin: 0;
+
+        .profile-edit {
+            margin: 0;
+            height: auto;
+            display: block;
+            flex-direction: unset;
+            justify-content: unset;
+            align-items: unset;
+            width: 100%;
+        }
+
+        .edit-box {
+            border-radius: 0px;
+            box-shadow: 0px 0px 15px 0px #d0d0d0;
+        }
+
+        .profile-edit .edit-item {
+            flex-direction: column;
+        }
+
+            .profile-edit .edit-item div {
+                padding: 1%;
+            }
+
+        /*crime*/
+        .crime {
+            width: 90%;
+        }
+
+            .crime .crime-instruction li {
+                font-size: 10pt;
+            }
+        /*help*/
+        .help {
+            width: 100%;
+            margin: 0;
+        }
+
+            .help h1 {
+                box-shadow: none;
+                margin-top: 0px;
+                height: 15vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 2%;
+                border-radius: 0px;
+            }
+
+        .help-db {
+            margin-top: -10px;
+            box-shadow: none;
+        }
+
+        .help-data {
+            box-shadow: none;
+            padding: 1%;
+            background: #256baa;
+            color: white;
+        }
+
+        .help-search {
+            flex-direction: column;
+            padding: 1%;
+        }
+
+            .help-search div {
+                width: 100%;
+                margin: 0;
+            }
     }
 
-        .help h1 {
-            box-shadow: none;
-            margin-top: 0px;
-            height: 15vh;
-            display: flex;
+    .correct {
+        box-shadow: 0px 0px 5px 0px gray;
+        height: 50px;
+        width: 50px;
+        border-radius: 100%
+    }
+
+    @media screen and (max-width:682px) {
+        .admin-session-name{
+            font-size:1rem
+        }
+        /*end user faq*/
+        .cts-wrapper {
+            padding: 1rem;
+        }
+        .admin-gallery-item-flex{
+            flex:1!important
+        }
+            .admin-gallery-item-flex{
+            display:block;
+        }
+        .cts-faq {
+            width: 100%;
+        }
+
+        .cts-wrapper .cts-accordion {
+            font-size: 1.1rem;
+        }
+
+            .cts-wrapper .cts-accordion i {
+                font-size: 1.6rem;
+            }
+
+        .cts-wrapper h1 {
+            font-size: 1.5rem;
+        }
+
+        .rights {
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+            .rights img {
+                display: none;
+            }
+
+        .hero {
+            height: 100%;
+        }
+
+        .services-item, .services-item div {
+            height: 200px;
+            width: 200px
+        }
+
+        .hero .left {
+            align-items: center;
+            justify-content: center !important
+        }
+
+            .hero .left img {
+                left: 0;
+                width: 100%;
+                top: 0
+            }
+
+        .hero .right {
+            align-items: center;
+            height: 80vh;
+            justify-content: center !important;
+            backdrop-filter: blur(10px)
+        }
+
+        .customContainer, .signin {
+            width: 100%;
+            margin: 0 auto
+        }
+
+        .card-item {
+            margin: 10px
+        }
+
+        .services-item {
+            margin: 10px;
+            overflow: hidden;
+            border: 1px solid red
+        }
+
+        .contact-us-container-form, .gallery {
+            width: 100%
+        }
+
+        .hero {
+            flex-direction: column;
             justify-content: center;
             align-items: center;
+            text-align: center
+        }
+
+        .gallery {
+            padding: 2%
+        }
+
+        .contact-us-container-form .d-flex {
+            display: block !important
+        }
+
+        .member .mentor {
+            margin: 5px;
+            width: 100%;
+            text-align: center;
+            flex-direction: column !important;
+            padding: 3%
+        }
+
+            .member .mentor .image {
+                width: 30%;
+                border-radius: 100%
+            }
+
+        .register-card div {
+            width: 200px
+        }
+
+        .complain-form, .crime-complain-form {
             padding: 2%;
-            border-radius: 0px;
+            overflow: visible;
         }
-
-    .help-db {
-        margin-top: -10px;
-        box-shadow: none;
-    }
-
-    .help-data {
-        box-shadow: none;
-        padding: 1%;
-        background: #256baa;
-        color: white;
-    }
-
-    .help-search {
-        flex-direction: column;
-        padding: 1%;
-    }
-
-        .help-search div {
+        /*crime*/
+        .crime {
             width: 100%;
-            margin: 0;
-        }
-}
-
-.correct {
-    box-shadow: 0px 0px 5px 0px gray;
-    height: 50px;
-    width: 50px;
-    border-radius: 100%
-}
-
-@media screen and (max-width:682px) {
-    .rights {
-        justify-content: center;
-        font-size: 0.8rem;
-    }
-
-        .rights img {
-            display: none;
+            flex-direction: column;
+            box-shadow: none;
         }
 
-    .signin {
-        height: auto;
-    }
+            .crime .crime-instruction {
+                background: #e5e5e5;
+                width: 90%;
+                margin: 0 auto;
+                margin-bottom: 10px;
+                border-radius: 5px;
+            }
 
-    .hero {
-        height: 100%;
-    }
+            .crime .crime-form {
+                width: 90%;
+                margin: 0 auto;
+            }
 
-    .services-item, .services-item div {
-        height: 200px;
-        width: 200px
-    }
-
-    .hero .left {
-        align-items: center;
-        justify-content: center !important
-    }
-
-        .hero .left img {
-            left: 0;
-            width: 100%;
-            top: 0
+        .missing-sub-form, .valuable-form {
+            padding: 1%;
+            background: #fdc38d;
+            overflow: visible
         }
 
-    .hero .right {
-        align-items: center;
-        height: 80vh;
-        justify-content: center !important;
-        backdrop-filter: blur(10px)
-    }
+            .missing-sub-form div {
+                margin-bottom: 10px
+            }
 
-    .customContainer, .signin {
-        width: 100%;
-        margin: 0 auto
-    }
-
-    .card-item {
-        margin: 10px
-    }
-
-    .services-item {
-        margin: 10px;
-        overflow: hidden;
-        border: 1px solid red
-    }
-
-    .contact-us-container-form, .gallery {
-        width: 100%
-    }
-
-    .hero {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center
-    }
-
-    .gallery {
-        padding: 2%
-    }
-
-    .contact-us-container-form .d-flex {
-        display: block !important
-    }
-
-    .member .mentor {
-        margin: 5px;
-        width: 100%;
-        text-align: center;
-        flex-direction: column !important;
-        padding: 3%
-    }
-
-        .member .mentor .image {
-            width: 30%;
-            border-radius: 100%
+        .admin-nav {
+            display: flex;
+            flex-direction: column;
+            background: #00979c;
         }
 
-    .register-card div {
-        width: 200px
-    }
+        .admin-items {
+            display: flex;
+            justify-content: center;
+            background: #005f6c;
+        }
 
-    .complain-form, .crime-complain-form {
-        padding: 2%;
-        overflow: visible;
-    }
-    /*crime*/
-    .crime {
-        width: 100%;
-        flex-direction: column;
-        box-shadow: none;
-    }
+        .admin-title h3 {
+            width: 100% !important;
+            justify-content: space-between
+        }
 
-        .crime .crime-instruction {
-            background: #e5e5e5;
-            width: 90%;
+        .gallery-card {
+            display: block;
+            height: 60vh;
+            width: 70%;
             margin: 0 auto;
-            margin-bottom: 10px;
-            border-radius: 5px;
+            justify-content: center;
+            align-items: center
         }
-
-        .crime .crime-form {
-            width: 90%;
-            margin: 0 auto;
-        }
-
-    .missing-sub-form, .valuable-form {
-        padding: 1%;
-        background: #fdc38d;
-        overflow: visible
-    }
-
-        .missing-sub-form div {
-            margin-bottom: 10px
-        }
-
-    .admin-nav {
-        display: flex;
-        flex-direction: column;
-        background: #00979c;
-    }
-
-    .admin-items {
-        display: flex;
-        justify-content: center;
-        background: #005f6c;
-    }
-
-    .admin-title h3 {
-        width: 100% !important;
-        justify-content: space-between
-    }
-
-    .gallery-card {
-        display: block;
-        height: 60vh;
-        width: 70%;
-        margin: 0 auto;
-        justify-content: center;
-        align-items: center
-    }
 
         .event-gallery-container {
-        flex-direction: column;
-        margin-bottom: 50px;
-        height: auto;
-    }
-
-        .event-gallery-container .img-thumb {
+            flex-direction: column;
+            margin-bottom: 50px;
             height: auto;
-            width: 200px;
-            margin: 1%;
-            margin-top: 50px;
-            transition: 0.5s ease-in-out all;
         }
 
-   
-    .policeItem {
-        width: 100%;
-        flex-direction: column;
-        padding: 2%;
-    }
+            .event-gallery-container .img-thumb {
+                height: auto;
+                width: 200px;
+                margin: 1%;
+                margin-top: 50px;
+                transition: 0.5s ease-in-out all;
+            }
 
-    .admin-content-height .faq-form {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 1%;
-    }
 
-        .admin-content-height .faq-form div:nth-child(1) {
+        .policeItem {
             width: 100%;
+            flex-direction: column;
+            padding: 2%;
         }
 
-        .admin-content-height .faq-form div:nth-child(2) {
-            width: 100%;
-            margin: 10px 5px;
+        .admin-content-height .faq-form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1%;
         }
 
-        .admin-content-height .faq-form div:nth-child(3) {
-            width: 100%;
+            .admin-content-height .faq-form div:nth-child(1) {
+                width: 100%;
+            }
+
+            .admin-content-height .faq-form div:nth-child(2) {
+                width: 100%;
+                margin: 10px 5px;
+            }
+
+            .admin-content-height .faq-form div:nth-child(3) {
+                width: 100%;
+            }
+
+            .admin-content-height .faq-form .delete {
+                width: 100%;
+                margin: 0;
+                margin-top: 10px;
+            }
+
+
+
+        .policeItem {
+            margin-top: 5px !important;
+        }
+    }
+
+    @media screen and (max-width:400px) {
+        .customContainer, .signin {
+            width: 100%
         }
 
-        .admin-content-height .faq-form .delete {
-            width: 100%;
-            margin: 0;
-            margin-top: 10px;
+        .pad-5 {
+            padding: 0
+        }
+        /*crime*/
+        .crime .crime-form .crime-form-item {
+            flex-direction: column;
+        }
+        /*end user faq*/
+        .cts-wrapper .cts-accordion {
+            font-size: 1rem !important;
+            padding: 1rem 1rem;
         }
 
-    
+            .cts-wrapper .cts-accordion i {
+                font-size: 1rem;
+            }
 
-    .policeItem {
-        margin-top: 5px !important;
-    }
-}
+        .cts-wrapper h1 {
+            font-size: 1.3rem;
+        }
 
-@media screen and (max-width:400px) {
-    .customContainer, .signin {
-        width: 100%
+        .panel p {
+            font-size: 0.9rem;
+        }
     }
-
-    .pad-5 {
-        padding: 0
-    }
-    /*crime*/
-    .crime .crime-form .crime-form-item {
-        flex-direction: column;
-    }
-}

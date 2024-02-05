@@ -84,7 +84,7 @@
                     <small class="text-danger fw-bold">
                         @Html.ValidationMessageFor(model => model.Details, "", new { @class = "text-danger fw-bolder" })
                     </small>
-                    @Html.TextBoxFor(model => model.Details, new { @class = "cc-box" })
+                    @Html.TextAreaFor(model => model.Details, new { @class = "cc-box",rows="10" })
                 </fieldset>
             </div>
             <div style="margin-left:10px;">
