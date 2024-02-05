@@ -17,8 +17,7 @@
         });
     </script>
 }
-<h1 class="container text-center p-3"><i class="fa-solid fa-handcuffs"></i> Crime Complain</h1>
-<div class="crime">
+
     @*instruction*@
     <div class="crime-instruction">
         <div class="pt-5">
@@ -35,95 +34,103 @@
             </ul>
         </div>
     </div>
-    @*form*@
-    <div class="crime-form">
+  
         @using (Html.BeginForm("Crime", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
+            <div class="admin-gallery-uploader">
+                <h1><i class="fa-solid fa-handcuffs"></i> Crime Complain</h1>
+                <div class="admin-gallery-item">
+                    <div class="admin-gallery-item-flex">
+                        <div>
+                            <fieldset>
+                                <legend>
+                                    <i class="fa-solid fa-building-shield"></i>
+                                    @Html.LabelFor(model => model.PoliceStationName)
+                                </legend>
+                                <small class="text-danger fw-bold">
+                                    @Html.ValidationMessageFor(model => model.PoliceStationName, "", new { @class = "text-danger fw-bolder" })
+                                </small>
+                                @Html.DropDownListFor(model => model.PoliceStationName, (IEnumerable<SelectListItem>)ViewBag.OptionList, "--select--", new { @class = "cc-box" })
+                            </fieldset>
+                        </div>
+                        <div>
+                            <fieldset>
+                                <legend>
+                                    <i class="fa-solid fa-handcuffs"></i>
+                                    @Html.LabelFor(model => model.CrimeType)
+                                </legend>
+                                <small class="text-danger fw-bold">
+                                    @Html.ValidationMessageFor(model => model.CrimeType, "", new { @class = "text-danger fw-bolder" })
+                                </small>
+                                @Html.DropDownListFor(model => model.CrimeType,
+                                    new SelectList(new[] {
+                                    "Cyber crime",
+                                    "Drug Trafficking",
+                                    "Robbery",
+                                    "Violence",
+                                    "Burglary",
+                                    "Fraud",
+                                    "Money Laundering",
+                                    "Kidnapping",
+                                    "Assault",
+                                    "Theft",
+                                    "Human Trafficking",
+                                    "Terrorism",
+                                    "Murder",
+                                    "Rape",
+                                    "Domestic Violence"
+                                    }),
+                                    "--select--",
+                                   new { @class = "cc-box" })
+                            </fieldset>
+                        </div>
+                        <div>
+                            <fieldset>
+                                <legend>
+                                    <i class="fa-solid fa-building-shield"></i>
+                                    @Html.LabelFor(model => model.InvolvedPersons)
+                                </legend>
+                                <small class="text-danger fw-bold">
+                                    @Html.ValidationMessageFor(model => model.InvolvedPersons, "", new { @class = "text-danger fw-bolder" })
+                                </small>
+                                @Html.EditorFor(model => model.InvolvedPersons, new { htmlAttributes = new { @class = "cc-box", placeholder = "persons who are involved" } })
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="admin-gallery-item-flex">
+                        <div>
+                            <fieldset>
+                                <legend>
+                                    <i class="fa-solid fa-building-shield"></i>
+                                    @Html.LabelFor(model => model.CrimeStation)
+                                </legend>
+                                <small class="text-danger fw-bold">
+                                    @Html.ValidationMessageFor(model => model.CrimeStation, "", new { @class = "text-danger fw-bolder" })
+                                </small>
+                                @Html.EditorFor(model => model.CrimeStation, new { htmlAttributes = new { @class = "cc-box", placeholder = "name of your area police station" } })
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div>
+                        <fieldset>
+                            <legend>
+                                <i class="fa-regular fa-image"></i>
+                                @Html.LabelFor(model => model.Proofs)
+                            </legend>
+                            <input type="file" class="cc-box" name="UploadImage" required />
+                        </fieldset>
+                    </div>
+                    <div style="margin-left:10px;">
+                        <button class="btn btn-primary" value="upload" id="myButton"><i class="fa-solid fa-paper-plane"></i> send</button>
+                        <a href="@Url.Action("CrimeComplainData", "User")" class="p-2 text-primary fw-bolder" style="font-size:10pt"><i class="fa-regular fa-hand-point-right"></i> click here to show complains you filled...</a>
+                    </div>
+                </div>
+            </div>
 
-
-            @*first row*@
-            <div class="crime-form-item">
-                <div>
-                    <span>
-                        <i class="fa-solid fa-building-shield"></i>
-                        @Html.LabelFor(model => model.PoliceStationName, new { @class = "form-label fw-bolder" })
-                        <br />
-                        <small>@Html.ValidationMessageFor(model => model.PoliceStationName, "", new { @class = "text-danger fw-bolder" })</small>
-                    </span>
-                    @Html.DropDownListFor(model => model.PoliceStationName, (IEnumerable<SelectListItem>)ViewBag.OptionList, "--select--", new { @class = "cc-box" })
-                </div>
-                <div>
-                    <span>
-                        <i class="fa-solid fa-handcuffs"></i>
-                        @Html.LabelFor(model => model.CrimeType, new { @class = "form-label fw-bolder" })
-                        <br />
-                        <small>@Html.ValidationMessageFor(model => model.CrimeType, "", new { @class = "text-danger fw-bolder" })</small>
-                    </span>
-                    @Html.DropDownListFor(model => model.CrimeType,
-                    new SelectList(new[] {
-                    "Cyber crime",
-                    "Drug Trafficking",
-                    "Robbery",
-                    "Violence",
-                    "Burglary",
-                    "Fraud",
-                    "Money Laundering",
-                    "Kidnapping",
-                    "Assault",
-                    "Theft",
-                    "Human Trafficking",
-                    "Terrorism",
-                    "Murder",
-                    "Rape",
-                    "Domestic Violence"
-                    }),
-                    "--select--",
-                   new { @class = "cc-box" })
-                </div>
-            </div>
-            @*second row*@
-            <div>
-                <div>
-                    <span>
-                        <i class="fa-solid fa-handshake"></i>
-                        @Html.LabelFor(model => model.InvolvedPersons, new { @class = "form-label fw-bolder" })
-                        <br />
-                        <small>@Html.ValidationMessageFor(model => model.InvolvedPersons, "", new { @class = "text-danger fw-bolder" })</small>
-                    </span>
-                    @Html.EditorFor(model => model.InvolvedPersons, new { htmlAttributes = new { @class = "cc-box", placeholder = "persons who are involved" } })
-                </div>
-            </div>
-            @*third row*@
-            <div>
-                <div>
-                    <span>
-                        <i class="fa-regular fa-image"></i>
-                        @Html.LabelFor(model => model.Proofs, new { @class = "form-label fw-bolder" })
-                    </span>
-                    <input type="file" class="cc-box" name="UploadImage" required />
-                </div>
-                <div>
-                    <span>
-                        <i class="fa-solid fa-building-shield"></i>
-                        @Html.LabelFor(model => model.CrimeStation, new { @class = "form-label fw-bolder" })
-                        <br />
-                        <small>@Html.ValidationMessageFor(model => model.CrimeStation, "", new { @class = "text-danger fw-bolder" })</small>
-                    </span>
-                    @Html.EditorFor(model => model.CrimeStation, new { htmlAttributes = new { @class = "cc-box", placeholder = "name of your area police station" } })
-                </div>
-            </div>
-            @*fifth row*@
-            <div>
-                <button class=" send">send</button>
-                <input type="reset" value="clear" class=" clear" />
-            </div>
-            @*sixth row*@
-            <div>
-                <a href="@Url.Action("CrimeComplainData", "User")" class="p-2 text-primary fw-bolder" style="font-size:10pt"><i class="fa-regular fa-hand-point-right"></i> click here to show complains you filled...</a>
-            </div>
-        }
-    </div>
-</div>
+            
+    
+ 
+}
 
 
 
