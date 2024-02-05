@@ -22,7 +22,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
 
             var sessiondata = (string)Session["usermail"];
             //crime
-            var solvedcrimelist = _context.CrimeComplains.Where(model => model.Username == sessiondata && model.Status == "Solved").ToList();
+            var solvedcrimelist  = _context.CrimeComplains.Where(model => model.Username == sessiondata && model.Status == "Solved").ToList();
             var pendcrimelist = _context.CrimeComplains.Where(model => model.Username == sessiondata && model.Status == "Pending").ToList();
             var solvedcount = solvedcrimelist.Count();
             var pendcount = pendcrimelist.Count();

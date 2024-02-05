@@ -394,6 +394,7 @@
     <Content Include="Views\Admin\GeneralDetails.cshtml" />
     <Content Include="Views\Admin\PersonDetails.cshtml" />
     <Content Include="Views\Admin\ValuableDetails.cshtml" />
+    <Content Include="Views\Admin\Users.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Uploads\CrimeComplainProofs\" />

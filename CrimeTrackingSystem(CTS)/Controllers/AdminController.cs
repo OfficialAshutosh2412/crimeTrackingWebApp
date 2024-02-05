@@ -28,7 +28,54 @@ namespace CrimeTrackingSystem_CTS_.Controllers
             {
                 return RedirectToAction("Login", "Home");
             }
+            // for users counting
+            var userRowCount = _context.Signups.ToList().Count();
+            ViewBag.userCounts = userRowCount;
+
+            // for crime complains counting
+            var crimeRowCount = _context.CrimeComplains.ToList().Count();
+            ViewBag.crimeCounts = crimeRowCount;
+
+            // for general complains counting
+            var generalRowCount = _context.GeneralComplains.ToList().Count();
+            ViewBag.generalCounts = generalRowCount;
+
+            // for person complains counting
+            var personRowCount = _context.MissingPersons.ToList().Count();
+            ViewBag.personCounts = personRowCount;
+
+            // for valuable complains counting
+            var valueRowCount = _context.MissingValuables.ToList().Count();
+            ViewBag.valueCounts = valueRowCount;
+
+            // for contacts counting
+            var contactRowCount = _context.Contacts.ToList().Count();
+            ViewBag.contactCounts = contactRowCount;
+
+            // for faq counting
+            var faqRowCount = _context.FAQs.ToList().Count();
+            ViewBag.faqCounts = faqRowCount;
+
+            // for gallery counting
+            var eventImageRowCount = _context.Events.ToList().Count();
+            var crimeImageRowCount = _context.CriminalGalleries.ToList().Count();
+            ViewBag.galleryCounts = eventImageRowCount + crimeImageRowCount;
+
+            // for news counting
+            var newsRowCount = _context.News.ToList().Count();
+            ViewBag.newsCounts = newsRowCount;
+            //---------------------------------------------------------------------------
             return View();
+        }
+        //GET : Users
+        public ActionResult Users()
+        {
+            if (Session["adminmail"] == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
+            var data = _context.Signups.ToList();
+            return View(data);
         }
         //RecordRoom:GET
         public ActionResult RecordRoom()

@@ -20,62 +20,77 @@
 @*contact us*@
 @using (Html.BeginForm("Contact", "Home", FormMethod.Post))
 {
-    <div class=" min-width contact-us-container">
-        <div class="p-3 contact-us-container-form rounded-3" id="contact">
-            <h1 class="section-title fs-4"><span class="title-vip p-2" id="title-vip4"><i class="fa-solid fa-message"></i>Give us</span> a message</h1>
-            <div class=" d-flex">
-                <div class="mb-1 w-100 p-2">
-                    <span class="form-label">
-                        <i class="fa-solid fa-pencil"></i>
-                        @Html.LabelFor(model => model.Fullname, new { @class = "form-label fw-bolder" })
-                    </span><br />
-                    <small class="text-danger fw-bold">
-                        @Html.ValidationMessageFor(model => model.Fullname)
-                    </small>
-                    @Html.TextBoxFor(model => model.Fullname, new { @class = "cc-box" })
+    <div class="admin-gallery-uploader">
+        <h1><i class="fa-solid fa-envelopes-bulk"></i> Contact Us</h1>
+        <div class="admin-gallery-item">
+            <div class="admin-gallery-item-flex">
+                <div>
+                    <fieldset>
+                        <legend>
+                            <i class="fa-solid fa-pencil"></i>
+                            @Html.LabelFor(model => model.Fullname)
+                        </legend>
+                        <small class="text-danger fw-bold">
+                            @Html.ValidationMessageFor(model => model.Fullname, "", new { @class = "text-danger fw-bolder" })
+                        </small>
+                        @Html.EditorFor(model => model.Fullname, new { htmlAttributes = new { @class = "cc-box" } })
+                    </fieldset>
                 </div>
-                <div class="mb-1 w-100 p-2">
-                    <span class="form-label">
-                        <i class="fa-solid fa-envelope"></i>
-                        @Html.LabelFor(model => model.Email, new { @class = "form-label fw-bolder" })
-                    </span><br />
-                    <small class="text-danger fw-bold">
-                        @Html.ValidationMessageFor(model => model.Email)
-                    </small>
-                    @Html.TextBoxFor(model => model.Email, new { @class = "cc-box" })
+                <div>
+                    <fieldset>
+                        <legend>
+                            <i class="fa-solid fa-envelope"></i>
+                            @Html.LabelFor(model => model.Email)
+                        </legend>
+                        <small class="text-danger fw-bold">
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger fw-bolder" })
+                        </small>
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "cc-box" } })
+                    </fieldset>
                 </div>
-                <div class="mb-1 w-100 p-2">
-                    <span class="form-label">
-                        <i class="fa-solid fa-phone"></i>
-                        @Html.LabelFor(model => model.Phone, new { @class = "form-label fw-bolder" })
-                    </span><br />
-                    <small class="text-danger fw-bold">
-                        @Html.ValidationMessageFor(model => model.Phone)
-                    </small>
-                    @Html.TextBoxFor(model => model.Phone, new { @class = "cc-box" })
+                <div>
+                    <fieldset>
+                        <legend>
+                            <i class="fa-solid fa-phone"></i>
+                            @Html.LabelFor(model => model.Phone)
+                        </legend>
+                        <small class="text-danger fw-bold">
+                            @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger fw-bolder" })
+                        </small>
+                        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "cc-box" } })
+                    </fieldset>
                 </div>
             </div>
-            <div class="mb-1 w-100 p-2">
-                <span class="form-label">
-                    <i class="fa-solid fa-question"></i>
-                    @Html.LabelFor(model => model.Purpose, new { @class = "form-label fw-bolder" })
-                </span><br />
-                <small class="text-danger fw-bold">
-                    @Html.ValidationMessageFor(model => model.Purpose)
-                </small>
-                @Html.TextBoxFor(model => model.Purpose, new { @class = "cc-box" })
+            <div class="admin-gallery-item-flex">
+                <div>
+                    <fieldset>
+                        <legend>
+                            <i class="fa-solid fa-bullseye"></i>
+                            @Html.LabelFor(model => model.Purpose)
+                        </legend>
+                        <small class="text-danger fw-bold">
+                            @Html.ValidationMessageFor(model => model.Purpose, "", new { @class = "text-danger fw-bolder" })
+                        </small>
+                        @Html.EditorFor(model => model.Purpose, new { htmlAttributes = new { @class = "cc-box" } })
+                    </fieldset>
+                </div>
             </div>
-            <div class="mb-1 p-2">
-                <span class="form-label">
-                    <i class="fa-solid fa-pen-nib"></i>
-                    @Html.LabelFor(model => model.Details, new { @class = "form-label fw-bolder" })
-                </span><br />
-                <small class="text-danger fw-bold">
-                    @Html.ValidationMessageFor(model => model.Details)
-                </small>
-                @Html.TextBoxFor(model => model.Details, new { @class = "cc-box" })
+            <div>
+                <fieldset>
+                    <legend>
+                        <i class="fa-solid fa-file"></i>
+                        @Html.LabelFor(model => model.Details)
+                    </legend>
+                    <small class="text-danger fw-bold">
+                        @Html.ValidationMessageFor(model => model.Details, "", new { @class = "text-danger fw-bolder" })
+                    </small>
+                    @Html.TextBoxFor(model => model.Details, new { @class = "cc-box" })
+                </fieldset>
             </div>
-            <button class="send" value="send" id="myButton">send now !</button>
+            <div style="margin-left:10px;">
+                <button class="btn btn-primary" value="upload" id="myButton"><i class="fa-solid fa-paper-plane"></i> send</button>
+            </div>
         </div>
     </div>
+
 }
