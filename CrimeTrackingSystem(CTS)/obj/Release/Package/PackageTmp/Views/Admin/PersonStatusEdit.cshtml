@@ -1,0 +1,154 @@
+﻿@model CrimeTrackingSystem_CTS_.Models.MissingPersonViewModel
+
+@{
+    ViewBag.AdminTitle = "Person Status Edit";
+    ViewBag.PageTitle = "Person Status Edit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@using (Html.BeginForm("PersonStatusEdit", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="admin-gallery-uploader">
+        <h1><a href="@Url.Action("UpdateCrimeComplainStatus", "Admin")" title="go back" class="text-decoration-none btn btn-outline-danger"><i class="fa-solid fa-arrow-left"></i></a>Missing Person status update</h1>
+        <div class="admin-gallery-item">
+            <div class="admin-gallery-item-flex">
+                <div>
+                    <fieldset>
+                        <legend>
+                            <i class="fa-solid fa-user"></i>
+                            <label>Username</label>
+                        </legend>
+                        <small class="text-danger fw-bold">
+                            @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger fw-bolder" })
+                        </small>
+                        @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "cc-box", placeholder = "name of your area police station" } })
+                    </fieldset>
+                </div>
+                <div>
+                    <fieldset>
+                        <legend>
+                            <i class="fa-solid fa-building-shield"></i>
+                            <label>Police Station</label>
+                        </legend>
+                        <small class="text-danger fw-bold">
+                            @Html.ValidationMessageFor(model => model.PoliceStationName, "", new { @class = "text-danger fw-bolder" })
+                        </small>
+                        @Html.DropDownListFor(model => model.PoliceStationName, (IEnumerable<SelectListItem>)ViewBag.OptionList, "--select--", new { @class = "cc-box" })
+                    </fieldset>
+                </div>
+                <div>
+                    <fieldset>
+                        <legend>
+                            <i class="fa-solid fa-person"></i>
+                            <label>Person Name</label>
+                        </legend>
+                        <small class="text-danger fw-bold">
+                            @Html.ValidationMessageFor(model => model.Person, "", new { @class = "text-danger fw-bolder" })
+                        </small>
+                        @Html.EditorFor(model => model.Person, new { htmlAttributes = new { @class = "cc-box", placeholder = "name of your area police station" } })
+                    </fieldset>
+                </div>
+            </div>
+            <div class="admin-gallery-item-flex">
+                <div>
+                    <fieldset>
+                        <legend>
+                            <i class="fa-solid fa-phone"></i>
+                            <label>Person Phone no.</label>
+                        </legend>
+                        <small class="text-danger fw-bold">
+                            @Html.ValidationMessageFor(model => model.PersonPhone, "", new { @class = "text-danger fw-bolder" })
+                        </small>
+                        @Html.EditorFor(model => model.PersonPhone, new { htmlAttributes = new { @class = "cc-box" } })
+                    </fieldset>
+                </div>
+                <div>
+                    <fieldset>
+                        <legend>
+                            <i class="fa-solid fa-location-dot"></i>
+                            <label>Location</label>
+                        </legend>
+                        <small class="text-danger fw-bold">
+                            @Html.ValidationMessageFor(model => model.LastLocation, "", new { @class = "text-danger fw-bolder" })
+                        </small>
+                        @Html.EditorFor(model => model.LastLocation, new { htmlAttributes = new { @class = "cc-box" } })
+                    </fieldset>
+                </div>
+                <div>
+                    <fieldset>
+                        <legend>
+                            <i class="fa-solid fa-envelope"></i>
+                            <label>Person E-mail</label>
+                        </legend>
+                        <small class="text-danger fw-bold">
+                            @Html.ValidationMessageFor(model => model.PersonEmail, "", new { @class = "text-danger fw-bolder" })
+                        </small>
+                        @Html.EditorFor(model => model.PersonEmail, new { htmlAttributes = new { @class = "cc-box" } })
+                    </fieldset>
+                </div>
+            </div>
+            <div class="admin-gallery-item-flex">
+
+                <div>
+                    <fieldset>
+                        <legend>
+                            <i class="fa-solid fa-indian-rupee-sign"></i>
+                            @Html.LabelFor(model => model.Ransom)
+                        </legend>
+                        <small class="text-danger fw-bold">
+                            @Html.ValidationMessageFor(model => model.Ransom, "", new { @class = "text-danger fw-bolder" })
+                        </small>
+                        @Html.EditorFor(model => model.Ransom, new { htmlAttributes = new { @class = "cc-box" } })
+                    </fieldset>
+                </div>
+                <div>
+                    <fieldset>
+                        <legend>
+                            <i class="fa-solid fa-calendar-days"></i>
+                            <label>Date & Time</label>
+                        </legend>
+                        <small class="text-danger fw-bold">
+                            @Html.ValidationMessageFor(model => model.CurrentDateTime, "", new { @class = "text-danger fw-bolder" })
+                        </small>
+                        @Html.EditorFor(model => model.CurrentDateTime, new { htmlAttributes = new { @class = "cc-box" } })
+                    </fieldset>
+                </div>
+                <div>
+                    <fieldset>
+                        <legend>
+                            <i class="fa-solid fa-spinner"></i>
+                            @Html.LabelFor(model => model.Status)
+                        </legend>
+                        <small class="text-danger fw-bold">
+                            @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger fw-bolder" })
+                        </small>
+                        @Html.DropDownListFor(model => model.Status,
+     new SelectList(new[] {
+                "Pending",
+                "Solved",
+                "Rejected"
+     }),
+     "--select--",
+    new { @class = "cc-box" })
+                    </fieldset>
+                </div>
+            </div>
+
+            <div>
+                <fieldset>
+                    <legend>
+                        <i class="fa-solid fa-file"></i>
+                        @Html.LabelFor(model => model.Details)
+                    </legend>
+                    <small class="text-danger fw-bold">
+                        @Html.ValidationMessageFor(model => model.Details, "", new { @class = "text-danger fw-bolder" })
+                    </small>
+                    @Html.TextAreaFor(model => model.Details, new { @class = "cc-box", rows = "4" })
+                </fieldset>
+            </div>
+            <div style="margin-left:10px;">
+                <button class="btn btn-primary" value="upload" id="myButton"><i class="fa-solid fa-circle-notch fa-spin"></i> update status</button>
+            </div>
+        </div>
+    </div>
+}

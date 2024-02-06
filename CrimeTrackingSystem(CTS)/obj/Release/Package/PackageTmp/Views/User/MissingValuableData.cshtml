@@ -1,0 +1,55 @@
+﻿@model List<CrimeTrackingSystem_CTS_.Models.MissingValuable>
+@{
+    ViewBag.UserTitle = "MissingValuableData";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<div class="table-responsive">
+    <h2 class="p-3"><i class="fa-regular fa-gem"></i> Missing Valuable Complaint Data</h2>
+    <table class="table table-light display responsive nowrap table-bordered" width="100%" id="tableJsId">
+        <thead>
+            <tr>
+                <th>Missing Valuable</th>
+                <th>Report ID</th>
+                <th>Police Station</th>
+                <th>Category</th>
+                <th>Cost</th>
+                <th>Suspect</th>
+                <th>Details</th>
+                <th>Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                if (Model != null)
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <a href="@Url.Content(item.ReciptImage)" target="_blank"><img src="@Url.Content(item.ReciptImage)" class="fetchImage" alt="image data" /></a>
+                            </td>
+                            <td>@item.Id</td>
+                            <td>@item.PoliceStationName</td>
+                            <td>@item.ValuableType</td>
+                            <td>@item.ValuableCost</td>
+                            <td>@item.Suspect</td>
+                            <td>@item.Details</td>
+                            <td>@item.CurrentDateTime</td>
+                            <td>@item.Status</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td><p>no record found</p></td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+

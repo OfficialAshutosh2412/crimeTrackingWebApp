@@ -209,6 +209,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ADMIN TOKEN FOR CTS.txt" />
     <Content Include="App_Data\CTS.mdf" />
     <Content Include="App_Data\CTS_log.ldf">
       <DependentUpon>CTS.mdf</DependentUpon>

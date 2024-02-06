@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTS | User | @ViewBag.UserTitle</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-1.13.8/r-2.5.0/rg-1.4.1/datatables.min.css" rel="stylesheet">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <!-- Include SweetAlert CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11">
+    @*@RenderSection("head", required: false)*@
+</head>
+<body onload="myfunction()" class="body" vlink="coral" style="background: #e9e9e9; background-size: cover;">
+    @*preloader*@
+    <div class="preloader" id="preloader">
+        <img src="~/Images/loader/Ripple-2.1s-204px.gif" />
+    </div>
+    @*header*@
+    <nav class="navbar navbar-expand-lg bg-body-tertiary p-0" id="nav">
+        <div class="container-fluid justify-content-between ">
+            <a href="@Url.Action("Index", "User")" class="navbar-brand"><img src="~/Images/cts_logo.png" alt="cts.png" /></a>
+            <button class="navbar-toggler border-0 bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon fw-bolder"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav ">
+                    <li class="nav-item" id="home">
+                        <a href="@Url.Action("Index", "User")" class="nav-link text-light" aria-current="page"><i class="fa-solid fa-house"></i> Home</a>
+                    </li>
+                    <li class="nav-item" id="crime">
+                        <a href="@Url.Action("Crime", "User")" class="nav-link text-light"><i class="fa-solid fa-handcuffs"></i> Crime Complain</a>
+                    </li>
+                    <li class="nav-item" id="general">
+                        <a href="@Url.Action("General", "User")" class="nav-link text-light"><i class="fa-solid fa-file-signature"></i> General Complain</a>
+                    </li>
+                    <li class="nav-item" id="person">
+                        <a href="@Url.Action("Person", "User")" class="nav-link text-light"><i class="fa-solid fa-person"></i> Missing Person</a>
+                    </li>
+                    <li class="nav-item" id="valuable">
+                        <a href="@Url.Action("Valuable", "User")" class="nav-link text-light"><i class="fa-regular fa-gem"></i> Missing Valuable</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("Logout", "user")" class="nav-link text-light fw-bolder"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    @RenderBody()
+    @*footer*@
+    <footer class="footer">
+        <div class="footer-brand">
+            <img src="~/Images/cts_logo.png" alt="cts.png">
+        </div>
+        <div>
+            <h6>follow us</h6>
+            <div class="footer-follow">
+                <a href="https://www.facebook.com/ashutosh.prasad.754365/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/official.ashu.2000/" target="_blank"><i class="fa-brands fa-square-instagram"></i></a>
+                <a href="https://twitter.com/Ashutos96662173" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://wa.me/6386239194" target="_blank"><i class="fa-brands fa-square-whatsapp"></i></a>
+            </div>
+        </div>
+        <div class="rights">
+            <p>All rights are reserved &copy;Criminal tracking System @DateTime.Now.Year .inc</p>
+        </div>
+    </footer>
+
+
+    @*<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>*@
+    <!-- Include SweetAlert JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        //navbar active link
+        const pathName = window.location.pathname;
+        const pageName = pathName.split("/").pop();
+        if (pageName === "user" || pageName === "User") {
+            document.querySelector('#home').classList.add("activeLink");
+        }
+        if (pageName === "crime" || pageName === "Crime") {
+            document.querySelector('#crime').classList.add("activeLink");
+        }
+        if (pageName === "general" || pageName === "General") {
+            document.querySelector('#general').classList.add("activeLink");
+        }
+        if (pageName === "person" || pageName === "Person") {
+            document.querySelector('#person').classList.add("activeLink");
+        }
+        if (pageName === "valuable" || pageName === "Valuable") {
+            document.querySelector('#valuable').classList.add("activeLink");
+        }
+    </script>
+    <script src="~/Scripts/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-1.13.8/r-2.5.0/rg-1.4.1/datatables.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/custom.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#tableJsId").dataTable();
+
+        });
+    </script>
+</body>
+</html>

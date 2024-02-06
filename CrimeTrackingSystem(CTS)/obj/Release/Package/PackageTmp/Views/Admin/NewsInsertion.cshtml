@@ -1,0 +1,56 @@
+﻿@model CrimeTrackingSystem_CTS_.Models.NewsViewModel
+@{
+    ViewBag.AdminTitle = "News Record Insertion";
+    ViewBag.PageTitle = "News Record Insertion";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@if ((string)TempData["result"] == "true")
+{
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: 'data recorded successfully !'
+            });
+        });
+    </script>
+}
+
+@using (Html.BeginForm("NewsInsertion", "Admin", FormMethod.Post))
+{
+    <div class="admin-gallery-uploader">
+        <h1><a href="@Url.Action("NewsRecord","Admin")" title="go back" class="text-decoration-none btn btn-outline-danger"><i class="fa-solid fa-arrow-left"></i></a>News Upload</h1>
+        <div class="admin-gallery-item">
+            <div>
+                <fieldset>
+                    <legend>
+                        <i class="fa-solid fa-bolt"></i>
+                        @Html.LabelFor(model => model.Title, new { @class = "form-label" })
+                    </legend>
+                    <small class="text-danger fw-bold">
+                        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger fw-bolder" })
+                    </small>
+                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "cc-box" } })
+                </fieldset>
+            </div>
+            <div>
+                <fieldset>
+                    <legend>
+                        <i class="fa-solid fa-pen-nib"></i>
+                        @Html.LabelFor(model => model.Detail, new { @class = "form-label" })
+                    </legend>
+                    <small class="text-danger fw-bold">
+                        @Html.ValidationMessageFor(model => model.Detail, "", new { @class = "text-danger fw-bolder" })
+                    </small>
+                    @Html.TextAreaFor(model => model.Detail, new { rows = 15, @class = "cc-box", placeholder = "write details here..." })
+                </fieldset>
+            </div>
+            <div style="margin-left:10px;">
+                <button class="btn btn-primary" value="upload" id="myButton"> <i class="fa-solid fa-cloud-arrow-up"></i> upload</button>
+            </div>
+        </div>
+    </div>
+}
+

@@ -81,33 +81,32 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                         actualFilename = Path.Combine(Server.MapPath("~/Uploads/UserProfileImages/"), actualFilename);
                         //saving the file into folder
                         formDataOfSignup.ImageFile.SaveAs(actualFilename);
-                        var signupdbmodel = new Signup { 
-                            Username=formDataOfSignup.Username,
-                            Password=formDataOfSignup.Password,
-                            Email=formDataOfSignup.Email,
-                            Gender=formDataOfSignup.Gender,
-                            Pincode=formDataOfSignup.Pincode,
-                            Address=formDataOfSignup.Address,
-                            Mstatus=formDataOfSignup.Mstatus,
-                            Lstatus=formDataOfSignup.Lstatus,
-                            Adhaar=formDataOfSignup.Adhaar,
-                            Phone=formDataOfSignup.Phone,
-                            Photo = formDataOfSignup.Photo,
-                            Role = formDataOfSignup.Role
-                        };
+                        
                         if (formDataOfSignup.Role == "98u9d8uwr3(9ih(8H8&67^g&UyGIuh(7t6G^F4d4@A#24545fGbuyb*Y(8jIj(87Re54#qW")
                         {
                             formDataOfSignup.Role = "admin";    
-                            _context.Signups.Add(signupdbmodel);
-                            _context.SaveChanges();
                         }
                         else if (formDataOfSignup.Role != "98u9d8uwr3(9ih(8H8&67^g&UyGIuh(7t6G^F4d4@A#24545fGbuyb*Y(8jIj(87Re54#qW")
                         {
                             formDataOfSignup.Role = "user";
-                            _context.Signups.Add(signupdbmodel);
-                            _context.SaveChanges();
                         }
-
+                        var signupdbmodel = new Signup
+                        {
+                            Username = formDataOfSignup.Username,
+                            Password = formDataOfSignup.Password,
+                            Email = formDataOfSignup.Email,
+                            Gender = formDataOfSignup.Gender,
+                            Pincode = formDataOfSignup.Pincode,
+                            Address = formDataOfSignup.Address,
+                            Mstatus = formDataOfSignup.Mstatus,
+                            Lstatus = formDataOfSignup.Lstatus,
+                            Adhaar = formDataOfSignup.Adhaar,
+                            Phone = formDataOfSignup.Phone,
+                            Photo = formDataOfSignup.Photo,
+                            Role = formDataOfSignup.Role,
+                        };
+                        _context.Signups.Add(signupdbmodel);
+                        _context.SaveChanges();
                         ModelState.Clear();
                         return RedirectToAction("Login", "Home");
                     }

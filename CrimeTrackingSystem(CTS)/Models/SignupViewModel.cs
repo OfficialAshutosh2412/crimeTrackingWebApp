@@ -19,12 +19,6 @@ namespace CrimeTrackingSystem_CTS_.Models
         [RegularExpression("^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8,}$", ErrorMessage = "password must: atleast 8-char long, 2 - uppercase, 3 - lowercase, 1 - special char, 2 - digits")]
         public string Password { get; set; }
 
-        [DisplayName("Confirm password")]
-        [Required]
-        [DataType(DataType.Password)]
-        [Compare("Password", ErrorMessage = "password doesn't match")]
-        public string ConfirmPassword { get; set; }
-
         [DisplayName("E-mail")]
         [Required]
         [DataType(DataType.EmailAddress)]

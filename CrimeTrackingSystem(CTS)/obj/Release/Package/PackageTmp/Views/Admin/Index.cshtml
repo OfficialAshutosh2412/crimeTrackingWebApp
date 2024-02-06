@@ -1,0 +1,141 @@
+﻿
+@{
+    ViewBag.AdminTitle = "Home";
+    ViewBag.PageTitle = "Dashboard";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 class="p-3 admin-session-name"><i class="fa-solid fa-user-large"></i> @Session["adminmail"]</h2>
+
+@*classfirst row*@
+<div class="admin-card-container">
+    @*classuser*@
+    <div class="admin-card">
+        <i class="fa-solid fa-user-large counters"></i>
+        <div>
+            <label class="counters">@ViewBag.userCounts</label>
+            <label class="counters">+</label>
+        </div>
+        <div class="d-flex justify-content-center align-items-center">
+            <p>User Accounts</p>
+        </div>
+        <a href="@Url.Action("Users","Admin")" class="btn btn-dark border border-light">
+            <i class="fa-solid fa-arrow-up-right-from-square text-light"></i> open 
+        </a>
+    </div>
+    @*classcrime complain*@
+    <div class="admin-card">
+        <i class="fa-solid fa-handcuffs counters"></i>
+        <div>
+            <label class="counters">@ViewBag.crimeCounts</label>
+            <label class="counters">+</label>
+        </div>
+        <div class="d-flex justify-content-center align-items-center">
+            <p>Crime Complains</p>
+        </div>
+        <a href="@Url.Action("RecordRoom","Admin")" class="btn btn-dark  border-light">
+            <i class="fa-solid fa-arrow-up-right-from-square text-light"></i> open
+        </a>
+    </div>
+    @*classgeneral complain*@
+    <div class="admin-card">
+        <i class="fa-solid fa-file-signature counters"></i>
+        <div>
+            <label class="counters">@ViewBag.generalCounts</label>
+            <label class="counters">+</label>
+        </div>
+        <div class="d-flex justify-content-center align-items-center">
+            <p>General Complains</p>
+        </div>
+        <a href="@Url.Action("RecordRoom","Admin")" class="btn btn-dark border-light">
+            <i class="fa-solid fa-arrow-up-right-from-square text-light"></i> open
+        </a>
+    </div>
+    @*classmissing person*@
+    <div class="admin-card">
+        <i class="fa-solid fa-person counters"></i>
+        <div>
+            <label class="counters">@ViewBag.personCounts</label>
+            <label class="counters">+</label>
+        </div>
+        <div class="d-flex justify-content-center align-items-center">
+            <p>Missing Person Cases</p>
+        </div>
+        <a href="@Url.Action("RecordRoom","Admin")" class="btn btn-dark border-light">
+            <i class="fa-solid fa-arrow-up-right-from-square text-light"></i> open
+        </a>
+    </div>
+    @*classmissing valuable*@
+    <div class="admin-card">
+        <i class="fa-regular fa-gem counters"></i>
+        <div>
+            <label class="counters">@ViewBag.valueCounts</label>
+            <label class="counters">+</label>
+        </div>
+        <div class="d-flex justify-content-center align-items-center">
+            <p>Missing Valuable Cases</p>
+        </div>
+        <a href="@Url.Action("RecordRoom","Admin")" class="btn btn-dark border-light">
+            <i class="fa-solid fa-arrow-up-right-from-square text-light"></i> open
+        </a>
+    </div>
+</div>
+    @*classsecond row*@
+<div class="admin-card-container">
+    @*class contact us*@
+    <div class="admin-card">
+        <i class="fa-solid fa-message counters"></i>
+        <div>
+            <label class="counters">@ViewBag.contactCounts</label>
+            <label class="counters">+</label>
+        </div>
+        <div class="d-flex justify-content-center align-items-center">
+            <p>Contact Requests</p>
+        </div>
+        <a href="@Url.Action("ContactRequests","Admin")" class="btn btn-dark border-light">
+            <i class="fa-solid fa-arrow-up-right-from-square text-light"></i> open
+        </a>
+    </div>
+    @*class FAQ*@
+<div class="admin-card">
+    <i class="fa-solid fa-circle-question counters"></i>
+    <div>
+        <label class="counters">@ViewBag.faqCounts</label>
+        <label class="counters">+</label>
+    </div>
+    <div class="d-flex justify-content-center align-items-center">
+        <p>End-User Queries</p>
+    </div>
+    <a href="@Url.Action("FaqRecords","Admin")" class="btn btn-dark border-light">
+        <i class="fa-solid fa-arrow-up-right-from-square text-light"></i> open
+    </a>
+</div>
+    @*class Gallery*@
+    <div class="admin-card">
+        <i class="fa-solid fa-images counters"></i>
+        <div>
+            <label class="counters">@ViewBag.galleryCounts</label>
+            <label class="counters">+</label>
+        </div>
+        <div class="d-flex justify-content-center align-items-center">
+            <p>Gallery</p>
+        </div>
+        <a href="@Url.Action("EventUpload","Admin")" class="btn btn-dark border-light">
+            <i class="fa-solid fa-arrow-up-right-from-square text-light"></i> open
+        </a>
+    </div>
+    @*class news*@
+    <div class="admin-card">
+        <i class="fa-solid fa-newspaper counters"></i>
+        <div>
+            <label class="counters">@ViewBag.newsCounts</label>
+            <label class="counters">+</label>
+        </div>
+        <div class="d-flex justify-content-center align-items-center">
+            <p>News & Updates</p>
+        </div>
+        <a href="@Url.Action("NewsRecord","Admin")" class="btn btn-dark border-light">
+            <i class="fa-solid fa-arrow-up-right-from-square text-light"></i> open
+        </a>
+    </div>
+</div>

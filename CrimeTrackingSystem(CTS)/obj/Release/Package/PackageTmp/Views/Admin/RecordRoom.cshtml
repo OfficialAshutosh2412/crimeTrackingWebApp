@@ -1,0 +1,247 @@
+﻿@using CrimeTrackingSystem_CTS_.Models
+@model RecordViewModel
+@{
+    ViewBag.AdminTitle = "Record Room";
+    ViewBag.PageTitle = "Record Room";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="p-2">
+    <button class="btn btn-sm btn-outline-warning" id="crimeBtn">Crime Complains</button>
+    <button class="btn btn-sm btn-outline-warning" id="generalBtn">General Complains</button>
+    <button class="btn btn-sm btn-outline-warning" id="personBtn">Missing Persons</button>
+    <button class="btn btn-sm btn-outline-warning" id="valueBtn">Missing Valuables</button>
+    <button class="btn btn-sm btn-secondary border border-light" id="crimeprint">print data</button>
+    <button class="btn btn-sm btn-secondary border border-light" id="generalprint">print data</button>
+    <button class="btn btn-sm btn-secondary border border-light" id="personprint">print data</button>
+    <button class="btn btn-sm btn-secondary border border-light" id="valueprint">print data</button>
+</div>
+@*for crime*@
+<div class="tableForView border border-warning rounded-2" id="crimeComplain">
+    <div>
+        <table class="table table-bordered  table-striped" width="100%" border="1" cellspacing="0">
+            <thead class="table-warning">
+                <tr>
+                    <th>ID</th>
+                    <th>Proof</th>
+                    <th>Status</th>
+                    <th>Username</th>
+                    <th>Police Station Name</th>
+                    <th>CrimeType</th>
+                    <th>Involved Person</th>
+                    <th>Local Police Station</th>
+                    <th>Date</th>
+
+                </tr>
+            </thead>
+            <tbody class="table-light">
+                @foreach (var item in Model.CrimeView)
+                {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>
+                        <a href="@Url.Content(item.Proofs)" target="_blank"><img src="@Url.Content(item.Proofs)" width="100" alt="proofs" /></a>
+                    </td>
+                    @if (item.Status == "Pending")
+                    {
+                        <td>
+                            <label><i class="fa-solid fa-clock text-warning"></i> @item.Status</label>
+                        </td>
+                    }
+                    @if (item.Status == "Solved")
+                    {
+                        <td>
+                            <label><i class="fa-solid fa-circle-check text-success"></i> @item.Status</label>
+                        </td>
+                    }
+                    @if (item.Status == "Rejected")
+                    {
+                        <td>
+                            <label><i class="fa-solid fa-circle-xmark text-danger"></i> @item.Status</label>
+                        </td>
+                    }
+                    <td>@item.Username</td>
+                    <td>@item.PoliceStationName</td>
+                    <td>@item.CrimeType</td>
+                    <td>@item.InvolvedPersons</td>
+                    <td>@item.CrimeStation</td>
+                    <td>@item.CurrentDateTime</td>
+
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@*for general*@
+<div class="tableForView border border-warning hidden-table rounded-2" id="generalComplain">
+    <div>
+        <table class="table table-bordered  table-striped" width="100%" border="1" cellspacing="0">
+            <thead class="table-warning">
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Status</th>
+                    <th>Police Station Name</th>
+                    <th>Subject</th>
+                    <th>Involved Person</th>
+                    <th>Details</th>
+                    <th>Date</th>
+
+                </tr>
+            </thead>
+            <tbody class="table-light">
+                @foreach (var item in Model.GeneralView)
+                {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Username</td>
+                    @if (item.Status == "Pending")
+                    {
+                        <td>
+                            <label><i class="fa-solid fa-clock text-warning"></i> @item.Status</label>
+                        </td>
+                    }
+                    @if (item.Status == "Solved")
+                    {
+                        <td>
+                            <label><i class="fa-solid fa-circle-check text-success"></i> @item.Status</label>
+                        </td>
+                    }
+                    @if (item.Status == "Rejected")
+                    {
+                        <td>
+                            <label><i class="fa-solid fa-circle-xmark text-danger"></i> @item.Status</label>
+                        </td>
+                    }
+                    <td>@item.PoliceStationName</td>
+                    <td>@item.Subject</td>
+                    <td>@item.InvolvedPersons</td>
+                    <td>@item.Details</td>
+                    <td>@item.CurrentDateTime</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@*for persons*@
+<div class="tableForView border border-warning hidden-table rounded-2" id="missingPerson">
+    <div>
+        <table class="table table-bordered  table-striped" width="100%" border="1" cellspacing="0">
+            <thead class="table-warning">
+                <tr>
+                    <th>ID</th>
+                    <th>Person Image</th>
+                    <th>Status</th>
+                    <th>Username</th>
+                    <th>Police Station Name</th>
+                    <th>Person Name</th>
+                    <th>Person Phone</th>
+                    <th>Last Location</th>
+                    <th>Person Email</th>
+                    <th>Person Details</th>
+                    <th>Ransom</th>
+                    <th>Date</th>
+                    
+                </tr>
+            </thead>
+            <tbody class="table-light">
+                @foreach (var item in Model.PersonView)
+                {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>
+                        <a href="@Url.Content(item.PersonImage)" target="_blank"><img src="@Url.Content(@item.PersonImage)" width="100" alt="proofs" /></a>
+                    </td>
+                    @if (item.Status == "Pending")
+                    {
+                        <td>
+                            <label><i class="fa-solid fa-clock text-warning"></i> @item.Status</label>
+                        </td>
+                    }
+                    @if (item.Status == "Solved")
+                    {
+                        <td>
+                            <label><i class="fa-solid fa-circle-check text-success"></i> @item.Status</label>
+                        </td>
+                    }
+                    @if (item.Status == "Rejected")
+                    {
+                        <td>
+                            <label><i class="fa-solid fa-circle-xmark text-danger"></i> @item.Status</label>
+                        </td>
+                    }
+                    <td>@item.Username</td>
+                    <td>@item.PoliceStationName</td>
+                    <td>@item.Person</td>
+                    <td>@item.PersonPhone</td>
+                    <td>@item.LastLocation</td>
+                    <td>@item.PersonEmail</td>
+                    <td>@item.Details</td>
+                    <td>@item.Ransom</td>
+                    <td>@item.CurrentDateTime</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@*for valuables*@
+<div class="tableForView border border-warning hidden-table rounded-2" id="missingValue">
+    <div>
+        <table class="table table-bordered  table-striped" width="100%" border="1" cellspacing="0">
+            <thead class="table-warning">
+                <tr>
+                    <th>ID</th>
+                    <th>Valuable Image</th>
+                    <th>Status</th>
+                    <th>Username</th>
+                    <th>Police Station Name</th>
+                    <th>Valuable Type</th>
+                    <th>Valuable Cost</th>
+                    <th>Suspects</th>
+                    <th>Details</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody class="table-light">
+                @foreach (var item in Model.ValueView)
+                {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>
+                        <a href="@Url.Content(item.ReciptImage)" target="_blank"><img src="@Url.Content(item.ReciptImage)" width="100" alt="proofs" /></a>
+                    </td>
+                    @if (item.Status == "Pending")
+                    {
+                        <td>
+                            <label><i class="fa-solid fa-clock text-warning"></i> @item.Status</label>
+                        </td>
+                    }
+                    @if (item.Status == "Solved")
+                    {
+                        <td>
+                            <label><i class="fa-solid fa-circle-check text-success"></i> @item.Status</label>
+                        </td>
+                    }
+                    @if (item.Status == "Rejected")
+                    {
+                        <td>
+                            <label><i class="fa-solid fa-circle-xmark text-danger"></i> @item.Status</label>
+                        </td>
+                    }
+                    <td>@item.Username</td>
+                    <td>@item.PoliceStationName</td>
+                    <td>@item.ValuableType</td>
+                    <td>@item.ValuableCost</td>
+                    <td>@item.Suspect</td>
+                    <td>@item.Details</td>
+                    <td>@item.CurrentDateTime</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

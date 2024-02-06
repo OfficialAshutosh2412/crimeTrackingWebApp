@@ -1,0 +1,49 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Person Details</title>
+    <link href="~/Content/style.css" rel="stylesheet" />
+</head>
+<body>
+    <section class="newsDetails">
+        <h3>General Complain Details</h3>
+        <div>
+            <h2>@ViewBag.output.Id). @ViewBag.output.Person</h2>
+
+            <p><strong>Person Phone :-</strong> @ViewBag.output.PersonPhone</p>
+            <p><strong>Last Location :-</strong> @ViewBag.output.LastLocation</p>
+            <p><strong>Person Email :-</strong> @ViewBag.output.PersonEmail</p>
+            <p><strong>Ransom :-</strong> @ViewBag.output.Ransom</p>
+            <p><strong>Status :-</strong> @ViewBag.output.Status</p>
+            <p><strong>Status :-</strong> @ViewBag.output.PoliceStationName</p>
+            <p><strong>Details :-</strong> @ViewBag.output.Details</p>
+        </div>
+
+        <div class="timedate">
+            @if (ViewBag.output.CurrentDateTime != null)
+            {
+                DateTime currentDateTime;
+                if (DateTime.TryParse(ViewBag.output.CurrentDateTime, out currentDateTime))
+                {
+                    <p>@currentDateTime.ToString("dddd, MMMM dd, yyyy h:mm tt")</p>
+                }
+                else
+                {
+                    <p>Invalid date and time format.</p>
+                }
+            }
+            else
+            {
+                <p>No date and time available.</p>
+            }
+        </div>
+    </section>
+</body>
+</html>

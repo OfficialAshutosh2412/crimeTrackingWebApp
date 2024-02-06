@@ -1,0 +1,288 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTS | @ViewBag.Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-1.13.8/r-2.5.0/rg-1.4.1/datatables.min.css" rel="stylesheet">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <!-- Include SweetAlert CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11">
+    @*@Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")*@
+</head>
+<body onload="myfunction()" class="body" vlink="coral" style="background: #eefff9; background-size: cover;">
+    @*preloader*@
+    <div class="preloader" id="preloader">
+        <img src="~/Images/loader/Ripple-2.1s-204px.gif" />
+    </div>
+    @*fixed menu*@
+    <div class=" whap-link settingBtn" style="bottom: 40px; right: 10px; cursor: pointer; z-index: 8889998" id="settings"><i class="fa-solid fa-gear fa-spin" id="setting" onclick="showSetting()"></i></div>
+    <div class=" whap-link themeSwitch" id="themeSwitch"><i class="fa-solid fa-brush" id="theme" onclick="showTheme()"></i></div>
+    <div class=" whap-link translator" id="translator"><i class="fa-solid fa-language" id="tool-toggler"></i></div>
+    <div class=" whap-link feedbackBtn" id="feedbackBtn"><a><i class="fa-solid fa-comments" onclick="showFeed()"></i></a></div>
+    <div class=" whap-link whats" id="whats">
+        <a href="https://wa.me/6386239194" class="text-light"><i class="fa-brands fa-whatsapp"></i></a>
+    </div>
+    @*theme*@
+    <div class="themes theme-hide">
+        <ul>
+            <li id="crimson" onclick="crimson()"></li>
+            <li id="blue" onclick="themeBlue()"></li>
+            <li id="slate" onclick="slate()"></li>
+            <li id="green" onclick="green()"></li>
+            <li id="kesar" onclick="kesar()"></li>
+        </ul>
+        <div class="content"></div>
+    </div>
+    @*translator bar*@
+    <div class="top-bar hide-top">
+        <div><label>Translater</label></div>
+        <div class="footer-follow">
+            <a href="http://" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="http://" target="_blank"><i class="fa-brands fa-square-instagram"></i></a>
+            <a href="http://" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+            <a href="http://" target="_blank"><i class="fa-brands fa-square-threads"></i></a>
+        </div>
+        <div class="d-flex">
+            <div id="google_translate_element"></div>
+            <script type="text/javascript">
+                function googleTranslateElementInit() {
+                    new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+                }
+            </script>
+            <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+        </div>
+    </div>
+    @*feedback*@
+    <div class="feedback show-feeds">
+        <div>
+            <h1><i class="fa-solid fa-hand-holding-heart"></i></h1>
+            <h1>HELP US IN MAKING IT BETTER</h1>
+            <p>
+                We welcome your participation in enhancing the portal further
+                and also invite your comments and suggestions for improvement
+            </p>
+            <a href="@Url.Action("Feedback", "Home")" class="send">give us your feedback...</a>
+        </div>
+    </div>
+    @*header*@
+    <nav class="navbar dark-mode navbar-expand-lg bg-body-tertiary p-0" id="nav">
+        <div class="container-fluid justify-content-between " id="navigator">
+            <a href="@Url.Action("Index", "Home")" class="navbar-brand">
+                <img src="~/Images/cts_logo.png" />
+            </a>
+            <button class="navbar-toggler border-0 bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon fw-bolder"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end p-1" id="navbarNav">
+                <ul class="navbar-nav p-0">
+                    <li class="nav-item" id="home">
+                        <a href="@Url.Action("Index", "Home")" class="nav-link text-light " aria-current="page"><i class="fa-solid fa-house"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="~/#about"><i class="fa-solid fa-circle-info"></i> About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="~/#services"><i class="fa-solid fa-cubes"></i> Services</a>
+                    </li>
+                    <li class="nav-item gallery-nav-link" id="gallery" style="cursor:pointer !important;" onmouseover="showGallery()" onmouseout="hideGallery()">
+                        <a class="nav-link text-light" style="cursor:pointer !important"><i class="fa-solid fa-images"></i> Gallery</a>
+                        <ul id="gallery-list">
+                            <li><a href="@Url.Action("CTS_Events", "Home")">Events</a></li>
+                            <li><a href="@Url.Action("Wanted_Lists", "Home")">Wanted Criminals</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item" id="contact">
+                        <a href="@Url.Action("Contact", "Home")" class="nav-link text-light"><i class="fa-solid fa-message"></i> Contact us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="~/#faq"><i class="fa-solid fa-file-circle-question"></i> FAQ</a>
+                    </li>
+                    <li class="nav-item nav-link" id="news">
+                        <a href="@Url.Action("News", "Home")" class="text-light"><i class="fa-solid fa-newspaper"></i> News</a>
+                    </li>
+                    <li class="nav-item nav-link" id="loginclick">
+                        <a href="@Url.Action("login", "Home")" class="text-light"><i class="fa-solid fa-arrow-right-to-bracket "></i> Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    @RenderBody()
+    @*footer*@
+    <footer class="footer" id="footer">
+        <div class="rights" id="rights">
+            <div>
+                <label>All rights are reserved &copy; @DateTime.Now.Year | </label>
+            </div>
+            <div class="footer-follow">
+                <a href="https://www.facebook.com/ashutosh.prasad.754365/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/official.ashu.2000/" target="_blank"><i class="fa-brands fa-square-instagram"></i></a>
+                <a href="https://twitter.com/Ashutos96662173" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://wa.me/6386239194" target="_blank"><i class="fa-brands fa-square-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Include SweetAlert JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        //keep red
+        if (localStorage.getItem('crimson')) {
+            applyRed();
+        }
+        //keep blue
+        if (localStorage.getItem('blue')) {
+            applyBlue();
+        }
+        //keep slate
+        if (localStorage.getItem('slate')) {
+            applySlate();
+        }
+        //keep green
+        if (localStorage.getItem('green')) {
+            applyGreen();
+        }
+        //keep kesar
+        if (localStorage.getItem('kesar')) {
+            applyKesar();
+        }
+        //navbar active link
+        //navbar active link
+        const pathName = window.location.pathname;
+        const pageName = pathName.split("/").pop();
+        if (pageName === "" || pageName === "UserHome" || pageName === "home") {
+            document.querySelector('#home').classList.add("activeLink");
+        }
+        if (pageName === "contact" || pageName === "Contact") {
+            document.querySelector('#contact').classList.add("activeLink");
+        }
+        if (pageName === "login" || pageName === "Login") {
+            document.querySelector('#loginclick').classList.add("activeLink");
+        }
+        if (pageName === "cts_events" || pageName === "CTS_Events" || pageName === "wanted_lists" || pageName === "Wanted_Lists") {
+            document.querySelector('#gallery').classList.add("activeLink");
+        }
+        if (pageName === "faq" || pageName === "Faq" || pageName === "FAQ") {
+            document.querySelector('#faq').classList.add("activeLink");
+        }
+        //def green
+        function applyGreen() {
+            let crim = document.querySelectorAll('#settings,#navigator, #rights, #themeSwitch, #feedbackBtn, #whats, #translator');
+            for (var i = 0; i < crim.length; i++) {
+                crim[i].style.backgroundColor = '#1e9b56'
+            }
+            document.querySelector('#footer').style.backgroundColor = '#178a4f';
+            document.body.style.cssText = 'background:#e8fff3;color:black;';
+            let hero = document.querySelectorAll('#title-vip1,#title-vip2,#title-vip3,#title-vip4,#title-vip5');
+            for (var j = 0; j < hero.length; j++) {
+                hero[j].style.cssText = "background:#1e9b56;color:white";
+            }
+        };
+        //def red
+        function applyRed() {
+            let crim = document.querySelectorAll('#settings,#navigator, #rights, #themeSwitch, #feedbackBtn, #whats, #translator');
+            for (var i = 0; i < crim.length; i++) {
+                crim[i].style.backgroundColor = 'crimson'
+            }
+            document.querySelector('#footer').style.backgroundColor = '#c21135';
+            document.body.style.cssText = 'background:#fcf2f4;color:black;';
+            let hero = document.querySelectorAll('#title-vip1,#title-vip2,#title-vip3,#title-vip4,#title-vip5');
+            for (var j = 0; j < hero.length; j++) {
+                hero[j].style.cssText = "background:crimson;color:white";
+            }
+        };
+        //def blue
+        function applyBlue() {
+            let bl = document.querySelectorAll('#settings,#navigator, #rights, #themeSwitch, #feedbackBtn, #whats, #translator');
+            for (var i = 0; i < bl.length; i++) {
+                bl[i].style.backgroundColor = '#1b2987'
+            }
+            document.querySelector('#footer').style.backgroundColor = '#3952cc';
+            document.body.style.cssText = 'background:#f0f2ff;color:black;';
+            let hero = document.querySelectorAll('#title-vip1,#title-vip2,#title-vip3,#title-vip4,#title-vip5');
+            for (var j = 0; j < hero.length; j++) {
+                hero[j].style.cssText = "background:#1b2987;color:white";
+            }
+        };
+        //def slate
+        function applySlate() {
+            let sl = document.querySelectorAll('#settings,#navigator, #rights, #themeSwitch, #feedbackBtn, #whats, #translator');
+            for (var i = 0; i < sl.length; i++) {
+                sl[i].style.backgroundColor = '#007e8a'
+            }
+            document.querySelector('#footer').style.backgroundColor = '#03a0ab';
+            document.body.style.cssText = 'background:#edfbfc;color:black;';
+            let hero = document.querySelectorAll('#title-vip1,#title-vip2,#title-vip3,#title-vip4,#title-vip5');
+            for (var j = 0; j < hero.length; j++) {
+                hero[j].style.cssText = "background:#007e8a;color:white";
+            }
+        }
+        //def kesar
+        function applyKesar() {
+            let sl = document.querySelectorAll('#settings,#navigator, #rights, #themeSwitch, #feedbackBtn, #whats, #translator');
+            for (var i = 0; i < sl.length; i++) {
+                sl[i].style.backgroundColor = '#e88b27'
+            }
+            document.querySelector('#footer').style.backgroundColor = '#eb9942';
+            document.body.style.cssText = 'background:#faf4ed;color:black;';
+            let hero = document.querySelectorAll('#title-vip1,#title-vip2,#title-vip3,#title-vip4,#title-vip5');
+            for (var j = 0; j < hero.length; j++) {
+                hero[j].style.cssText = "background:#e88b27;color:white";
+            }
+        }
+        //theme red button
+        function crimson() {
+            localStorage.clear();
+            applyRed();
+            localStorage.setItem('crimson', this);
+        }
+        //theme blue button
+        function themeBlue() {
+            localStorage.clear();
+            applyBlue();
+            localStorage.setItem('blue', this);
+        }
+        //theme slate button
+        function slate() {
+            localStorage.clear();
+            applySlate();
+            localStorage.setItem('slate', this);
+        }
+        //theme dark button
+        function dark() {
+            localStorage.clear();
+            applyDark();
+            localStorage.setItem('dark', this);
+        }
+        //theme green
+        function green() {
+            localStorage.clear();
+            applyGreen();
+            localStorage.setItem('green', this);
+        }
+        //theme kesar
+        function kesar() {
+            localStorage.clear();
+            applyKesar();
+            localStorage.setItem('kesar', this);
+        }
+
+    </script>
+    <script src="~/Scripts/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-1.13.8/r-2.5.0/rg-1.4.1/datatables.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/custom.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#tableJsId").dataTable();
+
+        });
+    </script>
+
+</body>
+</html>

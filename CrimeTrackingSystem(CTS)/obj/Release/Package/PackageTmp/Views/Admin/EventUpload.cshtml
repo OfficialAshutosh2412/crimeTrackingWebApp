@@ -1,0 +1,50 @@
+﻿@model CrimeTrackingSystem_CTS_.Models.EventViewModel
+@{
+    ViewBag.AdminTitle = "Event Upload";
+    ViewBag.PageTitle = "Event Upload";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@Html.Raw(TempData["message"])
+
+@using (Html.BeginForm("EventUpload", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="admin-gallery-uploader">
+        <h1>Event Photo Upload</h1>
+        <div class="admin-gallery-item">
+            <div>
+                <fieldset>
+                    <legend><i class="fa-solid fa-pencil"></i> @Html.LabelFor(model => model.EventTitle)</legend>
+                    <small class="text-danger fw-bold">
+                        @Html.ValidationMessageFor(model => model.EventTitle, "", new { @class = "text-danger" })
+                    </small>
+                    @Html.TextBoxFor(model => model.EventTitle, new { @class = "cc-box" })
+                </fieldset>
+            </div>
+            <div>
+                <fieldset>
+                    <legend>
+                        <i class="fa-solid fa-building"></i>
+                        @Html.LabelFor(model => model.EventDateTime)
+                    </legend>
+                    <small class="text-danger fw-bold">
+                        @Html.ValidationMessageFor(model => model.EventDateTime, "", new { @class = "text-danger"})
+                    </small>
+                    @Html.TextBoxFor(model => model.EventDateTime, new { @class = "cc-box", type = "datetime-local" })
+                </fieldset>
+            </div>
+            <div>
+                <fieldset>
+                    <legend>
+                        <i class="fa-regular fa-image"></i>
+                        @Html.LabelFor(model => model.EventImage)
+                    </legend>
+                    <input type="file" name="ImageFiles" class="cc-box" required style="height:200px;border:1px solid #787878;cursor:pointer" />
+                </fieldset>
+            </div>
+            <div style="margin-left:10px;">
+                <button class="btn btn-primary" value="upload" id="myButton"> <i class="fa-solid fa-cloud-arrow-up"></i> upload</button>
+            </div>
+        </div>
+    </div>
+
+}

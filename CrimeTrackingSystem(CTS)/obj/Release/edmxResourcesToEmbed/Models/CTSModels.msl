@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CTSModelStoreContainer" CdmEntityContainer="CTSEntitiesClass">
+    <EntitySetMapping Name="Contacts">
+      <EntityTypeMapping TypeName="CTSModel.Contact">
+        <MappingFragment StoreEntitySet="Contact">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Fullname" ColumnName="Fullname" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Purpose" ColumnName="Purpose" />
+          <ScalarProperty Name="Details" ColumnName="Details" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CrimeComplains">
+      <EntityTypeMapping TypeName="CTSModel.CrimeComplain">
+        <MappingFragment StoreEntitySet="CrimeComplain">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="PoliceStationName" ColumnName="PoliceStationName" />
+          <ScalarProperty Name="CrimeType" ColumnName="CrimeType" />
+          <ScalarProperty Name="InvolvedPersons" ColumnName="InvolvedPersons" />
+          <ScalarProperty Name="Proofs" ColumnName="Proofs" />
+          <ScalarProperty Name="CrimeStation" ColumnName="CrimeStation" />
+          <ScalarProperty Name="CurrentDateTime" ColumnName="CurrentDateTime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CriminalGalleries">
+      <EntityTypeMapping TypeName="CTSModel.CriminalGallery">
+        <MappingFragment StoreEntitySet="CriminalGallery">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="AffectedOrganisation" ColumnName="AffectedOrganisation" />
+          <ScalarProperty Name="Reward" ColumnName="Reward" />
+          <ScalarProperty Name="CriminalImage" ColumnName="CriminalImage" />
+          <ScalarProperty Name="Details" ColumnName="Details" />
+          <ScalarProperty Name="CurrentDateTime" ColumnName="CurrentDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Events">
+      <EntityTypeMapping TypeName="CTSModel.Event">
+        <MappingFragment StoreEntitySet="Events">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="EventTitle" ColumnName="EventTitle" />
+          <ScalarProperty Name="EventDateTime" ColumnName="EventDateTime" />
+          <ScalarProperty Name="CurrentDateTime" ColumnName="CurrentDateTime" />
+          <ScalarProperty Name="EventImage" ColumnName="EventImage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FAQs">
+      <EntityTypeMapping TypeName="CTSModel.FAQ">
+        <MappingFragment StoreEntitySet="FAQ">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Questions" ColumnName="Questions" />
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Feedbacks">
+      <EntityTypeMapping TypeName="CTSModel.Feedback">
+        <MappingFragment StoreEntitySet="Feedback">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Yourname" ColumnName="Yourname" />
+          <ScalarProperty Name="E_mail" ColumnName="E-mail" />
+          <ScalarProperty Name="Words" ColumnName="Words" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GeneralComplains">
+      <EntityTypeMapping TypeName="CTSModel.GeneralComplain">
+        <MappingFragment StoreEntitySet="GeneralComplain">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="PoliceStationName" ColumnName="PoliceStationName" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Details" ColumnName="Details" />
+          <ScalarProperty Name="InvolvedPersons" ColumnName="InvolvedPersons" />
+          <ScalarProperty Name="CurrentDateTime" ColumnName="CurrentDateTime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MissingPersons">
+      <EntityTypeMapping TypeName="CTSModel.MissingPerson">
+        <MappingFragment StoreEntitySet="MissingPerson">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="PoliceStationName" ColumnName="PoliceStationName" />
+          <ScalarProperty Name="Person" ColumnName="Person" />
+          <ScalarProperty Name="PersonPhone" ColumnName="PersonPhone" />
+          <ScalarProperty Name="LastLocation" ColumnName="LastLocation" />
+          <ScalarProperty Name="PersonEmail" ColumnName="PersonEmail" />
+          <ScalarProperty Name="Ransom" ColumnName="Ransom" />
+          <ScalarProperty Name="Details" ColumnName="Details" />
+          <ScalarProperty Name="PersonImage" ColumnName="PersonImage" />
+          <ScalarProperty Name="CurrentDateTime" ColumnName="CurrentDateTime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MissingValuables">
+      <EntityTypeMapping TypeName="CTSModel.MissingValuable">
+        <MappingFragment StoreEntitySet="MissingValuable">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="PoliceStationName" ColumnName="PoliceStationName" />
+          <ScalarProperty Name="ValuableType" ColumnName="ValuableType" />
+          <ScalarProperty Name="ValuableCost" ColumnName="ValuableCost" />
+          <ScalarProperty Name="Suspect" ColumnName="Suspect" />
+          <ScalarProperty Name="ReciptImage" ColumnName="ReciptImage" />
+          <ScalarProperty Name="Details" ColumnName="Details" />
+          <ScalarProperty Name="CurrentDateTime" ColumnName="CurrentDateTime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PoliceStations">
+      <EntityTypeMapping TypeName="CTSModel.PoliceStation">
+        <MappingFragment StoreEntitySet="PoliceStation">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ChowkiIncharge" ColumnName="ChowkiIncharge" />
+          <ScalarProperty Name="PoliceStationName" ColumnName="PoliceStationName" />
+          <ScalarProperty Name="CUGNumberOne" ColumnName="CUGNumberOne" />
+          <ScalarProperty Name="CUGNumberSecond" ColumnName="CUGNumberSecond" />
+          <ScalarProperty Name="Agent" ColumnName="Agent" />
+          <ScalarProperty Name="AgentPhone" ColumnName="AgentPhone" />
+          <ScalarProperty Name="PoliceStationImage" ColumnName="PoliceStationImage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Signups">
+      <EntityTypeMapping TypeName="CTSModel.Signup">
+        <MappingFragment StoreEntitySet="Signup">
+          <ScalarProperty Name="RegId" ColumnName="RegId" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Mstatus" ColumnName="Mstatus" />
+          <ScalarProperty Name="Lstatus" ColumnName="Lstatus" />
+          <ScalarProperty Name="Adhaar" ColumnName="Adhaar" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="News">
+      <EntityTypeMapping TypeName="CTSModel.News">
+        <MappingFragment StoreEntitySet="News">
+          <ScalarProperty Name="CurrentDateTime" ColumnName="CurrentDateTime" />
+          <ScalarProperty Name="Detail" ColumnName="Detail" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
