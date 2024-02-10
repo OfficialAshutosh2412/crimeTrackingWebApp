@@ -398,6 +398,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                         personFormData.Status = "Pending";
                         var perdbmodel = new MissingPerson
                         {
+                            Id=personFormData.Id,
                             Username=personFormData.Username,
                             PoliceStationName=personFormData.PoliceStationName,
                             Person=personFormData.Person,

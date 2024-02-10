@@ -114,6 +114,18 @@
                         @Html.EditorFor(model => model.Ransom, new { htmlAttributes = new { @class = "cc-box" } })
                     </fieldset>
                 </div>
+                <div>
+                    <fieldset>
+                        <legend>
+                            <i class="fa-solid fa-phone"></i>
+                            @Html.LabelFor(model => model.PersonPhone)
+                        </legend>
+                        <small class="text-danger fw-bold">
+                            @Html.ValidationMessageFor(model => model.PersonPhone, "", new { @class = "text-danger fw-bolder" })
+                        </small>
+                        @Html.EditorFor(model => model.PersonPhone, new { htmlAttributes = new { @class = "cc-box" } })
+                    </fieldset>
+                </div>
             </div>
             <div>
                 <fieldset>
