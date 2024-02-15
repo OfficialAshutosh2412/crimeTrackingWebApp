@@ -32,7 +32,7 @@
                 </span>
                 @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "cc-box", @readonly = "true" } })
         </div>
-        <div class="w-100 p-2">
+        @*<div class="w-100 p-2">
             <span>
                 <i class="fa-solid fa-key"></i>
                 @Html.LabelFor(model => model.ConfirmPassword, new { @class = "form-label fw-bolder" })
@@ -40,7 +40,7 @@
                 <small>@Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger fw-bolder" })</small>
             </span>
             @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "cc-box" } })
-        </div>
+        </div>*@
         <div class="w-100 p-2">
             <span>
                 <i class="fa-solid fa-hashtag"></i>

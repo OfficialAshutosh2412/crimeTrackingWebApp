@@ -10,7 +10,6 @@ namespace CrimeTrackingSystem_CTS_.Models
     public class NewsViewModel
     {
         [Required(ErrorMessage ="required")]
-        [StringLength(50,ErrorMessage ="not more than 50 words")]
         public string Title { get; set; }
 
         [Required(ErrorMessage = "required")]
