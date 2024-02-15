@@ -4,20 +4,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@if (ViewBag.message != null)
-{
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            Swal.fire({
-                icon: 'success',
-                title: 'Thank you !',
-                text: '@ViewBag.message'
-            });
-        });
-    </script>
-}
-
-@using (Html.BeginForm("Feedback", "Home", FormMethod.Post))
+@*@using (Html.BeginForm("Feedback", "Home", FormMethod.Post))*@
+@using (Ajax.BeginForm("Feedback", "Home", new AjaxOptions() {
+        HttpMethod = "POST",
+        OnSuccess = "AlertMsg",
+        LoadingElementId="loader"
+}))
 {
     @*feedback*@
     <div class="signin bg-white p-5 rounded">
@@ -32,7 +24,7 @@
             <small class="text-danger fw-bold">
                 @Html.ValidationMessageFor(model => model.Yourname)
             </small>
-            @Html.EditorFor(model => model.Yourname, new { htmlAttributes = new { @class = "cc-box", style = "background:#f6f6f6" } })
+            @Html.EditorFor(model => model.Yourname, new { htmlAttributes = new { @class = "cc-box", style = "background:#f6f6f6", id = "name" } })
         </div>
         <div class="mb-3">
             <span>
@@ -43,7 +35,7 @@
             <small class="text-danger fw-bold">
                 @Html.ValidationMessageFor(model => model.E_mail)
             </small>
-            @Html.EditorFor(model => model.E_mail, new { htmlAttributes = new { @class = "cc-box", style = "background:#f6f6f6" } })
+            @Html.EditorFor(model => model.E_mail, new { htmlAttributes = new { @class = "cc-box", style = "background:#f6f6f6", id = "email" } })
         </div>
         <div class="mb-3">
             <span>
@@ -54,10 +46,10 @@
             <small class="text-danger fw-bold">
                 @Html.ValidationMessageFor(model => model.Words)
             </small>
-            @Html.TextBoxFor(model => model.Words, new { @class = "cc-box", style = "background:#f6f6f6", rows = "5" })
+            @Html.TextAreaFor(model => model.Words, new { @class = "cc-box", style = "background:#f6f6f6", rows = "5", id="words" })
         </div>
         <div class="d-flex justify-content-start align-items-center">
-            <button class="send p-2">submit my feedback</button>
+            <button class="send p-2" onclick="return validationCheck()"><i class="fa-solid fa-c fa-spin" style="display:none" id="loader" ></i>submit my feedback</button>
         </div>
     </div>
 }

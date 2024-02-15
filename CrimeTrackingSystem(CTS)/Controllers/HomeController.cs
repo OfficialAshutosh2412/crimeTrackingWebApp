@@ -168,13 +168,12 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                 {
                     Yourname = feedbackData.Yourname,
                     E_mail = feedbackData.E_mail,
-                    Words=feedbackData.Words
+                    Words = feedbackData.Words
 
                 };
                 _context.Feedbacks.Add(feedbackdbmodel);
                 _context.SaveChanges();
-                ModelState.Clear();
-                ViewBag.message = "We will contact you soon.";
+                //ModelState.Clear();
             }
             return View();
         }

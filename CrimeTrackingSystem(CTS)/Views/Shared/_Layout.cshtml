@@ -277,11 +277,37 @@
 
     <script src="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-1.13.8/r-2.5.0/rg-1.4.1/datatables.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script>
+        function validationCheck() {
+            let name = $("#name").val();
+            let email = $("#email").val();
+            let words = $("#words").val();
+            if (name === "" || email === "" || words === "") {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "fields should not be empty!",
+                });
+                return false;
+            }
+        }
+        function AlertMsg() {
+            Swal.fire({
+                icon: 'success',
+                title: 'Thank you !',
+                text: 'Information recorded !'
+            });
+            $("#name").val("")
+            $("#email").val("")
+            $("#words").val("")
+        }
+    </script>
     <script src="~/Scripts/custom.js"></script>
     <script>
+
         $(document).ready(function () {
             $("#tableJsId").dataTable();
-
         });
     </script>
 
