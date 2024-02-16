@@ -1,4 +1,4 @@
-﻿
+﻿@*@model CrimeTrackingSystem_CTS_.Models.Signup*@
 @{
     ViewBag.UserTitle = "Home";
     Layout = "~/Views/Shared/_LayoutUser.cshtml";
@@ -7,7 +7,10 @@
 <div class="register-welcome">
     <h3>
         Welcome,
-        <label class="">@Session["usermail"]</label>
+        <label class="">@*@Session["usermail"]*@ 
+        @User.Identity.Name
+        
+        </label>
         <a href="@Url.Action("MyProfile", "User")" title="profile"><i class="fa-solid fa-user-pen"></i></a>
     </h3>
 </div>

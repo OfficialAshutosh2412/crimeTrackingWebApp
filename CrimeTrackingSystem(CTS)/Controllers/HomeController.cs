@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.Mvc;
 using CrimeTrackingSystem_CTS_.Models;
 
@@ -141,15 +142,26 @@ namespace CrimeTrackingSystem_CTS_.Controllers
             {
                 if (creds.Role == "user")
                 {
-                    Session["usermail"] = loginFormData.Email;
+                    FormsAuthentication.SetAuthCookie(loginFormData.Email, false);
+                    //Session["usermail"] = loginFormData.Email;
                     return RedirectToAction("Index", "User");
                 }
                 else if (creds.Role == "admin")
                 {
-                    Session["adminmail"] = loginFormData.Email;
+                    FormsAuthentication.SetAuthCookie(loginFormData.Email, false);
                     return RedirectToAction("Index", "Admin");
                 }
-                
+                //if (creds.Role == "user")
+                //{
+                //    Session["usermail"] = loginFormData.Email;
+                //    return RedirectToAction("Index", "User");
+                //}
+                //else if (creds.Role == "admin")
+                //{
+                //    Session["adminmail"] = loginFormData.Email;
+                //    return RedirectToAction("Index", "Admin");
+                //}
+
             }
             return View();
         }

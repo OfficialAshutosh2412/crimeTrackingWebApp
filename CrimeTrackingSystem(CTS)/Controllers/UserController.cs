@@ -6,19 +6,21 @@ using System.Web.Mvc;
 using CrimeTrackingSystem_CTS_.Models;
 using System.IO;
 using System.Data.Entity;
+using System.Web.Security;
 
 namespace CrimeTrackingSystem_CTS_.Controllers
 {
+    [Authorize]
     public class UserController : Controller
     {
         readonly CTSEntitiesClass _context = new CTSEntitiesClass();
         // GET: User
         public ActionResult Index()
         {
-            if (Session["usermail"] == null)
-            {
-                return RedirectToAction("Login", "Home");
-            }
+            //if (Session["usermail"] == null)
+            //{
+            //    return RedirectToAction("Login", "Home");
+            //}
 
             var sessiondata = (string)Session["usermail"];
             //crime
@@ -54,19 +56,21 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         //GET: Logout
         public ActionResult Logout()
         {
-            Session.Abandon();
-            Session.Clear();
-            Session["usermail"] = null;
+            //Session.Abandon();
+            //Session.Clear();
+            //Session["usermail"] = null;
+            FormsAuthentication.SignOut();
             return RedirectToAction("Login", "Home");
         }
         //GET:Profile
         public ActionResult MyProfile()
         {
-            if (Session["usermail"] == null)
-            {
-                return RedirectToAction("Login", "Home");
-            }
-            var session = (string)Session["usermail"];
+            //if (Session["usermail"] == null)
+            //{
+            //    return RedirectToAction("Login", "Home");
+            //}
+            //var session = (string)Session["usermail"];
+            var session = User.Identity.Name;
             var profiledata = _context.Signups.FirstOrDefault(model => model.Email == session);
 
             if (profiledata == null)
@@ -190,10 +194,10 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         //GET: Crime Complain
         public ActionResult Crime()
         {
-            if (Session["usermail"] == null)
-            {
-                return RedirectToAction("Login", "Home");
-            }
+            //if (Session["usermail"] == null)
+            //{
+            //    return RedirectToAction("Login", "Home");
+            //}
             List<SelectListItem> options = _context.PoliceStations.Select(
                 x => new SelectListItem
                 {

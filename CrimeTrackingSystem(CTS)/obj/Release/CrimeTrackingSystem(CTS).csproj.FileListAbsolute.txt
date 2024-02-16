@@ -80,4 +80,3 @@ C:\Users\ashut\source\repos\CrimeTrackingSystem(CTS)\CrimeTrackingSystem(CTS)\ob
 C:\Users\ashut\source\repos\CrimeTrackingSystem(CTS)\CrimeTrackingSystem(CTS)\obj\Release\CrimeTrackingSystem(CTS).csproj.CopyComplete
 C:\Users\ashut\source\repos\CrimeTrackingSystem(CTS)\CrimeTrackingSystem(CTS)\obj\Release\CrimeTrackingSystem(CTS).dll
 C:\Users\ashut\source\repos\CrimeTrackingSystem(CTS)\CrimeTrackingSystem(CTS)\obj\Release\CrimeTrackingSystem(CTS).pdb
-C:\Users\ashut\source\repos\CrimeTrackingSystem(CTS)\CrimeTrackingSystem(CTS)\obj\Release\CrimeTrackingSystem(CTS).csproj.AssemblyReference.cache
