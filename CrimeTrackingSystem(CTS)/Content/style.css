@@ -12,8 +12,30 @@ body {
     box-sizing: border-box;
     width: 100%;
 }
-/*theme*/
-.themes {
+/*loading Element Style*/
+.loadingElementStyle{
+    position:fixed;
+    top:30%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    padding:2rem;
+    width:fit-content;
+     font-size:3rem;
+    backdrop-filter:blur(5px);
+    background:#404040;
+    box-shadow:2px 2px 15px 0px gray;
+    border-radius:3px;
+    text-align:center;
+    display:none;
+}
+    .loadingElementStyle img{
+        margin:5px;
+    }
+    .loadingElementStyle img:nth-child(1) {
+        width: 10%
+    }
+    /*theme*/
+    .themes {
     width: fit-content;
     height: 100vh;
     display: flex;

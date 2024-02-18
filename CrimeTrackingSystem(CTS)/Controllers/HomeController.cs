@@ -42,7 +42,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                     _context.Contacts.Add(contactdbmodel);
                     _context.SaveChanges();
                     ModelState.Clear();
-                    ViewBag.message = "Information Recorded.";
+                    //ViewBag.message = "Information Recorded.";
                 }   
             return View();
         }

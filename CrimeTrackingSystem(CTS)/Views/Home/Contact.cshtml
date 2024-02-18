@@ -18,7 +18,14 @@
 }
 
 @*contact us*@
-@using (Html.BeginForm("Contact", "Home", FormMethod.Post))
+@using (Ajax.BeginForm("Contact", "Home",
+        new AjaxOptions()
+        {
+            HttpMethod = "POST",
+            LoadingElementId = "ContactLoader",
+            OnSuccess="ClearContact"
+        }
+    ))
 {
     <div class="admin-gallery-uploader">
         <h1><i class="fa-solid fa-envelopes-bulk"></i> Contact Us</h1>
@@ -33,7 +40,7 @@
                         <small class="text-danger fw-bold">
                             @Html.ValidationMessageFor(model => model.Fullname, "", new { @class = "text-danger fw-bolder" })
                         </small>
-                        @Html.EditorFor(model => model.Fullname, new { htmlAttributes = new { @class = "cc-box" } })
+                        @Html.EditorFor(model => model.Fullname, new { htmlAttributes = new { @class = "cc-box",id="fullname" } })
                     </fieldset>
                 </div>
                 <div>
@@ -45,7 +52,7 @@
                         <small class="text-danger fw-bold">
                             @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger fw-bolder" })
                         </small>
-                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "cc-box" } })
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "cc-box", id = "email" } })
                     </fieldset>
                 </div>
                 <div>
@@ -57,7 +64,7 @@
                         <small class="text-danger fw-bold">
                             @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger fw-bolder" })
                         </small>
-                        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "cc-box" } })
+                        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "cc-box", id = "phone" } })
                     </fieldset>
                 </div>
             </div>
@@ -71,7 +78,7 @@
                         <small class="text-danger fw-bold">
                             @Html.ValidationMessageFor(model => model.Purpose, "", new { @class = "text-danger fw-bolder" })
                         </small>
-                        @Html.EditorFor(model => model.Purpose, new { htmlAttributes = new { @class = "cc-box" } })
+                        @Html.EditorFor(model => model.Purpose, new { htmlAttributes = new { @class = "cc-box", id = "purpose" } })
                     </fieldset>
                 </div>
             </div>
@@ -84,13 +91,18 @@
                     <small class="text-danger fw-bold">
                         @Html.ValidationMessageFor(model => model.Details, "", new { @class = "text-danger fw-bolder" })
                     </small>
-                    @Html.TextAreaFor(model => model.Details, new { @class = "cc-box",rows="10" })
+                    @Html.TextAreaFor(model => model.Details, new { @class = "cc-box", rows = "10",id="details" })
                 </fieldset>
             </div>
             <div style="margin-left:10px;">
-                <button class="btn btn-primary" value="upload" id="myButton"><i class="fa-solid fa-paper-plane"></i> send</button>
+                <button class="btn btn-primary" value="upload" id="myButton" onclick="return ValidateContact()"><i class="fa-solid fa-paper-plane"></i> send</button>
+            </div>
+            <div id="ContactLoader" class="loadingElementStyle">
+                <img src="~/Images/loader/5.gif" />
+                <img src="~/Images/loader/279.gif" />
             </div>
         </div>
     </div>
-
 }
+
+
