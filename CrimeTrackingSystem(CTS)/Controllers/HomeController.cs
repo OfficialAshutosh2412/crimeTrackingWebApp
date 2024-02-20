@@ -59,22 +59,20 @@ namespace CrimeTrackingSystem_CTS_.Controllers
             //if form fields are validated
             if (ModelState.IsValid == true)
             {
-                //getting only name of file
+                ////getting only name of file
                 string filenameWithoutExtension = Path.GetFileNameWithoutExtension(formDataOfSignup.ImageFile.FileName);
-                //getting file extension
+                ////getting file extension
                 string fileExtension = Path.GetExtension(formDataOfSignup.ImageFile.FileName);
-                //getting posted image file
-                HttpPostedFileBase postedFile = formDataOfSignup.ImageFile;
-
-                //getting length of posted file
-                int lengthOfFile = postedFile.ContentLength;
+                ////getting posted image file
+                ////getting length of posted file
+                //int lengthOfFile = postedFile.ContentLength;
                 //now checking for filetype accepting only jpg, jpeg, JPEG and png files.
-                if (fileExtension.ToLower() == ".jpg" || fileExtension.ToLower() == ".jpeg" || fileExtension.ToLower() == ".JPEG" || fileExtension.ToLower() == ".png")
-                {
-                    //check if length is not more than 1MB
-                    if (lengthOfFile <= 1000000)
-                    {
-                        //setting actuall file with extension into filename without extension
+                //if (fileExtension.ToLower() == ".jpg" || fileExtension.ToLower() == ".jpeg" || fileExtension.ToLower() == ".JPEG" || fileExtension.ToLower() == ".png")
+                //{
+                //    //check if length is not more than 1MB
+                //    if (lengthOfFile <= 1000000)
+                //    {
+                //        //setting actuall file with extension into filename without extension
                         string actualFilename = filenameWithoutExtension + fileExtension;
                         //passing path of image with folder into database
                         formDataOfSignup.Photo = "~/Uploads/UserProfileImages/" + actualFilename;
@@ -108,18 +106,17 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                         };
                         _context.Signups.Add(signupdbmodel);
                         _context.SaveChanges();
-                        ModelState.Clear();
-                        return RedirectToAction("Login", "Home");
-                    }
-                    else
-                    {
-                        TempData["SizeError"] = "<script>alert('Error : file is larger than 1MB')</script>";
-                    }
-                }
-                else
-                {
-                    TempData["ExtensionError"] = "<script>alert('Error : file not supported')</script>";
-                }
+                        
+                //    }
+                //    else
+                //    {
+                //        TempData["SizeError"] = "<script>alert('Error : file is larger than 1MB')</script>";
+                //    }
+                //}
+                //else
+                //{
+                //    TempData["ExtensionError"] = "<script>alert('Error : file not supported')</script>";
+                //}
             }
             return View();
         }

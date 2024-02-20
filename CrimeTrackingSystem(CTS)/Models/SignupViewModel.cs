@@ -9,53 +9,53 @@ namespace CrimeTrackingSystem_CTS_.Models
 {
     public class SignupViewModel
     {
-        [DisplayName("Your fullname")]
-        [Required]
-        [DataType(DataType.Text)]
+        //[DisplayName("Your fullname")]
+        //[Required]
+        //[DataType(DataType.Text)]
         public string Username { get; set; }
 
-        [DisplayName("Create password")]
-        [Required]
-        [RegularExpression("^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8,}$", ErrorMessage = "password must: atleast 8-char long, 2 - uppercase, 3 - lowercase, 1 - special char, 2 - digits")]
+        //[DisplayName("Create password")]
+        //[Required]
+        //[RegularExpression("^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8,}$", ErrorMessage = "password must: atleast 8-char long, 2 - uppercase, 3 - lowercase, 1 - special char, 2 - digits")]
         public string Password { get; set; }
 
-        [DisplayName("E-mail")]
-        [Required]
-        [DataType(DataType.EmailAddress)]
-        [RegularExpression(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$", ErrorMessage = "invalid e-mail id")]
+        //[DisplayName("E-mail")]
+        //[Required]
+        //[DataType(DataType.EmailAddress)]
+        //[RegularExpression(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$", ErrorMessage = "invalid e-mail id")]
         public string Email { get; set; }
 
-        [DisplayName("Gender")]
-        [Required]
+        //[DisplayName("Gender")]
+        //[Required]
         public string Gender { get; set; }
 
-        [Required]
-        [RegularExpression(@"^(\d{6})$", ErrorMessage = "invalid pincode")]
+        //[Required]
+        //[RegularExpression(@"^(\d{6})$", ErrorMessage = "invalid pincode")]
         public string Pincode { get; set; }
 
-        [Required]
+        //[Required]
         public string Address { get; set; }
 
-        [Required]
-        [DisplayName("Marital Status")]
+        //[Required]
+        //[DisplayName("Marital Status")]
         public string Mstatus { get; set; }
 
-        [Required]
-        [DisplayName("Living Status")]
+        //[Required]
+        //[DisplayName("Living Status")]
         public string Lstatus { get; set; }
 
-        [Required]
-        [DisplayName("Adhaar No.")]
-        [RegularExpression(@"^(\d{12})$", ErrorMessage = "invalid adhaar number")]
+        //[Required]
+        //[DisplayName("Adhaar No.")]
+        //[RegularExpression(@"^(\d{12})$", ErrorMessage = "invalid adhaar number")]
         public string Adhaar { get; set; }
 
-        [Required]
-        [RegularExpression(@"^(\d{10}|\d{12})$", ErrorMessage = "invalid phone number")]
+        //[Required]
+        //[RegularExpression(@"^(\d{10}|\d{12})$", ErrorMessage = "invalid phone number")]
         public string Phone { get; set; }
         public string Photo { get; set; }
         public HttpPostedFileBase ImageFile { get; set; }
 
-        [Required]
+        //[Required]
         public string Role { get; set; }
     }
 }
