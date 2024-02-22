@@ -10,8 +10,6 @@
     <link href="~/Content/style.css" rel="stylesheet" />
     <!-- Include SweetAlert CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11">
-    @*@Styles.Render("~/Content/css")
-        @Scripts.Render("~/bundles/modernizr")*@
 </head>
 <body onload="myfunction()" class="body" vlink="coral" style="background: #eefff9; background-size: cover;">
     @*preloader*@
@@ -19,7 +17,7 @@
         <img src="~/Images/loader/Ripple-2.1s-204px.gif" />
     </div>
     @*fixed menu*@
-    <div class=" whap-link settingBtn" style="bottom: 40px; right: 10px; cursor: pointer; z-index: 8889998" id="settings"><i class="fa-solid fa-gear fa-spin" id="setting" onclick="showSetting()"></i></div>
+    <div class=" whap-link settingBtn" style="bottom: 40px; right: 10px; cursor: pointer; z-index: 8889998" id="settings"><i class="fa-solid fa-gear " id="setting" onclick="showSetting()"></i></div>
     <div class=" whap-link themeSwitch" id="themeSwitch"><i class="fa-solid fa-brush" id="theme" onclick="showTheme()"></i></div>
     <div class=" whap-link translator" id="translator"><i class="fa-solid fa-language" id="tool-toggler"></i></div>
     <div class=" whap-link feedbackBtn" id="feedbackBtn"><a><i class="fa-solid fa-comments" onclick="showFeed()"></i></a></div>

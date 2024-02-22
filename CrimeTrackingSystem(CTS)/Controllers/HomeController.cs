@@ -29,21 +29,22 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         [HttpPost]
         public ActionResult Contact(ContactViewModel contactFormData)
         {
-            
-                if (ModelState.IsValid == true)
+
+            if (ModelState.IsValid == true)
+            {
+                var contactdbmodel = new Contact
                 {
-                    var contactdbmodel = new Contact { 
-                        Fullname=contactFormData.Fullname,
-                        Email=contactFormData.Email,
-                        Phone=contactFormData.Phone,
-                        Purpose=contactFormData.Purpose,
-                        Details=contactFormData.Details,
-                    };
-                    _context.Contacts.Add(contactdbmodel);
-                    _context.SaveChanges();
-                    ModelState.Clear();
-                    //ViewBag.message = "Information Recorded.";
-                }   
+                    Fullname = contactFormData.Fullname,
+                    Email = contactFormData.Email,
+                    Phone = contactFormData.Phone,
+                    Purpose = contactFormData.Purpose,
+                    Details = contactFormData.Details,
+                };
+                _context.Contacts.Add(contactdbmodel);
+                _context.SaveChanges();
+                ModelState.Clear();
+                //ViewBag.message = "Information Recorded.";
+            }
             return View();
         }
 
@@ -63,60 +64,39 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                 string filenameWithoutExtension = Path.GetFileNameWithoutExtension(formDataOfSignup.ImageFile.FileName);
                 ////getting file extension
                 string fileExtension = Path.GetExtension(formDataOfSignup.ImageFile.FileName);
-                ////getting posted image file
-                ////getting length of posted file
-                //int lengthOfFile = postedFile.ContentLength;
-                //now checking for filetype accepting only jpg, jpeg, JPEG and png files.
-                //if (fileExtension.ToLower() == ".jpg" || fileExtension.ToLower() == ".jpeg" || fileExtension.ToLower() == ".JPEG" || fileExtension.ToLower() == ".png")
-                //{
-                //    //check if length is not more than 1MB
-                //    if (lengthOfFile <= 1000000)
-                //    {
-                //        //setting actuall file with extension into filename without extension
-                        string actualFilename = filenameWithoutExtension + fileExtension;
-                        //passing path of image with folder into database
-                        formDataOfSignup.Photo = "~/Uploads/UserProfileImages/" + actualFilename;
-                        //mapping server image folder
-                        actualFilename = Path.Combine(Server.MapPath("~/Uploads/UserProfileImages/"), actualFilename);
-                        //saving the file into folder
-                        formDataOfSignup.ImageFile.SaveAs(actualFilename);
-                        
-                        if (formDataOfSignup.Role == "98u9d8uwr3(9ih(8H8&67^g&UyGIuh(7t6G^F4d4@A#24545fGbuyb*Y(8jIj(87Re54#qW")
-                        {
-                            formDataOfSignup.Role = "admin";    
-                        }
-                        else if (formDataOfSignup.Role != "98u9d8uwr3(9ih(8H8&67^g&UyGIuh(7t6G^F4d4@A#24545fGbuyb*Y(8jIj(87Re54#qW")
-                        {
-                            formDataOfSignup.Role = "user";
-                        }
-                        var signupdbmodel = new Signup
-                        {
-                            Username = formDataOfSignup.Username,
-                            Password = formDataOfSignup.Password,
-                            Email = formDataOfSignup.Email,
-                            Gender = formDataOfSignup.Gender,
-                            Pincode = formDataOfSignup.Pincode,
-                            Address = formDataOfSignup.Address,
-                            Mstatus = formDataOfSignup.Mstatus,
-                            Lstatus = formDataOfSignup.Lstatus,
-                            Adhaar = formDataOfSignup.Adhaar,
-                            Phone = formDataOfSignup.Phone,
-                            Photo = formDataOfSignup.Photo,
-                            Role = formDataOfSignup.Role,
-                        };
-                        _context.Signups.Add(signupdbmodel);
-                        _context.SaveChanges();
-                        
-                //    }
-                //    else
-                //    {
-                //        TempData["SizeError"] = "<script>alert('Error : file is larger than 1MB')</script>";
-                //    }
-                //}
-                //else
-                //{
-                //    TempData["ExtensionError"] = "<script>alert('Error : file not supported')</script>";
-                //}
+                string actualFilename = filenameWithoutExtension + fileExtension;
+                //passing path of image with folder into database
+                formDataOfSignup.Photo = "~/Uploads/UserProfileImages/" + actualFilename;
+                //mapping server image folder
+                actualFilename = Path.Combine(Server.MapPath("~/Uploads/UserProfileImages/"), actualFilename);
+                //saving the file into folder
+                formDataOfSignup.ImageFile.SaveAs(actualFilename);
+
+                if (formDataOfSignup.Role == "98u9d8uwr3(9ih(8H8&67^g&UyGIuh(7t6G^F4d4@A#24545fGbuyb*Y(8jIj(87Re54#qW")
+                {
+                    formDataOfSignup.Role = "admin";
+                }
+                else if (formDataOfSignup.Role != "98u9d8uwr3(9ih(8H8&67^g&UyGIuh(7t6G^F4d4@A#24545fGbuyb*Y(8jIj(87Re54#qW")
+                {
+                    formDataOfSignup.Role = "user";
+                }
+                var signupdbmodel = new Signup
+                {
+                    Username = formDataOfSignup.Username,
+                    Password = formDataOfSignup.Password,
+                    Email = formDataOfSignup.Email,
+                    Gender = formDataOfSignup.Gender,
+                    Pincode = formDataOfSignup.Pincode,
+                    Address = formDataOfSignup.Address,
+                    Mstatus = formDataOfSignup.Mstatus,
+                    Lstatus = formDataOfSignup.Lstatus,
+                    Adhaar = formDataOfSignup.Adhaar,
+                    Phone = formDataOfSignup.Phone,
+                    Photo = formDataOfSignup.Photo,
+                    Role = formDataOfSignup.Role,
+                };
+                _context.Signups.Add(signupdbmodel);
+                _context.SaveChanges();
             }
             return View();
         }
@@ -140,7 +120,6 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                 if (creds.Role == "user")
                 {
                     FormsAuthentication.SetAuthCookie(loginFormData.Email, false);
-                    //Session["usermail"] = loginFormData.Email;
                     return RedirectToAction("Index", "User");
                 }
                 else if (creds.Role == "admin")
@@ -148,16 +127,6 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                     FormsAuthentication.SetAuthCookie(loginFormData.Email, false);
                     return RedirectToAction("Index", "Admin");
                 }
-                //if (creds.Role == "user")
-                //{
-                //    Session["usermail"] = loginFormData.Email;
-                //    return RedirectToAction("Index", "User");
-                //}
-                //else if (creds.Role == "admin")
-                //{
-                //    Session["adminmail"] = loginFormData.Email;
-                //    return RedirectToAction("Index", "Admin");
-                //}
 
             }
             return View();
@@ -206,7 +175,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         }
         public ActionResult News_details(int id)
         {
-            ViewBag.gettingData = _context.News.Where(model=>model.Id==id).FirstOrDefault();
+            ViewBag.gettingData = _context.News.Where(model => model.Id == id).FirstOrDefault();
             return View();
         }
     }

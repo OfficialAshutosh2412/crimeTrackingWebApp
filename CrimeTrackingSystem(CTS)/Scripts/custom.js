@@ -58,6 +58,13 @@ function hideGallery() {
     box.style.cssText = "display:none;";
 }
 
- 
+//signup toggler
+function ShowSignup() {
+    let box = document.querySelector(".HideSignup");
+    box.classList.add("ShowSignup")
+}
 
-
+function HideSignup() {
+    let box = document.querySelector(".HideSignup");
+        box.classList.remove("ShowSignup")
+}
