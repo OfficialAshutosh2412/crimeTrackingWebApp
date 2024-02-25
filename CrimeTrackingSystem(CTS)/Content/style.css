@@ -1280,17 +1280,69 @@ body {
     justify-content: space-between;
     align-items: center;
 }
-
-.profile-edit {
-    margin: 0 auto;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 80%;
+/*profile edit form*/
+.hiddenProfileForm {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    min-width:320px;
+    width:320px;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    box-shadow: 2px 0px 1000px 0px #000000;
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: transform 0.3s linear, opacity 0.6s ease-in-out;
 }
 
+    .hiddenProfileForm form .signup {
+        border-radius: 0px;
+        width: 100%;
+        padding: 10px;
+    }
+
+        .hiddenProfileForm form .signup .deflex {
+            display: block;
+            width: 100%;
+        }
+
+        .hiddenProfileForm form .signup .title {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+            .hiddenProfileForm form .signup .title p {
+                color: #2c9373;
+                font-size: 20px;
+                font-weight: 600;
+            }
+
+            .hiddenProfileForm form .signup .title label {
+                color: #ff9797;
+                font-size: 20px;
+                position: absolute;
+                top: 10px;
+                right: 20px;
+                cursor: pointer;
+            }
+
+    .hiddenProfileForm.ShowProfileForm {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+/*.profile-edit {
+        margin: 0 auto;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }*/
 .edit-box {
     width: 100%;
     border-radius: 10px;
@@ -1750,6 +1802,15 @@ legend {
 }
 
 @media screen and (max-width:880px) {
+    /*  .hiddenProfileForm{
+        width:300px;
+    }
+        .hiddenProfileForm form{
+            width:100%;
+        }
+            .hiddenProfileForm form .signup{
+                width:100%
+            }*/
     .instructionForPerson {
         width: 100%;
         left: 0;

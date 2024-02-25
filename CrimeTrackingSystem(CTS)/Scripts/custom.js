@@ -68,3 +68,13 @@ function HideSignup() {
     let box = document.querySelector(".HideSignup");
         box.classList.remove("ShowSignup")
 }
+//profile form toggler
+function ShowForm() {
+    let box = document.querySelector(".hiddenProfileForm");
+    box.classList.add("ShowProfileForm")
+}
+
+function HideForm() {
+    let box = document.querySelector(".hiddenProfileForm");
+    box.classList.remove("ShowProfileForm")
+}

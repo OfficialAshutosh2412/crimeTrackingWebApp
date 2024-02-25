@@ -124,3 +124,4 @@ function SignupSuccess() {
     $("#phone").val('');
     $("#role").val('');
 }
+//profile edit

@@ -84,8 +84,8 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         //GET:EditProfile
         public ActionResult EditProfile()
         {
-            var session = (string)Session["usermail"];
-            var profiledata = _context.Signups
+            var session = User.Identity.Name;
+            var profilesdata = _context.Signups
                 .Where(model => model.Email == session)
                 .Select(model => new SignupViewModel
                 {
@@ -103,8 +103,8 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                     Role = model.Role,
                 })
                 .FirstOrDefault();
-            Session["image"] = profiledata.Photo.ToString();
-            return View(profiledata);
+            Session["image"] = profilesdata.Photo.ToString();
+            return View(profilesdata);
         }
         //POST:EditProfile
         [HttpPost]
