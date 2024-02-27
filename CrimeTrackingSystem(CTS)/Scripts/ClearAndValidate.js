@@ -32,6 +32,7 @@ function ValidateImage() {
                     title: "Oops...",
                     text: "file is larger than 1MB..",
                 });
+                return false;
             }
         } else {
             Swal.fire({
@@ -39,6 +40,7 @@ function ValidateImage() {
                 title: "Oops...",
                 text: "file type not supported..",
             });
+            return false;
         }
     }
     else {
@@ -47,7 +49,9 @@ function ValidateImage() {
             title: "Oops...",
             text: "choose an image..",
         });
+        return false;
     }
+    return false;
 }
 //contact us
 function ValidateContact() {
@@ -123,5 +127,38 @@ function SignupSuccess() {
     $("#adhaar").val('');
     $("#phone").val('');
     $("#role").val('');
+    $("#image").val('');
 }
 //profile edit
+function ProfileUpdated() {
+    Swal.fire({
+        icon: 'success',
+        title: 'Profile updated !',
+        text: `take a look at your profile !`,
+        footer: '<a href="/User/MyProfile">click here to refresh</a>'
+    });
+}
+//crime complain
+
+function ValidateCrimeForm() {
+    let policeStation = $("#policeStation").val();
+    let crimeType = $("#crimeType").val();
+    let involvedPerson = $("#involvedPerson").val();
+    let crimeStation = $("#crimeStation").val();
+    if (policeStation === "" || crimeType === "" || involvedPerson == "" || crimeStation === "") {
+        sweetEmptyFunction();
+        return false;
+    }
+    if (!ValidateImage()) {
+        return false;
+    }
+    return true;
+}
+function CrimeRegistered() {
+    AlertsMsg();
+    $("#policeStation").val("");
+    $("#crimeType").val("");
+    $("#involvedPerson").val("");
+    $("#crimeStation").val("");
+    $("#image").val("");
+}

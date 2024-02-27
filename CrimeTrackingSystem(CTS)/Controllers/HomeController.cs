@@ -82,6 +82,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                 }
                 var signupdbmodel = new Signup
                 {
+                    RegId=formDataOfSignup.RegId,
                     Username = formDataOfSignup.Username,
                     Password = formDataOfSignup.Password,
                     Email = formDataOfSignup.Email,
@@ -97,6 +98,7 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                 };
                 _context.Signups.Add(signupdbmodel);
                 _context.SaveChanges();
+                return RedirectToAction("Login", "Home");
             }
             return View();
         }

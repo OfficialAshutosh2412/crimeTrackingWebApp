@@ -22,9 +22,9 @@ namespace CrimeTrackingSystem_CTS_.Controllers
             //    return RedirectToAction("Login", "Home");
             //}
 
-            var sessiondata = (string)Session["usermail"];
+            var sessiondata = User.Identity.Name;
             //crime
-            var solvedcrimelist  = _context.CrimeComplains.Where(model => model.Username == sessiondata && model.Status == "Solved").ToList();
+            var solvedcrimelist = _context.CrimeComplains.Where(model => model.Username == sessiondata && model.Status == "Solved").ToList();
             var pendcrimelist = _context.CrimeComplains.Where(model => model.Username == sessiondata && model.Status == "Pending").ToList();
             var solvedcount = solvedcrimelist.Count();
             var pendcount = pendcrimelist.Count();
@@ -56,39 +56,18 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         //GET: Logout
         public ActionResult Logout()
         {
-            //Session.Abandon();
-            //Session.Clear();
-            //Session["usermail"] = null;
             FormsAuthentication.SignOut();
             return RedirectToAction("Login", "Home");
         }
         //GET:Profile
         public ActionResult MyProfile()
         {
-            //if (Session["usermail"] == null)
-            //{
-            //    return RedirectToAction("Login", "Home");
-            //}
-            //var session = (string)Session["usermail"];
-            var session = User.Identity.Name;
-            var profiledata = _context.Signups.FirstOrDefault(model => model.Email == session);
-
-            if (profiledata == null)
-            {
-                // Handle the case where no profile data is found for the user
-                return RedirectToAction("Index", "User");
-            }
-            ViewBag.profile = profiledata;
-            return View();
-        }
-        //GET:EditProfile
-        public ActionResult EditProfile()
-        {
             var session = User.Identity.Name;
             var profilesdata = _context.Signups
                 .Where(model => model.Email == session)
                 .Select(model => new SignupViewModel
                 {
+                    RegId = model.RegId,
                     Username = model.Username,
                     Password = model.Password,
                     Email = model.Email,
@@ -106,65 +85,23 @@ namespace CrimeTrackingSystem_CTS_.Controllers
             Session["image"] = profilesdata.Photo.ToString();
             return View(profilesdata);
         }
-        //POST:EditProfile
         [HttpPost]
-        public ActionResult EditProfile(SignupViewModel editFormData)
+        public ActionResult MyProfile(SignupViewModel editFormData)
         {
-            if (ModelState.IsValid == true)
+            if (ModelState.IsValid)
             {
                 if (editFormData.ImageFile != null)
                 {
                     HttpPostedFileBase postedFile = editFormData.ImageFile;
                     string filenameWithoutExtension = Path.GetFileNameWithoutExtension(postedFile.FileName);
                     string fileExtension = Path.GetExtension(postedFile.FileName);
-                    int lengthOfFile = postedFile.ContentLength;
-                    if (fileExtension.ToLower() == ".jpg" || fileExtension.ToLower() == ".jpeg" || fileExtension.ToLower() == ".JPEG" || fileExtension.ToLower() == ".png")
-                    {
-                        if (lengthOfFile <= 1000000)
-                        {
-                            string actualFilename = filenameWithoutExtension + fileExtension;
-                            editFormData.Photo = "~/Uploads/UserProfileImages/" + actualFilename;
-                            actualFilename = Path.Combine(Server.MapPath("~/Uploads/UserProfileImages/"), actualFilename);
-                            postedFile.SaveAs(actualFilename);
-                            var profiledbmodel = new Signup
-                            {
-                                Username = editFormData.Username,
-                                Password = editFormData.Password,
-                                Email = editFormData.Email,
-                                Gender = editFormData.Gender,
-                                Pincode = editFormData.Pincode,
-                                Address = editFormData.Address,
-                                Mstatus = editFormData.Mstatus,
-                                Lstatus = editFormData.Lstatus,
-                                Adhaar = editFormData.Adhaar,
-                                Phone = editFormData.Phone,
-                                Photo = editFormData.Photo,
-                                Role = editFormData.Role
-                            };
-                            _context.Entry(profiledbmodel).State = EntityState.Modified;
-                            int a = _context.SaveChanges();
-                            if (a > 0)
-                            {
-                                TempData["update"] = "true";
-                            }
-                            return RedirectToAction("MyProfile", "User");
-                        }
-                        else
-                        {
-                            TempData["SizeError"] = "<script>alert('Error : file is larger than 1MB')</script>";
-
-                        }
-                    }
-                    else
-                    {
-                        TempData["ExtensionError"] = "<script>alert('Error : file not supported')</script>";
-
-                    }
-                }
-                else
-                {   editFormData.Photo = Session["image"].ToString();
+                    string actualFilename = filenameWithoutExtension + fileExtension;
+                    editFormData.Photo = "~/Uploads/UserProfileImages/" + actualFilename;
+                    actualFilename = Path.Combine(Server.MapPath("~/Uploads/UserProfileImages/"), actualFilename);
+                    postedFile.SaveAs(actualFilename);
                     var profiledbmodel = new Signup
                     {
+                        RegId = editFormData.RegId,
                         Username = editFormData.Username,
                         Password = editFormData.Password,
                         Email = editFormData.Email,
@@ -178,13 +115,32 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                         Photo = editFormData.Photo,
                         Role = editFormData.Role
                     };
-                    
                     _context.Entry(profiledbmodel).State = EntityState.Modified;
-                    int a = _context.SaveChanges();
-                    if (a > 0)
+                    _context.SaveChanges();
+                    return RedirectToAction("MyProfile", "User");
+                }
+                else
+                {
+                    editFormData.Photo = Session["image"].ToString();
+                    var profiledbmodel = new Signup
                     {
-                        TempData["update"] = "true";
-                    }
+                        RegId = editFormData.RegId,
+                        Username = editFormData.Username,
+                        Password = editFormData.Password,
+                        Email = editFormData.Email,
+                        Gender = editFormData.Gender,
+                        Pincode = editFormData.Pincode,
+                        Address = editFormData.Address,
+                        Mstatus = editFormData.Mstatus,
+                        Lstatus = editFormData.Lstatus,
+                        Adhaar = editFormData.Adhaar,
+                        Phone = editFormData.Phone,
+                        Photo = editFormData.Photo,
+                        Role = editFormData.Role
+                    };
+
+                    _context.Entry(profiledbmodel).State = EntityState.Modified;
+                    _context.SaveChanges();
                     return RedirectToAction("MyProfile", "User");
                 }
             }
@@ -194,10 +150,6 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         //GET: Crime Complain
         public ActionResult Crime()
         {
-            //if (Session["usermail"] == null)
-            //{
-            //    return RedirectToAction("Login", "Home");
-            //}
             List<SelectListItem> options = _context.PoliceStations.Select(
                 x => new SelectListItem
                 {
@@ -212,70 +164,45 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         [HttpPost]
         public ActionResult Crime(CrimeComplainViewModel crimeFormData)
         {
-            //if form fields are validated
             if (ModelState.IsValid)
             {
                 //getting only name of file
                 string filenameWithoutExtension = Path.GetFileNameWithoutExtension(crimeFormData.UploadImage.FileName);
-
                 //getting file extension
                 string fileExtension = Path.GetExtension(crimeFormData.UploadImage.FileName);
-
                 //getting posted image file
                 HttpPostedFileBase postedFile = crimeFormData.UploadImage;
+                //setting actuall file with extension into filename without extension
+                string actualFilename = filenameWithoutExtension + fileExtension;
 
-                //getting length of posted file
-                int lengthOfFile = postedFile.ContentLength;
+                //passing path of image with folder into database
+                crimeFormData.Proofs = "~/Uploads/CrimeComplainProofs/" + actualFilename;
 
-                //validating the file
-                if (fileExtension.ToLower() == ".jpg" || fileExtension.ToLower() == ".jpeg" || fileExtension.ToLower() == ".JPEG" || fileExtension.ToLower() == ".png")
+                //mapping server image folder
+                actualFilename = Path.Combine(Server.MapPath("~/Uploads/CrimeComplainProofs/"), actualFilename);
+
+                //saving the file into folder
+                crimeFormData.UploadImage.SaveAs(actualFilename);
+
+                //adding data in db
+                crimeFormData.Username = User.Identity.Name;
+                crimeFormData.CurrentDateTime = DateTime.Now.ToString();
+                crimeFormData.Status = "Pending";
+                var crimedbmodel = new CrimeComplain
                 {
-                    //check if length is not more than 1MB
-                    if (lengthOfFile <= 1000000)
-                    {
-                        //setting actuall file with extension into filename without extension
-                        string actualFilename = filenameWithoutExtension + fileExtension;
-
-                        //passing path of image with folder into database
-                        crimeFormData.Proofs = "~/Uploads/CrimeComplainProofs/" + actualFilename;
-
-                        //mapping server image folder
-                        actualFilename = Path.Combine(Server.MapPath("~/Uploads/CrimeComplainProofs/"), actualFilename);
-
-                        //saving the file into folder
-                        crimeFormData.UploadImage.SaveAs(actualFilename);
-
-                        //adding data in db
-                        crimeFormData.Username = (string)Session["usermail"];
-                        crimeFormData.CurrentDateTime = DateTime.Now.ToString();
-                        crimeFormData.Status = "Pending";
-                        var crimedbmodel = new CrimeComplain { 
-                            Username=crimeFormData.Username,
-                            PoliceStationName=crimeFormData.PoliceStationName,
-                            CrimeType=crimeFormData.CrimeType,
-                            InvolvedPersons=crimeFormData.InvolvedPersons,
-                            Proofs=crimeFormData.Proofs,
-                            CrimeStation=crimeFormData.CrimeStation,
-                            CurrentDateTime=crimeFormData.CurrentDateTime,
-                            Status=crimeFormData.Status
-                        };
-                        _context.CrimeComplains.Add(crimedbmodel);
-                        _context.SaveChanges();
-
-                        // Clearing ModelState to avoid displaying previous validation errors
-                        ModelState.Clear();
-                        TempData["result"] = "true";
-                        return RedirectToAction("Crime", "User");
-                    }
-                    else
-                    {
-                        TempData["SizeError"] = "<script>alert('Error : file is larger than 1MB')</script>";
-                    }
-                }
-                else
-                {
-                    TempData["ExtensionError"] = "<script>alert('Error : file not supported')</script>";
-                }
+                    Id = crimeFormData.Id,
+                    Username = crimeFormData.Username,
+                    PoliceStationName = crimeFormData.PoliceStationName,
+                    CrimeType = crimeFormData.CrimeType,
+                    InvolvedPersons = crimeFormData.InvolvedPersons,
+                    Proofs = crimeFormData.Proofs,
+                    CrimeStation = crimeFormData.CrimeStation,
+                    CurrentDateTime = crimeFormData.CurrentDateTime,
+                    Status = crimeFormData.Status
+                };
+                _context.CrimeComplains.Add(crimedbmodel);
+                _context.SaveChanges();
+                return RedirectToAction("Crime", "User");
             }
             // If ModelState is not valid
             List<SelectListItem> options = _context.PoliceStations.Select(
@@ -291,10 +218,6 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         //GET:General Complain
         public ActionResult General()
         {
-            if (Session["usermail"] == null)
-            {
-                return RedirectToAction("Login", "Home");
-            }
             List<SelectListItem> options = _context.PoliceStations.Select(
                 x => new SelectListItem
                 {
@@ -316,14 +239,15 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                 generalFormData.Username = (string)Session["usermail"];
                 generalFormData.CurrentDateTime = DateTime.Now.ToString();
                 generalFormData.Status = "Pending";
-                var gcdbmodel = new GeneralComplain { 
-                    Username=generalFormData.Username,
-                    PoliceStationName=generalFormData.PoliceStationName,
-                    Subject=generalFormData.Subject,
-                    Details=generalFormData.Details,
-                    InvolvedPersons=generalFormData.InvolvedPersons,
+                var gcdbmodel = new GeneralComplain
+                {
+                    Username = generalFormData.Username,
+                    PoliceStationName = generalFormData.PoliceStationName,
+                    Subject = generalFormData.Subject,
+                    Details = generalFormData.Details,
+                    InvolvedPersons = generalFormData.InvolvedPersons,
                     CurrentDateTime = generalFormData.CurrentDateTime,
-                    Status =generalFormData.Status
+                    Status = generalFormData.Status
                 };
                 _context.GeneralComplains.Add(gcdbmodel);
                 _context.SaveChanges();
@@ -345,10 +269,6 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         //GET: Person
         public ActionResult Person()
         {
-            if (Session["usermail"] == null)
-            {
-                return RedirectToAction("Login", "Home");
-            }
             List<SelectListItem> options = _context.PoliceStations.Select(
                 x => new SelectListItem
                 {
@@ -402,18 +322,18 @@ namespace CrimeTrackingSystem_CTS_.Controllers
                         personFormData.Status = "Pending";
                         var perdbmodel = new MissingPerson
                         {
-                            Id=personFormData.Id,
-                            Username=personFormData.Username,
-                            PoliceStationName=personFormData.PoliceStationName,
-                            Person=personFormData.Person,
-                            PersonPhone=personFormData.PersonPhone,
-                            LastLocation=personFormData.LastLocation,
-                            PersonEmail=personFormData.PersonEmail,
-                            Ransom=personFormData.Ransom,
-                            Details=personFormData.Details,
-                            PersonImage=personFormData.PersonImage,
-                            CurrentDateTime=personFormData.CurrentDateTime,
-                            Status=personFormData.Status
+                            Id = personFormData.Id,
+                            Username = personFormData.Username,
+                            PoliceStationName = personFormData.PoliceStationName,
+                            Person = personFormData.Person,
+                            PersonPhone = personFormData.PersonPhone,
+                            LastLocation = personFormData.LastLocation,
+                            PersonEmail = personFormData.PersonEmail,
+                            Ransom = personFormData.Ransom,
+                            Details = personFormData.Details,
+                            PersonImage = personFormData.PersonImage,
+                            CurrentDateTime = personFormData.CurrentDateTime,
+                            Status = personFormData.Status
                         };
                         _context.MissingPersons.Add(perdbmodel);
                         _context.SaveChanges();
@@ -447,10 +367,6 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         //GET:Valuable
         public ActionResult Valuable()
         {
-            if (Session["usermail"] == null)
-            {
-                return RedirectToAction("Login", "Home");
-            }
             List<SelectListItem> options = _context.PoliceStations.Select(
                  x => new SelectListItem
                  {
@@ -545,44 +461,28 @@ namespace CrimeTrackingSystem_CTS_.Controllers
         //show crime complain data
         public ActionResult CrimeComplainData()
         {
-            if (Session["usermail"] == null)
-            {
-                return RedirectToAction("Login", "Home");
-            }
-            var userId = (string)Session["usermail"];
+            var userId = User.Identity.Name;
             var userData = _context.CrimeComplains.Where(model => model.Username == userId).ToList();
             return View(userData);
         }
         //show general complain data
         public ActionResult GeneralComplainData()
         {
-            if (Session["usermail"] == null)
-            {
-                return RedirectToAction("Login", "Home");
-            }
-            var userId = (string)Session["usermail"];
+            var userId = User.Identity.Name;
             var userData = _context.GeneralComplains.Where(model => model.Username == userId).ToList();
             return View(userData);
         }
         //show missing person complain data
         public ActionResult MissingPersonData()
         {
-            if (Session["usermail"] == null)
-            {
-                return RedirectToAction("Login", "Home");
-            }
-            var userId = (string)Session["usermail"];
+            var userId = User.Identity.Name;
             var userData = _context.MissingPersons.Where(model => model.Username == userId).ToList();
             return View(userData);
         }
         //show missing valuable complain data
         public ActionResult MissingValuableData()
         {
-            if (Session["usermail"] == null)
-            {
-                return RedirectToAction("Login", "Home");
-            }
-            var userId = (string)Session["usermail"];
+            var userId = User.Identity.Name;
             var userData = _context.MissingValuables.Where(model => model.Username == userId).ToList();
             return View(userData);
         }
